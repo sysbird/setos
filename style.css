@@ -1009,10 +1009,6 @@ form input {
 
 /* Home
 --------------------------------------------- */
-.home #content {
-  background: none;
-}
-
 .home #content h2 {
   border: none;
   margin: 0;
@@ -1156,48 +1152,12 @@ form input {
 }
 
 .home #content #blog ul.article .hentry.sticky {
-  position: relative;
-}
+  /*						background-color: $accent-color;
 
-.home #content #blog ul.article .hentry.sticky i {
-  display: inline;
-  font-size: 12px;
-  color: #fff;
-}
-
-.home #content #blog ul.article .hentry.sticky i span {
-  position: absolute;
-  display: inline-block;
-  text-align: center;
-  text-transform: uppercase;
-  top: 0;
-  right: -44px;
-  background: #374049;
-  width: 100px;
-  height: 20px;
-  padding: 3px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.home #content #blog ul.article .hentry.sticky i span:before {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  content: "\f005";
-  padding-right: 0.2em;
-  color: #FFF;
-}
-
-.home #content #blog ul.article .hentry.sticky .entry-header .entry-title {
-  color: #374049;
+						.entry-header .entry-title,
+						.entry-header .postdate {
+							color: #FFF;
+						} */
 }
 
 /* Archive
@@ -1409,53 +1369,6 @@ form input {
   background-repeat: no-repeat;
 }
 
-#wall .widget-area-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  background-color: rgba(255, 255, 255, 0.3);
-  overflow: hidden;
-}
-
-#wall .widget-area-header .widget {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  padding: 0 5%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-#wall .widget-area-header .widget:nth-child(n+2) {
-  display: none;
-}
-
-#wall .widget-area-header .widget h3 {
-  padding: 0.2em 0;
-  margin: 0;
-  border: none;
-  line-height: 1;
-  color: #FFF;
-  font-size: 6vw;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-}
-
-#wall .widget-area-header .widget .textwidget,
-#wall .widget-area-header .widget .textwidget p {
-  line-height: 1.2;
-  margin: 0;
-  color: #FFF;
-  font-size: 4vw;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-}
-
 #wall .slideitem {
   position: absolute;
   top: 0;
@@ -1523,7 +1436,7 @@ form input {
 --------------------------------------------- */
 /* --- iPad Landscape --- */
 @media screen and (min-width: 660px) {
-  .fixed-header #header {
+  #header {
     position: fixed;
     top: 0;
   }
@@ -1549,40 +1462,18 @@ form input {
   .single #content #nav-below .nav-previous {
     float: right;
   }
-  #wall .widget-area-header {
-    top: 0;
-    width: 350px;
-    height: 350px;
-    border-radius: 350px;
-    text-align: center;
-  }
-  #wall .widget-area-header .widget h3 {
-    line-height: 1.2;
-    font-size: 4vw;
-  }
-  #wall .widget-area-header .widget .textwidget,
-  #wall .widget-area-header .widget .textwidget p {
-    line-height: 1.4;
-    font-size: 2.8vw;
-  }
   #wall .slideitem .caption {
     font-size: 3.4vw;
     width: 60%;
   }
-  .fixed-header #wall .headerimage:not(.slider) {
+  #wall .headerimage .fixedimage {
     position: fixed;
-  }
-  .fixed-header #wall .headerimage .fixedimage {
-    position: fixed;
-  }
-  body:not(.home) #content {
-    margin-top: 80px;
-  }
-  #wall .widget-area-header {
-    top: 10%;
   }
   #wall .slideitem .caption {
     top: 55%;
+  }
+  body:not(.home) #content {
+    margin-top: 80px;
   }
   .alignleft {
     float: left;
@@ -1697,18 +1588,6 @@ form input {
   #wall .headerimage .fixedimage {
     padding-top: 650px;
   }
-  #wall .widget-area-header {
-    width: 420px;
-    height: 420px;
-    border-radius: 420px;
-  }
-  #wall .widget-area-header .widget h3 {
-    font-size: 2em;
-  }
-  #wall .widget-area-header .widget .textwidget,
-  #wall .widget-area-header .widget .textwidget p {
-    font-size: 1.2em;
-  }
   #wall .slideitem .caption {
     font-size: 30px;
     width: 600px;
@@ -1718,13 +1597,13 @@ form input {
 /* admin-bar
 --------------------------------------------- */
 @media screen and (min-width: 48em) {
-  .admin-bar .fixed-header #header {
+  .admin-bar #header {
     top: 32px;
   }
 }
 
 @media screen and (max-width: 48.875em) and (min-width: 660px) {
-  .admin-bar .fixed-header #header {
+  .admin-bar #header {
     top: 46px;
   }
 }

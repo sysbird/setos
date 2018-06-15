@@ -22,6 +22,7 @@ $hover-background-color: #F5F5F5;
 $header-color: #374049;
 $border-color: #EAEAEA;
 $meta-color: #999;
+$accent-color: #99c9cc;
 
 /*------------------------------
 Font Awesome
@@ -908,7 +909,6 @@ form {
 --------------------------------------------- */
 .home {
 	#content {
-		background: none;
 
 		h2 {
 			border: none;
@@ -927,6 +927,10 @@ form {
 			padding-top: 2em;
 			@include clearfix;
 
+			&:nth-child(2n +1) {
+				//background: #F8F8F6;
+			}
+
 			.more {
 				display: block;
 				text-align: right;
@@ -934,7 +938,7 @@ form {
 
 				span {
 					display: inline-block;
-					background-color: #99c9cc;
+					background-color: $accent-color;
 					color: #FFF;
 					padding: 0.8em;
 					border-radius: 4px;
@@ -1044,38 +1048,12 @@ form {
 					}
 
 					&.sticky {
-						position: relative;
+/*						background-color: $accent-color;
 
-						i {
-							display: inline;
-							font-size: 12px;
-							color: #fff;
-
-							span {
-								position: absolute;
-								display: inline-block;
-								text-align: center;
-								text-transform: uppercase;
-								top: 0;
-								right: -44px;
-								background: $header-color;
-								width: 100px;
-								height: 20px;
-								padding: 3px;
-								@include rotate( 45deg );
-
-								&:before {
-									@include font-awesome();
-									content: "\f005";
-									padding-right: 0.2em;
-									color: #FFF;
-								}
-							}
-						}
-
-						.entry-header .entry-title {
-							color: $header-color;
-						}
+						.entry-header .entry-title,
+						.entry-header .postdate {
+							color: #FFF;
+						} */
 					}
  				}
 			}
@@ -1276,49 +1254,6 @@ form {
 		}
 	}
 
-	.widget-area-header {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		margin: auto;
-		background-color:rgba( 255, 255, 255, 0.3 );
-		overflow: hidden;
-
-		.widget {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			margin-right: -50%;
-			padding: 0 5%;
-			@include translate( -50%, -50% );
-
-			&:nth-child(n+2){
-				display: none;
-			}
-
-			h3 {
-				padding: 0.2em 0;
-				margin: 0;
-				border: none;
-				line-height: 1;
-				color: #FFF;
-				font-size: 6vw;
-				text-shadow: 1px 1px 5px rgba( 0, 0, 0, 0.5 );
-			}
-
-			.textwidget,
-			.textwidget p {
-				line-height: 1.2;
-				margin: 0;
-				color: #FFF;
-				font-size: 4vw;
-				text-shadow: 1px 1px 3px rgba( 0, 0, 0, 0.5 );
-			}
-		}
-	}
-
 	.slideitem {
 		position: absolute;
 		top: 0;
@@ -1388,11 +1323,9 @@ form {
 /* --- iPad Landscape --- */
 @media screen and (min-width: 660px) {
 
-	.fixed-header {
-		#header {
-			position: fixed;
-			top: 0;
-		}
+	#header {
+		position: fixed;
+		top: 0;
 	}
 
 	#footer {
@@ -1433,27 +1366,6 @@ form {
 	}
 
 	#wall {
-		.widget-area-header {
-			top: 0;
-			width: 350px;
-			height: 350px;
-			border-radius: 350px;
-			text-align: center;
-
-			.widget {
-				h3 {
-					line-height: 1.2;
-					font-size: 4vw;
-				}
-
-				.textwidget,
-				.textwidget p {
-					line-height: 1.4;
-					font-size: 2.8vw;
-				}
-			}
-		}
-
 		.slideitem {
 			.caption {
 				font-size: 3.4vw;
@@ -1462,27 +1374,11 @@ form {
 		}
 	}
 
-	.fixed-header {
-		#wall {
-			.headerimage {
-				&:not(.slider) {
-					position: fixed;
-				}
-
-				.fixedimage {
-					position: fixed;
-				}
-			}
-		}
-	}
-
-	body:not(.home) #content {
-		margin-top: 80px;
-	}
-
 	#wall {
-		.widget-area-header {
-			top: 10%;
+		.headerimage {
+			.fixedimage {
+				position: fixed;
+			}
 		}
 
 		.slideitem {
@@ -1490,6 +1386,10 @@ form {
 				top: 55%;
 			}
 		}
+	}
+
+	body:not(.home) #content {
+		margin-top: 80px;
 	}
 
 	.alignleft {
@@ -1643,24 +1543,6 @@ form {
 			}
 		}
 
-		.widget-area-header {
-			width: 420px;
-			height: 420px;
-			border-radius: 420px;
-
-			.widget {
-				h3 {
-					font-size: 2em;
-				}
-
-				.textwidget,
-				.textwidget p {
-					font-size: 1.2em;
-				}
-			}
-
-		}
-
 		.slideitem {
 			.caption {
 				font-size: 30px;
@@ -1673,14 +1555,14 @@ form {
 /* admin-bar
 --------------------------------------------- */
 @media screen and (min-width: 48em) {
-	.admin-bar .fixed-header #header {
+	.admin-bar #header {
 		top: 32px;
 	}
 }
 
 @media screen and ( max-width: 48.875em ) and ( min-width: 660px ) {
 
-	.admin-bar .fixed-header #header {
+	.admin-bar #header {
 		top: 46px;
 	}
 }
