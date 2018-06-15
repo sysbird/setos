@@ -1,13 +1,12 @@
 /*
-Theme Name: BirdFIELD
-Theme URI: http://www.sysbird.jp/birdfield-theme/
-Description: BirdFIELD is a responsive web design theme. Feature fullscreen and parallax custom image, and fixed header. The homepage displays with tagged news and the grid posts. You can choose the text color, link color, header background color by theme options. You can also add a slider to the header image.
+Theme Name: setos
+Theme URI:
+Description: setos is a responsive web design theme. Feature fullscreen and parallax custom image, and fixed header. The homepage displays with tagged news and the grid posts. You can add a slider to the header image.
 Author: Sysbird
 Author URI: https://profiles.wordpress.org/sysbird/
-Version: 1.11
+Version: 1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: birdfield
 
 This theme, like WordPress, is licensed under the GPL.
 */
@@ -124,8 +123,6 @@ html, body {
 	color: #FFF;
 	background-color: $header-color;
 	z-index: 4;
-	transition-property:min-height;
-	transition-duration:.3s;
 
 	#branding {
 		#site-title {
@@ -152,23 +149,6 @@ html, body {
 			color: #FFF;
 		}
 	}
-
-	img {
-		max-width: 100%;
-		vertical-align: bottom;
-		margin-bottom: 0.5em;
-	}
-}
-
-.no-title #header #site-title,
-.no-title #header #site-description {
-	position: absolute !important;
-	clip: rect(1px, 1px, 1px, 1px);
-}
-
-.no-title.no-nav-menu #header {
-	position: absolute !important;
-	clip: rect(1px, 1px, 1px, 1px);
 }
 
 /* Menu
@@ -198,7 +178,7 @@ html, body {
 		ul#menu-primary-items {
 			margin: 0;
 			padding: 0;
-			display: none; /* visibility will be toggled with jquery */
+			display: none;
 
 			li {
 				list-style: none;
@@ -211,10 +191,6 @@ html, body {
 					line-height: 1.2;
 					border-top: dotted 1px #FFF;
 				}
-
-				ul {
-					padding-left: 0.8em;
-				}
 			}
 		}
 
@@ -222,22 +198,6 @@ html, body {
 		.current-menu-ancestor > a {
 			font-weight: bold;
 		}
-	}
-}
-
-.no-title #menu-wrapper {
-	margin-top: 0;
-}
-
-/* thin header for scroll
---------------------------------------------- */
-#header.mini {
-	min-height: 60px;
-	background-color: rgba( $header-color, 0.9 );
-
-	#menu-wrapper .menu ul#menu-primary-items > li > a {
-		height: 60px;
-		padding: 20px 0.8em;
 	}
 }
 
@@ -267,7 +227,6 @@ html, body {
 
 			img {
 				max-width: 100%;
-				border-radius: 4px 4px 0 0;
 			}
 		}
 
@@ -290,35 +249,12 @@ html, body {
 				}
 			}
 
-			.postdate,
-			.author {
+			.postdate {
 				color: $meta-color;
 				font-size: 0.9rem;
 
-				&:before {
-					@include font-awesome();
-					content:  "\f133";
-					padding-right: 0.2em;
-				}
-
 				a {
 					color: $meta-color;
-				}
-			}
-
-			.author {
-				&:before {
-					@include font-awesome();
-					content: "\f118";
-					padding-right: 0.2em;
-				}
-			}
-
-			.comment {
-				&:before {
-					@include font-awesome();
-					content: "\f075";
-					padding-right: 0.2em;
 				}
 			}
 
@@ -426,18 +362,6 @@ html, body {
 			&:before {
 				@include font-awesome();
 				content: "\f061";
-			}
-		}
-
-		&.tag-news {
-			.entry-header {
-				.postdate {
-					&:before {
-						@include font-awesome();
-						content: "\f06c";
-						padding-right: 0.2em;
-					}
-				}
 			}
 		}
 	}
@@ -765,113 +689,34 @@ video {
 	max-width: 100% !important; /* Override the Twitter embed fixed width */
 }
 
-/* Comments
+/* Text meant only for screen readers.
 -------------------------------------------------------------- */
-#content #comments {
-	margin: 1.6em 0;
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
 	display: block;
-
-	.navigation {
-		position: relative;
-		height: 1em;
-		padding-bottom: 10px;
-		margin-bottom: 1em;
-
-		.nav-previous a {
-			position: absolute;
-			top: 0;
-			right: 0;
-			padding-left: 1em;
-		}
-
-		.nav-next a {
-			position: absolute;
-			top: 0;
-			left: 0;
-			padding-right: 1em;
-		}
-	}
-
-	ol.commentlist {
-		list-style: none;
-		margin: 0;
-		padding-left: 0;
-
-		li.pingback,
-		li.comment {
-			clear: both;
-			margin-bottom: 1em;
-			padding: 0;
-			position: relative;
-			list-style: none;
-			@include clearfix;
-		}
-
-		ul {
-			margin-left: 40px;
-		}
-	}
-
-	li {
-		border-bottom: dashed 1px $border-color;
-
-		li {
-			border: none;
-		}
-
-		.comment-meta {
-			line-height: 1.4;
-			margin-bottom: 0.8em;
-
-			a {
-				color: $meta-color;
-			}
-
-			time:before {
-				color: $meta-color;
-				@include font-awesome();
-				content: "\f017";
-			}
-		}
-
-		.comment-author {
-			img {
-				margin: 0 10px 0 0;
-				float: left;
-			}
-		}
-
-		.comment-awaiting-moderation {
-			color: #F66;
-		}
-
-		.reply {
-			margin-bottom: 1.6em;
-
-			a.comment-reply-link {
-				&:before {
-					@include font-awesome();
-					content:  "\f112";
-					padding-right: 0.2em;
-				}
-			}
-		}
-
-		.comment-metadata,
-		.comment-awaiting-moderation,
-		.comment-content,
-		.reply {
-			padding-left: 50px;
-		}
-
-		&.bypostauthor .comment-author {
-			color: $header-color;
-		}
-	}
-
-	.nopassword {
-		color: $meta-color;
-	}
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar. */
 }
 
 /* Forms
@@ -879,57 +724,6 @@ video {
 form {
 	input {
 		font-size: 100%;
-	}
-}
-
-#commentform {
-	border: 1px dotted $border-color;
-	padding: 10px 15px;
-	margin-bottom: 1.6em;
-	background: #FFF;
-	border-radius: 4px;
-	max-width: 650px;
-
-	p {
-		margin-bottom: 0.8em;
-	}
-
-	label {
-		padding: 0 0 5px 0;
-		display: block;
-	}
-
-	textarea {
-		width: 100%;
-		height: 100px;
-		padding:5px;
-		background: #FFF;
-		border: solid 1px $border-color;
-	}
-
-	input:not([id="submit"]) {
-		width: 100%;
-		max-width: 300px;
-		padding: 5px;
-		background: #FFF;
-		border: solid 1px $border-color;
-	}
-
-	input#submit {
-		padding: 5px 10px;
-		margin-top: 0.4em;
-	}
-
-	#email-notes	 {
-		display: block;
-	}
-
-	.form-allowed-tags {
-		line-height: 1.2;
-
-		code {
-			display: block;
-		}
 	}
 }
 
@@ -1069,60 +863,6 @@ form {
 				text-decoration: underline;
 			}
 		}
-
-		#wp-calendar {
-			/* Calendar Widget */
-			border-collapse: collapse;
-			border-spacing: 0;
-
-			caption {
-				font-size: 1.2em;
-				font-weight: bold;
-			}
-
-			tbody {
-				th,
-				td {
-					text-align: center;
-					border-top: 1px solid $border-color;
-					padding: 8px;
-
-					a {
-						font-weight: bold;
-						display: block;
-						padding: 2px 0;
-						margin: 0 auto;
-						background: #FFF;
-						color: $header-color;
-						border-radius: 2px;
-					}
-				}
-			}
-
-			thead {
-				th {
-					padding: 8px;
-					text-align: center;
-				}
-			}
-
-
-			tfoot {
-				border-top: 1px solid $border-color;
-
-				a {
-					font-size: 1.2em;
-				}
-
-				#next {
-					text-align: right;
-				}
-
-				td {
-					padding: 8px 0;
-				}
-			}
-		}
 	}
 }
 
@@ -1130,48 +870,43 @@ form {
 --------------------------------------------- */
 #searchform {
 	width: 100%;
-	height: 30px;
 	position: relative;
-
-	label {
-		display: block;
-		font-size: 0;
-		overflow: hidden;
-		text-indent: -9999px;
-	}
+	border: solid 1px $text-color;
+	padding: 1%;
+	border-radius: 4px;
+	background: #FFF;
+	max-width: 500px;
+	@include display-flex();
 
 	#s {
-		width: 80%;
 		padding: 5px 10px 5px 5px;
-		height: 30px;
 		line-height: 1;
-		border-radius: 4px 0 0 4px;
 		border: none;
+		@include flex(1);
 	}
 
 	#searchsubmit {
-		position: absolute;
-		top: 0;
-		right: 1px;
-		border: 0 none;
+		border: none;
 		cursor: pointer;
 		width: 20%;
-		height: 30px;
-		border-radius: 0 4px 4px 0;
 		margin: 0;
-		background: #CCC;
-		color: #FFF;
+		background: #FFF;
+		color: $text-color;
 		-webkit-appearance: button;
-		@include font-awesome();
-		content: "\f005";
 		font-size: 1.2em;
+		text-align: right;
+
+		&:before {
+			font-size: 1.4rem;
+			@include font-awesome();
+			content: "\f002";
+		}
 	}
 }
 
 /* Home
 --------------------------------------------- */
-.home,
-.blog {
+.home {
 	#content {
 		background: none;
 
@@ -1199,7 +934,7 @@ form {
 
 				span {
 					display: inline-block;
-					background-color: $link-color;
+					background-color: #99c9cc;
 					color: #FFF;
 					padding: 0.8em;
 					border-radius: 4px;
@@ -1269,9 +1004,20 @@ form {
 					background: #FFF;
 
 					.entry-eyecatch {
+						width: 100%;
+						height: 0;
+						padding-top: 66%;
+						overflow: hidden;
+						position: relative;
+
 						img {
 							width: 100%;
 							vertical-align:text-bottom;
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							margin-right: -50%;
+							@include translate( -50%, -50% );
 						}
 
 					}
@@ -1494,10 +1240,6 @@ form {
 		color: #FFF;
 		background: $link-color;
 		border:solid 1px $link-color;
-	}
-
-	.screen-reader-text {
-		display: none;
 	}
 }
 
@@ -1734,26 +1476,18 @@ form {
 		}
 	}
 
-	body:not(.home) .fixed-header:not(.no-title) #content,
-	body:not(.home) .fixed-header:not(.no-nav-menu) #content,
-	body.home.paged .fixed-header:not(.no-title) #content,
-	body.home.paged .fixed-header:not(.no-nav-menu) #content,
-	body.home .fixed-header:not(.no-title) #wall.no-image,
-	body.home .fixed-header:not(.no-nav-menu) #wall.no-image {
-		margin-top: 60px;
+	body:not(.home) #content {
+		margin-top: 80px;
 	}
 
-	.wrapper:not(.no-title),
-	.wrapper:not(.no-nav-menu){
-		#wall {
-			.widget-area-header {
-				top: 10%;
-			}
+	#wall {
+		.widget-area-header {
+			top: 10%;
+		}
 
-			.slideitem {
-				.caption {
-					top: 55%;
-				}
+		.slideitem {
+			.caption {
+				top: 55%;
 			}
 		}
 	}
@@ -1776,6 +1510,10 @@ form {
 	}
 
 	#header {
+		min-height: 80px;
+		transition-property:min-height;
+		transition-duration:.3s;
+
 		#branding {
 			padding-top: 15px;
 			float: left;
@@ -1791,6 +1529,22 @@ form {
 				padding: 5px 0;
 			}
 		}
+
+		&.mini {
+			min-height: 60px;
+			background-color: rgba( $header-color, 0.85 );
+
+			#branding {
+				#site-description {
+					display: none;
+				}
+			}
+
+			#menu-wrapper .menu ul#menu-primary-items > li > a {
+				height: 60px;
+				padding: 20px 0.8em;
+			}
+		}
 	}
 
 	#menu-wrapper {
@@ -1804,11 +1558,10 @@ form {
 
 		.menu {
 			#small-menu {
-				display: none; /* hide small menu initially */
+				display: none;
 			}
 
 			ul#menu-primary-items {
-				/* ensure .menu is visible on desktop version */
 				display: block !important;
 				text-align: right;
 
@@ -1823,7 +1576,8 @@ form {
 
 					a {
 						border-top: none;
-						padding: 0.8em;
+						padding: 30px 0.8em;
+						height: 80px;
 
 						&:hover {
 							background: #FFF;
@@ -1838,109 +1592,12 @@ form {
 							padding-left: 0.2em;
 						}
 					}
-
-					ul {
-						margin: 0;
-						padding: 0;
-						width: 200px;
-						position: absolute;
-						top: 80px;
-						left: 0;
-						text-align: left;
-						z-index: 9999;
-						visibility: hidden;
-						opacity: 0;
-						transition: .5s;
-
-						li {
-							display: block;
-							margin: 0;
-							padding: 0;
-
-							&.menu-item-has-children {
-								>a:after {
-									@include font-awesome();
-									content: "\f0da";
-									padding-left: 0.2em;
-								}
-							}
-
-							a {
-								padding: 0.8em;
-								background-color: $header-color;
-								border-right: dotted 1px #FFF;
-								border-left: dotted 1px #FFF;
-								border-bottom: dotted 1px #FFF;
-								height: auto;
-								white-space: normal;
-
-								&:hover {
-									text-decoration: none;
-									border-color: $header-color;
-								}
-							}
-
-							&:first-child a {
-								border-top: dotted 1px #FFF;
-							}
-
-							ul {
-								top: 0;
-								left: 100%;
-							}
-						}
-					}
-				}
-
-				>li {
-					>a {
-						padding: 30px 0.8em;
-						height: 80px;
-					}
 				}
 			}
 		}
 	}
 
-	#header.mini {
-		#branding {
-			#site-description {
-				display: none;
-			}
-		}
-
-		#menu-wrapper {
-			.menu {
-				ul#menu-primary-items {
-					li ul {
-						top: 60px;
-					}
-				}
-			}
-		}
-	}
-
-	.many-navigation {
-		#menu-wrapper {
-			.menu {
-				ul#menu-primary-items {
-					>li {
-						>a {
-							padding: 0.8em;
-							height: auto;
-						}
-
-						>ul {
-							top: 2.8em;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	.home,
-	.blog {
+	.home {
 		#content {
 			#news ul.article {
 				li {
@@ -1977,10 +1634,6 @@ form {
 		}
 	}
 
-	#commentform {
-		padding: 0.8em 1.6em;
-	}
-
 	#wall {
 		padding-top: 650px;
 
@@ -2015,15 +1668,6 @@ form {
 			}
 		}
 	}
-
-	body:not(.home) .fixed-header:not(.no-title) #content,
-	body:not(.home) .fixed-header:not(.no-nav-menu) #content,
-	body.home.paged .fixed-header:not(.no-title) #content,
-	body.home.paged .fixed-header:not(.no-nav-menu) #content,
-	body.home .fixed-header:not(.no-title) #wall.no-image,
-	body.home .fixed-header:not(.no-nav-menu) #wall.no-image {
-		margin-top: 80px;
-	}
 }
 
 /* admin-bar
@@ -2040,4 +1684,3 @@ form {
 		top: 46px;
 	}
 }
-
