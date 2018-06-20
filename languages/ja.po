@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: SETOS 1.0\n"
 "Report-Msgid-Bugs-To: http://www.sysbird.jp\n"
 "POT-Creation-Date: 2018-06-19 00:00-0900\n"
-"PO-Revision-Date: 2018-06-19 14:28+0900\n"
+"PO-Revision-Date: 2018-06-20 16:59+0900\n"
 "Last-Translator: TORIYAMA Yuko <sysbird@gmail.com>\n"
 "Language-Team: TORIYAMA Yuko <sysbirdj@gmail.com>\n"
 "Language: ja\n"
@@ -17,14 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 1.8.9\n"
-
-#: header.php:1
-msgid "HTMLS"
-msgstr "HTMLS"
-
-#: header.php:1
-msgid "Description of this site"
-msgstr "このサイトの説明"
 
 #: 404.php:14
 msgid "Error 404 - Not Found"
@@ -37,6 +29,10 @@ msgstr "お探しのコンテンツを見つけられませんでした。検索
 #: content.php:12 content-home.php:12 content-home.php:14 content-search.php:14
 msgid "Permalink to %s"
 msgstr "%sへのリンク"
+
+#: content.php:0
+msgid "F j, Y"
+msgstr "Y年n月j日"
 
 #: content-home.php:12 content-search.php:14 functions.php:545
 msgid "published in"
@@ -74,9 +70,21 @@ msgstr "カテゴリー"
 msgid "Tagged"
 msgstr "タグ"
 
+#: header.php:0
+msgid "HTMLS"
+msgstr "HTMLS"
+
+#: header.php:0
+msgid "Description of this site"
+msgstr "このサイトの説明"
+
 #: header.php:56
 msgid "Menu"
 msgstr "メニュー"
+
+#: home.php:0
+msgid "See more &#8216;%s&#8217;"
+msgstr "「%s」を詳しく見る"
 
 #: image.php:53
 msgid "Next Image"
@@ -102,11 +110,11 @@ msgstr "「%s」 は見つかりませんでした。"
 msgid "Search..."
 msgstr "検索…"
 
-#: unknown.php:1
+#: unknown.php:0
 msgid "Books List"
 msgstr "本の一覧"
 
-#: unknown.php:1
+#: unknown.php:0
 msgid "Books"
 msgstr "本"
 

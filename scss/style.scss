@@ -936,7 +936,7 @@ form {
 				text-align: right;
 				margin-top: 0.8em;
 
-				span {
+				a {
 					display: inline-block;
 					background-color: $accent-color;
 					color: #FFF;
@@ -1045,15 +1045,6 @@ form {
 							text-decoration: none;
 							background: $hover-background-color;
 						}
-					}
-
-					&.sticky {
-/*						background-color: $accent-color;
-
-						.entry-header .entry-title,
-						.entry-header .postdate {
-							color: #FFF;
-						} */
 					}
  				}
 			}
@@ -1318,6 +1309,45 @@ form {
 	}
 }
 
+/* biography in Profile
+--------------------------------------------- */
+#content {
+	.biography {
+		h2 {
+			border: none;
+			font-size: 1.6rem;
+			@include clearfix;
+		}
+
+		ul {
+			border-left: dotted 1px $text-color;
+			list-style: none;
+			@include clearfix;
+
+			li {
+				text-indent: -3.3em;
+				margin-left: 0em;
+				padding-left: 2.3em;
+
+				strong {
+					padding-right: 0.5em;
+				}
+
+				&:before {
+					@include font-awesome();
+					display: inline;
+					content: "\f0da";
+					font-size: 1em;
+					width: 0.5em;
+					height: 1em;
+					color: $text-color;
+					padding-right: 0.4em;
+				}
+			}
+		}
+	}
+}
+
 /* Media queries for responsive design
 --------------------------------------------- */
 /* --- iPad Landscape --- */
@@ -1388,7 +1418,8 @@ form {
 		}
 	}
 
-	body:not(.home) #content {
+	body:not(.home) #content,
+	body.home.paged  #content {
 		margin-top: 80px;
 	}
 
@@ -1400,6 +1431,29 @@ form {
 	.alignright {
 		float: right;
 		margin-left: 0.75em;
+	}
+
+	#content {
+		.biography {
+			h2 {
+				float: left;
+				width: 16%;
+				text-align: right;
+				clear: both;
+				margin: 0;
+				padding: 0;
+			}
+
+			ul {
+				float: right;
+				width: 80%;
+				margin-bottom: 0;
+
+				li:last-child {
+					margin-bottom: 1.6em;
+				}
+			}
+		}
 	}
 }
 
@@ -1452,8 +1506,8 @@ form {
 		*zoom: 1;
 		&:after {
 			clear: both;
-				content: "";
-				display: block;
+			content: "";
+			display: block;
 		}
 
 		.menu {
@@ -1549,6 +1603,10 @@ form {
 				width:600px;
 			}
 		}
+	}
+
+	body.home #wall.no-image {
+		margin-top: 80px;
 	}
 }
 

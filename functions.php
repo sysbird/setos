@@ -32,7 +32,7 @@ add_filter( 'comments_open', '__return_false' );
 
 //////////////////////////////////////////
 // Customizer additions.
-//require get_template_directory() . '/functions_customizer.php';
+require get_template_directory() . '/functions_customizer.php';
 
 //////////////////////////////////////////
 // Set Widgets
@@ -301,9 +301,12 @@ function setos_headerslider() {
 		}
 	}
 
+	if( !$setos_max ){
+		return false;
+	}
+
 ?>
 	<section id="wall">
-
 		<div class="headerimage slider" data-interval="<?php echo $setos_interval; ?>">
 
 <?php

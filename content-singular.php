@@ -12,7 +12,7 @@
 	<h1 class="entry-title"><?php the_title(); ?></h1>
 
 	<?php if( is_single() ) : ?>
-		<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( get_option( 'date_format' ) ); ?></time>
+		<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time>
 	<?php endif; ?>
 
 </header>

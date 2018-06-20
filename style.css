@@ -1034,7 +1034,7 @@ form input {
   margin-top: 0.8em;
 }
 
-.home #content .section .more span {
+.home #content .section .more a {
   display: inline-block;
   background-color: #99c9cc;
   color: #FFF;
@@ -1044,7 +1044,7 @@ form input {
   text-align: center;
 }
 
-.home #content .section .more span:before {
+.home #content .section .more a:before {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -1149,15 +1149,6 @@ form input {
 .home #content #blog ul.article .hentry a:hover {
   text-decoration: none;
   background: #F5F5F5;
-}
-
-.home #content #blog ul.article .hentry.sticky {
-  /*						background-color: $accent-color;
-
-						.entry-header .entry-title,
-						.entry-header .postdate {
-							color: #FFF;
-						} */
 }
 
 /* Archive
@@ -1432,6 +1423,49 @@ form input {
   padding-top: 0;
 }
 
+/* biography in Profile
+--------------------------------------------- */
+#content .biography h2 {
+  border: none;
+  font-size: 1.6rem;
+  overflow: hidden;
+  *zoom: 1;
+}
+
+#content .biography ul {
+  border-left: dotted 1px #222327;
+  list-style: none;
+  overflow: hidden;
+  *zoom: 1;
+}
+
+#content .biography ul li {
+  text-indent: -3.3em;
+  margin-left: 0em;
+  padding-left: 2.3em;
+}
+
+#content .biography ul li strong {
+  padding-right: 0.5em;
+}
+
+#content .biography ul li:before {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline;
+  content: "\f0da";
+  font-size: 1em;
+  width: 0.5em;
+  height: 1em;
+  color: #222327;
+  padding-right: 0.4em;
+}
+
 /* Media queries for responsive design
 --------------------------------------------- */
 /* --- iPad Landscape --- */
@@ -1472,7 +1506,8 @@ form input {
   #wall .slideitem .caption {
     top: 55%;
   }
-  body:not(.home) #content {
+  body:not(.home) #content,
+  body.home.paged #content {
     margin-top: 80px;
   }
   .alignleft {
@@ -1482,6 +1517,22 @@ form input {
   .alignright {
     float: right;
     margin-left: 0.75em;
+  }
+  #content .biography h2 {
+    float: left;
+    width: 16%;
+    text-align: right;
+    clear: both;
+    margin: 0;
+    padding: 0;
+  }
+  #content .biography ul {
+    float: right;
+    width: 80%;
+    margin-bottom: 0;
+  }
+  #content .biography ul li:last-child {
+    margin-bottom: 1.6em;
   }
 }
 
@@ -1591,6 +1642,9 @@ form input {
   #wall .slideitem .caption {
     font-size: 30px;
     width: 600px;
+  }
+  body.home #wall.no-image {
+    margin-top: 80px;
   }
 }
 

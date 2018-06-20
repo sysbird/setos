@@ -18,8 +18,7 @@
 
 	<header class="entry-header">
 		<h3 class="entry-title"><?php the_title(); ?></h3>
-		<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( get_option( 'date_format' ) ); ?></time>
-		<span class="icon author"><?php the_author(); ?></span>
+		<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time>
 	</header>
 	</a>
 	<?php if(is_sticky()): ?>
