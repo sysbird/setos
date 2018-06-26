@@ -10,7 +10,21 @@
 <script type='text/javascript' src='js/jquery.js?ver=1.12.4'></script>
 <script type='text/javascript' src='js/masonry.min.js?ver=1.12.4'></script>
 <script type='text/javascript' src='js/jquery.tile.js?ver=1.1.2'></script>
+<link href="js/delighters/css/style.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/delighters/min/delighters.min.js">
 <script type='text/javascript' src='js/setos.js?ver=1.10'></script>
+<style>
+.biography .delighter {
+	transition: all 1s ease-out;
+	opacity: 0;
+	transform: translateY(30%);
+	overflow: hidden;
+}
+.biography .delighter.started {
+	transform: none;
+	opacity: 1;
+}
+</style>
 </head>
 <body class="single logged-in custom-background">
 
@@ -28,9 +42,8 @@
 			<nav id="menu-wrapper">
 				<div class="menu"><div id="small-menu"></div>
 				<ul id="menu-primary-items" class="">
-				<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-304"><a href="/">Home</a></li>
-				<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-306"><a href="#">Profile</a></li>
-				<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-306"><a href="#">Blog</a></li>
+				<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-304"><a href="/">Home</a></li>
+				<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-306"><a href="#">Profile</a></li>
 				<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-306"><a href="#">Works</a></li>
 				<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-306"><a href="#">Essay</a></li>
 				<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-306"><a href="#">Books</a></li>
@@ -65,18 +78,18 @@
 			</ul>
 
 			<h2>1961</h2>
-			<ul>
+			<ul data-delighter>
 				<li><strong>活動</strong>この文章はダミーです。</li>
 			</ul>
 
 			<h2>1962</h2>
-			<ul>
+			<ul data-delighter>
 				<li><strong>活動</strong>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</li>
 				<li><strong>活動</strong>ここの文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、</li>
 			</ul>
 
 			<h2>1969</h2>
-			<ul>
+			<ul data-delighter>
 				<li><strong>活動</strong>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</li>
 				<li><strong>活動</strong>この文章はダミーです。</li>
 				<li><strong>活動</strong>この文章はダミーです。</li>
@@ -85,7 +98,7 @@
 			</ul>
 
 			<h2>1970</h2>
-			<ul>
+			<ul data-delighter>
 				<li><strong>活動</strong>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、</li>
 				<li><strong>活動</strong>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</li>
 				<li><strong>活動</strong>この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。</li>

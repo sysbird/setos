@@ -645,6 +645,33 @@ html, body {
   text-decoration: none;
 }
 
+#content .more {
+  display: block;
+  text-align: right;
+  margin-top: 0.8em;
+}
+
+#content .more a {
+  display: inline-block;
+  background-color: #99c9cc;
+  color: #FFF;
+  padding: 0.8em;
+  border-radius: 4px;
+  font-size: 0.96em;
+  text-align: center;
+}
+
+#content .more a:before {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f054";
+}
+
 /* Images
 -------------------------------------------------------------- */
 #content .hentry img,
@@ -1026,33 +1053,6 @@ form input {
   padding-top: 2em;
   overflow: hidden;
   *zoom: 1;
-}
-
-.home #content .section .more {
-  display: block;
-  text-align: right;
-  margin-top: 0.8em;
-}
-
-.home #content .section .more a {
-  display: inline-block;
-  background-color: #99c9cc;
-  color: #FFF;
-  padding: 0.8em;
-  border-radius: 4px;
-  font-size: 0.96em;
-  text-align: center;
-}
-
-.home #content .section .more a:before {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  content: "\f054";
 }
 
 .home #content #news .container {
@@ -1466,6 +1466,36 @@ form input {
   padding-right: 0.4em;
 }
 
+/* books
+--------------------------------------------- */
+.books #content .entry-footer ul {
+  list-style: none;
+  padding: 0;
+  margin-left: 0;
+  overflow: hidden;
+}
+
+.books #content .entry-footer ul li {
+  margin-top: -1px;
+  border-top: dotted 1px #FFF;
+  padding: 0.3em 0 0.3em 0.6em;
+  text-indent: -0.3em;
+}
+
+.books #content .entry-footer ul li:before {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f069";
+  padding-right: 0.6em;
+  font-size: 0.6em;
+  color: #99c9cc;
+}
+
 /* Media queries for responsive design
 --------------------------------------------- */
 /* --- iPad Landscape --- */
@@ -1517,6 +1547,9 @@ form input {
   .alignright {
     float: right;
     margin-left: 0.75em;
+  }
+  #content .more a {
+    display: inline-block;
   }
   #content .biography h2 {
     float: left;

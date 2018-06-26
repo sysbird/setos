@@ -564,6 +564,27 @@ html, body {
 		background: #ffc;
 		text-decoration: none;
 	}
+
+	.more {
+		display: block;
+		text-align: right;
+		margin-top: 0.8em;
+
+		a {
+			display: inline-block;
+			background-color: $accent-color;
+			color: #FFF;
+			padding: 0.8em;
+			border-radius: 4px;
+			font-size: 0.96em;
+			text-align: center;
+
+			&:before {
+				@include font-awesome();
+				content: "\f054";
+			}
+		}
+	}
 }
 
 /* Images
@@ -930,28 +951,6 @@ form {
 			&:nth-child(2n +1) {
 				//background: #F8F8F6;
 			}
-
-			.more {
-				display: block;
-				text-align: right;
-				margin-top: 0.8em;
-
-				a {
-					display: inline-block;
-					background-color: $accent-color;
-					color: #FFF;
-					padding: 0.8em;
-					border-radius: 4px;
-					font-size: 0.96em;
-					text-align: center;
-
-					&:before {
-						@include font-awesome();
-						content: "\f054";
-					}
-				}
-			}
-
 		}
 
 		#news {
@@ -1348,6 +1347,37 @@ form {
 	}
 }
 
+/* books
+--------------------------------------------- */
+.books {
+	#content {
+		.entry-footer {
+
+			ul {
+				list-style: none;
+				padding: 0;
+				margin-left: 0;
+				overflow: hidden;
+
+				li {
+					margin-top: -1px;
+					border-top: dotted 1px #FFF;
+					padding: 0.3em 0 0.3em 0.6em;
+					text-indent: -0.3em;
+
+					&:before {
+						@include font-awesome();
+						content: "\f069";
+						padding-right: 0.6em;
+						font-size: 0.6em;
+						color: $accent-color;
+					}
+				}
+			}
+		}
+	}
+}
+
 /* Media queries for responsive design
 --------------------------------------------- */
 /* --- iPad Landscape --- */
@@ -1434,6 +1464,12 @@ form {
 	}
 
 	#content {
+		.more {
+			a {
+				display: inline-block;
+			}
+		}
+
 		.biography {
 			h2 {
 				float: left;
