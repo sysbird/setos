@@ -1496,6 +1496,41 @@ form input {
   color: #99c9cc;
 }
 
+/* setos-gallery shortcode
+--------------------------------------------- */
+.setos-gallery {
+  background: #EFEFEF;
+  padding: 7px;
+  margin-bottom: 1.6em;
+}
+
+.setos-gallery .setos-gallery-cover {
+  padding-bottom: 5px;
+}
+
+.setos-gallery .swiper-slide {
+  position: relative;
+  padding-top: 16.5%;
+  height: 0;
+  overflow: hidden;
+}
+
+.setos-gallery .swiper-slide img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.setos-gallery .fancybox-can-zoomIn
+.fancybox-content {
+  cursor: pointer;
+}
+
 /* Media queries for responsive design
 --------------------------------------------- */
 /* --- iPad Landscape --- */

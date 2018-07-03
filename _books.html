@@ -13,36 +13,43 @@
 <script type='text/javascript' src='js/setos.js?ver=1.10'></script>
 <link rel="stylesheet" href="js/swiper/css/swiper.min.css">
 <script src="js/swiper/js/swiper.min.js"></script>
- <!-- Demo styles -->
-  <style>
-    .swiper-container {
-      width: 100%;
-      height: 300px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .swiper-slide {
-      background-size: cover;
-      background-position: center;
-    }
-    .gallery-top {
-      height: 80%;
-      width: 100%;
-    }
-    .gallery-thumbs {
-      height: 20%;
-      box-sizing: border-box;
-      padding: 10px 0;
-    }
-    .gallery-thumbs .swiper-slide {
-      width: 25%;
-      height: 100%;
-      opacity: 0.4;
-    }
-    .gallery-thumbs .swiper-slide-active {
-      opacity: 1;
-    }
-  </style>
+
+<link rel="stylesheet" href="js/fancybox/dist/jquery.fancybox.min.css" />
+<script src="js/fancybox/dist/jquery.fancybox.min.js"></script>
+
+<style>
+/*
+.setos-gallery {
+	background: #EFEFEF;
+	padding: 7px;
+	margin-bottom: 1.6em;
+}
+
+.setos-gallery .setos-gallery-cover {
+	padding-bottom: 5px;
+}
+
+.setos-gallery .swiper-slide {
+	position: relative;
+	padding-top: 16.5%;
+	height: 0;
+	overflow: hidden;
+}
+
+.setos-gallery .swiper-slide a img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
+	-webkit- transform: translateY(-50%) translateX(-50%);
+}
+
+.setos-gallery .fancybox-can-zoomIn
+.setos-gallery 	.fancybox-content {
+	cursor: pointer;
+}
+*/
+</style>
 </head>
 <body class="single logged-in custom-background books">
 
@@ -84,14 +91,32 @@
 
 		<p><ruby><rb>親譲</rb><rt>おやゆず</rt></ruby>りの<ruby><rb>無鉄砲</rb><rt>むてっぽう</rt></ruby>で<ruby><rb>小供</rb><rt>こども</rt></ruby>の<ruby><rb>時</rb><rt>とき</rt></ruby>から<ruby><rb>損</rb><rt>そん</rt></ruby>ばかりしている。<ruby><rb>小学校</rb><rt>しょうがっこう</rt></ruby>に<ruby><rb>居</rb><rt>い</rt></ruby>る<ruby><rb>時分学校</rb><rt>じぶんがっこう</rt></ruby>の<ruby><rb>二階</rb><rt>にかい</rt></ruby>から<ruby><rb>飛</rb><rt>と</rt></ruby>び<ruby><rb>降</rb><rt>お</rt></ruby>りて<ruby><rb>一週間</rb><rt>いっしゅうかん</rt></ruby>ほど<ruby><rb>腰</rb><rt>こし</rt></ruby>を<ruby><rb>抜</rb><rt>ぬ</rt></ruby>かした<ruby><rb>事</rb><rt>こと</rt></ruby>がある。なぜそんな<ruby><rb>無闇</rb><rt>むやみ</rt></ruby>をしたと<ruby><rb>聞</rb><rt>き</rt></ruby>く<ruby><rb>人</rb><rt>ひと</rt></ruby>があるかも<ruby><rb>知</rb><rt>し</rt></ruby>れぬ。<ruby><rb>別段深</rb><rt>べつだん</rt></ruby>い<ruby><rb>理由</rb><rt>りゆう</rt></ruby>でもない。<ruby><rb>新築</rb><rt>しんちく</rt></ruby>の<ruby><rb>二階</rb><rt>にかい</rt></ruby>から<ruby><rb>首</rb><rt>くび</rt></ruby>を<ruby><rb>出</rb><rt>だ</rt></ruby>していたら、<ruby><rb>同級生</rb><rt>どうきゅうせい</rt></ruby>の<ruby><rb>一人</rb><rt>ひとり</rt></ruby>が<ruby><rb>冗談</rb><rt>じょうだん</rt></ruby>に、いくら<ruby><rb>威張</rb><rt>いば</rt></ruby>っても、そこから<ruby><rb>飛</rb><rt>と</rt></ruby>び<ruby><rb>降</rb><rt>お</rt></ruby>りる<ruby><rb>事</rb><rt>こと</rt></ruby>は<ruby><rb>出来</rb><rt>でき</rt></ruby>まい。<ruby><rb>弱虫</rb><rt>よわむし</rt></ruby>やーい。と<ruby><rb>囃</rb><rt>はや</rt></ruby>したからである。</p>
 
-		<div class="swiper-container gallery-top">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide" style="background-image:url(images/book-page-1.jpg)"></div>
+
+		<div class="setos-gallery">
+			<div class="setos-gallery-cover">
+				<a href="#" ><img src="images/book-page-1.jpg" alt=""></a>
 			</div>
-			<div class="swiper-button-next swiper-button-white"></div>
-			<div class="swiper-button-prev swiper-button-white"></div>
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide"><a data-fancybox="setos-gallery" href="images/book-page-1.jpg" data-caption="page 1"><img src="images/book-page-1.jpg" alt="" class="swiper-lazy"><div class="swiper-lazy-preloader"></div></a></div>
+					<div class="swiper-slide"><a data-fancybox="setos-gallery" href="images/book-page-2.jpg" data-caption="page 2"><img src="images/book-page-2.jpg" alt="" class="swiper-lazy"><div class="swiper-lazy-preloader"></div></a></div>
+					<div class="swiper-slide"><a data-fancybox="setos-gallery" href="images/book-page-3.jpg" data-caption="page 3"><img src="images/book-page-3.jpg" alt="" class="swiper-lazy"><div class="swiper-lazy-preloader"></div></a></div>
+					<div class="swiper-slide"><a data-fancybox="setos-gallery" href="images/book-page-4.jpg" data-caption="page 4"><img src="images/book-page-4.jpg" alt="" class="swiper-lazy"><div class="swiper-lazy-preloader"></div></a></div>
+					<div class="swiper-slide"><a data-fancybox="setos-gallery" href="images/book-page-5.jpg" data-caption="page 5"><img src="images/book-page-5.jpg" alt="" class="swiper-lazy"><div class="swiper-lazy-preloader"></div></a></div>
+					<div class="swiper-slide"><a data-fancybox="setos-gallery" href="images/book-page-6.jpg" data-caption="page 6"><img src="images/book-page-6.jpg" alt="" class="swiper-lazy"><div class="swiper-lazy-preloader"></div>/a></div>
+					<div class="swiper-slide"><a data-fancybox="setos-gallery" href="images/essay_01.jpg" data-caption="page 7"><img src="images/essay_01.jpg" alt="" class="swiper-lazy"><div class="swiper-lazy-preloader"></div></a></div>
+					<div class="swiper-slide"><a data-fancybox="setos-gallery" href="images/essay_02.jpg" data-caption="page 8"><img src="images/essay_02.jpg" alt="" class="swiper-lazy"><div class="swiper-lazy-preloader"></div></a></div>
+					<div class="swiper-slide"><a data-fancybox="setos-gallery" href="images/essay_03.jpg" data-caption="page 9"><img src="images/essay_03.jpg" alt="" class="swiper-lazy"><div class="swiper-lazy-preloader"></div></a></div>
+					<div class="swiper-slide"><a data-fancybox="setos-gallery" href="images/essay_04.jpg" data-caption="page 10"><img src="images/essay_04.jpg" alt="" class="swiper-lazy"><div class="swiper-lazy-preloader"></div></a></div>
+					<div class="swiper-slide"><a data-fancybox="setos-gallery" href="images/essay_05.jpg" data-caption="page 11"><img src="images/essay_05.jpg" alt="" class="swiper-lazy"><div class="swiper-lazy-preloader"></div></a></div>
+				</div>
+				<div class="swiper-pagination"></div>
+				<div class="swiper-button-next swiper-button-white"></div>
+				<div class="swiper-button-prev swiper-button-white"></div>
+			</div>
 		</div>
-	</div>
+
+		</div>
 
 	<footer class="entry-footer">
 		<ul>
@@ -154,24 +179,57 @@
 
 </div><!-- wrapper -->
 
-  <script>
-    var galleryTop = new Swiper('.gallery-top', {
-      spaceBetween: 10,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-/*    var galleryThumbs = new Swiper('.gallery-thumbs', {
-      spaceBetween: 10,
-      centeredSlides: true,
-      slidesPerView: 'auto',
-      touchRatio: 0.2,
-      slideToClickedSlide: true,
-    });
-    galleryTop.controller.control = galleryThumbs;
-    galleryThumbs.controller.control = galleryTop; */
-  </script>
+<script>
+jQuery(function(){
+/*
+	jQuery( window ).load(function() {
+		// Swiper
+		var swiper = new Swiper('.swiper-container', {
+			slidesPerView: '4',
+			spaceBetween: 7,
+			preloadImages: false,
+			lazy: true,
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+			on: {
+				lazyImageReady: function ( slide, image ) {
+					var width = parseInt( jQuery( image ).css( 'width' ));
+					var height = parseInt( jQuery( image ).css( 'height' ));
+					if( width < height ){
+						// vertical image
+						var height_new = parseInt( jQuery( slide ).css( 'height' ));
+						var width_new = parseInt( width * ( height_new / height ));
+						jQuery( slide ).css({ 'width': width_new + 'px' });
+					}
+				},
+			},
+			breakpoints: {
+				750: {
+					slidesPerView: 3,
+					spaceBetween: 5,
+				},
+			}
+		});
+
+		// Zoom for thumbnail
+		jQuery("[data-fancybox]").fancybox({
+			loop : true,
+			buttons: [
+				"thumbs",
+				"close"
+			],
+		});
+
+		jQuery( '.setos-gallery-cover' ).click(function() {
+			jQuery( ".swiper-slide:first a" ).click();
+			return false;
+		});
+	}); */
+});
+
+</script>
 
 </body>
 </html>

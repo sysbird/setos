@@ -62,6 +62,51 @@ jQuery(function() {
 				itemSelector: '.widget',
 				isAnimated: true
 			});
+
+		// Swiper for gallery
+		var swiper = new Swiper('.swiper-container', {
+			slidesPerView: '4',
+			spaceBetween: 7,
+			preloadImages: false,
+			lazy: true,
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+			on: {
+				lazyImageReady: function ( slide, image ) {
+					var width = parseInt( jQuery( image ).css( 'width' ));
+					var height = parseInt( jQuery( image ).css( 'height' ));
+					if( width < height ){
+						// vertical image
+						var height_new = parseInt( jQuery( slide ).css( 'height' ));
+						var width_new = parseInt( width * ( height_new / height ));
+						jQuery( slide ).css({ 'width': width_new + 'px' });
+					}
+				},
+			},
+			breakpoints: {
+				750: {
+					slidesPerView: 3,
+					spaceBetween: 5,
+				},
+			}
+		});
+
+		// Zoom for thumbnail
+		jQuery("[data-fancybox]").fancybox({
+			loop : true,
+			buttons: [
+				"thumbs",
+				"close"
+			],
+		});
+
+		jQuery( '.setos-gallery-cover' ).click(function() {
+			jQuery( ".swiper-slide:first a" ).click();
+			return false;
+		});
+
 	});
 
 	// Navigation for mobile

@@ -37,13 +37,13 @@ Google Fonts
 License: SIL Open Font License, 1.1
 Source:  http://www.google.com/fonts
 
-jquery.tile.js
-License: Dual licensed under the MIT license
-Source:  https://github.com/urin/jquery.tile.js
-
 Font Awesome
 License: SIL Open Font License 1.1 / MIT License
 Source:  http://fontawesome.io/
+
+Swiper
+
+fancyBox
 
 
 == Author ==
