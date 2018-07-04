@@ -197,10 +197,25 @@ add_action( 'pre_get_posts', 'setos_home_query' );
 // Enqueue Scripts
 function setos_scripts() {
 
+	// masonry
 	wp_enqueue_script( 'jquery-masonry' );
+
+	// swiper
+	wp_enqueue_style( 'setos-swiper', get_stylesheet_directory_uri().'/js/swiper/css/swiper.min.css' );
+	wp_enqueue_script( 'setos-swiper', get_template_directory_uri() .'/js/swiper/js/swiper.min.js', null, '3.3.5'  );
+
+	// fancybox
+	wp_enqueue_style( 'setos-fancybox', get_stylesheet_directory_uri().'/js/fancybox/jquery.fancybox.min.css' );
+	wp_enqueue_script( 'setos-fancybox', get_template_directory_uri() .'/js/fancybox/jquery.fancybox.min.js', array( 'jquery' ), '4.3.3' );
+
+	// tile
 	wp_enqueue_script( 'jquerytile', get_template_directory_uri() .'/js/jquery.tile.js', 'jquery', '1.1.2' );
-	wp_enqueue_script( 'setos', get_template_directory_uri() .'/js/setos.js', array( 'jquery' , 'jquery-masonry', 'jquerytile' ), '1.11' );
+
+	// font?
 //	wp_enqueue_style( 'setos-google-font', '//fonts.googleapis.com/css?family=Raleway', false, null, 'all' );
+
+	// this
+	wp_enqueue_script( 'setos', get_template_directory_uri() .'/js/setos.js', array( 'jquery' , 'jquery-masonry', 'jquerytile' ), '1.11' );
 	wp_enqueue_style( 'setos', get_stylesheet_uri() );
 }
 add_action( 'wp_enqueue_scripts', 'setos_scripts' );
@@ -233,6 +248,82 @@ function setos_gallery_atts( $out, $pairs, $atts ) {
 }
 add_filter( 'shortcode_atts_gallery', 'setos_gallery_atts', 10, 3 );
 add_filter( 'use_default_gallery_style', '__return_false' );
+
+//////////////////////////////////////////////////////
+// Shortcode gallery
+function setos_gallery ( $atts ) {
+
+	$post_id = get_the_ID();
+	$thumbnail_id = get_post_meta( $post_id, "_thumbnail_id", true );
+	$book_title = get_the_title();
+
+	// photos in post
+	$html = '';
+	$html_cover = '';
+	$args = array( 'post_type'			=> 'attachment',
+					'posts_per_page'	=> -1,
+					'post_parent'		=> $post_id,
+					'post_mime_type'	=> 'image',
+					'orderby'			=> 'menu_order',
+					'order'				=> 'ASC' );
+
+	$images = get_posts( $args );
+	if ( $images ) {
+		foreach( $images as $image ){
+
+			$src = wp_get_attachment_url( $image->ID );
+			$thumbnail = wp_get_attachment_image_src( $image->ID, 'large' );
+			$html .= ' <div class="swiper-slide"><a href="' .$src .'" data-fancybox="gallery-' .$post_id .'" data-caption="' .$image->post_title .'"><img src="' .$thumbnail[0] .'" alt="' .$image->post_title .'"' .' class="swiper-lazy"><div class="swiper-lazy-preloader"></div></a></div>';
+
+			// cover photo
+			if( $thumbnail_id == $image->ID ){
+				$html_cover = '<div class="setos-gallery-cover"><a href="#" ><img src="' .$thumbnail[0] .'" alt="' .$book_title .'"></a></div>';
+			}
+		}
+
+		wp_reset_postdata();
+	}
+
+	// output
+	if( !empty( $html ) ){
+		$html = '<div class="setos-gallery">' .$html_cover .'<div class="swiper-container"><div class="swiper-wrapper">' .$html .'</div><div class="swiper-pagination"></div><div class="swiper-button-prev"></div><div class="swiper-button-next"></div></div></div>';
+	}
+
+	return $html;
+}
+add_shortcode( 'setos-gallery', 'setos_gallery' );
+
+//////////////////////////////////////////
+//  Show custom field by ACF
+function setos_the_custom_field( $ID, $selector, $before, $after ) {
+
+	$value = get_field( $selector, $ID );
+	if( !empty( $value ) ){
+		echo $before .$value .$after;
+	}
+}
+
+//////////////////////////////////////////////////////
+// Display entry meta
+function setos_entry_meta() {
+?>
+
+	<?php if( is_archive() || is_search() ) : // archive ?>
+	<?php elseif( is_home() ): // home ?>
+	<?php elseif( is_singular( 'books' ) ): // single books ?>
+		<ul>
+			<li class="entry-title"><strong><?php _e( 'Photo Book', 'setos'); ?>:</strong> <?php the_title(); ?></li>
+			<?php setos_the_custom_field( get_the_ID(), 'author', '<li><strong>' .__( 'Author', 'setos') .':</strong> ', '' ); ?>
+			<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '' ); ?>
+			<?php setos_the_custom_field( get_the_ID(), 'isbn-10', '<li><strong>' .__( 'ISBN-10', 'setos') .':</strong> ', '</li>' ); ?>
+			<li><strong><?php _e( 'Release', 'setos'); ?>:</strong> <time datetime="<?php the_time( 'Y-m-d' ); ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time></li>
+			<?php setos_the_custom_field( get_the_ID(), 'price', '<li><strong>' .__( 'Price', 'setos') .':</strong> ', ' ' .__( 'yen', 'setos') .'</li>' ); ?>
+			<?php setos_the_custom_field( get_the_ID(), 'size', '<li><strong>' .__( 'Size', 'setos') .':</strong> ', '' ); ?>
+		</ul>
+	<?php endif; ?>
+
+<?php
+}
 
 //////////////////////////////////////////////////////
 // Add hook content begin

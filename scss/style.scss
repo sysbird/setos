@@ -17,8 +17,8 @@ This theme, like WordPress, is licensed under the GPL.
 // variable
 $background-color: #FFF;
 $text-color: #222327;
-$link-color: #4d719d;
-$hover-background-color: #F5F5F5;
+$link-color: #07a;
+$hover-background-color: #f6f9f9;
 $header-color: #374049;
 $border-color: #EAEAEA;
 $meta-color: #999;
@@ -453,15 +453,15 @@ html, body {
 	}
 
 	pre {
-		border: dashed 1px #CCC;
+		border: dotted 1px #CCC;
 		padding: 0.8em;
-		background: #EEE;
+		background: $hover-background-color;
 		margin-bottom: 1.6em;
 		line-height: 1.4;
 	}
 
 	code {
-		background: #EEE;
+		background: $hover-background-color;
 	}
 
 	code, kbd, pre, samp {
@@ -633,7 +633,7 @@ a:hover img {
 
 .wp-caption {
 	padding: 5px;
-	background: $border-color;
+	background: $hover-background-color;
 	margin-bottom: 0.75em;
 	max-width: 100%;
 }
@@ -1349,19 +1349,22 @@ form {
 
 /* books
 --------------------------------------------- */
-.books {
+.single-books,
+.post-type-archive-books {
 	#content {
-		.entry-footer {
+		.entry-meta {
+			background: $hover-background-color;
+			color: inherit;
+			font-size: inherit;
+			padding: 2%;
 
 			ul {
 				list-style: none;
 				padding: 0;
-				margin-left: 0;
+				margin: 0;
 				overflow: hidden;
 
 				li {
-					margin-top: -1px;
-					border-top: dotted 1px #FFF;
 					padding: 0.3em 0 0.3em 0.6em;
 					text-indent: -0.3em;
 

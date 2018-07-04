@@ -81,7 +81,7 @@ Font Awesome
 /* Link
 --------------------------------------------- */
 a {
-  color: #4d719d;
+  color: #07a;
   text-decoration: none;
 }
 
@@ -359,7 +359,7 @@ html, body {
 
 #content .hentry .entry-meta .category a:hover,
 #content .hentry .entry-meta .tag a:hover {
-  background: #F5F5F5;
+  background: #f6f9f9;
   text-decoration: none;
 }
 
@@ -378,35 +378,35 @@ html, body {
 #content .hentry .page-links {
   clear: both;
   margin: 1.6em 0;
-  color: #4d719d;
+  color: #07a;
 }
 
 #content .hentry .page-links span {
-  background: #4d719d;
+  background: #07a;
   color: #FFF;
   padding: 0.2em 0.4em;
   text-decoration: none;
   border-radius: 2px;
   font-weight: normal;
   text-align: center;
-  border: solid 1px #4d719d;
+  border: solid 1px #07a;
   display: inline-block;
   line-height: 1;
 }
 
 #content .hentry .page-links a span {
-  color: #4d719d;
-  border: solid 1px #4d719d;
+  color: #07a;
+  border: solid 1px #07a;
   background: #FFF;
   border-radius: 2px;
 }
 
 #content .hentry .page-links a span:hover {
-  background: #F5F5F5;
+  background: #f6f9f9;
 }
 
 #content .hentry .more-link {
-  color: #4d719d;
+  color: #07a;
   padding-left: 0.8em;
   border-radius: 2px;
 }
@@ -524,15 +524,15 @@ html, body {
 }
 
 #content pre {
-  border: dashed 1px #CCC;
+  border: dotted 1px #CCC;
   padding: 0.8em;
-  background: #EEE;
+  background: #f6f9f9;
   margin-bottom: 1.6em;
   line-height: 1.4;
 }
 
 #content code {
-  background: #EEE;
+  background: #f6f9f9;
 }
 
 #content code, #content kbd, #content pre, #content samp {
@@ -718,7 +718,7 @@ a:hover img {
 
 .wp-caption {
   padding: 5px;
-  background: #EAEAEA;
+  background: #f6f9f9;
   margin-bottom: 0.75em;
   max-width: 100%;
 }
@@ -1086,7 +1086,7 @@ form input {
 
 .home #content #news ul.article li .entry-header .entry-title {
   font-size: 1.2rem;
-  color: #4d719d;
+  color: #07a;
   padding-top: 0.8em;
   margin: 0;
 }
@@ -1148,7 +1148,7 @@ form input {
 
 .home #content #blog ul.article .hentry a:hover {
   text-decoration: none;
-  background: #F5F5F5;
+  background: #f6f9f9;
 }
 
 /* Archive
@@ -1207,7 +1207,7 @@ form input {
 .archive #content ul.list li .entry-header .entry-title,
 .search #content ul.list li .entry-header .entry-title {
   font-size: 1.6rem;
-  color: #4d719d;
+  color: #07a;
 }
 
 /* Single
@@ -1262,7 +1262,7 @@ form input {
 -------------------------------------------------------------------- */
 #content .pagination {
   clear: both;
-  color: #4d719d;
+  color: #07a;
   overflow: hidden;
   *zoom: 1;
 }
@@ -1271,8 +1271,8 @@ form input {
 #content .pagination .current {
   display: inline-block;
   background: #FFF;
-  color: #4d719d;
-  border: solid 1px #4d719d;
+  color: #07a;
+  border: solid 1px #07a;
   text-decoration: none;
   text-align: center;
   padding: 0.2em 0.4em;
@@ -1314,7 +1314,7 @@ form input {
 }
 
 #content .pagination a.page-numbers:hover {
-  background: #F5F5F5;
+  background: #f6f9f9;
 }
 
 #content .pagination a.page-numbers:hover.prev, #content .pagination a.page-numbers:hover.next {
@@ -1324,8 +1324,8 @@ form input {
 
 #content .pagination .current {
   color: #FFF;
-  background: #4d719d;
-  border: solid 1px #4d719d;
+  background: #07a;
+  border: solid 1px #07a;
 }
 
 /* Home Header
@@ -1468,21 +1468,30 @@ form input {
 
 /* books
 --------------------------------------------- */
-.books #content .entry-footer ul {
+.single-books #content .entry-meta,
+.post-type-archive-books #content .entry-meta {
+  background: #f6f9f9;
+  color: inherit;
+  font-size: inherit;
+  padding: 2%;
+}
+
+.single-books #content .entry-meta ul,
+.post-type-archive-books #content .entry-meta ul {
   list-style: none;
   padding: 0;
-  margin-left: 0;
+  margin: 0;
   overflow: hidden;
 }
 
-.books #content .entry-footer ul li {
-  margin-top: -1px;
-  border-top: dotted 1px #FFF;
+.single-books #content .entry-meta ul li,
+.post-type-archive-books #content .entry-meta ul li {
   padding: 0.3em 0 0.3em 0.6em;
   text-indent: -0.3em;
 }
 
-.books #content .entry-footer ul li:before {
+.single-books #content .entry-meta ul li:before,
+.post-type-archive-books #content .entry-meta ul li:before {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;

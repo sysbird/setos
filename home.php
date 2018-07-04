@@ -58,7 +58,6 @@ $setos_has_news = 0; ?>
 		endif;
 	?>
 
-
 	<?php if ( is_front_page() && setos_has_news_posts()): ?>
 		<?php get_template_part( 'news-content' ); ?>
 		<?php $setos_has_news = 1; ?>
