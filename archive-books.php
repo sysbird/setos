@@ -18,11 +18,20 @@ get_header(); ?>
 			</header>
 
 			<?php if ( have_posts() ) : ?>
-				<ul class="list">
-					<?php while ( have_posts() ) : the_post(); ?>
-						<?php get_template_part( 'content', 'books'); ?>
-					<?php endwhile; ?>
-				</ul>
+				<?php while ( have_posts() ) : the_post(); ?>
+
+					<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+						<?php if( has_post_thumbnail() ): ?>
+							<div class="entry-eyecatch"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'medium' ); ?></a></div>
+						<?php endif; ?>
+						<div class="entry-content">
+							<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+							<?php setos_entry_meta(); ?>
+							<?php the_excerpt(); ?>
+						</div>
+					</div>
+
+				<?php endwhile; ?>
 
 				<?php $setos_pagination = get_the_posts_pagination( array(
 						'mid_size'				=> 3,

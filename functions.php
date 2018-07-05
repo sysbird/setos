@@ -30,6 +30,19 @@ function remove_xmlrpc_pingback_ping($methods)
 // Comment disable
 add_filter( 'comments_open', '__return_false' );
 
+//////////////////////////////////////////////////////
+// emoji disable
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
+
+//////////////////////////////////////////////////////
+// remove theme customize
+function setos_customize_register( $wp_customize ) {
+	$wp_customize->remove_section( 'static_front_page' );
+	$wp_customize->remove_section( 'custom_css' );
+}
+add_action( 'customize_register', 'setos_customize_register' );
+
 //////////////////////////////////////////
 // Customizer additions.
 require get_template_directory() . '/functions_customizer.php';
@@ -250,6 +263,13 @@ add_filter( 'shortcode_atts_gallery', 'setos_gallery_atts', 10, 3 );
 add_filter( 'use_default_gallery_style', '__return_false' );
 
 //////////////////////////////////////////////////////
+// Excerpt More
+function setos_excerpt_more( $more ) {
+	return ' ...<span class="more"><a href="'. esc_url( get_permalink() ) . '" >' . __( 'more', 'setos') . '</a></span>';
+}
+add_filter('excerpt_more', 'setos_excerpt_more');
+
+//////////////////////////////////////////////////////
 // Shortcode gallery
 function setos_gallery ( $atts ) {
 
@@ -307,11 +327,15 @@ function setos_the_custom_field( $ID, $selector, $before, $after ) {
 // Display entry meta
 function setos_entry_meta() {
 ?>
-
-	<?php if( is_archive() || is_search() ) : // archive ?>
+	<?php if( is_post_type_archive( 'books' ) ): // archive books ?>
+		<ul class="book-meta">
+			<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '' ); ?>
+			<li><strong><?php _e( 'Release', 'setos'); ?>:</strong> <time datetime="<?php the_time( 'Y-m-d' ); ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time></li>
+		</ul>
+	<?php elseif( is_archive() || is_search() ) : // archive ?>
 	<?php elseif( is_home() ): // home ?>
 	<?php elseif( is_singular( 'books' ) ): // single books ?>
-		<ul>
+		<ul class="book-meta">
 			<li class="entry-title"><strong><?php _e( 'Photo Book', 'setos'); ?>:</strong> <?php the_title(); ?></li>
 			<?php setos_the_custom_field( get_the_ID(), 'author', '<li><strong>' .__( 'Author', 'setos') .':</strong> ', '' ); ?>
 			<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '' ); ?>

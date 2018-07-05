@@ -130,6 +130,7 @@ html, body {
 
 .wrapper {
   min-height: 100vh;
+  display: -webkit-flex;
   display: flex;
   flex-flow: column nowrap;
 }
@@ -405,23 +406,6 @@ html, body {
   background: #f6f9f9;
 }
 
-#content .hentry .more-link {
-  color: #07a;
-  padding-left: 0.8em;
-  border-radius: 2px;
-}
-
-#content .hentry .more-link:before {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  content: "\f061";
-}
-
 #content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
   margin: 0.7em 0;
   line-height: 1.2;
@@ -645,20 +629,18 @@ html, body {
   text-decoration: none;
 }
 
-#content .more {
-  display: block;
-  text-align: right;
-  margin-top: 0.8em;
-}
-
 #content .more a {
-  display: inline-block;
+  display: block;
   background-color: #99c9cc;
   color: #FFF;
   padding: 0.8em;
   border-radius: 4px;
   font-size: 0.96em;
   text-align: center;
+}
+
+#content .more a:hover {
+  text-decoration: none;
 }
 
 #content .more a:before {
@@ -670,6 +652,15 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: "\f054";
+  padding-right: 0.2em;
+}
+
+#content p .more {
+  line-height: 1;
+}
+
+#content p .more a {
+  margin-top: 0.8em;
 }
 
 /* Images
@@ -1162,39 +1153,11 @@ form input {
 
 .archive #content ul.list li,
 .search #content ul.list li {
-  border: none;
-  background: none;
-  margin: 0;
-  padding: 0;
-  border-top: dotted 1px #EAEAEA;
+  margin: 0 0 2% 0;
+  padding: 0 0 2% 0;
+  border-bottom: dotted 1px #EAEAEA;
   overflow: hidden;
   *zoom: 1;
-}
-
-.archive #content ul.list li a,
-.search #content ul.list li a {
-  padding: 0.5em 0;
-  display: block;
-  overflow: hidden;
-  *zoom: 1;
-}
-
-.archive #content ul.list li a:hover,
-.search #content ul.list li a:hover {
-  text-decoration: none;
-}
-
-.archive #content ul.list li a:hover .entry-header .entry-title,
-.archive #content ul.list li a:hover .more-link,
-.search #content ul.list li a:hover .entry-header .entry-title,
-.search #content ul.list li a:hover .more-link {
-  text-decoration: underline;
-}
-
-.archive #content ul.list li a .entry-content,
-.search #content ul.list li a .entry-content {
-  color: #222327;
-  font-size: 0.96em;
 }
 
 .archive #content ul.list li .entry-header,
@@ -1206,8 +1169,13 @@ form input {
 
 .archive #content ul.list li .entry-header .entry-title,
 .search #content ul.list li .entry-header .entry-title {
-  font-size: 1.6rem;
-  color: #07a;
+  font-size: 1.8em;
+}
+
+.archive #content ul.list li .attachment-thumbnail,
+.search #content ul.list li .attachment-thumbnail {
+  display: block;
+  margin: 0 auto;
 }
 
 /* Single
@@ -1468,30 +1436,23 @@ form input {
 
 /* books
 --------------------------------------------- */
-.single-books #content .entry-meta,
-.post-type-archive-books #content .entry-meta {
-  background: #f6f9f9;
-  color: inherit;
-  font-size: inherit;
-  padding: 2%;
-}
-
-.single-books #content .entry-meta ul,
-.post-type-archive-books #content .entry-meta ul {
+.single-books #content ul.book-meta,
+.post-type-archive-books #content ul.book-meta {
   list-style: none;
   padding: 0;
   margin: 0;
-  overflow: hidden;
+  background: #f6f9f9;
+  padding: 2%;
 }
 
-.single-books #content .entry-meta ul li,
-.post-type-archive-books #content .entry-meta ul li {
+.single-books #content ul.book-meta li,
+.post-type-archive-books #content ul.book-meta li {
   padding: 0.3em 0 0.3em 0.6em;
   text-indent: -0.3em;
 }
 
-.single-books #content .entry-meta ul li:before,
-.post-type-archive-books #content .entry-meta ul li:before {
+.single-books #content ul.book-meta li:before,
+.post-type-archive-books #content ul.book-meta li:before {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -1503,6 +1464,27 @@ form input {
   padding-right: 0.6em;
   font-size: 0.6em;
   color: #99c9cc;
+}
+
+.post-type-archive-books #content .type-books {
+  border-bottom: dotted 1px #EAEAEA;
+  padding-bottom: 2%;
+  margin-bottom: 2%;
+}
+
+.post-type-archive-books #content .type-books .entry-eyecatch {
+  margin-bottom: 2%;
+  text-align: center;
+}
+
+.post-type-archive-books #content .type-books .entry-content h2 {
+  border: none;
+  margin: 0;
+}
+
+.post-type-archive-books #content .type-books .entry-content ul.book-meta {
+  background: none;
+  padding: 0 0 2% 0;
 }
 
 /* setos-gallery shortcode
@@ -1570,10 +1552,6 @@ form input {
   .single #content #nav-below .nav-previous {
     float: right;
   }
-  #wall .slideitem .caption {
-    font-size: 3.4vw;
-    width: 60%;
-  }
   #wall .headerimage .fixedimage {
     position: fixed;
   }
@@ -1592,8 +1570,17 @@ form input {
     float: right;
     margin-left: 0.75em;
   }
+  #content .more {
+    text-align: right;
+  }
   #content .more a {
     display: inline-block;
+  }
+  #content p .more a {
+    padding: 2px 5px;
+    border-radius: 2px;
+    text-align: left;
+    margin-top: 0;
   }
   #content .biography h2 {
     float: left;
@@ -1610,6 +1597,19 @@ form input {
   }
   #content .biography ul li:last-child {
     margin-bottom: 1.6em;
+  }
+  .post-type-archive-books #content .type-books {
+    display: -webkit-flex;
+    display: flex;
+  }
+  .post-type-archive-books #content .type-books .entry-eyecatch {
+    width: 300px;
+    margin-bottom: 0;
+    text-align: left;
+  }
+  .post-type-archive-books #content .type-books .entry-content {
+    width: calc(100% - 300px);
+    padding-left: 2%;
   }
 }
 

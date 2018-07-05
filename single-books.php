@@ -15,12 +15,10 @@
 				<?php the_content(); ?>
 			</div>
 
-			<footer class="entry-meta">
-				<?php setos_entry_meta(); ?>
-			</footer>
-
-			<div class="more"><a href="<?php echo get_post_type_archive_link( 'books' ); ?>"><?php _e( 'Books List', 'setos' ) ?></a></div>
 	</article>
+
+	<?php setos_entry_meta(); ?>
+	<div class="more"><a href="<?php echo get_post_type_archive_link( 'books' ); ?>"><?php _e( 'Books List', 'setos' ) ?></a></div>
 
 	<?php endwhile; ?>
 	</div>

@@ -97,7 +97,7 @@ html, body {
 
 .wrapper {
 	min-height: 100vh;
-	display: flex;
+	@include display-flex();
 	flex-flow: column nowrap;
 }
 
@@ -354,17 +354,6 @@ html, body {
 				}
 			}
 		}
-
-		.more-link {
-			color: $link-color;
-			padding-left: 0.8em;
-			border-radius: 2px;
-
-			&:before {
-				@include font-awesome();
-				content: "\f061";
-			}
-		}
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -566,12 +555,8 @@ html, body {
 	}
 
 	.more {
-		display: block;
-		text-align: right;
-		margin-top: 0.8em;
-
 		a {
-			display: inline-block;
+			display: block;
 			background-color: $accent-color;
 			color: #FFF;
 			padding: 0.8em;
@@ -579,10 +564,23 @@ html, body {
 			font-size: 0.96em;
 			text-align: center;
 
+			&:hover {
+				text-decoration: none;
+			}
+
 			&:before {
 				@include font-awesome();
 				content: "\f054";
+				padding-right: 0.2em;
 			}
+		}
+	}
+
+	p .more {
+		line-height: 1;
+
+		a {
+			margin-top: 0.8em;
 		}
 	}
 }
@@ -1062,41 +1060,23 @@ form {
 		padding: 0;
 
 		li {
-			border: none;
-			background: none;
-			margin: 0;
-			padding: 0;
-			border-top: dotted 1px $border-color;
+			margin: 0 0 2% 0;
+			padding: 0 0 2% 0;
+			border-bottom: dotted 1px $border-color;
 			@include clearfix;
-
-			a {
-				padding: 0.5em 0;
-				display: block;
-				@include clearfix;
-
-				&:hover {
-					text-decoration: none;
-
-					.entry-header .entry-title,
-					.more-link {
-						text-decoration: underline;
-					}
-				}
-
-				.entry-content {
-					color: $text-color;
-					font-size: 0.96em;
-				}
-			}
 
 			.entry-header {
 				margin: 0;
 				@include clearfix;
 
 				.entry-title {
-					font-size: 1.6rem;
-					color: $link-color;
+					font-size: 1.8em;
 				}
+			}
+
+			.attachment-thumbnail {
+				display: block;
+				margin: 0 auto;
 			}
 		}
 	}
@@ -1352,30 +1332,52 @@ form {
 .single-books,
 .post-type-archive-books {
 	#content {
-		.entry-meta {
+		ul.book-meta {
+			list-style: none;
+			padding: 0;
+			margin: 0;
 			background: $hover-background-color;
-			color: inherit;
-			font-size: inherit;
 			padding: 2%;
 
-			ul {
-				list-style: none;
-				padding: 0;
-				margin: 0;
-				overflow: hidden;
+			li {
+				padding: 0.3em 0 0.3em 0.6em;
+				text-indent: -0.3em;
 
-				li {
-					padding: 0.3em 0 0.3em 0.6em;
-					text-indent: -0.3em;
-
-					&:before {
-						@include font-awesome();
-						content: "\f069";
-						padding-right: 0.6em;
-						font-size: 0.6em;
-						color: $accent-color;
-					}
+				&:before {
+					@include font-awesome();
+					content: "\f069";
+					padding-right: 0.6em;
+					font-size: 0.6em;
+					color: $accent-color;
 				}
+			}
+		}
+	}
+}
+
+.post-type-archive-books {
+	#content {
+		.type-books {
+			border-bottom: dotted 1px $border-color;
+			padding-bottom: 2%;
+			margin-bottom: 2%;
+
+			.entry-eyecatch {
+				margin-bottom: 2%;
+				text-align: center;
+			}
+
+			.entry-content {
+				h2 {
+					border: none;
+					margin: 0;
+				}
+
+				ul.book-meta {
+					background: none;
+					padding: 0 0 2% 0;
+				}
+
 			}
 		}
 	}
@@ -1433,6 +1435,7 @@ form {
 		#content ul.list {
 			li {
 				.attachment-thumbnail {
+
 					margin: 0 0 10px 10px;
 					float: right;
 				}
@@ -1455,15 +1458,6 @@ form {
 
 			.nav-previous {
 				float: right;
-			}
-		}
-	}
-
-	#wall {
-		.slideitem {
-			.caption {
-				font-size: 3.4vw;
-				width: 60%;
 			}
 		}
 	}
@@ -1499,8 +1493,21 @@ form {
 
 	#content {
 		.more {
+			text-align: right;
+
 			a {
 				display: inline-block;
+			}
+		}
+
+		p {
+			.more {
+				a {
+					padding: 2px 5px;
+					border-radius: 2px;
+					text-align: left;
+					margin-top: 0;
+				}
 			}
 		}
 
@@ -1521,6 +1528,25 @@ form {
 
 				li:last-child {
 					margin-bottom: 1.6em;
+				}
+			}
+		}
+	}
+
+	.post-type-archive-books {
+		#content {
+			.type-books {
+				@include display-flex();
+
+				.entry-eyecatch {
+					width: 300px;
+					margin-bottom: 0;
+					text-align: left;
+				}
+
+				.entry-content {
+					width: calc(100% - 300px);
+					padding-left: 2%;
 				}
 			}
 		}
