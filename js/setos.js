@@ -86,7 +86,7 @@ jQuery(function() {
 				},
 			},
 			breakpoints: {
-				750: {
+				660: {
 					slidesPerView: 3,
 					spaceBetween: 5,
 				},

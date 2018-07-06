@@ -22,7 +22,7 @@ $hover-background-color: #f6f9f9;
 $header-color: #374049;
 $border-color: #EAEAEA;
 $meta-color: #999;
-$accent-color: #99c9cc;
+$accent-color: #708f9c;
 
 /*------------------------------
 Font Awesome
@@ -86,23 +86,6 @@ body {
 	clear: both;
 	width: 100%;
 	margin: 0 auto;
-}
-
-/* Adjust footer
---------------------------------------------- */
-html, body {
-	margin: 0;
-	padding: 0;
-}
-
-.wrapper {
-	min-height: 100vh;
-	@include display-flex();
-	flex-flow: column nowrap;
-}
-
-#content {
-	flex-grow: 1;
 }
 
 /* Wrapper
@@ -221,10 +204,10 @@ html, body {
 	.hentry {
 		width: 100%;
 		word-wrap: break-word;
-		@include clearfix;
+		@include pie-clearfix;
 
 		.entry-eyecatch {
-			margin: 0;
+			margin: 0 -2%;
 
 			img {
 				max-width: 100%;
@@ -999,17 +982,16 @@ form {
 				padding: 0;
 
 				.hentry {
-					border: solid 1px $border-color;
 					margin-bottom: 10px;
 					padding: 0;
 					background: #FFF;
 
 					.entry-eyecatch {
-						width: 100%;
 						height: 0;
 						padding-top: 66%;
 						overflow: hidden;
 						position: relative;
+						margin: 0 -2%;
 
 						img {
 							width: 100%;
@@ -1024,7 +1006,7 @@ form {
 					}
 
 					.entry-header {
-						padding: 20px;
+						padding: 2%;
 						margin: 0;
 						position: relative;
 
@@ -1387,8 +1369,8 @@ form {
 --------------------------------------------- */
 .setos-gallery {
 	background: #EFEFEF;
-	padding: 7px;
-	margin-bottom: 1.6em;
+	padding: 7px 0;
+	margin: 0 -2% 1.6em -2%;
 
 	.setos-gallery-cover {
 		padding-bottom: 5px;
@@ -1396,7 +1378,7 @@ form {
 
 	.swiper-slide {
 		position: relative;
-		padding-top: 16.5%;
+		padding-top: 22%;
 		height: 0;
 		overflow: hidden;
 
@@ -1435,7 +1417,6 @@ form {
 		#content ul.list {
 			li {
 				.attachment-thumbnail {
-
 					margin: 0 0 10px 10px;
 					float: right;
 				}
@@ -1492,6 +1473,12 @@ form {
 	}
 
 	#content {
+		.hentry {
+			.entry-eyecatch {
+				margin: 0;
+			}
+		}
+
 		.more {
 			text-align: right;
 
@@ -1551,10 +1538,32 @@ form {
 			}
 		}
 	}
+
+	.setos-gallery {
+		padding: 7px;
+		margin-left: 0;
+		margin-right: 0;
+
+		.swiper-slide {
+			padding-top: 16.5%;
+		}
+	}
 }
 
 /* --- PCs --- */
 @media screen and (min-width: 930px) {
+
+	body,
+	.wrapper {
+		@include display-flex();
+		flex-direction: column;
+		min-height: 100vh;
+	}
+
+	#footer {
+	  margin-top: auto;
+	}
+
 	.container {
 		width: 930px;
 	}
@@ -1671,6 +1680,16 @@ form {
 					width: 300px;
 					float: left;
 					margin: 0 5px 10px 5px;
+					border: solid 1px $border-color;
+
+					.entry-eyecatch {
+						width: 100%;
+						margin: 0;
+					}
+
+					.entry-header {
+						padding: 20px;
+					}
 				}
 			}
 		}
