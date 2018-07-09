@@ -64,7 +64,7 @@ $setos_has_news = 0; ?>
 	<?php endif; ?>
 
 	<?php if ( have_posts()) : ?>
-		<section id="blog" class="section">
+		<section id="blog" class="section essay">
 			<div class="container">
 				<?php if( ! is_paged() && $setos_has_news ): ?>
 					<h2><?php _e('RECENT', 'setos') ?></h2>

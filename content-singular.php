@@ -25,12 +25,3 @@
 		'link_after'	=> '</span>'
 		) ); ?>
 </div>
-
-<?php if( is_single() ): // Only Display Excerpts for Single ?>
-	<footer class="entry-meta">
-
-		<div class="category"><span><?php _e( 'Category in', 'setos' ); ?></span><?php the_category( ' ' ) ?></div>
-		<?php the_tags('<div class="tag"><span>' .__( 'Tagged', 'setos' ) .'</span>', ' ', '</div>' ) ?>
-	</footer>
-<?php endif; ?>
-

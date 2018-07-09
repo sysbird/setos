@@ -81,7 +81,7 @@ Font Awesome
 /* Link
 --------------------------------------------- */
 a {
-  color: #07a;
+  color: #708f9c;
   text-decoration: none;
 }
 
@@ -91,6 +91,10 @@ a:hover {
 
 /* Structure
 --------------------------------------------- */
+html {
+  font-size: 1.1em;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -104,6 +108,13 @@ body {
   margin: 0 auto;
   padding: 0;
   position: relative;
+  *zoom: 1;
+}
+
+.container:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 #header {
@@ -154,7 +165,7 @@ body {
 
 #header #branding #site-title a {
   display: block;
-  padding: 0.4em 0;
+  padding: 0.425em 0;
   color: #FFF;
 }
 
@@ -172,7 +183,7 @@ body {
 -------------------------------------------------------------- */
 #menu-wrapper .menu #small-menu {
   position: absolute;
-  top: 0.4em;
+  top: 0.425em;
   right: 0;
   cursor: pointer;
   display: block;
@@ -206,7 +217,7 @@ body {
 }
 
 #menu-wrapper .menu ul#menu-primary-items li a {
-  padding: 0.8em;
+  padding: 0.85em;
   display: block;
   color: #FFF;
   text-decoration: none;
@@ -222,11 +233,11 @@ body {
 /* Posts
 --------------------------------------------- */
 #content .container {
-  padding-bottom: 3.2em;
+  padding-bottom: 3.4rem;
 }
 
 #content .content-header {
-  margin: 1.6em 0;
+  margin: 1.7rem 0;
 }
 
 #content .content-header .content-title {
@@ -255,7 +266,7 @@ body {
 }
 
 #content .hentry .entry-header {
-  margin: 1.6em 0;
+  margin: 1.7rem 0;
   line-height: 1.4;
   position: relative;
 }
@@ -264,7 +275,7 @@ body {
   color: #374049;
   font-size: 2.4rem;
   font-weight: normal;
-  margin: 0 0 0.2em 0;
+  margin: 0 0 0.2125em 0;
   line-height: 1.2;
   padding: 0;
   border: none;
@@ -296,19 +307,19 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: "\f03e";
-  padding-right: 0.2em;
+  padding-right: 0.2125em;
 }
 
 #content .hentry .entry-meta {
   font-size: 0.9rem;
-  padding: 1.6em 0;
+  padding: 1.7em 0;
   color: #999;
   clear: both;
 }
 
 #content .hentry .entry-meta .category,
 #content .hentry .entry-meta .tag {
-  margin-bottom: 0.4em;
+  margin-bottom: 0.425em;
   overflow: hidden;
   *zoom: 1;
 }
@@ -331,7 +342,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: "\f07b";
-  padding-right: 0.2em;
+  padding-right: 0.2125em;
 }
 
 #content .hentry .entry-meta .category a,
@@ -360,31 +371,31 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: "\f02c";
-  padding-right: 0.2em;
+  padding-right: 0.2125em;
 }
 
 #content .hentry .page-links {
   clear: both;
-  margin: 1.6em 0;
-  color: #07a;
+  margin: 1.7em 0;
+  color: #708f9c;
 }
 
 #content .hentry .page-links span {
-  background: #07a;
+  background: #708f9c;
   color: #FFF;
-  padding: 0.2em 0.4em;
+  padding: 0.34em 0.425em;
   text-decoration: none;
   border-radius: 2px;
   font-weight: normal;
   text-align: center;
-  border: solid 1px #07a;
+  border: solid 1px #708f9c;
   display: inline-block;
   line-height: 1;
 }
 
 #content .hentry .page-links a span {
-  color: #07a;
-  border: solid 1px #07a;
+  color: #708f9c;
+  border: solid 1px #708f9c;
   background: #FFF;
   border-radius: 2px;
 }
@@ -394,7 +405,7 @@ body {
 }
 
 #content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
-  margin: 0.7em 0;
+  margin-bottom: 1.7rem;
   line-height: 1.2;
   font-weight: normal;
   color: #374049;
@@ -434,7 +445,7 @@ body {
 
 #content h2 {
   border-bottom: dashed 1px #374049;
-  padding-bottom: 0.4em;
+  padding-bottom: 0.425rem;
 }
 
 #content h3 {
@@ -443,20 +454,20 @@ body {
 }
 
 #content p {
-  line-height: 1.6;
-  margin: 0 0 1.6em;
+  line-height: 1.7;
+  margin: 0 0 1.7rem;
 }
 
 #content blockquote {
-  margin-left: 1em;
-  padding-left: 1em;
+  margin-left: 1rem;
+  padding-left: 1rem;
   border-left: 10px solid #EAEAEA;
 }
 
 #content blockquote small {
   display: block;
   line-height: 20px;
-  color: #999999;
+  color: #999;
 }
 
 #content blockquote small:before {
@@ -468,7 +479,7 @@ body {
 }
 
 #content blockquote cite {
-  color: #999999;
+  color: #999;
   display: block;
 }
 
@@ -477,14 +488,14 @@ body {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
-  margin-bottom: 1.6em;
+  margin-bottom: 1.7rem;
 }
 
 #content table th,
 #content table td {
   border-bottom: 1px solid #EAEAEA;
   line-height: 1.4;
-  padding: 0.8em;
+  padding: 0.85em;
   text-align: left;
   vertical-align: top;
 }
@@ -496,9 +507,9 @@ body {
 
 #content pre {
   border: dotted 1px #CCC;
-  padding: 0.8em;
+  padding: 0.85em;
   background: #f6f9f9;
-  margin-bottom: 1.6em;
+  margin-bottom: 1.7em;
   line-height: 1.4;
 }
 
@@ -514,7 +525,7 @@ body {
   background-color: #EAEAEA;
   border: 0 none;
   height: 1px;
-  margin-bottom: 1.6m;
+  margin-bottom: 1.7rem;
 }
 
 #content sup, #content sub {
@@ -548,14 +559,14 @@ body {
 
 #content ul,
 #content ol {
-  margin: 0 0 1.6em 1em;
+  margin: 0 0 1.7em 1em;
   padding: 0 0 0 1em;
   line-height: 1.4;
 }
 
 #content ul li,
 #content ol li {
-  padding: 0.2em 0;
+  padding: 0.2125em 0;
 }
 
 #content ul ul,
@@ -595,7 +606,7 @@ body {
 
 #content dl {
   margin: 0 0 1em 0;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 #content dl dt {
@@ -603,7 +614,7 @@ body {
 }
 
 #content dl dd {
-  margin: 0 1.5em 1.6em;
+  margin: 0 1.5em 1.7em;
   padding: 0;
 }
 
@@ -620,7 +631,7 @@ body {
   display: block;
   background-color: #708f9c;
   color: #FFF;
-  padding: 0.8em;
+  padding: 0.85em;
   border-radius: 4px;
   font-size: 0.96em;
   text-align: center;
@@ -639,7 +650,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: "\f054";
-  padding-right: 0.2em;
+  padding-right: 0.2125em;
 }
 
 #content p .more {
@@ -647,7 +658,7 @@ body {
 }
 
 #content p .more a {
-  margin-top: 0.8em;
+  margin-top: 0.85em;
 }
 
 /* Images
@@ -674,7 +685,7 @@ img[class*="wp-image-"] {
 img.alignleft,
 img.alignright,
 img.aligncenter {
-  margin-bottom: 0.75em;
+  margin-bottom: 0.85rem;
 }
 
 a:hover img {
@@ -697,7 +708,7 @@ a:hover img {
 .wp-caption {
   padding: 5px;
   background: #f6f9f9;
-  margin-bottom: 0.75em;
+  margin-bottom: 0.85rem;
   max-width: 100%;
 }
 
@@ -834,7 +845,7 @@ form input {
 }
 
 #footer .site-title {
-  padding: 0.8em 0;
+  padding: 0.85em 0;
   line-height: 1.4;
 }
 
@@ -845,7 +856,7 @@ form input {
 #footer #back-top {
   position: fixed;
   bottom: 0;
-  left: 48%;
+  left: 45%;
   z-index: 3;
 }
 
@@ -878,7 +889,7 @@ form input {
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  content: "\f0aa";
+  content: "\f139";
   font-size: 50px;
   display: block;
   text-align: center;
@@ -916,8 +927,8 @@ form input {
 #widget-area .widget h3 {
   font-size: 1.4rem;
   font-weight: normal;
-  margin: 0 0 0.4em 0;
-  padding: 0 0 0.4em 0;
+  margin: 0 0 0.425em 0;
+  padding: 0 0 0.425em 0;
   border-bottom: solid 2px #EAEAEA;
   font-size: 1.4rem;
 }
@@ -945,7 +956,7 @@ form input {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: "\f0da";
-  padding-right: 0.2em;
+  padding-right: 0.2125em;
 }
 
 #widget-area .widget ul li ul {
@@ -1014,10 +1025,14 @@ form input {
 
 /* Home
 --------------------------------------------- */
+.home #content .container {
+  padding-bottom: 1.7rem;
+}
+
 .home #content h2 {
   border: none;
   margin: 0;
-  padding: 0 0 1em 0;
+  padding: 0 0 1.7rem 0;
 }
 
 .home #content h2 a {
@@ -1028,13 +1043,9 @@ form input {
   background: #FFF;
   z-index: 1;
   position: relative;
-  padding-top: 2em;
+  padding-top: 1.7rem;
   overflow: hidden;
   *zoom: 1;
-}
-
-.home #content #news .container {
-  padding-bottom: 0;
 }
 
 .home #content #news ul.article {
@@ -1064,8 +1075,8 @@ form input {
 
 .home #content #news ul.article li .entry-header .entry-title {
   font-size: 1.2rem;
-  color: #07a;
-  padding-top: 0.8em;
+  color: #708f9c;
+  padding-top: 0.85em;
   margin: 0;
 }
 
@@ -1073,19 +1084,19 @@ form input {
   display: block;
 }
 
-.home #content #blog ul.article {
+.home #content .section.essay ul.article {
   list-style: none;
-  margin: 0 0 1.6em 0;
+  margin: 0 0 1.7rem 0;
   padding: 0;
 }
 
-.home #content #blog ul.article .hentry {
+.home #content .section.essay ul.article .hentry {
   margin-bottom: 10px;
   padding: 0;
   background: #FFF;
 }
 
-.home #content #blog ul.article .hentry .entry-eyecatch {
+.home #content .section.essay ul.article .hentry .entry-eyecatch {
   height: 0;
   padding-top: 66%;
   overflow: hidden;
@@ -1093,7 +1104,7 @@ form input {
   margin: 0 -2%;
 }
 
-.home #content #blog ul.article .hentry .entry-eyecatch img {
+.home #content .section.essay ul.article .hentry .entry-eyecatch img {
   width: 100%;
   vertical-align: text-bottom;
   position: absolute;
@@ -1107,23 +1118,23 @@ form input {
   transform: translate(-50%, -50%);
 }
 
-.home #content #blog ul.article .hentry .entry-header {
+.home #content .section.essay ul.article .hentry .entry-header {
   padding: 2%;
   margin: 0;
   position: relative;
 }
 
-.home #content #blog ul.article .hentry .entry-header .entry-title {
-  font-size: 1.6rem;
+.home #content .section.essay ul.article .hentry .entry-header .entry-title {
+  font-size: 1.7rem;
   color: #222327;
 }
 
-.home #content #blog ul.article .hentry a {
+.home #content .section.essay ul.article .hentry a {
   display: block;
   height: 100%;
 }
 
-.home #content #blog ul.article .hentry a:hover {
+.home #content .section.essay ul.article .hentry a:hover {
   text-decoration: none;
   background: #f6f9f9;
 }
@@ -1166,6 +1177,10 @@ form input {
 
 /* Single
 -------------------------------------------------------------------- */
+.single #content #nav-below {
+  margin-top: 0.85rem;
+}
+
 .single #content #nav-below .nav-next,
 .single #content #nav-below .nav-previous {
   display: block;
@@ -1185,8 +1200,8 @@ form input {
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  content: "\f061";
-  padding-left: 0.2em;
+  content: "\f054";
+  padding-left: 0.2125rem;
 }
 
 .single #content #nav-below .nav-next a:before {
@@ -1197,15 +1212,15 @@ form input {
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  content: "\f060";
-  padding-right: 0.2em;
+  content: "\f053";
+  padding-right: 0.2125rem;
 }
 
 /* Attachment
 -------------------------------------------------------------------- */
 .attachment #content .hentry .entry-attachment {
   text-align: center;
-  margin-bottom: 1.6em;
+  margin-bottom: 1.7rem;
 }
 
 .attachment #content .hentry .entry-attachment .wp-caption {
@@ -1216,7 +1231,7 @@ form input {
 -------------------------------------------------------------------- */
 #content .pagination {
   clear: both;
-  color: #07a;
+  color: #708f9c;
   overflow: hidden;
   *zoom: 1;
 }
@@ -1225,11 +1240,11 @@ form input {
 #content .pagination .current {
   display: inline-block;
   background: #FFF;
-  color: #07a;
-  border: solid 1px #07a;
+  color: #708f9c;
+  border: solid 1px #708f9c;
   text-decoration: none;
   text-align: center;
-  padding: 0.2em 0.4em;
+  padding: 0.2125em 0.425em;
   border-radius: 2px;
   margin-right: 0.1em;
 }
@@ -1251,7 +1266,7 @@ form input {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: "\f060";
-  padding-right: 0.2em;
+  padding-right: 0.2125em;
 }
 
 #content .pagination a.page-numbers.next:after,
@@ -1264,7 +1279,7 @@ form input {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: "\f061";
-  padding-left: 0.2em;
+  padding-left: 0.2125em;
 }
 
 #content .pagination a.page-numbers:hover {
@@ -1278,8 +1293,41 @@ form input {
 
 #content .pagination .current {
   color: #FFF;
-  background: #07a;
-  border: solid 1px #07a;
+  background: #708f9c;
+  border: solid 1px #708f9c;
+}
+
+/* bread crumb for wp-manager
+-------------------------------------------------------------- */
+#content .bread_crumb {
+  background-color: #f6f9f9;
+}
+
+#content .bread_crumb ul {
+  list-style-type: none;
+  color: #999;
+  font-size: 0.9rem;
+  margin: 0 auto;
+  padding: 0.425em 0;
+}
+
+#content .bread_crumb ul li {
+  display: inline-block;
+  line-height: 1;
+}
+
+#content .bread_crumb ul a:after {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f105";
+  padding-left: 0.425em;
+  padding-right: 0.2125em;
+  text-decoration: none;
 }
 
 /* Home Header
@@ -1347,7 +1395,7 @@ form input {
   margin: 0;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   line-height: 1.4;
-  margin-bottom: 0.4em;
+  margin-bottom: 0.425em;
 }
 
 #wall .slideitem .caption p strong {
@@ -1417,7 +1465,7 @@ form input {
   width: 0.5em;
   height: 1em;
   color: #222327;
-  padding-right: 0.4em;
+  padding-right: 0.425em;
 }
 
 /* books
@@ -1473,12 +1521,16 @@ form input {
   padding: 0 0 2% 0;
 }
 
+.single-books #content ul.book-meta {
+  margin-bottom: 1.7rem;
+}
+
 /* setos-gallery shortcode
 --------------------------------------------- */
 .setos-gallery {
-  background: #EFEFEF;
+  background: #f6f9f9;
   padding: 7px 0;
-  margin: 0 -2% 1.6em -2%;
+  margin: 0 -2% 1.7rem -2%;
 }
 
 .setos-gallery .setos-gallery-cover {
@@ -1512,6 +1564,9 @@ form input {
 --------------------------------------------- */
 /* --- iPad Landscape --- */
 @media screen and (min-width: 660px) {
+  html {
+    font-size: inherit;
+  }
   #header {
     position: fixed;
     top: 0;
@@ -1550,11 +1605,11 @@ form input {
   }
   .alignleft {
     float: left;
-    margin-right: 0.75em;
+    margin-right: 0.85rem;
   }
   .alignright {
     float: right;
-    margin-left: 0.75em;
+    margin-left: 0.85rem;
   }
   #content .hentry .entry-eyecatch {
     margin: 0;
@@ -1585,7 +1640,7 @@ form input {
     margin-bottom: 0;
   }
   #content .biography ul li:last-child {
-    margin-bottom: 1.6em;
+    margin-bottom: 1.7rem;
   }
   .post-type-archive-books #content .type-books {
     display: -webkit-flex;
@@ -1650,7 +1705,7 @@ form input {
   }
   #header.mini #menu-wrapper .menu ul#menu-primary-items > li > a {
     height: 60px;
-    padding: 20px 0.8em;
+    padding: 20px 0.85em;
   }
   #menu-wrapper {
     margin-top: 0;
@@ -1678,7 +1733,7 @@ form input {
   }
   #menu-wrapper .menu ul#menu-primary-items li a {
     border-top: none;
-    padding: 30px 0.8em;
+    padding: 30px 0.85em;
     height: 80px;
   }
   #menu-wrapper .menu ul#menu-primary-items li a:hover {
@@ -1694,7 +1749,7 @@ form input {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     content: "\f0d7";
-    padding-left: 0.2em;
+    padding-left: 0.2125em;
   }
   .home #content #news ul.article li .entry-header .postdate {
     width: 10em;
@@ -1703,21 +1758,23 @@ form input {
   .home #content #news ul.article li .entry-header .entry-title {
     padding: 0 0 0 8em;
   }
-  .home #content #blog ul.article {
+  .home #content .section.essay {
+    background-color: #f6f9f9;
+  }
+  .home #content .section.essay ul.article {
     overflow: hidden;
     *zoom: 1;
   }
-  .home #content #blog ul.article .hentry {
+  .home #content .section.essay ul.article .hentry {
     width: 300px;
     float: left;
     margin: 0 5px 10px 5px;
-    border: solid 1px #EAEAEA;
   }
-  .home #content #blog ul.article .hentry .entry-eyecatch {
+  .home #content .section.essay ul.article .hentry .entry-eyecatch {
     width: 100%;
     margin: 0;
   }
-  .home #content #blog ul.article .hentry .entry-header {
+  .home #content .section.essay ul.article .hentry .entry-header {
     padding: 20px;
   }
   #widget-area .widget {

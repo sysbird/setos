@@ -16,11 +16,11 @@ jQuery(function() {
 			var birdfieldHeightCheck = function ( mq ) {
 				if ( mq.matches ) {
 					// tile for home
-					jQuery( "#blog ul li" ).tile(3);
+					jQuery( ".essay ul li" ).tile(3);
 				}
 				else {
 					// cansel
-					jQuery( '#blog ul li' ).css( 'height', 'auto' );
+					jQuery( '.essay ul li' ).css( 'height', 'auto' );
 				}
 			};
 
@@ -43,7 +43,7 @@ jQuery(function() {
 		}
 		else {
 			// Browser doesn't support matchMedia
-			jQuery( "#blog ul li" ).tile( 3 );
+			jQuery( ".essay ul li" ).tile( 3 );
 		}
 
 		// Header Slider
