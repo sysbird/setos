@@ -1349,10 +1349,6 @@ form input {
   left: 0;
 }
 
-#wall .headerimage:not(.slider) img {
-  width: 100%;
-}
-
 #wall .headerimage .fixedimage {
   padding-top: 70.3125%;
   height: 0;
