@@ -18,7 +18,7 @@
 	</article>
 
 	<?php setos_entry_meta(); ?>
-	<div class="more"><a href="<?php echo get_post_type_archive_link( 'books' ); ?>"><?php _e( 'Books List', 'setos' ) ?></a></div>
+	<div class="more"><a href="<?php echo get_post_type_archive_link( 'book' ); ?>"><?php _e( 'Book List', 'setos' ) ?></a></div>
 
 	<?php endwhile; ?>
 	</div>

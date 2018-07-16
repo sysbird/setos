@@ -129,12 +129,6 @@ function setos_setup() {
 
 	// Add support for title tag.
 	add_theme_support( 'title-tag' );
-
-	// Add support for news content.
-	add_theme_support( 'news-content', array(
-		'news_content_filter'	=> 'setos_get_news_posts',
-		'max_posts'				=> 5,
-	) );
 }
 add_action( 'after_setup_theme', 'setos_setup' );
 
@@ -145,10 +139,10 @@ function setos_init() {
 	//	 add tags at page
 	register_taxonomy_for_object_type('post_tag', 'page');
 
-	// add post type books
+	// add post type book
 	$labels = array(
-		'name'		=> '本',
-		'all_items'	=> '本の一覧',
+		'name'		=> ' 写真集',
+		'all_items'	=> '写真集の一覧',
 		);
 
 	$args = array(
@@ -160,7 +154,24 @@ function setos_init() {
 		'has_archive'		=> true,	// アーカイブページの作成
 		);
 
-	register_post_type( 'books', $args );
+	register_post_type( 'book', $args );
+
+	// add post type essay
+	$labels = array(
+		'name'		=> ' エッセイ',
+		'all_items'	=> 'エッセイの一覧',
+		);
+
+	$args = array(
+		'labels'			=> $labels,
+		'supports'			=> array( 'title','editor', 'thumbnail', 'custom-fields' ),
+		'public'			=> true,	// 公開するかどうが
+		'show_ui'			=> true,	// メニューに表示するかどうか
+		'menu_position'		=> 5,		// メニューの表示位置
+		'has_archive'		=> true,	// アーカイブページの作成
+		);
+
+	register_post_type( 'essay', $args );
 }
 add_action( 'init', 'setos_init', 0 );
 
@@ -177,34 +188,12 @@ function setos_bogo_localizable_post_types( $localizable ) {
 add_filter( 'bogo_localizable_post_types', 'setos_bogo_localizable_post_types', 10, 1 );
 
 //////////////////////////////////////////////////////
-// Filter the news posts to return
-function setos_get_news_posts(){
-	$array = get_posts(array(
-		'tag_slug__in'	=> 'news',
-		'numberposts'	=> 5
-	));
-
-	return $array;
-}
-add_filter( 'setos_get_news_posts', 'setos_get_news_posts', 100 );
-
-//////////////////////////////////////////////////////
-// Filter home and the news posts that returns a boolean value.
-function setos_has_news_posts() {
-	return ! is_paged() && ( bool ) setos_get_news_posts();
-}
-
-//////////////////////////////////////////////////////
 // Filter main query at home
 function setos_home_query( $query ) {
  	if ( $query->is_home() && $query->is_main_query() ) {
-		$setos_news = get_term_by( 'name', 'news', 'post_tag' );
-		if( $setos_news ){
-			$query->set( 'tag__not_in', $setos_news->term_id );
-		}
 	}
 }
-add_action( 'pre_get_posts', 'setos_home_query' );
+add_action( '_get_posts', 'setos_home_query' );
 
 //////////////////////////////////////////////////////
 // Enqueue Scripts
@@ -327,14 +316,14 @@ function setos_the_custom_field( $ID, $selector, $before, $after ) {
 // Display entry meta
 function setos_entry_meta() {
 ?>
-	<?php if( is_post_type_archive( 'books' ) ): // archive books ?>
+	<?php if( is_post_type_archive( 'book' ) ): // archive book ?>
 		<ul class="book-meta">
 			<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '' ); ?>
 			<li><strong><?php _e( 'Release', 'setos'); ?>:</strong> <time datetime="<?php the_time( 'Y-m-d' ); ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time></li>
 		</ul>
 	<?php elseif( is_archive() || is_search() ) : // archive ?>
 	<?php elseif( is_home() ): // home ?>
-	<?php elseif( is_singular( 'books' ) ): // single books ?>
+	<?php elseif( is_singular( 'book' ) ): // single book ?>
 		<ul class="book-meta">
 			<li class="entry-title"><strong><?php _e( 'Photo Book', 'setos'); ?>:</strong> <?php the_title(); ?></li>
 			<?php setos_the_custom_field( get_the_ID(), 'author', '<li><strong>' .__( 'Author', 'setos') .':</strong> ', '' ); ?>

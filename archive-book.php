@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying archive-books pages
+ * The template for displaying archive-book pages
  *
  * @package WordPress
  * @subpackage setos
@@ -14,7 +14,7 @@ get_header(); ?>
 	<div class="container">
 		<article class="hentry">
 			<header class="content-header">
-				<h1 class="content-title"><?php _e( 'Books List', 'setos' ); ?></h1>
+				<h1 class="content-title"><?php _e( 'Book List', 'setos' ); ?></h1>
 			</header>
 
 			<?php if ( have_posts() ) : ?>

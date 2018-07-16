@@ -23,9 +23,9 @@
 			<div id="branding">
 				<?php $heading_tag = ( is_home() || is_front_page() ) ? 'h1' : 'div'; ?>
 				<<?php echo $heading_tag; ?> id="site-title">
-					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php _e( 'SETOS', 'setos' ); ?>" rel="home"><?php _e( 'SETOS', 'setos' ); ?></a>
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php _e( 'THE PLACE SETOS', 'setos' ); ?>" rel="home"><?php _e( 'THE PLACE SETOS', 'setos' ); ?></a>
 				</<?php echo $heading_tag; ?>>
-				<p id="site-description"><?php _e( 'Description of this site', 'setos' ); ?></p>
+				<p id="site-description"><?php _e( 'SETO Masato', 'setos' ); ?></p>
 			</div>
 
 			<nav id="menu-wrapper">
