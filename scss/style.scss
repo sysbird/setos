@@ -938,7 +938,7 @@ form {
 			@include clearfix;
 		}
 
-		#news {
+		#information {
 			ul.article {
 				list-style: none;
 				margin: 0;
@@ -1338,10 +1338,10 @@ form {
 	}
 }
 
-/* books
+/* book
 --------------------------------------------- */
-.single-books,
-.post-type-archive-books {
+.single-book,
+.post-type-archive-book {
 	#content {
 		ul.book-meta {
 			list-style: none;
@@ -1366,9 +1366,9 @@ form {
 	}
 }
 
-.post-type-archive-books {
+.post-type-archive-book {
 	#content {
-		.type-books {
+		.type-book {
 			border-bottom: dotted 1px $border-color;
 			padding-bottom: 2%;
 			margin-bottom: 2%;
@@ -1394,7 +1394,7 @@ form {
 	}
 }
 
-.single-books {
+.single-book {
 	#content {
 		ul.book-meta {
 			margin-bottom: #{$line-height}rem;
@@ -1561,9 +1561,9 @@ form {
 		}
 	}
 
-	.post-type-archive-books {
+	.post-type-archive-book {
 		#content {
-			.type-books {
+			.type-book {
 				@include display-flex();
 
 				.entry-eyecatch {
@@ -1699,7 +1699,7 @@ form {
 
 	.home {
 		#content {
-			#news ul.article {
+			#information ul.article {
 				li {
 					.entry-header {
 						.postdate {
@@ -1725,7 +1725,6 @@ form {
 							width: 300px;
 							float: left;
 							margin: 0 5px 10px 5px;
-							//border: solid 1px $border-color;
 
 							.entry-eyecatch {
 								width: 100%;

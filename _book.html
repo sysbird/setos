@@ -17,40 +17,9 @@
 <script type='text/javascript' src='js/setos.js?ver=1.10'></script>
 
 <style>
-/*
-.setos-gallery {
-	background: #EFEFEF;
-	padding: 7px;
-	margin-bottom: 1.6em;
-}
-
-.setos-gallery .setos-gallery-cover {
-	padding-bottom: 5px;
-}
-
-.setos-gallery .swiper-slide {
-	position: relative;
-	padding-top: 16.5%;
-	height: 0;
-	overflow: hidden;
-}
-
-.setos-gallery .swiper-slide a img {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translateY(-50%) translateX(-50%);
-	-webkit- transform: translateY(-50%) translateX(-50%);
-}
-
-.setos-gallery .fancybox-can-zoomIn
-.setos-gallery 	.fancybox-content {
-	cursor: pointer;
-}
-*/
 </style>
 </head>
-<body class="single logged-in custom-background books">
+<body class="single logged-in custom-background book single-book">
 
 <div class="wrapper fixed-header">
 
@@ -58,9 +27,9 @@
 		<div class="container">
 			<div id="branding">
 					<h1 id="site-title">
-					<a href="/sample" title="THE PLACE SETOS" rel="home">THE PLACE SETOS</a>
+					<a href="/sample" title="THE PLACE SETOS" rel="home">HTMLS</a>
 				</h1>
-				<p id="site-description">瀬戸正人</p>
+				<p id="site-description">さんぷるページ</p>
 			</div>
 
 			<nav id="menu-wrapper">
@@ -70,7 +39,7 @@
 				<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-306"><a href="#">Profile</a></li>
 				<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-306"><a href="#">Works</a></li>
 				<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-306"><a href="#">Essay</a></li>
-				<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_itemmenu-item-306"><a href="#">Books</a></li>
+				<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_itemmenu-item-306"><a href="#">Book</a></li>
 				</ul>
 				</div>
 			</nav>
@@ -78,11 +47,20 @@
 	</header>
 
 <div id="content">
+
+	<div class="bread_crumb">
+		<ul class="container">
+			<li class="level-1 top"><a href="#">ホーム</a></li>
+			<li class="level-2 sub"><a href="#">Book</a></li>
+			<li class="level-3 sub tail current">タイトル</li>
+		</ul>
+	</div>
+
 	<div class="container">
 		<article class="hentry">
 
 	<header class="entry-header">
-		<h1 class="entry-title"> 写真集のタイトル</h1>
+		<h1 class="entry-title">タイトル</h1>
 	</header>
 
 	<div class="entry-content">
@@ -118,7 +96,7 @@
 		</div>
 
 	<footer class="entry-footer">
-		<ul>
+		<ul class="book-meta">
 			<li class="entry-title"><strong>写真集:</strong> 写真集のタイトル</li>
 			<li><strong>著者:</strong> 瀬戸正人</li>
 			<li><strong>出版社:</strong> サンプル社</li>
@@ -129,7 +107,7 @@
 		</ul>
 	</footer>
 
-		<div class="more"><a href="#">Booksの一覧を見る</a></div>
+		<div class="more"><a href="#">Bookの一覧を見る</a></div>
 
 		</article>
 	</div>
@@ -180,52 +158,6 @@
 
 <script>
 jQuery(function(){
-/*
-	jQuery( window ).load(function() {
-		// Swiper
-		var swiper = new Swiper('.swiper-container', {
-			slidesPerView: '4',
-			spaceBetween: 7,
-			preloadImages: false,
-			lazy: true,
-			navigation: {
-				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-prev',
-			},
-			on: {
-				lazyImageReady: function ( slide, image ) {
-					var width = parseInt( jQuery( image ).css( 'width' ));
-					var height = parseInt( jQuery( image ).css( 'height' ));
-					if( width < height ){
-						// vertical image
-						var height_new = parseInt( jQuery( slide ).css( 'height' ));
-						var width_new = parseInt( width * ( height_new / height ));
-						jQuery( slide ).css({ 'width': width_new + 'px' });
-					}
-				},
-			},
-			breakpoints: {
-				750: {
-					slidesPerView: 3,
-					spaceBetween: 5,
-				},
-			}
-		});
-
-		// Zoom for thumbnail
-		jQuery("[data-fancybox]").fancybox({
-			loop : true,
-			buttons: [
-				"thumbs",
-				"close"
-			],
-		});
-
-		jQuery( '.setos-gallery-cover' ).click(function() {
-			jQuery( ".swiper-slide:first a" ).click();
-			return false;
-		});
-	}); */
 });
 
 </script>

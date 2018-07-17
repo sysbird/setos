@@ -1048,13 +1048,13 @@ form input {
   *zoom: 1;
 }
 
-.home #content #news ul.article {
+.home #content #information ul.article {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.home #content #news ul.article li {
+.home #content #information ul.article li {
   border: none;
   background: none;
   margin: 0;
@@ -1062,25 +1062,25 @@ form input {
   border-top: dotted 1px #EAEAEA;
 }
 
-.home #content #news ul.article li a {
+.home #content #information ul.article li a {
   padding: 0.5em 0;
   display: block;
 }
 
-.home #content #news ul.article li .entry-header {
+.home #content #information ul.article li .entry-header {
   margin: 0;
   overflow: hidden;
   *zoom: 1;
 }
 
-.home #content #news ul.article li .entry-header .entry-title {
+.home #content #information ul.article li .entry-header .entry-title {
   font-size: 1.2rem;
   color: #708f9c;
   padding-top: 0.85em;
   margin: 0;
 }
 
-.home #content #news ul.article li .entry-header .postdate {
+.home #content #information ul.article li .entry-header .postdate {
   display: block;
 }
 
@@ -1464,10 +1464,10 @@ form input {
   padding-right: 0.425em;
 }
 
-/* books
+/* book
 --------------------------------------------- */
-.single-books #content ul.book-meta,
-.post-type-archive-books #content ul.book-meta {
+.single-book #content ul.book-meta,
+.post-type-archive-book #content ul.book-meta {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -1475,14 +1475,14 @@ form input {
   padding: 2%;
 }
 
-.single-books #content ul.book-meta li,
-.post-type-archive-books #content ul.book-meta li {
+.single-book #content ul.book-meta li,
+.post-type-archive-book #content ul.book-meta li {
   padding: 0.3em 0 0.3em 0.6em;
   text-indent: -0.3em;
 }
 
-.single-books #content ul.book-meta li:before,
-.post-type-archive-books #content ul.book-meta li:before {
+.single-book #content ul.book-meta li:before,
+.post-type-archive-book #content ul.book-meta li:before {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -1496,28 +1496,28 @@ form input {
   color: #708f9c;
 }
 
-.post-type-archive-books #content .type-books {
+.post-type-archive-book #content .type-book {
   border-bottom: dotted 1px #EAEAEA;
   padding-bottom: 2%;
   margin-bottom: 2%;
 }
 
-.post-type-archive-books #content .type-books .entry-eyecatch {
+.post-type-archive-book #content .type-book .entry-eyecatch {
   margin-bottom: 2%;
   text-align: center;
 }
 
-.post-type-archive-books #content .type-books .entry-content h2 {
+.post-type-archive-book #content .type-book .entry-content h2 {
   border: none;
   margin: 0;
 }
 
-.post-type-archive-books #content .type-books .entry-content ul.book-meta {
+.post-type-archive-book #content .type-book .entry-content ul.book-meta {
   background: none;
   padding: 0 0 2% 0;
 }
 
-.single-books #content ul.book-meta {
+.single-book #content ul.book-meta {
   margin-bottom: 1.7rem;
 }
 
@@ -1638,16 +1638,16 @@ form input {
   #content .biography ul li:last-child {
     margin-bottom: 1.7rem;
   }
-  .post-type-archive-books #content .type-books {
+  .post-type-archive-book #content .type-book {
     display: -webkit-flex;
     display: flex;
   }
-  .post-type-archive-books #content .type-books .entry-eyecatch {
+  .post-type-archive-book #content .type-book .entry-eyecatch {
     width: 300px;
     margin-bottom: 0;
     text-align: left;
   }
-  .post-type-archive-books #content .type-books .entry-content {
+  .post-type-archive-book #content .type-book .entry-content {
     width: calc(100% - 300px);
     padding-left: 2%;
   }
@@ -1747,11 +1747,11 @@ form input {
     content: "\f0d7";
     padding-left: 0.2125em;
   }
-  .home #content #news ul.article li .entry-header .postdate {
+  .home #content #information ul.article li .entry-header .postdate {
     width: 10em;
     float: left;
   }
-  .home #content #news ul.article li .entry-header .entry-title {
+  .home #content #information ul.article li .entry-header .entry-title {
     padding: 0 0 0 8em;
   }
   .home #content .section.essay {
