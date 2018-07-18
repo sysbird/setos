@@ -114,14 +114,6 @@ function setos_setup() {
 		'caption',
 	) );
 
-	/*
-	 * This theme supports all available post formats by default.
-	 * See http://codex.wordpress.org/Post_Formats
-	 */
-	add_theme_support( 'post-formats', array(
-		'aside', 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video'
-	) );
-
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => __( 'Navigation Menu', 'setos' ),
@@ -158,7 +150,7 @@ function setos_init() {
 
 	// add post type essay
 	$labels = array(
-		'name'		=> ' エッセイ',
+		'name'		=> 'エッセイ',
 		'all_items'	=> 'エッセイの一覧',
 		);
 
@@ -190,10 +182,12 @@ add_filter( 'bogo_localizable_post_types', 'setos_bogo_localizable_post_types', 
 //////////////////////////////////////////////////////
 // Filter main query at home
 function setos_home_query( $query ) {
- 	if ( $query->is_home() && $query->is_main_query() ) {
-	}
+	if ( $query->is_home() && $query->is_main_query() ) {
+		// toppage information
+	   $query->set( 'posts_per_page', 3 );
+   }
 }
-add_action( '_get_posts', 'setos_home_query' );
+add_action( 'pre_get_posts', 'setos_home_query' );
 
 //////////////////////////////////////////////////////
 // Enqueue Scripts
@@ -250,6 +244,16 @@ function setos_gallery_atts( $out, $pairs, $atts ) {
 }
 add_filter( 'shortcode_atts_gallery', 'setos_gallery_atts', 10, 3 );
 add_filter( 'use_default_gallery_style', '__return_false' );
+
+//////////////////////////////////////////////////////
+// archive title
+function setos_get_the_archive_title ( $title ) {
+
+	$setos_title = preg_replace('/.*:\s+/', '', $title );
+
+	return $setos_title;
+};
+add_filter( 'get_the_archive_title', 'setos_get_the_archive_title' );
 
 //////////////////////////////////////////////////////
 // Excerpt More

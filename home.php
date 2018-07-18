@@ -6,8 +6,7 @@
  * @subpackage setos
  * @since setos 1.0
  */
-get_header();
-$setos_has_news = 0; ?>
+get_header(); ?>
 
 <div id="content">
 	<?php setos_content_header(); ?>
@@ -22,7 +21,7 @@ $setos_has_news = 0; ?>
 		//プロフィールを表示する？
 		$args = array(
 			'post_type'	=> 'page',
-			'name'		=> '____profile',
+			'tag'		=> 'top',
 			'post_status'	=> 'publish'
 		);
 		$the_query = new WP_Query($args);
@@ -30,9 +29,9 @@ $setos_has_news = 0; ?>
 			while ( $the_query->have_posts() ) : $the_query->the_post();
 	?>
 
-	<section class="information section <?php  echo get_post_field( 'post_name', get_the_ID() ); ?>">
+	<section class="section <?php  echo get_post_field( 'post_name', get_the_ID() ); ?>">
 		<div class="container">
-			<h2>c</h2>
+			<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
 			<?php
 				$more_text = sprintf( __( 'See more &#8216;%s&#8217;', 'setos' ), get_the_title() );
@@ -53,7 +52,7 @@ $setos_has_news = 0; ?>
 	?>
 
 	<?php if ( have_posts()) : ?>
-		<section id="news" class="section">
+		<section id="information" class="section">
 			<div class="container">
 				<h2><?php _e( 'Information', 'setos' ) ?></h2>
 				<ul class="article">
@@ -69,6 +68,8 @@ $setos_has_news = 0; ?>
 
 				<?php endwhile; ?>
 				</ul>
+				<?php $category_id = get_cat_ID( 'お知らせ' ); ?>
+				<div class="more"><a href="<?php echo get_category_link( $category_id ); ?>"><?php _e( 'Information more', 'setos' ) ?></a></div>
 			</div>
 		</section>
 	<?php endif; ?>
@@ -86,7 +87,7 @@ $setos_has_news = 0; ?>
 					<h2>Essay</h2>
 					<ul class="article">
 
-					<?php	while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+					<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 
 						<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 							<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'setos' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
@@ -101,19 +102,18 @@ $setos_has_news = 0; ?>
 								<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time>
 							</header>
 							</a>
-							<?php if(is_sticky()): ?>
-								<i><span></span></i>
-							<?php endif; ?>
 						</li>
 
 					<?php endwhile;
 						wp_reset_postdata();
-						endif; ?>
+					 ?>
 
 					</ul>
-					<div class="more"><a href="<?php echo get_post_type_archive_link( 'essay' ); ?>"><?php _e( 'Essay List', 'setos' ) ?></a></div>
+					<div class="more"><a href="<?php echo get_post_type_archive_link( 'essay' ); ?>"><?php _e( 'Essay more', 'setos' ) ?></a></div>
 				</div>
 			</section>
+
+		<?php endif; ?>
 
 	<?php setos_content_footer(); ?>
 </div>

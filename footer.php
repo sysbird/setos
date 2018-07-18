@@ -16,7 +16,8 @@
 
 		<div class="container">
 			<div class="site-title">
-				<a href="<?php echo esc_url( home_url( '/' ) ) ; ?>"><strong><?php bloginfo(); ?></strong></a>
+				<?php $site_title = get_bloginfo( 'name' ); ?>
+				<a href="<?php echo esc_url( home_url( '/' ) ) ; ?>"><strong><?php _e( $site_title, 'setos' ); ?></strong></a>
 
 				<?php if( get_theme_mod( 'setos_copyright', true ) ): ?>
 					<?php printf(__( 'Copyright &copy; %s All Rights Reserved.', 'setos' ), setos_get_copyright_year() ); ?>
