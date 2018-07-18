@@ -5,7 +5,7 @@ jQuery(function() {
 	jQuery( window ).load(function() {
 
 		// home grid
-		jQuery( "#blog ul li" ).tile( 3 );
+		jQuery( "ul.tile li" ).tile( 3 );
 
 		// Browser supports matchMedia
 		if ( window.matchMedia ) {
@@ -16,11 +16,11 @@ jQuery(function() {
 			var birdfieldHeightCheck = function ( mq ) {
 				if ( mq.matches ) {
 					// tile for home
-					jQuery( ".essay ul li" ).tile(3);
+					jQuery( "ul.tile li" ).tile(3);
 				}
 				else {
 					// cansel
-					jQuery( '.essay ul li' ).css( 'height', 'auto' );
+					jQuery( 'ul.tile li' ).css( 'height', 'auto' );
 				}
 			};
 
@@ -43,7 +43,7 @@ jQuery(function() {
 		}
 		else {
 			// Browser doesn't support matchMedia
-			jQuery( ".essay ul li" ).tile( 3 );
+			jQuery( "ul.tile li" ).tile( 3 );
 		}
 
 		// Header Slider
