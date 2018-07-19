@@ -34,7 +34,7 @@ get_header(); ?>
 
 				<?php endwhile; ?>
 				</ul>
-				<?php $category_id = get_cat_ID( 'お知らせ' ); ?>
+				<?php $category_id = get_cat_ID( 'Information' ); ?>
 				<div class="more"><a href="<?php echo get_category_link( $category_id ); ?>"><?php _e( 'Information more', 'setos' ) ?></a></div>
 			</div>
 		</section>
@@ -73,7 +73,7 @@ get_header(); ?>
 		wp_reset_postdata();
 		endif;
 	?>
-	
+
 	<?php
 		$args = array(
 			'post_type'		=> 'essay',

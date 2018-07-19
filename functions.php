@@ -184,8 +184,11 @@ add_filter( 'bogo_localizable_post_types', 'setos_bogo_localizable_post_types', 
 function setos_home_query( $query ) {
 	if ( $query->is_home() && $query->is_main_query() ) {
 		// toppage information
-	   $query->set( 'posts_per_page', 3 );
-   }
+		 $query->set( 'posts_per_page', 3 );
+	}
+	else if ( $query->is_post_type_archive( 'essay' ) && $query->is_main_query() ) {
+		 $query->set( 'posts_per_page', 9 );
+	}
 }
 add_action( 'pre_get_posts', 'setos_home_query' );
 
@@ -322,20 +325,21 @@ function setos_entry_meta() {
 ?>
 	<?php if( is_post_type_archive( 'book' ) ): // archive book ?>
 		<ul class="book-meta">
-			<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '' ); ?>
-			<li><strong><?php _e( 'Release', 'setos'); ?>:</strong> <time datetime="<?php the_time( 'Y-m-d' ); ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time></li>
+			<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '</li>' ); ?>
+			<?php setos_the_custom_field( get_the_ID(), 'release', '<li><strong>' .__( '発売日', 'setos') .':</strong> ', '</li>' ); ?>
 		</ul>
 	<?php elseif( is_archive() || is_search() ) : // archive ?>
 	<?php elseif( is_home() ): // home ?>
 	<?php elseif( is_singular( 'book' ) ): // single book ?>
 		<ul class="book-meta">
 			<li class="entry-title"><strong><?php _e( 'Photo Book', 'setos'); ?>:</strong> <?php the_title(); ?></li>
-			<?php setos_the_custom_field( get_the_ID(), 'author', '<li><strong>' .__( 'Author', 'setos') .':</strong> ', '' ); ?>
-			<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '' ); ?>
+			<?php setos_the_custom_field( get_the_ID(), 'author', '<li><strong>' .__( 'Author', 'setos') .':</strong> ', '</li>' ); ?>
+			<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '</li>' ); ?>
 			<?php setos_the_custom_field( get_the_ID(), 'isbn-10', '<li><strong>' .__( 'ISBN-10', 'setos') .':</strong> ', '</li>' ); ?>
-			<li><strong><?php _e( 'Release', 'setos'); ?>:</strong> <time datetime="<?php the_time( 'Y-m-d' ); ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time></li>
+			<?php setos_the_custom_field( get_the_ID(), 'isbn-13', '<li><strong>' .__( 'ISBN-13', 'setos') .':</strong> ', '</li>' ); ?>
+			<?php setos_the_custom_field( get_the_ID(), 'release', '<li><strong>' .__( '発売日', 'setos') .':</strong> ', '' ); ?>
 			<?php setos_the_custom_field( get_the_ID(), 'price', '<li><strong>' .__( 'Price', 'setos') .':</strong> ', ' ' .__( 'yen', 'setos') .'</li>' ); ?>
-			<?php setos_the_custom_field( get_the_ID(), 'size', '<li><strong>' .__( 'Size', 'setos') .':</strong> ', '' ); ?>
+			<?php setos_the_custom_field( get_the_ID(), 'size', '<li><strong>' .__( 'Size', 'setos') .':</strong> ', '</li>' ); ?>
 		</ul>
 	<?php endif; ?>
 
@@ -373,6 +377,49 @@ function setos_wp_head() {
 	}
 }
 add_action( 'wp_head', 'setos_wp_head' );
+
+//////////////////////////////////////////////////////
+// image optimize
+function setos_handle_upload( $file )
+{
+	if( $file['type'] == 'image/jpeg' ) {
+		$image = wp_get_image_editor( $file[ 'file' ] );
+
+		if (! is_wp_error($image)) {
+			$exif = exif_read_data( $file[ 'file' ] );
+			$orientation = $exif[ 'Orientation' ];
+			$max_width = 930;
+			$max_height = 930;
+			$size = $image->get_size();
+			$width = $size[ 'width' ];
+			$height = $size[ 'height' ];
+
+			if ( $width > $max_width || $height > $max_height ) {
+				$image->resize( $max_width, $max_height, false );
+			}
+
+			if (! empty($orientation)) {
+				switch ($orientation) {
+					case 8:
+						$image->rotate( 90 );
+						break;
+
+					case 3:
+						$image->rotate( 180 );
+						break;
+
+					case 6:
+						$image->rotate( -90 );
+						break;
+				}
+			}
+			$image->save( $file[ 'file' ]) ;
+		}
+	}
+
+	return $file;
+}
+add_action( 'wp_handle_upload', 'setos_handle_upload' );
 
 //////////////////////////////////////////////////////
 // Header Slider

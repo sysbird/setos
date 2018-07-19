@@ -14,24 +14,28 @@ get_header(); ?>
 	<div class="container">
 		<article class="hentry">
 			<header class="content-header">
-				<h1 class="content-title"><?php _e( 'Book List', 'setos' ); ?></h1>
+				<?php
+					the_archive_title( '<h1 class="content-title">', '</h1>' );
+				?>
 			</header>
 
 			<?php if ( have_posts() ) : ?>
-				<?php while ( have_posts() ) : the_post(); ?>
+				<ul class="archive">
+					<?php while ( have_posts() ) : the_post(); ?>
 
-					<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+						<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 						<?php if( has_post_thumbnail() ): ?>
-							<div class="entry-eyecatch"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'medium' ); ?></a></div>
+							<div class="entry-eyecatch"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'large' ); ?></a></div>
 						<?php endif; ?>
-						<div class="entry-content">
+						<div class="entry-header">
 							<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 							<?php setos_entry_meta(); ?>
 							<?php the_excerpt(); ?>
 						</div>
-					</div>
+						</li>
 
-				<?php endwhile; ?>
+					<?php endwhile; ?>
+				</ul>
 
 				<?php $setos_pagination = get_the_posts_pagination( array(
 						'mid_size'				=> 3,
