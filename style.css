@@ -506,6 +506,18 @@ body {
   color: #708f9c;
 }
 
+.entry-header .cateogry a {
+  background-color: #708f9c;
+  color: #FFF;
+  padding: 1px 7px;
+  border-radius: 2px;
+  font-size: 0.9rem;
+}
+
+.entry-header .cateogry a:hover {
+  text-decoration: none;
+}
+
 .entry-meta {
   font-size: 0.9rem;
   padding: 1.7em 0;

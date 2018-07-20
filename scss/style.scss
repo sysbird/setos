@@ -431,6 +431,20 @@ body {
 			color: $link-color;
 		}
 	}
+
+	.cateogry {
+		a {
+			background-color: $link-color;
+			color: #FFF;
+			padding: 1px 7px;
+			border-radius: 2px;
+			font-size: 0.9rem;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
 }
 
 .entry-meta {
