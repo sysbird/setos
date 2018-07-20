@@ -29,8 +29,10 @@ get_header(); ?>
 						<?php endif; ?>
 						<div class="entry-header">
 							<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-							<?php setos_entry_meta(); ?>
-							<?php the_excerpt(); ?>
+							<?php if( wp_is_mobile()): ?>
+								<?php setos_entry_meta(); ?>
+								<?php the_excerpt(); ?>
+							<?php endif; ?>
 						</div>
 						</li>
 

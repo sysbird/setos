@@ -12,22 +12,33 @@ get_header(); ?>
 	<?php setos_content_header(); ?>
 
 	<div class="container">
-
 		<article class="hentry">
-		<ul class="archive">
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'content', get_post_format() ); ?>
-			<?php endwhile; ?>
-		</ul>
+			<?php if( is_archive()): ?>
+				<header class="content-header">
+					<?php
+						the_archive_title( '<h1 class="content-title">', '</h1>' );
+					?>
+				</header>
+			<?php endif; ?>
 
-		<?php $setos_pagination = get_the_posts_pagination( array(
-				'mid_size'	=> 3,
-				'screen_reader_text'	=> 'pagination',
-			) );
+			<?php if ( have_posts() ) : ?>
+				<ul class="archive">
+					<?php while ( have_posts() ) : the_post(); ?>
+						<?php get_template_part( 'content', get_post_format() ); ?>
+					<?php endwhile; ?>
+				</ul>
 
-			$setos_pagination = str_replace( '<h2 class="screen-reader-text">pagination</h2>', '', $setos_pagination );
-			echo $setos_pagination; ?>
+				<?php $setos_pagination = get_the_posts_pagination( array(
+						'mid_size'				=> 3,
+						'screen_reader_text'	=> 'pagination',
+					) );
 
+					$setos_pagination = str_replace( '<h2 class="screen-reader-text">pagination</h2>', '', $setos_pagination );
+					echo $setos_pagination; ?>
+
+			<?php else: ?>
+				<p><?php _e( 'Sorry, no posts matched your criteria.', 'setos' ); ?></p>
+			<?php endif; ?>
 		</article>
 	</div>
 

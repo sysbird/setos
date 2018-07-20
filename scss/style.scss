@@ -394,123 +394,123 @@ body {
 	width: 100%;
 	word-wrap: break-word;
 	@include pie-clearfix;
+}
 
-	.entry-eyecatch {
-		margin: 0 -2%;
+.entry-eyecatch {
+	margin: 0 -2%;
 
-		img {
-			max-width: 100%;
+	img {
+		max-width: 100%;
+	}
+}
+
+.entry-header {
+	margin: #{$line-height}rem 0;
+	line-height: 1.4;
+	position: relative;
+
+	.entry-title {
+		color: $header-color;
+		font-size: 2rem;
+		font-weight: normal;
+		margin: 0 0 #{$line-height /8}em 0;
+		line-height: 1.2;
+		padding: 0;
+		border: none;
+
+		a {
+			color: $text-color;
 		}
 	}
 
-	.entry-header {
-		margin: #{$line-height}rem 0;
-		line-height: 1.4;
-		position: relative;
-
-		.entry-title {
-			color: $header-color;
-			font-size: 2rem;
-			font-weight: normal;
-			margin: 0 0 #{$line-height /8}em 0;
-			line-height: 1.2;
-			padding: 0;
-			border: none;
-
-			a {
-				color: $text-color;
-			}
-		}
-
-		.postdate {
-			color: $link-color;
-			font-size: 0.9rem;
-
-			a {
-				color: $link-color;
-			}
-		}
-	}
-
-	.entry-meta {
-		font-size: 0.9rem;
-		padding: #{$line-height}em 0;
-		color: $meta-color;
-		clear: both;
-
-		.category,
-		.tag {
-			margin-bottom: #{$line-height /4}em;
-			@include clearfix;
-
-			span {
-				width: 7em;
-				padding: 2px 0;
-				display: block;
-				float: left;
-
-				&:before {
-					@include font-awesome();
-					content: "\f07b";
-					padding-right: #{$line-height /8}em;
-				}
-			}
-
-			a {
-				background: #FFF;
-				border: solid 1px $border-color;
-				padding: 2px 5px;
-				color: $meta-color;
-				border-radius: 4px;
-				margin-bottom: 4px;
-				display: inline-block;
-
-				&:hover {
-					background: $hover-background-color;
-					text-decoration:none;
-				}
-			}
-		}
-
-		.tag {
-			span {
-				&:before {
-					@include font-awesome();
-					content:  "\f02c";
-					padding-right: #{$line-height /8}em;
-				}
-			}
-		}
-	}
-
-	.page-links {
-		clear: both;
-		margin: #{$line-height}em 0;
+	.postdate {
 		color: $link-color;
+		font-size: 0.9rem;
+
+		a {
+			color: $link-color;
+		}
+	}
+}
+
+.entry-meta {
+	font-size: 0.9rem;
+	padding: #{$line-height}em 0;
+	color: $meta-color;
+	clear: both;
+
+	.category,
+	.tag {
+		margin-bottom: #{$line-height /4}em;
+		@include clearfix;
 
 		span {
-			background: $link-color;
-			color: #FFF;
-			padding: #{$line-height /5}em #{$line-height /4}em;
-			text-decoration:none;
-			border-radius: 2px;
-			font-weight: normal;
-			text-align: center;
-			border: solid 1px $link-color;
-			display: inline-block;
-			line-height: 1;
+			width: 7em;
+			padding: 2px 0;
+			display: block;
+			float: left;
+
+			&:before {
+				@include font-awesome();
+				content: "\f07b";
+				padding-right: #{$line-height /8}em;
+			}
 		}
 
 		a {
-			span {
-				color: $link-color;
-				border: solid 1px $link-color;
-				background: #FFF;
-				border-radius: 2px;
+			background: #FFF;
+			border: solid 1px $border-color;
+			padding: 2px 5px;
+			color: $meta-color;
+			border-radius: 4px;
+			margin-bottom: 4px;
+			display: inline-block;
 
-				&:hover {
-					background: $hover-background-color;
-				}
+			&:hover {
+				background: $hover-background-color;
+				text-decoration:none;
+			}
+		}
+	}
+
+	.tag {
+		span {
+			&:before {
+				@include font-awesome();
+				content:  "\f02c";
+				padding-right: #{$line-height /8}em;
+			}
+		}
+	}
+}
+
+.page-links {
+	clear: both;
+	margin: #{$line-height}em 0;
+	color: $link-color;
+
+	span {
+		background: $link-color;
+		color: #FFF;
+		padding: #{$line-height /5}em #{$line-height /4}em;
+		text-decoration:none;
+		border-radius: 2px;
+		font-weight: normal;
+		text-align: center;
+		border: solid 1px $link-color;
+		display: inline-block;
+		line-height: 1;
+	}
+
+	a {
+		span {
+			color: $link-color;
+			border: solid 1px $link-color;
+			background: #FFF;
+			border-radius: 2px;
+
+			&:hover {
+				background: $hover-background-color;
 			}
 		}
 	}
@@ -702,9 +702,92 @@ video {
 /* Forms
 -------------------------------------------------------------- */
 form {
-	input {
-		font-size: 100%;
+	max-width: 650px;
+	width: 100%;
+	background-color: $hover-background-color;
+	padding: 3%;
+
+	label {
+		display: block;
 	}
+	
+	p {
+		line-height: 1.2;
+		margin-bottom: 0;
+	}
+
+	input[type=submit],
+	input[type=button] {
+		max-width: 200px;
+		padding: 0.4rem 2rem;
+		border-radius: 4px;
+		background-color: $link-color;
+		color: #FFF;
+		cursor: pointer;
+		font-size: 1.1em;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		border: none;
+		margin: 2px 0;
+	}
+
+	.title {
+		font-weight: 500;
+		display: block;
+		margin-bottom: 5px;
+		font-size: 1.2em;
+	}
+
+	input[type="text"],
+	input[type="email"],
+	textarea {
+		width: 100%;
+		border: solid 1px $border-color;
+		border-radius: 4px;
+		padding: 0.4em;
+		margin-top: 1%;
+		font-size: 1.2rem;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+	}
+
+	input[type="text"],
+	input[type="email"] {
+		width: 70%;
+	}
+
+	textarea {
+		width: 100%;
+		font: inherit;
+		font-size: 1.4rem;
+	}
+
+	.required {
+		color: #cf365a ;
+		font-size: 0.96rem;
+	}
+
+	span[role=alert] {
+		&:before {
+			@include font-awesome();
+			content: "\f054";
+		}
+	}
+}
+
+span[role=alert],
+.wpcf7-not-valid-tip,
+.wpcf7-validation-errors {
+	display: block;
+	color: #cf365a;
+	margin-top: 2%;
+	font-size: 0.96rem;
+}
+
+div.wpcf7-validation-errors {
+	border-color: #cf365a;
 }
 
 .post-password-form {
@@ -801,7 +884,8 @@ form {
 			font-weight: normal;
 			margin: 0 0 #{$line-height /4}em 0;
 			padding: 0 0 #{$line-height /4}em 0;
-			border-bottom: solid 2px $border-color;
+			border-bottom: dotted 1px $border-color;
+			color: #FFF;
 
 			font-size: 1.4rem;
 		}
@@ -862,6 +946,7 @@ form {
 		padding: 5px 10px 5px 5px;
 		line-height: 1;
 		border: none;
+		font-size: inherit;
 		@include flex(1);
 	}
 
@@ -873,7 +958,7 @@ form {
 		background: #FFF;
 		color: $text-color;
 		-webkit-appearance: button;
-		font-size: 1.2em;
+		font-size: inherit;
 		text-align: right;
 
 		&:before {
@@ -1054,9 +1139,10 @@ ul.archive {
 		.entry-header {
 			margin: 0;
 
-			h2 {
+			.entry-title {
 				border: none;
 				margin: 0;
+				font-size: 1.6em;
 			}
 		}
 	}
@@ -1075,7 +1161,7 @@ ul.archive {
 			padding: 5px 0;
 		}
 
-		.nav-previous {
+		.nav-next {
 			text-align: right;
 
 			a:after {
@@ -1085,7 +1171,7 @@ ul.archive {
 			}
 		}
 
-		.nav-next {
+		.nav-previous {
 			a:before {
 				@include font-awesome();
 				content: "\f053";
@@ -1138,7 +1224,7 @@ ul.archive {
 		&.prev {
 			&:before {
 				@include font-awesome();
-				content: "\f060";
+				content: "\f053";
 				padding-right: #{$line-height /8}em;
 			}
 		}
@@ -1146,7 +1232,7 @@ ul.archive {
 		&.next {
 			&:after {
 				@include font-awesome();
-				content:  "\f061";
+				content:  "\f054";
 				padding-left: #{$line-height /8}em;
 			}
 		}
@@ -1447,11 +1533,11 @@ ul.book-meta {
 				width: 40%;
 			}
 
-			.nav-next {
+			.nav-previous {
 				float: left;
 			}
 
-			.nav-previous {
+			.nav-next {
 				float: right;
 			}
 		}
@@ -1697,11 +1783,11 @@ ul.book-meta {
 					width: 300px;
 					margin-bottom: 0;
 					text-align: left;
+					margin-right: 2%;
 				}
 		
 				.entry-header {
 					width: calc(100% - 300px);
-					padding-left: 2%;
 				}
 			}
 		}
