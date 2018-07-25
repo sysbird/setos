@@ -348,7 +348,7 @@ body {
 /* Wrapper
 -------------------------------------------------------------- */
 .wrapper {
-  font-family: 'Raleway', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial','Hiragino Sans', YuGothic, 'Yu Gothic', Meiryo, 'MS PGothic';
+  font-family: 'Open Sans', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial','Hiragino Sans', YuGothic, 'Yu Gothic', Meiryo, 'MS PGothic';
   color: #222327;
   background-color: #FFF;
   overflow: hidden;
@@ -491,6 +491,7 @@ body {
   line-height: 1.2;
   padding: 0;
   border: none;
+  font-family: 'Sawarabi Mincho', 'Open Sans', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', YuGothic, 'Yu Gothic', Meiryo, 'MS PGothic';
 }
 
 .entry-header .entry-title a {

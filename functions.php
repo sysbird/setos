@@ -148,10 +148,27 @@ function setos_init() {
 
 	register_post_type( 'book', $args );
 
+	// add post type works
+	$labels = array(
+		'name'		=> 'Works',
+		'all_items'	=> 'Worksの一覧',
+		);
+
+	$args = array(
+		'labels'			=> $labels,
+		'supports'			=> array( 'title','editor', 'thumbnail', 'custom-fields' ),
+		'public'			=> true,	// 公開するかどうが
+		'show_ui'			=> true,	// メニューに表示するかどうか
+		'menu_position'		=> 5,		// メニューの表示位置
+		'has_archive'		=> true,	// アーカイブページの作成
+		);
+
+	register_post_type( 'works', $args );
+
 	// add post type essay
 	$labels = array(
-		'name'		=> 'エッセイ',
-		'all_items'	=> 'エッセイの一覧',
+		'name'		=> 'Essay',
+		'all_items'	=> 'essayの一覧',
 		);
 
 	$args = array(
@@ -323,14 +340,14 @@ function setos_the_custom_field( $ID, $selector, $before, $after ) {
 // Display entry meta
 function setos_entry_meta() {
 ?>
-	<?php if( is_post_type_archive( 'book' ) ): // archive book ?>
+	<?php if( is_post_type_archive( 'works' ) ): // archive book ?>
 		<ul class="book-meta">
 			<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '</li>' ); ?>
 			<?php setos_the_custom_field( get_the_ID(), 'release', '<li><strong>' .__( '発売日', 'setos') .':</strong> ', '</li>' ); ?>
 		</ul>
 	<?php elseif( is_archive() || is_search() ) : // archive ?>
 	<?php elseif( is_home() ): // home ?>
-	<?php elseif( is_singular( 'book' ) ): // single book ?>
+	<?php elseif( is_singular( 'works' ) ): // single book ?>
 		<ul class="book-meta">
 			<li class="entry-title"><strong><?php _e( 'Photo Book', 'setos'); ?>:</strong> <?php the_title(); ?></li>
 			<?php setos_the_custom_field( get_the_ID(), 'author', '<li><strong>' .__( 'Author', 'setos') .':</strong> ', '</li>' ); ?>

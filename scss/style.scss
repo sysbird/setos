@@ -24,6 +24,10 @@ $border-color: #CCC;
 $meta-color: #999;
 $line-height: 1.7;
 
+$accent-color: #5E7D80;
+//$header-color: #122C38;
+$accent-color: #6B2D41;
+
 /*------------------------------
 Font Awesome
 -----------------------------*/
@@ -283,7 +287,7 @@ body {
 /* Wrapper
 -------------------------------------------------------------- */
 .wrapper {
-	font-family:  'Raleway', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial','Hiragino Sans', YuGothic, 'Yu Gothic', Meiryo, 'MS PGothic';
+	font-family: 'Open Sans', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial','Hiragino Sans', YuGothic, 'Yu Gothic', Meiryo, 'MS PGothic';
 	color: $text-color;
 	background-color: $background-color;
 	overflow: hidden;
@@ -417,6 +421,7 @@ body {
 		line-height: 1.2;
 		padding: 0;
 		border: none;
+		font-family: 'Sawarabi Mincho', 'Open Sans', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', YuGothic, 'Yu Gothic', Meiryo, 'MS PGothic';
 
 		a {
 			color: $text-color;
