@@ -12,53 +12,51 @@ get_header(); ?>
 	<?php setos_content_header(); ?>
 
 	<div class="container">
-		<article class="hentry">
-			<header class="content-header">
-				<?php
-					the_archive_title( '<h1 class="content-title">', '</h1>' );
-				?>
-			</header>
+		<header class="content-header">
+			<?php
+				the_archive_title( '<h1 class="content-title">', '</h1>' );
+			?>
+		</header>
 
-			<?php if ( have_posts() ) : ?>
-				<ul class="tile">
-                    <?php while ( have_posts() ) : the_post(); ?>
+		<?php if ( have_posts() ) : ?>
+			<ul class="tile">
+				<?php while ( have_posts() ) : the_post(); ?>
 
-						<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-							<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'setos' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
+					<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+						<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'setos' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
 
-								<?php if( has_post_thumbnail() ): ?>
-									<div class="entry-eyecatch">
-										<?php the_post_thumbnail( 'middle' ); ?>
-									</div>
-								<?php endif; ?>
+							<?php if( has_post_thumbnail() ): ?>
+								<div class="entry-eyecatch">
+									<?php the_post_thumbnail( 'middle' ); ?>
+								</div>
+							<?php endif; ?>
 
-								<header class="entry-header">
-									<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time>
-									<h2 class="entry-title">
+							<header class="entry-header">
+								<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time>
+								<h2 class="entry-title">
 
-										<?php the_title(); ?>
-			
-									</h2>
+									<?php the_title(); ?>
+		
+								</h2>
 
-								</header>
-							</a>
-						</li>
+							</header>
+						</a>
+					</li>
 
-					<?php endwhile; ?>
-				</ul>
+				<?php endwhile; ?>
+			</ul>
 
-				<?php $setos_pagination = get_the_posts_pagination( array(
-						'mid_size'				=> 3,
-						'screen_reader_text'	=> 'pagination',
-					) );
+			<?php $setos_pagination = get_the_posts_pagination( array(
+					'mid_size'				=> 3,
+					'screen_reader_text'	=> 'pagination',
+				) );
 
-					$setos_pagination = str_replace( '<h2 class="screen-reader-text">pagination</h2>', '', $setos_pagination );
-					echo $setos_pagination; ?>
+				$setos_pagination = str_replace( '<h2 class="screen-reader-text">pagination</h2>', '', $setos_pagination );
+				echo $setos_pagination; ?>
 
-			<?php else: ?>
-				<p><?php _e( 'Sorry, no posts matched your criteria.', 'setos' ); ?></p>
-			<?php endif; ?>
-		</article>
+		<?php else: ?>
+			<p><?php _e( 'Sorry, no posts matched your criteria.', 'setos' ); ?></p>
+		<?php endif; ?>
 	</div>
 
 	<?php setos_content_footer(); ?>

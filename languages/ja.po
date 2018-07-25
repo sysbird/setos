@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: SETOS 1.0\n"
 "Report-Msgid-Bugs-To: http://www.sysbird.jp\n"
 "POT-Creation-Date: 2018-06-19 00:00-0900\n"
-"PO-Revision-Date: 2018-07-17 18:35+0900\n"
+"PO-Revision-Date: 2018-07-25 17:54+0900\n"
 "Last-Translator: TORIYAMA Yuko <sysbird@gmail.com>\n"
 "Language-Team: TORIYAMA Yuko <sysbirdj@gmail.com>\n"
 "Language: ja\n"
@@ -111,20 +111,32 @@ msgid "Search..."
 msgstr "検索…"
 
 #: unknown.php:0
-msgid "Book List"
-msgstr "写真集の一覧"
+msgid "Works"
+msgstr "Works"
+
+#: unknown.php:0
+msgid "Works more"
+msgstr "Worksをもっとみる"
+
+#: unknown.php:0
+msgid "Books more"
+msgstr "写真集"
 
 #: unknown.php:0
 msgid "Book"
-msgstr "写真集"
+msgstr "写真集をもっとみる"
 
 #: unknown.php:0
-msgid "Photo Book"
-msgstr "写真集"
+msgid "Information"
+msgstr "Information"
 
 #: unknown.php:0
 msgid "Information more"
 msgstr "Informationをもっとみる"
+
+#: unknown.php:0
+msgid "Essay"
+msgstr "Essay"
 
 #: unknown.php:0
 msgid "Essay more"
@@ -163,8 +175,8 @@ msgid "Home"
 msgstr "ホーム"
 
 #: unknown.php:0
-msgid "THE PLACE SETOS"
-msgstr "THE PLACE SETOS"
+msgid "The Palce Setos"
+msgstr "The Palce Setos"
 
 #: unknown.php:0
 msgid "SETO Masato"

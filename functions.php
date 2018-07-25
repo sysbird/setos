@@ -222,13 +222,14 @@ function setos_scripts() {
 
 	// fancybox
 	wp_enqueue_style( 'setos-fancybox', get_stylesheet_directory_uri().'/js/fancybox/jquery.fancybox.min.css' );
-	wp_enqueue_script( 'setos-fancybox', get_template_directory_uri() .'/js/fancybox/jquery.fancybox.min.js', array( 'jquery' ), '4.3.3' );
+	wp_enqueue_script( 'setos-fancybox', get_template_directory_uri() .'/js/fancybox/jquery.fancybox.min.js', array( 'jquery' ), '4.3.3' );	
 
 	// tile
 	wp_enqueue_script( 'jquerytile', get_template_directory_uri() .'/js/jquery.tile.js', 'jquery', '1.1.2' );
 
-	// font?
-//	wp_enqueue_style( 'setos-google-font', '//fonts.googleapis.com/css?family=Raleway', false, null, 'all' );
+	// Google Fonts
+//	wp_enqueue_style( 'setos-google-font', '//fonts.googleapis.com/css?family=Open+Sans', false, null, 'all' );
+//	wp_enqueue_style( 'setos-google-font-ja', '//fonts.googleapis.com/earlyaccess/sawarabimincho.css', false, null, 'all' );
 
 	// this
 	wp_enqueue_script( 'setos', get_template_directory_uri() .'/js/setos.js', array( 'jquery' , 'jquery-masonry', 'jquerytile' ), '1.11' );
@@ -368,7 +369,7 @@ function setos_entry_meta() {
 function setos_content_header() {
 
 	// bread crumb
-	$setos_html = '';
+/*	$setos_html = '';
 
 	if( !is_home()){
 		if ( class_exists( 'WP_SiteManager_bread_crumb' ) ) {
@@ -378,7 +379,7 @@ function setos_content_header() {
 		}
 	}
 
-	echo $setos_html;
+	echo $setos_html; */
 }
 
 //////////////////////////////////////////////////////
