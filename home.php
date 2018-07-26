@@ -20,14 +20,14 @@ get_header(); ?>
 	<?php if ( have_posts()) : ?>
 		<section id="information" class="section">
 			<div class="container">
-				<h2><?php _e( 'Information', 'setos' ) ?></h2>
+				<h2 class="content-title"><?php _e( 'Information', 'setos' ) ?></h2>
 				<ul class="list">
 				<?php while ( have_posts()) : the_post(); ?>
 					<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 						<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'setos' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
 							<header class="entry-header">
 								<time class="postdate" datetime="<?php echo get_the_time('Y-m-d') ?>"><?php echo get_post_time( get_option( 'date_format' ) ); ?></time>
-								<h2 class="entry-title"><?php the_title(); ?></h2>
+								<h3 class="entry-title"><?php the_title(); ?></h3>
 							</header>
 						</a>
 					</li>
@@ -54,7 +54,7 @@ get_header(); ?>
 
 	<section class="section <?php  echo get_post_field( 'post_name', get_the_ID() ); ?>">
 		<div class="container">
-			<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+			<h2 class="content-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
 			<?php
 				$more_text = sprintf( __( 'See more &#8216;%s&#8217;', 'setos' ), get_the_title() );
@@ -84,7 +84,7 @@ get_header(); ?>
 		if ( $the_query->have_posts() ) : ?>
 			<section id="essay" class="section">
 				<div class="container">
-					<h2>Essay</h2>
+				<h2 class="content-title">Essay</h2>
 					<ul class="tile">
 
 					<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>

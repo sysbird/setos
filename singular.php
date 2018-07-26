@@ -62,9 +62,9 @@ get_header(); ?>
 			<?php endif; ?>
 
 			<?php if( is_single()): ?>
-				<nav id="nav-below">
-					<span class="nav-next"><?php next_post_link('%link', '%title'); ?></span>
+				<nav class="nav-below">
 					<span class="nav-previous"><?php previous_post_link('%link', '%title'); ?></span>
+					<span class="nav-next"><?php next_post_link('%link', '%title'); ?></span>
 				</nav>
 			<?php endif; ?>
 

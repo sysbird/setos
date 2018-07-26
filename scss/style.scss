@@ -420,8 +420,6 @@ body {
 		margin: 0 0 #{$line-height /8}em 0;
 		line-height: 1.2;
 		padding: 0;
-		border: none;
-		font-family: 'Sawarabi Mincho', 'Open Sans', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', YuGothic, 'Yu Gothic', Meiryo, 'MS PGothic';
 
 		a {
 			color: $text-color;
@@ -725,11 +723,12 @@ form {
 	width: 100%;
 	background-color: $hover-background-color;
 	padding: 3%;
+	margin-bottom: #{$line-height}rem;
 
 	label {
 		display: block;
 	}
-	
+
 	p {
 		line-height: 1.2;
 		margin-bottom: 0;
@@ -997,10 +996,12 @@ div.wpcf7-validation-errors {
 		}
 	}
 
-	h2 {
-		border: none;
-		margin: 0;
-		padding: 0 0 #{$line-height}rem 0;
+	.content-title {
+		color: $header-color;
+		font-size: 2rem;
+		font-weight: normal;
+		line-height: 1.2;
+		padding: 0;
 
 		a {
 			display: block;
@@ -1022,39 +1023,6 @@ div.wpcf7-validation-errors {
 
 /* Archive
 -------------------------------------------------------------------- */
-/*
-.archive,
-.search {
-	ul.list {
-
-		list-style: none;
-		margin: 0;
-		padding: 0;
-
-		li {
-			margin: 0 0 2% 0;
-			padding: 0 0 2% 0;
-			border-bottom: dotted 1px $border-color;
-			@include clearfix;
-
-			.entry-header {
-				margin: 0;
-				@include clearfix;
-
-				.entry-title {
-					font-size: 1.8em;
-				}
-			}
-
-			.attachment-thumbnail {
-				display: block;
-				margin: 0 auto;
-			}
-		}
-	}
-}
-*/
-
 ul.list {
 	list-style: none;
 	margin: 0 0 #{$line-height}rem 0;
@@ -1154,7 +1122,7 @@ ul.archive {
 			margin-bottom: 2%;
 			text-align: center;
 		}
-	
+
 		.entry-header {
 			margin: 0;
 
@@ -1170,31 +1138,51 @@ ul.archive {
 /* Single
 -------------------------------------------------------------------- */
 .single {
-	#nav-below {
-		margin-top: #{$line-height /2}rem;
+	.more {
+		margin-bottom: #{$line-height}rem;
+	}
 
-		.nav-next,
-		.nav-previous {
+	.nav-below {
+		a {
+			border-top: 1px solid lighten( $link-color, 35% );
 			display: block;
-			width: 100%;
-			padding: 5px 0;
+			padding: 1rem;
+			position: relative;
+
+			&:hover {
+				text-decoration: none;
+				background-color: $hover-background-color;
+			}
+
+			&:after {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: 1em;
+				@include font-awesome();
+				content: "\f054";
+				@include display-flex();
+				align-items: center;
+			}
 		}
 
 		.nav-next {
-			text-align: right;
+			a {
+				border-bottom: 1px solid lighten( $link-color, 35% );
+				text-align: right;
 
-			a:after {
-				@include font-awesome();
-				content: "\f054";
-				padding-left: #{$line-height /8}rem;
+				&:after {
+					right: 0;
+				}
 			}
 		}
 
 		.nav-previous {
-			a:before {
-				@include font-awesome();
-				content: "\f053";
-				padding-right: #{$line-height /8}rem;
+			a {
+				&:after {
+					left: 0;
+					content: "\f053";
+				}
 			}
 		}
 	}
@@ -1497,6 +1485,14 @@ ul.book-meta {
 	}
 }
 
+/* Japanese Font
+--------------------------------------------- */
+.single.ja .entry-title,
+.page.ja .entry-title,
+.ja .content-title {
+	font-family: 'Sawarabi Mincho', 'Open Sans', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', YuGothic, 'Yu Gothic', Meiryo, 'MS PGothic';
+}
+
 /* Media queries for responsive design
 --------------------------------------------- */
 /* --- iPad Landscape --- */
@@ -1530,34 +1526,38 @@ ul.book-meta {
 			left: 46%;
 		}
 	}
-/*
-	.archive,
-	.search {
-		ul.list {
-			li {
-				.attachment-thumbnail {
-					margin: 0 0 10px 10px;
-					float: right;
-				}
-			}
-		}
-	}
-*/
+
 	.single {
-		#nav-below {
-			@include clearfix;
+		.nav-below {
+			@include display-flex();
 
-			.nav-next,
-			.nav-previous {
-				width: 40%;
+			span {
+				@include flex(1);
+				@include display-flex();
+				max-width: 50%;
+			}
+			span:nth-child(2n) {
+				border-left: 1px solid lighten( $link-color, 35% );
 			}
 
-			.nav-previous {
-				float: left;
+			a {
+				@include display-flex();
+				align-items: center;
+				width: 100%;
 			}
 
 			.nav-next {
-				float: right;
+				margin-left: auto;
+
+				a {
+					justify-content: right;
+				}
+			}
+
+			.nav-previous {
+				a {
+					border-bottom: 1px solid lighten( $link-color, 35% );
+				}
 			}
 		}
 	}
@@ -1794,24 +1794,24 @@ ul.book-meta {
 		>li {
 			border-bottom: dotted 1px $border-color;
 			padding-bottom: 2%;
-		
+
 			&.has-post-thumbnail {
 				@include display-flex();
-		
+
 				.entry-eyecatch {
 					width: 300px;
 					margin-bottom: 0;
 					text-align: left;
 					margin-right: 2%;
 				}
-		
+
 				.entry-header {
 					width: calc(100% - 300px);
 				}
 			}
 		}
 	}
-	
+
 	#widget-area {
 		.widget {
 			width: 290px;
