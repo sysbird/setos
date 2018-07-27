@@ -147,7 +147,7 @@ jQuery.fn.birdfield_Slider = function(){
 
 	return this.each(function(i, elem) {
 		// change slide
-		var birdfield_interval = jQuery( '.slider' ).attr( 'data-interval' );
+		var setos_interval = jQuery( '.slider' ).attr( 'data-interval' );
 		setInterval( function(){
 
 			index = jQuery( '.slideitem.active' ).index( '.slideitem' );
@@ -164,6 +164,6 @@ jQuery.fn.birdfield_Slider = function(){
 				jQuery( '.slideitem.active').removeClass( 'active' );
 				jQuery( '.slideitem:eq(' + index + ')').addClass( 'active' );
 			} );
-		}, birdfield_interval );
+		}, setos_interval );
 	});
 };
