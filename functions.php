@@ -149,23 +149,6 @@ function setos_init() {
 	//	 add tags at page
 	register_taxonomy_for_object_type('post_tag', 'page');
 
-	// add post type book
-	$labels = array(
-		'name'		=> ' 写真集',
-		'all_items'	=> '写真集の一覧',
-		);
-
-	$args = array(
-		'labels'			=> $labels,
-		'supports'			=> array( 'title','editor', 'thumbnail', 'custom-fields' ),
-		'public'			=> true,	// 公開するかどうが
-		'show_ui'			=> true,	// メニューに表示するかどうか
-		'menu_position'		=> 5,		// メニューの表示位置
-		'has_archive'		=> true,	// アーカイブページの作成
-		);
-
-	register_post_type( 'book', $args );
-
 	// add post type works
 	$labels = array(
 		'name'		=> 'Works',
@@ -246,7 +229,7 @@ function setos_scripts() {
 	wp_enqueue_script( 'jquerytile', get_template_directory_uri() .'/js/jquery.tile.js', 'jquery', '1.1.2' );
 
 	// Google Fonts
-//	wp_enqueue_style( 'setos-google-font', '//fonts.googleapis.com/css?family=Open+Sans', false, null, 'all' );
+	wp_enqueue_style( 'setos-google-font', '//fonts.googleapis.com/css?family=Open+Sans', false, null, 'all' );
 //	wp_enqueue_style( 'setos-google-font-ja', '//fonts.googleapis.com/earlyaccess/sawarabimincho.css', false, null, 'all' );
 
 	// this
@@ -329,7 +312,7 @@ function setos_gallery ( $atts ) {
 
 			// cover photo
 			if( $thumbnail_id == $image->ID ){
-				$html_cover = '<div class="setos-gallery-cover"><a href="#" ><img src="' .$thumbnail[0] .'" alt="' .$book_title .'"></a></div>';
+				$html_cover = '<div class="setos-gallery-cover"><a href="#" ><img src="' .$thumbnail[0] .'" alt="' .$_title .'"></a></div>';
 			}
 		}
 
