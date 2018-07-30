@@ -49,7 +49,7 @@ Font Awesome
 	-moz-osx-font-smoothing: grayscale;
 }
 
-/* element
+/* elementnpm
 --------------------------------------------- */
 a {
 	color: $link-color;
@@ -1423,8 +1423,6 @@ ul.book-meta {
 	list-style: none;
 	padding: 0;
 	margin: 0;
-	background: $hover-background-color;
-	padding: 2%;
 
 	li {
 		padding: 0.3em 0 0.3em 0.6em;
@@ -1441,21 +1439,35 @@ ul.book-meta {
 	}
 }
 
-.archive {
-	ul.book-meta {
-		background: none;
-		padding: 0 0 2% 0;
-	}
-}
-
 .single-book {
 	ul.book-meta {
 		margin-bottom: #{$line-height}rem;
 	}
 }
 
+/* photos slide
+--------------------------------------------- */
+.setos-photos-slide {
+	.setos-photos-cover {
+		cursor: pointer;
+	}
+	
+	a[ data-fancybox="setos-photos-slide"] {
+		display: none;
+	}
+
+	.start {
+		&:before {
+			@include font-awesome();
+			content: "\f054";
+			padding-right: #{$line-height /8}rem;
+		}
+	}
+}
+	
 /* setos-gallery shortcode
 --------------------------------------------- */
+/*
 .setos-gallery {
 	background: $hover-background-color;
 	padding: 7px 0;
@@ -1484,6 +1496,7 @@ ul.book-meta {
 		cursor: pointer;
 	}
 }
+*/
 
 /* Japanese Font
 --------------------------------------------- */
@@ -1638,6 +1651,7 @@ ul.book-meta {
 	}
 }
 
+/*
 .setos-gallery {
 	padding: 7px;
 	margin-left: 0;
@@ -1647,6 +1661,7 @@ ul.book-meta {
 		padding-top: 16.5%;
 	}
 }
+*/
 
 /* --- PCs --- */
 @media screen and (min-width: 930px) {

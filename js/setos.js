@@ -64,7 +64,7 @@ jQuery(function() {
 			});
 
 		// Swiper for gallery
-		var swiper = new Swiper('.swiper-container', {
+/*		var swiper = new Swiper('.swiper-container', {
 			slidesPerView: '4',
 			spaceBetween: 7,
 			preloadImages: false,
@@ -91,19 +91,27 @@ jQuery(function() {
 					spaceBetween: 5,
 				},
 			}
-		});
+		}); */
 
-		// Zoom for thumbnail
-		jQuery("[data-fancybox]").fancybox({
-			loop : true,
-			buttons: [
-				"thumbs",
-				"close"
-			],
-		});
+		// photos slide in book page
+		var slide_num = jQuery("[data-fancybox]").length;
+		if( 1 < slide_num ){
+			jQuery( '.setos-photos-slide' ).prev( 'img' ).addClass( 'setos-photos-cover' ).prependTo( '.setos-photos-slide' );
+			var setos_html = jQuery( '.setos-photos-slide .start' ).html() + '(' + slide_num + 'ページ)';
+			jQuery( '.setos-photos-slide .start' ).html( setos_html );
 
-		jQuery( '.setos-gallery-cover' ).click(function() {
-			jQuery( ".swiper-slide:first a" ).click();
+			// Zoom for thumbnail
+			jQuery("[data-fancybox]").fancybox({
+				loop : true,
+				buttons: [
+					"thumbs",
+					"close"
+				],
+			});
+		}
+
+		jQuery( '.setos-photos-cover' ).click(function() {
+			jQuery( ".setos-photos-slide a:first" ).click();
 			return false;
 		});
 

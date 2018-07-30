@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: SETOS 1.0\n"
 "Report-Msgid-Bugs-To: http://www.sysbird.jp\n"
 "POT-Creation-Date: 2018-06-19 00:00-0900\n"
-"PO-Revision-Date: 2018-07-25 17:54+0900\n"
+"PO-Revision-Date: 2018-07-30 19:27+0900\n"
 "Last-Translator: TORIYAMA Yuko <sysbird@gmail.com>\n"
 "Language-Team: TORIYAMA Yuko <sysbirdj@gmail.com>\n"
 "Language: ja\n"
@@ -117,6 +117,10 @@ msgstr "Works"
 #: unknown.php:0
 msgid "Works more"
 msgstr "Worksをもっとみる"
+
+#: unknown.php:0
+msgid "Photo Book"
+msgstr "写真集"
 
 #: unknown.php:0
 msgid "Books more"

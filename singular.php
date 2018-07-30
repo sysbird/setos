@@ -44,6 +44,7 @@ get_header(); ?>
 
 				</header>
 				<div class="entry-content">
+					<?php setos_photos_slide() ?>
 					<?php the_content(); ?>
 					<?php wp_link_pages( array(
 						'before'		=> '<div class="page-links">' . __( 'Pages:', 'setos' ),

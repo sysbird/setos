@@ -285,6 +285,45 @@ function setos_excerpt_more( $more ) {
 add_filter('excerpt_more', 'setos_excerpt_more');
 
 //////////////////////////////////////////////////////
+// photos slide
+function setos_photos_slide () {
+	$post_id = get_the_ID();
+	$thumbnail_id = get_post_meta( $post_id, "_thumbnail_id", true );
+	$book_title = get_the_title();
+
+	// photos in post
+	$html = '';
+	$html_cover = '';
+	$args = array( 'post_type'			=> 'attachment',
+					'posts_per_page'	=> -1,
+					'post_parent'		=> $post_id,
+					'post_mime_type'	=> 'image',
+					'orderby'			=> 'menu_order',
+					'order'				=> 'ASC' );
+
+	$images = get_posts( $args );
+	if ( $images ) {
+		$number = 1;
+		foreach( $images as $image ){
+
+			$src = wp_get_attachment_url( $image->ID );
+			$thumbnail = wp_get_attachment_image_src( $image->ID, 'large' );
+			$html .= ' <a href="' .$src .'" data-fancybox="setos-photos-slide" data-caption="' .$image->post_title .'">page' .$number .'</a>';
+			$number++;
+		}
+
+		wp_reset_postdata();
+	}
+
+	// output
+	if( !empty( $html ) ){
+		$html = '<div class="setos-photos-slide">' .$html .'<p><a href="#" class="start">写真を見る</a></p></div>';
+	}
+
+	echo $html;
+}
+
+//////////////////////////////////////////////////////
 // Shortcode gallery
 function setos_gallery ( $atts ) {
 
