@@ -217,10 +217,6 @@ function setos_scripts() {
 	// masonry
 	wp_enqueue_script( 'jquery-masonry' );
 
-	// swiper
-	wp_enqueue_style( 'setos-swiper', get_stylesheet_directory_uri().'/js/swiper/css/swiper.min.css' );
-	wp_enqueue_script( 'setos-swiper', get_template_directory_uri() .'/js/swiper/js/swiper.min.js', null, '3.3.5'  );
-
 	// fancybox
 	wp_enqueue_style( 'setos-fancybox', get_stylesheet_directory_uri().'/js/fancybox/jquery.fancybox.min.css' );
 	wp_enqueue_script( 'setos-fancybox', get_template_directory_uri() .'/js/fancybox/jquery.fancybox.min.js', array( 'jquery' ), '4.3.3' );

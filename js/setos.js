@@ -96,7 +96,7 @@ jQuery(function() {
 		// photos slide in book page
 		var slide_num = jQuery("[data-fancybox]").length;
 		if( 1 < slide_num ){
-			jQuery( '.setos-photos-slide' ).prev( 'img' ).addClass( 'setos-photos-cover' ).prependTo( '.setos-photos-slide' );
+			jQuery( '.setos-photos-slide' ).parents( '.entry-content' ).find( 'img' ).addClass( 'setos-photos-cover' ).prependTo( '.setos-photos-slide' );
 			var setos_html = jQuery( '.setos-photos-slide .start' ).html() + '(' + slide_num + 'ページ)';
 			jQuery( '.setos-photos-slide .start' ).html( setos_html );
 
@@ -110,7 +110,7 @@ jQuery(function() {
 			});
 		}
 
-		jQuery( '.setos-photos-cover' ).click(function() {
+		jQuery( '.setos-photos-cover, .setos-photos-slide .start' ).click(function() {
 			jQuery( ".setos-photos-slide a:first" ).click();
 			return false;
 		});
