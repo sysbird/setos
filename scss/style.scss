@@ -308,7 +308,7 @@ body {
 		#site-title {
 			margin: 0 1em 0 0;
 			padding: 0;
-			font-size: 1.4rem;
+			font-size: 2rem;
 			font-weight: normal;
 			line-height: 1;
 
@@ -840,8 +840,8 @@ div.wpcf7-validation-errors {
 	#back-top {
 		position: fixed;
 		bottom: 0;
-		left: 45%;
-		z-index: 3;
+		left: 42%;
+		z-index: 9;
 
 		a {
 			display: block;
@@ -1384,36 +1384,25 @@ ul.archive {
 
 /* biography in Profile
 --------------------------------------------- */
-.biography {
-	h2 {
-		border: none;
-		font-size: 1.6rem;
-		@include clearfix;
-	}
+ul.biography {
+	list-style: none;
+	margin-left: 0;
+	@include clearfix;
 
-	ul {
-		border-left: dotted 1px $text-color;
-		list-style: none;
-		@include clearfix;
+	li {
+		text-indent: -4.8em;
+		padding-left: 4em;
 
-		li {
-			text-indent: -3.3em;
-			margin-left: 0em;
-			padding-left: 2.3em;
-
-			strong {
-				padding-right: 0.5em;
-			}
+		strong {
+			padding-right: 1em;
+			font-weight: normal;
 
 			&:before {
 				@include font-awesome();
-				display: inline;
 				content: "\f0da";
-				font-size: 1em;
-				width: 0.5em;
-				height: 1em;
-				color: $text-color;
-				padding-right: #{$line-height /4}em;
+				display: inline;
+				padding-right: #{$line-height /8}em;
+				color: $link-color;
 			}
 		}
 	}
@@ -1518,12 +1507,6 @@ ul.book-meta {
 	#header {
 		position: fixed;
 		top: 0;
-
-		#branding {
-			#site-title {
-				font-size: 2rem;
-			}
-		}
 	}
 
 	#menu-wrapper {
@@ -1629,25 +1612,8 @@ ul.book-meta {
 		}
 	}
 
-	.biography {
-		h2 {
-			float: left;
-			width: 16%;
-			text-align: right;
-			clear: both;
-			margin: 0;
-			padding: 0;
-		}
-
-		ul {
-			float: right;
-			width: 80%;
-			margin-bottom: 0;
-
-			li:last-child {
-				margin-bottom: #{$line-height}rem;
-			}
-		}
+	ul.biography {
+		margin-left: 1em;
 	}
 }
 

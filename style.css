@@ -371,7 +371,7 @@ body {
 #header #branding #site-title {
   margin: 0 1em 0 0;
   padding: 0;
-  font-size: 1.4rem;
+  font-size: 2rem;
   font-weight: normal;
   line-height: 1;
 }
@@ -930,8 +930,8 @@ div.wpcf7-validation-errors {
 #footer #back-top {
   position: fixed;
   bottom: 0;
-  left: 45%;
-  z-index: 3;
+  left: 42%;
+  z-index: 9;
 }
 
 #footer #back-top a {
@@ -1505,31 +1505,24 @@ ul.archive > li .entry-header .entry-title {
 
 /* biography in Profile
 --------------------------------------------- */
-.biography h2 {
-  border: none;
-  font-size: 1.6rem;
-  overflow: hidden;
-  *zoom: 1;
-}
-
-.biography ul {
-  border-left: dotted 1px #222327;
+ul.biography {
   list-style: none;
+  margin-left: 0;
   overflow: hidden;
   *zoom: 1;
 }
 
-.biography ul li {
-  text-indent: -3.3em;
-  margin-left: 0em;
-  padding-left: 2.3em;
+ul.biography li {
+  text-indent: -4.8em;
+  padding-left: 4em;
 }
 
-.biography ul li strong {
-  padding-right: 0.5em;
+ul.biography li strong {
+  padding-right: 1em;
+  font-weight: normal;
 }
 
-.biography ul li:before {
+ul.biography li strong:before {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -1537,13 +1530,10 @@ ul.archive > li .entry-header .entry-title {
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  display: inline;
   content: "\f0da";
-  font-size: 1em;
-  width: 0.5em;
-  height: 1em;
-  color: #222327;
-  padding-right: 0.425em;
+  display: inline;
+  padding-right: 0.2125em;
+  color: #708f9c;
 }
 
 ul.book-meta {
@@ -1649,9 +1639,6 @@ ul.book-meta li:before {
     position: fixed;
     top: 0;
   }
-  #header #branding #site-title {
-    font-size: 2rem;
-  }
   #menu-wrapper .menu #small-menu {
     font-size: 2rem;
   }
@@ -1720,21 +1707,8 @@ ul.book-meta li:before {
     text-align: left;
     margin-top: 0;
   }
-  .biography h2 {
-    float: left;
-    width: 16%;
-    text-align: right;
-    clear: both;
-    margin: 0;
-    padding: 0;
-  }
-  .biography ul {
-    float: right;
-    width: 80%;
-    margin-bottom: 0;
-  }
-  .biography ul li:last-child {
-    margin-bottom: 1.7rem;
+  ul.biography {
+    margin-left: 1em;
   }
 }
 
