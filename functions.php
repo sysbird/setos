@@ -208,7 +208,7 @@ function setosdefault_taxonomy_works() {
 	</script>';
 }
 add_action( 'admin_print_footer_scripts', 'setosdefault_taxonomy_works' );
-	
+
 //////////////////////////////////////////////////////
 // Enable custom post type in Bogo
 function setos_bogo_localizable_post_types( $localizable ) {
@@ -466,15 +466,6 @@ function setos_handle_upload( $file )
 		if (! is_wp_error($image)) {
 			$exif = exif_read_data( $file[ 'file' ] );
 			$orientation = $exif[ 'Orientation' ];
-			$max_width = 930;
-			$max_height = 930;
-			$size = $image->get_size();
-			$width = $size[ 'width' ];
-			$height = $size[ 'height' ];
-
-			if ( $width > $max_width || $height > $max_height ) {
-				$image->resize( $max_width, $max_height, false );
-			}
 
 			if (! empty($orientation)) {
 				switch ($orientation) {
