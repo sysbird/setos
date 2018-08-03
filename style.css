@@ -78,7 +78,7 @@ Font Awesome
   font-style: normal;
 }
 
-/* elementnpm
+/* element
 --------------------------------------------- */
 a {
   color: #708f9c;
@@ -397,7 +397,7 @@ body {
 -------------------------------------------------------------- */
 #menu-wrapper .menu #small-menu {
   position: absolute;
-  top: 0.425em;
+  top: 0.56667em;
   right: 0;
   cursor: pointer;
   display: block;
@@ -613,12 +613,14 @@ body {
 
 .more a {
   display: block;
-  background-color: #708f9c;
-  color: #FFF;
+  color: #708f9c;
+  border: solid 1px #708f9c;
   padding: 0.85em;
-  border-radius: 4px;
+  border-radius: 2px;
   font-size: 0.96em;
   text-align: center;
+  margin: 0 auto;
+  width: 90%;
 }
 
 .more a:hover {
@@ -643,6 +645,8 @@ p .more {
 
 p .more a {
   margin-top: 0.85rem;
+  background-color: #708f9c;
+  color: #FFF;
 }
 
 /* Images
@@ -669,7 +673,7 @@ img[class*="wp-image-"] {
 img.alignleft,
 img.alignright,
 img.aligncenter {
-  margin-bottom: 0.85rem;
+  margin-bottom: 1.7rem;
 }
 
 a:hover img {
@@ -931,28 +935,26 @@ div.wpcf7-validation-errors {
   position: fixed;
   bottom: 0;
   left: 42%;
-  z-index: 9;
+  z-index: 3;
 }
 
 #footer #back-top a {
+  background: #CCC;
+  border-radius: 100px;
   display: block;
-  width: 50px;
   height: 50px;
-  opacity: 0.7;
+  width: 50px;
   text-align: center;
   text-decoration: none;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75);
+  opacity: 0.75;
 }
 
 #footer #back-top a span {
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
-}
-
-#footer #back-top a:hover {
-  text-decoration: none;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
-  opacity: 0.8;
+  display: block;
 }
 
 #footer #back-top a:before {
@@ -963,11 +965,12 @@ div.wpcf7-validation-errors {
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  content: "\f139";
-  font-size: 50px;
+  content: "\f077";
+  font-size: 30px;
   display: block;
   text-align: center;
-  color: #999;
+  padding-top: 8px;
+  color: #FFF;
 }
 
 /* Widget
@@ -1700,6 +1703,7 @@ ul.book-meta li:before {
   }
   .more a {
     display: inline-block;
+    width: auto;
   }
   p .more a {
     padding: 2px 5px;
@@ -1723,6 +1727,21 @@ ul.book-meta li:before {
 	}
 }
 */
+/* --- PCs --- */
+@media screen and (min-width: 800px) {
+  .two-columns {
+    display: -webkit-flex;
+    display: flex;
+  }
+  .two-columns .leftside {
+    width: 400px;
+    margin-right: 3%;
+  }
+  .two-columns .entry-content {
+    width: calc(100% - 400px);
+  }
+}
+
 /* --- PCs --- */
 @media screen and (min-width: 930px) {
   body,
@@ -1765,6 +1784,9 @@ ul.book-meta li:before {
     height: 60px;
     padding: 20px 0.85em;
   }
+  #header.mini #menu-wrapper .menu ul#menu-primary-items li ul {
+    top: 60px;
+  }
   #menu-wrapper {
     margin-top: 0;
     *zoom: 1;
@@ -1776,8 +1798,10 @@ ul.book-meta li:before {
   }
   #menu-wrapper .menu #small-menu {
     display: none;
+    /* hide small menu initially */
   }
   #menu-wrapper .menu ul#menu-primary-items {
+    /* ensure .menu is visible on desktop version */
     display: block !important;
     text-align: right;
   }
@@ -1791,8 +1815,7 @@ ul.book-meta li:before {
   }
   #menu-wrapper .menu ul#menu-primary-items li a {
     border-top: none;
-    padding: 30px 0.85em;
-    height: 80px;
+    padding: 0.8em;
   }
   #menu-wrapper .menu ul#menu-primary-items li a:hover {
     background: #FFF;
@@ -1807,7 +1830,60 @@ ul.book-meta li:before {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     content: "\f0d7";
-    padding-left: 0.2125em;
+    padding-left: 0.2em;
+  }
+  #menu-wrapper .menu ul#menu-primary-items li ul {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    text-align: left;
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s;
+  }
+  #menu-wrapper .menu ul#menu-primary-items li ul li {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  #menu-wrapper .menu ul#menu-primary-items li ul li.menu-item-has-children > a:after {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\f0da";
+    padding-left: 0.2em;
+  }
+  #menu-wrapper .menu ul#menu-primary-items li ul li a {
+    padding: 0.8em;
+    background-color: #374049;
+    border-right: dotted 1px #FFF;
+    border-left: dotted 1px #FFF;
+    border-bottom: dotted 1px #FFF;
+    height: auto;
+    white-space: normal;
+  }
+  #menu-wrapper .menu ul#menu-primary-items li ul li a:hover {
+    text-decoration: none;
+    border-color: #374049;
+  }
+  #menu-wrapper .menu ul#menu-primary-items li ul li:first-child a {
+    border-top: dotted 1px #FFF;
+  }
+  #menu-wrapper .menu ul#menu-primary-items li ul li ul {
+    top: 0;
+    left: 100%;
+  }
+  #menu-wrapper .menu ul#menu-primary-items > li > a {
+    padding: 30px 0.8em;
+    height: 80px;
   }
   ul.list li .entry-header .postdate {
     width: 9em;
@@ -1846,7 +1922,7 @@ ul.book-meta li:before {
     width: 300px;
     margin-bottom: 0;
     text-align: left;
-    margin-right: 2%;
+    margin-right: 3%;
   }
   ul.archive > li.has-post-thumbnail .entry-header {
     width: calc(100% - 300px);

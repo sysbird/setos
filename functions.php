@@ -32,8 +32,8 @@ add_filter( 'comments_open', '__return_false' );
 
 //////////////////////////////////////////////////////
 // emoji disable
-remove_action('wp_head', 'print_emoji_detection_script', 7);
-remove_action('wp_print_styles', 'print_emoji_styles');
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
 //////////////////////////////////////////////////////
 // remove theme customize
@@ -44,10 +44,6 @@ function setos_customize_register( $wp_customize ) {
 	$wp_customize->remove_section( 'title_tagline' );
 }
 add_action( 'customize_register', 'setos_customize_register' );
-
-//////////////////////////////////////////
-// Customizer additions.
-// require get_template_directory() . '/functions_customizer.php';
 
 //////////////////////////////////////////
 // Set Widgets
@@ -166,6 +162,18 @@ function setos_init() {
 
 	register_post_type( 'works', $args );
 
+    register_taxonomy(
+        'works-cat',  // カスタム分類名
+        'works',      // カスタム分類を使用する投稿タイプ名
+        array(
+            'hierarchical' => true,
+            'label' => 'Worksのカテゴリー',
+            'singular_label' => 'Worksのカテゴリー',
+            'public' => true,
+            'show_ui' => true,
+        )
+    );
+
 	// add post type essay
 	$labels = array(
 		'name'		=> 'Essay',
@@ -185,6 +193,22 @@ function setos_init() {
 }
 add_action( 'init', 'setos_init', 0 );
 
+//////////////////////////////////////////////////////
+// set fefault taxonomy for works
+function setosdefault_taxonomy_works() {
+	echo '<script type="text/javascript">
+	//<![CDATA[
+	jQuery(document).ready(function($){
+		// default check
+		if ($("#works-catchecklist.categorychecklist input[type=checkbox]:checked").length == 0) {
+		  $("#works-catchecklist.categorychecklist li:first-child input:first-child").attr("checked", "checked");
+		}
+	});
+	//]]>
+	</script>';
+}
+add_action( 'admin_print_footer_scripts', 'setosdefault_taxonomy_works' );
+	
 //////////////////////////////////////////////////////
 // Enable custom post type in Bogo
 function setos_bogo_localizable_post_types( $localizable ) {
