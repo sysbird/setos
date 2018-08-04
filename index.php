@@ -34,7 +34,9 @@ get_header(); ?>
 					<div class="entry-header">
 						<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 						<?php if( !wp_is_mobile()): ?>
-							<?php setos_entry_meta(); ?>
+							<?php if ( is_object_in_term( $post->ID, 'works-cat','book' )): ?>
+								<?php setos_entry_meta(); ?>
+							<?php endif; ?>
 							<?php the_excerpt(); ?>
 						<?php endif; ?>
 					</div>

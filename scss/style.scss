@@ -386,7 +386,7 @@ body {
 /* Posts
 --------------------------------------------- */
 .content-header {
-	margin: #{$line-height}rem 0;
+	margin: #{$line-height *1.5}rem 0;
 
 	.content-title {
 		color: $header-color;
@@ -409,7 +409,7 @@ body {
 }
 
 .entry-header {
-	margin: #{$line-height}rem 0;
+	margin: #{$line-height *1.5}rem 0;
 	line-height: 1.4;
 	position: relative;
 
@@ -418,7 +418,7 @@ body {
 		font-size: 2rem;
 		font-weight: normal;
 		margin: 0 0 #{$line-height /8}em 0;
-		line-height: 1.2;
+		line-height: 1.4;
 		padding: 0;
 
 		a {
@@ -1416,7 +1416,7 @@ ul.book-meta {
 	margin: 0;
 
 	li {
-		padding: 0.3em 0 0.3em 0.6em;
+		padding: 0em 0 0.6em 0.6em;
 		text-indent: -0.3em;
 		border: none;
 
@@ -1637,9 +1637,14 @@ ul.book-meta {
 	.two-columns {
 		@include display-flex();
 
-		.leftside {
+		.left-colum {
 			width: 400px;
 			margin-right: 3%;
+
+			.entry-eyecatch img,
+			.setos-photos-slide img {
+				box-shadow: 0 2px 8px 0 rgba(50,50,50,0.1);
+			}
 		}
 
 		.entry-content {
@@ -1848,7 +1853,7 @@ ul.book-meta {
 			float: left;
 			margin: 0 5px 10px 5px;
 			background-color: #FFF;
-			box-shadow: 0 2px 8px 0 rgba(50,50,50,0.05);
+			box-shadow: 0 2px 8px 0 rgba(50,50,50,0.1);
 
 			.entry-eyecatch {
 				width: 100%;
@@ -1878,6 +1883,10 @@ ul.book-meta {
 
 				.entry-header {
 					width: calc(100% - 300px);
+
+					.entry-title {
+						margin-bottom: #{$line-height}rem; 
+					}
 				}
 			}
 		}

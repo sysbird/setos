@@ -250,7 +250,7 @@ function setos_scripts() {
 
 	// Google Fonts
 	wp_enqueue_style( 'setos-google-font', '//fonts.googleapis.com/css?family=Open+Sans', false, null, 'all' );
-//	wp_enqueue_style( 'setos-google-font-ja', '//fonts.googleapis.com/earlyaccess/sawarabimincho.css', false, null, 'all' );
+	wp_enqueue_style( 'setos-google-font-ja', '//fonts.googleapis.com/earlyaccess/sawarabimincho.css', false, null, 'all' );
 
 	// this
 	wp_enqueue_script( 'setos', get_template_directory_uri() .'/js/setos.js', array( 'jquery' , 'jquery-masonry', 'jquerytile' ), '1.11' );
@@ -401,20 +401,17 @@ function setos_the_custom_field( $ID, $selector, $before, $after ) {
 // Display entry meta
 function setos_entry_meta() {
 ?>
-	<?php if( is_post_type_archive( 'works' ) ): // archive book ?>
+
+	<?php if( is_archive() ): // archive book ?>
 		<ul class="book-meta">
 			<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '</li>' ); ?>
 			<?php setos_the_custom_field( get_the_ID(), 'release', '<li><strong>' .__( '発売日', 'setos') .':</strong> ', '</li>' ); ?>
 		</ul>
-	<?php elseif( is_archive() || is_search() ) : // archive ?>
-	<?php elseif( is_home() ): // home ?>
-	<?php elseif( is_singular( 'works' ) ): // single book ?>
+	<?php elseif( is_singular() ): // single book ?>
 		<ul class="book-meta">
-			<li class="entry-title"><strong><?php _e( 'Photo Book', 'setos'); ?>:</strong> <?php the_title(); ?></li>
+			<li><strong><?php _e( 'Photo Book', 'setos'); ?>:</strong> <?php the_title(); ?></li>
 			<?php setos_the_custom_field( get_the_ID(), 'author', '<li><strong>' .__( 'Author', 'setos') .':</strong> ', '</li>' ); ?>
 			<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '</li>' ); ?>
-			<?php setos_the_custom_field( get_the_ID(), 'isbn-10', '<li><strong>' .__( 'ISBN-10', 'setos') .':</strong> ', '</li>' ); ?>
-			<?php setos_the_custom_field( get_the_ID(), 'isbn-13', '<li><strong>' .__( 'ISBN-13', 'setos') .':</strong> ', '</li>' ); ?>
 			<?php setos_the_custom_field( get_the_ID(), 'release', '<li><strong>' .__( '発売日', 'setos') .':</strong> ', '' ); ?>
 			<?php setos_the_custom_field( get_the_ID(), 'price', '<li><strong>' .__( 'Price', 'setos') .':</strong> ', ' ' .__( 'yen', 'setos') .'</li>' ); ?>
 			<?php setos_the_custom_field( get_the_ID(), 'size', '<li><strong>' .__( 'Size', 'setos') .':</strong> ', '</li>' ); ?>

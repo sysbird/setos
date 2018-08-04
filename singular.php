@@ -43,24 +43,49 @@ get_header(); ?>
 					<?php endif; ?>
 
 				</header>
+
+				<?php if( 'works' === $setos_type ): ?>
+					<div class="two-columns">
+						<div class="left-colum">
+							<?php if( has_post_thumbnail() ): ?>
+								<div class="entry-eyecatch">
+									<?php the_post_thumbnail( 'middle' ); ?>
+								</div>
+							<?php endif; ?>
+
+							<?php if ( is_object_in_term( $post->ID, 'works-cat','book' )): ?>
+								<?php setos_photos_slide() ?>
+							<?php elseif ( is_object_in_term( $post->ID, 'works-cat','exhibition' )): ?>
+							<?php endif; ?>
+						</div>
+				<?php endif; ?>
+
 				<div class="entry-content">
-					<?php setos_photos_slide() ?>
+	
 					<?php the_content(); ?>
+	
 					<?php wp_link_pages( array(
 						'before'		=> '<div class="page-links">' . __( 'Pages:', 'setos' ),
 						'after'			=> '</div>',
 						'link_before'	=> '<span>',
 						'link_after'	=> '</span>'
 						) ); ?>
+
+					<?php if( is_single()): ?>
+						<?php if ( is_object_in_term( $post->ID, 'works-cat','book' )): ?>
+							<?php setos_entry_meta(); ?>
+						<?php endif; ?>
+					<?php endif; ?>
 				</div>
 
-			</article>
+				<?php if( 'works' === get_post_type()): ?>
+					</div>
+				<?php endif; ?>
 
-			<?php if( is_single()): ?> 
-				<?php setos_entry_meta(); ?>
 				<?php $setos_archive_title .= ' more'; ?>
 				<div class="more"><a href="<?php  _e( esc_url( $setos_archive_url, 'setos' )); ?>"><?php _e( esc_html( $setos_archive_title ), 'setos' ) ?></a></div>
-			<?php endif; ?>
+
+			</article>
 
 			<?php if( is_single()): ?>
 				<nav class="nav-below">
