@@ -43,8 +43,8 @@ get_header(); ?>
 	<?php
 		//プロフィールを表示する？
 		$args = array(
-			'post_type'	=> 'page',
-			'tag'		=> 'top',
+			'post_type'		=> 'page',
+			'tag'			=> 'top',
 			'post_status'	=> 'publish'
 		);
 		$the_query = new WP_Query($args);
@@ -76,7 +76,7 @@ get_header(); ?>
 
 	<?php
 		$args = array(
-			'post_type'		=> 'essay',
+			'post_type'			=> 'essay',
 			'posts_per_page'	=> '6',
 			'post_status'		=> 'publish'
 		);
@@ -84,7 +84,7 @@ get_header(); ?>
 		if ( $the_query->have_posts() ) : ?>
 			<section id="essay" class="section">
 				<div class="container">
-				<h2 class="content-title">Essay</h2>
+					<h2 class="content-title">Essay</h2>
 					<ul class="tile">
 
 					<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
@@ -106,10 +106,54 @@ get_header(); ?>
 
 					<?php endwhile;
 						wp_reset_postdata();
-					 ?>
+						?>
 
 					</ul>
 					<div class="more"><a href="<?php echo get_post_type_archive_link( 'essay' ); ?>"><?php _e( 'Essay more', 'setos' ) ?></a></div>
+				</div>
+			</section>
+
+		<?php endif; ?>
+
+	<?php
+		$args = array(
+			'post_type'			=> 'works',
+			'tax_query' 		=> array(
+				array(
+					'taxonomy' => 'works-genre',
+					'field'    => 'slug',
+					'terms'    => 'book',
+				),
+			),
+			'posts_per_page'	=> '1',
+			'post_status'		=> 'publish'
+		);
+		$the_query = new WP_Query($args);
+		if ( $the_query->have_posts() ) : ?>
+			<section id="book" class="section">
+				<div class="container">
+					<h2 class="content-title">Book</h2>
+					<ul class="archive">
+
+					<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+					<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+						<?php if( has_post_thumbnail() ): ?>
+							<div class="entry-eyecatch"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'large' ); ?></a></div>
+						<?php endif; ?>
+						<div class="entry-header">
+							<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+							<?php setos_entry_meta(); ?>
+							<?php the_excerpt(); ?>
+						</div>
+					</li>
+
+					<?php endwhile;
+						wp_reset_postdata();
+						?>
+
+					</ul>
+					<div class="more"><a href="<?php echo $setos_archive_url = get_term_link( 'book', 'works-genre' ); ?>"><?php _e( 'Book more', 'setos' ) ?></a></div>
 				</div>
 			</section>
 

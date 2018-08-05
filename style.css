@@ -126,9 +126,10 @@ p {
 }
 
 blockquote {
-  margin-left: 1rem;
-  padding-left: 1rem;
-  border-left: 10px solid #CCC;
+  padding: 1.7rem 1.7rem 0 1.7rem;
+  margin-bottom: 1.7rem;
+  background-color: #f6f9f9;
+  display: inline-block;
 }
 blockquote small {
   display: block;
@@ -1140,8 +1141,11 @@ ul.archive > li .entry-header .entry-title {
 .single .more {
   margin-bottom: 1.7rem;
 }
-.single .nav-below a {
+.single .nav-below {
   border-top: 1px solid #d9e2e5;
+  border-bottom: 1px solid #d9e2e5;
+}
+.single .nav-below a {
   display: block;
   padding: 1rem;
   position: relative;
@@ -1168,7 +1172,6 @@ ul.archive > li .entry-header .entry-title {
   align-items: center;
 }
 .single .nav-below .nav-next a {
-  border-bottom: 1px solid #d9e2e5;
   text-align: right;
 }
 .single .nav-below .nav-next a:after {
@@ -1177,6 +1180,9 @@ ul.archive > li .entry-header .entry-title {
 .single .nav-below .nav-previous a:after {
   left: 0;
   content: "\f053";
+}
+.single .nav-below span:nth-child(2n) a {
+  border-top: 1px solid #d9e2e5;
 }
 
 /* Attachment
@@ -1423,13 +1429,19 @@ ul.book-meta li:before {
 
 /* photos slide
 --------------------------------------------- */
-.setos-photos-slide .setos-photos-cover {
+.setos-photos-cover {
   cursor: pointer;
 }
+
 .setos-photos-slide a[data-fancybox="setos-photos-slide"] {
   display: none;
 }
-.setos-photos-slide .start:before {
+
+.setos-photos-slide-start {
+  display: block;
+  padding: 0.425rem 0 1.7rem;
+}
+.setos-photos-slide-start:before {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -1478,7 +1490,7 @@ ul.book-meta li:before {
 .single.ja .entry-title,
 .page.ja .entry-title,
 .ja .content-title {
-  font-family: 'Sawarabi Mincho', 'Open Sans', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', YuGothic, 'Yu Gothic', Meiryo, 'MS PGothic';
+  font-family: 'Open Sans', 'Sawarabi Mincho', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', YuGothic, 'Yu Gothic', Meiryo, 'MS PGothic';
 }
 
 /* Media queries for responsive design
@@ -1516,6 +1528,9 @@ ul.book-meta li:before {
   .single .nav-below span:nth-child(2n) {
     border-left: 1px solid #d9e2e5;
   }
+  .single .nav-below span:nth-child(2n) a {
+    border-top: none;
+  }
   .single .nav-below a {
     display: -webkit-flex;
     display: flex;
@@ -1527,9 +1542,6 @@ ul.book-meta li:before {
   }
   .single .nav-below .nav-next a {
     justify-content: right;
-  }
-  .single .nav-below .nav-previous a {
-    border-bottom: 1px solid #d9e2e5;
   }
 
   #wall .headerimage .fixedimage {
@@ -1600,7 +1612,7 @@ ul.book-meta li:before {
   }
   .two-columns .left-colum .entry-eyecatch img,
   .two-columns .left-colum .setos-photos-slide img {
-    box-shadow: 0 2px 8px 0 rgba(50, 50, 50, 0.1);
+    border: solid 1px #CCC;
   }
   .two-columns .entry-content {
     width: calc(100% - 400px);
@@ -1771,7 +1783,7 @@ ul.book-meta li:before {
     float: left;
     margin: 0 5px 10px 5px;
     background-color: #FFF;
-    box-shadow: 0 2px 8px 0 rgba(50, 50, 50, 0.1);
+    box-shadow: 0 2px 8px 0 rgba(50, 50, 50, 0.08);
   }
   ul.tile li .entry-eyecatch {
     width: 100%;
@@ -1795,11 +1807,20 @@ ul.book-meta li:before {
     text-align: left;
     margin-right: 3%;
   }
+  ul.archive > li.has-post-thumbnail .entry-eyecatch img {
+    border: solid 1px #CCC;
+  }
   ul.archive > li.has-post-thumbnail .entry-header {
     width: calc(100% - 300px);
   }
   ul.archive > li.has-post-thumbnail .entry-header .entry-title {
     margin-bottom: 1.7rem;
+  }
+
+  .home ul.archive > li {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
 
   #widget-area .widget {

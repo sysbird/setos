@@ -84,9 +84,10 @@ p {
 }
 
 blockquote {
-	margin-left: 1rem;
-	padding-left: 1rem;
-	border-left: 10px solid $border-color;
+	padding: #{$line-height}rem #{$line-height}rem 0 #{$line-height}rem;
+	margin-bottom: #{$line-height}rem;
+	background-color: $hover-background-color;
+	display: inline-block;
 
 	small {
 		display: block;
@@ -1145,8 +1146,10 @@ ul.archive {
 	}
 
 	.nav-below {
+		border-top: 1px solid lighten( $link-color, 35% );
+		border-bottom: 1px solid lighten( $link-color, 35% );
+
 		a {
-			border-top: 1px solid lighten( $link-color, 35% );
 			display: block;
 			padding: 1rem;
 			position: relative;
@@ -1170,7 +1173,6 @@ ul.archive {
 
 		.nav-next {
 			a {
-				border-bottom: 1px solid lighten( $link-color, 35% );
 				text-align: right;
 
 				&:after {
@@ -1185,6 +1187,13 @@ ul.archive {
 					left: 0;
 					content: "\f053";
 				}
+			}
+		}
+
+		span:nth-child(2n) {
+			a{
+				border-top: 1px solid lighten( $link-color, 35% );
+			
 			}
 		}
 	}
@@ -1438,24 +1447,27 @@ ul.book-meta {
 
 /* photos slide
 --------------------------------------------- */
-.setos-photos-slide {
-	.setos-photos-cover {
-		cursor: pointer;
-	}
-	
+.setos-photos-cover {
+	cursor: pointer;
+}
+
+.setos-photos-slide {	
 	a[ data-fancybox="setos-photos-slide"] {
 		display: none;
 	}
+	}
 
-	.start {
-		&:before {
-			@include font-awesome();
-			content: "\f054";
-			padding-right: #{$line-height /8}rem;
-		}
+.setos-photos-slide-start {
+	display: block;
+	padding: #{$line-height /4}rem 0 #{$line-height}rem;
+
+	&:before {
+		@include font-awesome();
+		content: "\f054";
+		padding-right: #{$line-height /8}rem;
 	}
 }
-	
+
 /* setos-gallery shortcode
 --------------------------------------------- */
 /*
@@ -1494,7 +1506,7 @@ ul.book-meta {
 .single.ja .entry-title,
 .page.ja .entry-title,
 .ja .content-title {
-	font-family: 'Sawarabi Mincho', 'Open Sans', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', YuGothic, 'Yu Gothic', Meiryo, 'MS PGothic';
+	font-family: 'Open Sans', 'Sawarabi Mincho', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', YuGothic, 'Yu Gothic', Meiryo, 'MS PGothic';
 }
 
 /* Media queries for responsive design
@@ -1534,8 +1546,12 @@ ul.book-meta {
 				@include display-flex();
 				max-width: 50%;
 			}
+
 			span:nth-child(2n) {
 				border-left: 1px solid lighten( $link-color, 35% );
+				a{
+					border-top: none;
+				}
 			}
 
 			a {
@@ -1554,7 +1570,7 @@ ul.book-meta {
 
 			.nav-previous {
 				a {
-					border-bottom: 1px solid lighten( $link-color, 35% );
+					//border-bottom: 1px solid lighten( $link-color, 35% );
 				}
 			}
 		}
@@ -1643,7 +1659,7 @@ ul.book-meta {
 
 			.entry-eyecatch img,
 			.setos-photos-slide img {
-				box-shadow: 0 2px 8px 0 rgba(50,50,50,0.1);
+				border: solid 1px $border-color;
 			}
 		}
 
@@ -1853,7 +1869,7 @@ ul.book-meta {
 			float: left;
 			margin: 0 5px 10px 5px;
 			background-color: #FFF;
-			box-shadow: 0 2px 8px 0 rgba(50,50,50,0.1);
+			box-shadow: 0 2px 8px 0 rgba(50,50,50,0.08);
 
 			.entry-eyecatch {
 				width: 100%;
@@ -1879,6 +1895,10 @@ ul.book-meta {
 					margin-bottom: 0;
 					text-align: left;
 					margin-right: 3%;
+
+					img {
+						border: solid 1px $border-color;
+					}
 				}
 
 				.entry-header {
@@ -1888,6 +1908,16 @@ ul.book-meta {
 						margin-bottom: #{$line-height}rem; 
 					}
 				}
+			}
+		}
+	}
+
+	.home {
+		ul.archive {
+			>li {
+				border-bottom: none;
+				padding-bottom: 0;
+				margin-bottom: 0;
 			}
 		}
 	}

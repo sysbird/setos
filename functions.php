@@ -163,14 +163,13 @@ function setos_init() {
 	register_post_type( 'works', $args );
 
     register_taxonomy(
-        'works-cat',  // カスタム分類名
-        'works',      // カスタム分類を使用する投稿タイプ名
+		'works-genre',
+        'works',
         array(
-            'hierarchical' => true,
-            'label' => 'Worksのカテゴリー',
-            'singular_label' => 'Worksのカテゴリー',
-            'public' => true,
-            'show_ui' => true,
+            'hierarchical'		=> true,
+            'label'				=> 'Worksのカテゴリー',
+            'show_admin_column'	=> true,
+            'show_ui'			=> true,
         )
     );
 
@@ -228,7 +227,7 @@ function setos_home_query( $query ) {
 		// toppage information
 		 $query->set( 'posts_per_page', 3 );
 	}
-	else if ( $query->is_post_type_archive( 'essay' ) && $query->is_main_query() ) {
+	else if ( !is_admin() && $query->is_post_type_archive( 'essay' ) && $query->is_main_query() ) {
 		 $query->set( 'posts_per_page', 9 );
 	}
 }
@@ -318,7 +317,7 @@ function setos_photos_slide () {
 					'posts_per_page'	=> -1,
 					'post_parent'		=> $post_id,
 					'post_mime_type'	=> 'image',
-					'orderby'			=> 'menu_order',
+					'orderby'			=> 'ID',
 					'order'				=> 'ASC' );
 
 	$images = get_posts( $args );
@@ -337,7 +336,7 @@ function setos_photos_slide () {
 
 	// output
 	if( !empty( $html ) ){
-		$html = '<div class="setos-photos-slide">' .$html .'<p><a href="#" class="start">写真を見る</a></p></div>';
+		$html = '<div class="setos-photos-slide">' .$html .'<p><a href="#" class="setos-photos-slide-start">写真を見る</a></p></div>';
 	}
 
 	echo $html;
@@ -407,7 +406,7 @@ function setos_entry_meta() {
 			<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '</li>' ); ?>
 			<?php setos_the_custom_field( get_the_ID(), 'release', '<li><strong>' .__( '発売日', 'setos') .':</strong> ', '</li>' ); ?>
 		</ul>
-	<?php elseif( is_singular() ): // single book ?>
+	<?php elseif( is_singular() || is_home() ): // single book ?>
 		<ul class="book-meta">
 			<li><strong><?php _e( 'Photo Book', 'setos'); ?>:</strong> <?php the_title(); ?></li>
 			<?php setos_the_custom_field( get_the_ID(), 'author', '<li><strong>' .__( 'Author', 'setos') .':</strong> ', '</li>' ); ?>
@@ -426,8 +425,8 @@ function setos_entry_meta() {
 function setos_content_header() {
 
 	// bread crumb
-/*	$setos_html = '';
-
+	$setos_html = '';
+/*
 	if( !is_home()){
 		if ( class_exists( 'WP_SiteManager_bread_crumb' ) ) {
 			$setos_html .= '<div class="bread_crumb">';
@@ -435,8 +434,8 @@ function setos_content_header() {
 			$setos_html .= '</div>';
 		}
 	}
-
-	echo $setos_html; */
+*/
+	echo $setos_html;
 }
 
 //////////////////////////////////////////////////////

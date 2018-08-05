@@ -28,18 +28,18 @@ get_header(); ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
 					<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<?php if( has_post_thumbnail() ): ?>
-						<div class="entry-eyecatch"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'large' ); ?></a></div>
-					<?php endif; ?>
-					<div class="entry-header">
-						<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-						<?php if( !wp_is_mobile()): ?>
-							<?php if ( is_object_in_term( $post->ID, 'works-cat','book' )): ?>
-								<?php setos_entry_meta(); ?>
-							<?php endif; ?>
-							<?php the_excerpt(); ?>
+						<?php if( has_post_thumbnail() ): ?>
+							<div class="entry-eyecatch"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'large' ); ?></a></div>
 						<?php endif; ?>
-					</div>
+						<div class="entry-header">
+							<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+							<?php if( !wp_is_mobile()): ?>
+								<?php if ( is_object_in_term( $post->ID, 'works-genre','book' )): ?>
+									<?php setos_entry_meta(); ?>
+								<?php endif; ?>
+								<?php the_excerpt(); ?>
+							<?php endif; ?>
+						</div>
 					</li>
 
 				<?php endwhile; ?>
