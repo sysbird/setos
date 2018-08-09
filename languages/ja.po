@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: SETOS 1.0\n"
 "Report-Msgid-Bugs-To: http://www.sysbird.jp\n"
 "POT-Creation-Date: 2018-06-19 00:00-0900\n"
-"PO-Revision-Date: 2018-08-05 23:10+0900\n"
+"PO-Revision-Date: 2018-08-09 16:44+0900\n"
 "Last-Translator: TORIYAMA Yuko <sysbird@gmail.com>\n"
 "Language-Team: TORIYAMA Yuko <sysbirdj@gmail.com>\n"
 "Language: ja\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.1\n"
+"X-Generator: Poedit 1.8.9\n"
 
 #: 404.php:14
 msgid "Error 404 - Not Found"
@@ -26,8 +26,7 @@ msgstr "エラー404 - ページが見つかりません"
 msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
 msgstr "お探しのコンテンツを見つけられませんでした。検索をお試しください。"
 
-#: content.php:12 content-home.php:12 content-home.php:14
-#: content-search.php:14
+#: content.php:12 content-home.php:12 content-home.php:14 content-search.php:14
 msgid "Permalink to %s"
 msgstr "%sへのリンク"
 
@@ -194,6 +193,18 @@ msgstr "The Palce Setos"
 #: unknown.php:0
 msgid "SETO Masato"
 msgstr "瀬戸正人"
+
+#: unknown.php:0
+msgid "Theme Color"
+msgstr "テーマカラー"
+
+#: unknown.php:0
+msgid "dark"
+msgstr "暗め"
+
+#: unknown.php:0
+msgid "light"
+msgstr "明るめ"
 
 #. Description of the plugin/theme
 msgid "SETOS built for a photographer. Feature fullscreen and parallax custom image. You can add a slider to the header image."

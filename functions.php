@@ -487,6 +487,45 @@ function setos_handle_upload( $file )
 add_action( 'wp_handle_upload', 'setos_handle_upload' );
 
 //////////////////////////////////////////////////////
+// Theme Customizer
+function setos_customize( $wp_customize ) {
+
+	// Theme color Section
+	$wp_customize->add_section( 'setos_theme_color', array(
+		'title'		=> __( 'Theme Color', 'setos' ),
+		'priority'	=> 999,
+	) );
+
+	$wp_customize->add_setting( 'setos_theme_color', array(
+		'default'		=> 'dark',
+		'sanitize_callback'	=> 'setos_sanitize_radiobutton',
+	) );
+
+	$wp_customize->add_control( 'setos_theme_color', array(
+		'label'		=> __( 'Theme color', 'setos' ),
+		'section'	=> 'setos_theme_color',
+		'type'		=> 'radio',
+		'settings'	=> 'setos_theme_color',
+		'choices'	=> array(
+					'dark'	=> __( 'dark', 'setos' ),
+					'light'	=> __( 'light', 'setos' ),
+					)
+	) );
+}
+add_action( 'customize_register', 'setos_customize' );
+
+//////////////////////////////////////////////////////
+// Santize a checkbox
+function setos_sanitize_radiobutton( $input ) {
+
+	if ( $input === 'light' ) {
+		return $input;
+	} else {
+		return 'dark';
+	}
+}
+
+//////////////////////////////////////////////////////
 // Header Slider
 function setos_headerslider() {
 

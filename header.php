@@ -14,7 +14,12 @@
 <meta name="format-detection" content="telephone=no">
 <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+
+<?php 
+	$setos_theme_color = get_theme_mod( 'setos_theme_color', 'dark' );
+?>
+
+<body <?php body_class( $setos_theme_color ); ?>>
 
 <div class="wrapper">
 

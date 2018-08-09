@@ -23,11 +23,6 @@ $header-color: #374049;
 $border-color: #CCC;
 $meta-color: #999;
 $line-height: 1.7;
-
-$accent-color: #5E7D80;
-//$header-color: #122C38;
-$accent-color: #6B2D41;
-
 /*------------------------------
 Font Awesome
 -----------------------------*/
@@ -301,11 +296,16 @@ body {
 /* Header
 -------------------------------------------------------------- */
 #header {
-	color: #FFF;
 	background-color: $header-color;
 	z-index: 4;
 
+	&,
+	a {
+		color: #FFF;
+	}
+
 	#branding {
+
 		#site-title {
 			margin: 0 1em 0 0;
 			padding: 0;
@@ -316,7 +316,6 @@ body {
 			a {
 				display: block;
 				padding: #{$line-height /2}rem 0;
-				color: #FFF;
 
 				&:hover {
 					text-decoration: none;
@@ -327,7 +326,6 @@ body {
 		#site-description {
 			display: none;
 			margin: 0;
-			color: #FFF;
 			line-height: 1;
 		}
 	}
@@ -545,9 +543,12 @@ body {
 		text-align: center;
 		margin: 0 auto;
 		width: 90%;
+		@include box-shadow(rgba(0,0,0,.05) 0 2px 8px);
 
 		&:hover {
 			text-decoration: none;
+			color: lighten( $link-color, 10% );
+			border-color: lighten( $link-color, 10% ); 
 		}
 
 		&:before {
@@ -825,10 +826,10 @@ div.wpcf7-validation-errors {
 --------------------------------------------- */
 #footer {
 	background: $header-color;
-	color: #FFF;
 	position: relative;
 	z-index: 1;
 
+	&,
 	a {
 		color: #FFF;
 	}
@@ -841,6 +842,7 @@ div.wpcf7-validation-errors {
 			font-size: 1.2em;
 		}
 	}
+
 	#back-top {
 		position: fixed;
 		bottom: 0;
@@ -878,12 +880,10 @@ div.wpcf7-validation-errors {
 /* Widget
 --------------------------------------------- */
 #widget-area {
-	background: $header-color;
 	padding: 0;
 	@include clearfix;
 
 	.widget {
-		color: #FFF;
 		margin: 20px 0;
 		width: 100%;
 
@@ -906,9 +906,8 @@ div.wpcf7-validation-errors {
 			margin: 0 0 #{$line-height /4}em 0;
 			padding: 0 0 #{$line-height /4}em 0;
 			border-bottom: dotted 1px $border-color;
-			color: #FFF;
-
 			font-size: 1.4rem;
+			color: #FFF;
 		}
 
 		ul {
@@ -918,7 +917,7 @@ div.wpcf7-validation-errors {
 			overflow: hidden;
 
 			li {
-					margin-top: -1px;
+				margin-top: -1px;
 				border-top: dotted 1px #FFF;
 				padding: 0.3em 0 0.3em 0.6em;
 				text-indent: -0.3em;
@@ -1107,7 +1106,6 @@ ul.tile {
 
 			&:hover {
 				text-decoration: none;
-				background: $hover-background-color;
 			}
 		}
 	}
@@ -1509,6 +1507,44 @@ ul.book-meta {
 	font-family: 'Open Sans', 'Sawarabi Mincho', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', YuGothic, 'Yu Gothic', Meiryo, 'MS PGothic';
 }
 
+/* light theme
+--------------------------------------------- */
+.light {
+	#header {
+		background-color: #FFF;
+		//border-bottom: solid 1px $border-color;
+		@include box-shadow(rgba(0,0,0,.05) 0 2px 8px);
+	}
+
+	#footer {
+		background-color: $hover-background-color		
+	}
+
+	#header,
+	#footer {
+		&,
+		a {
+			color: $header-color;
+		}
+	}
+
+	#widget-area {
+		h3 {
+			color: $text-color;
+		}
+
+		ul li {
+			border-color: $text-color
+		}
+	}
+
+	#menu-wrapper .menu ul#menu-primary-items li a {
+		color: $text-color;
+		border-color: $text-color;
+	}
+}
+
+
 /* Media queries for responsive design
 --------------------------------------------- */
 /* --- iPad Landscape --- */
@@ -1869,7 +1905,7 @@ ul.book-meta {
 			float: left;
 			margin: 0 5px 10px 5px;
 			background-color: #FFF;
-			box-shadow: 0 2px 8px 0 rgba(50,50,50,0.08);
+			@include box-shadow(rgba(0,0,0,.05) 0 2px 8px);
 
 			.entry-eyecatch {
 				width: 100%;
@@ -1949,6 +1985,21 @@ ul.book-meta {
 
 	body.home #wall.no-image {
 		margin-top: 80px;
+	}
+
+	.light {
+		#header.mini {
+			background-color: rgba( #FFF, 0.85 );
+		}
+
+		#menu-wrapper .menu ul#menu-primary-items li ul li a {
+			background-color: #FFF;
+		}
+
+		#menu-wrapper .menu ul#menu-primary-items li ul li:first-child a {
+			border-color: $text-color;
+		}
+
 	}
 }
 
