@@ -50,7 +50,7 @@ get_header(); ?>
 
 						<span class="cateogry"><a href="<?php echo esc_url( $setos_archive_url ); ?>"><?php echo esc_html( $setos_archive_title ); ?></a></span>
 			
-						<?php if( "works" != $setos_type ): ?>
+						<?php if( ("works" != $setos_type ) && setos_is_recently()): ?>
 							<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time>
 						<?php endif; ?>
 					<?php endif; ?>

@@ -487,6 +487,16 @@ function setos_handle_upload( $file )
 add_action( 'wp_handle_upload', 'setos_handle_upload' );
 
 //////////////////////////////////////////////////////
+// Check postdate Recently
+function setos_is_recently() {
+	if( strtotime( get_the_date('Y-m-d' )) < strtotime( '2018-01-01' )){
+		return false;
+	}
+
+	return true;
+}
+
+//////////////////////////////////////////////////////
 // Theme Customizer
 function setos_customize( $wp_customize ) {
 
