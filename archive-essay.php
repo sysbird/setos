@@ -32,13 +32,10 @@ get_header(); ?>
 							<?php endif; ?>
 
 							<header class="entry-header">
-								<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time>
-								<h2 class="entry-title">
-
-									<?php the_title(); ?>
-		
-								</h2>
-
+								<?php if( setos_is_recently()): ?>
+									<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time>
+								<?php endif; ?>
+								<h2 class="entry-title"><?php the_title(); ?></h2>
 							</header>
 						</a>
 					</li>

@@ -98,10 +98,10 @@ get_header(); ?>
 							<?php endif; ?>
 
 							<header class="entry-header">
-								<h3 class="entry-title"><?php the_title(); ?></h3>
 								<?php if( setos_is_recently()): ?>
 									<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time>
 								<?php endif; ?>
+								<h3 class="entry-title"><?php the_title(); ?></h3>
 							</header>
 							</a>
 						</li>

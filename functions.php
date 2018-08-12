@@ -489,7 +489,7 @@ add_action( 'wp_handle_upload', 'setos_handle_upload' );
 //////////////////////////////////////////////////////
 // Check postdate Recently
 function setos_is_recently() {
-	if( strtotime( get_the_date('Y-m-d' )) < strtotime( '2018-01-01' )){
+	if( strtotime( get_the_date('Y-m-d' )) < strtotime( '2006-01-01' )){
 		return false;
 	}
 
