@@ -1,6 +1,6 @@
 /*
 Theme Name: setos
-Theme URI:
+Theme URI: https://github.com/sysbird/setos
 Description: SETOS built for a photographer. Feature fullscreen and parallax custom image. You can add a slider to the header image.
 Author: Sysbird
 Author URI: https://profiles.wordpress.org/sysbird/
@@ -93,10 +93,15 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1.7rem;
   line-height: 1.2;
   font-weight: normal;
-  color: #374049;
 }
 
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+h1,
+h1 a, h2,
+h2 a, h3,
+h3 a, h4,
+h4 a, h5,
+h5 a, h6,
+h6 a {
   color: #374049;
 }
 
@@ -305,12 +310,17 @@ html {
   font-size: 1.04em;
 }
 
+html * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
   border: 0;
   width: 100%;
-  background-color: #000;
 }
 
 .container {
@@ -355,16 +365,11 @@ body {
   overflow: hidden;
 }
 
-.wrapper * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 /* Header
 -------------------------------------------------------------- */
 #header {
   background-color: #374049;
+  position: relative;
   z-index: 4;
 }
 
@@ -398,44 +403,83 @@ body {
 
 /* Menu
 -------------------------------------------------------------- */
-#menu-wrapper .menu #small-menu {
+#menu-wrapper #small-menu {
   position: absolute;
-  top: 0.56667em;
+  top: 0;
   right: 0;
-  cursor: pointer;
   display: block;
-  text-align: right;
-  font-size: 1.6rem;
+  box-sizing: content-box;
+  width: 2rem;
+  padding: 0;
+  padding-top: 18px;
+  padding-right: .75rem;
+  padding-bottom: 30px;
+  padding-left: .75rem;
+  -webkit-transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  border: 0;
+  outline: 0;
+  background-color: transparent;
 }
 
-#menu-wrapper .menu #small-menu:before {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  content: "\f0c9";
+#menu-wrapper #small-menu .icon {
+  position: relative;
+  display: block;
+  margin-top: 10px;
 }
 
-#menu-wrapper .menu #small-menu.current:before {
-  content: "\f00d";
+#menu-wrapper #small-menu .icon, #menu-wrapper #small-menu .icon:before, #menu-wrapper #small-menu .icon:after {
+  width: 100%;
+  height: 2px;
+  -webkit-transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  background-color: #FFF;
 }
 
-#menu-wrapper .menu ul#menu-primary-items {
+#menu-wrapper #small-menu .icon:before, #menu-wrapper #small-menu .icon:after {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  content: ' ';
+}
+
+#menu-wrapper #small-menu .icon:after {
+  top: 10px;
+}
+
+#menu-wrapper #small-menu.current .icon {
+  background-color: transparent;
+}
+
+#menu-wrapper #small-menu.current .icon:before, #menu-wrapper #small-menu.current .icon:after {
+  top: 0;
+}
+
+#menu-wrapper #small-menu.current .icon:before {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#menu-wrapper #small-menu.current .icon:after {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+#menu-wrapper ul#menu-primary-items {
   margin: 0;
   padding: 0;
   display: none;
 }
 
-#menu-wrapper .menu ul#menu-primary-items li {
+#menu-wrapper ul#menu-primary-items li {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-#menu-wrapper .menu ul#menu-primary-items li a {
+#menu-wrapper ul#menu-primary-items li a {
   padding: 0.85em;
   display: block;
   color: #FFF;
@@ -444,8 +488,8 @@ body {
   border-top: dotted 1px #FFF;
 }
 
-#menu-wrapper .menu .current-menu-item > a,
-#menu-wrapper .menu .current-menu-ancestor > a {
+#menu-wrapper .current-menu-item > a,
+#menu-wrapper .current-menu-ancestor > a {
   font-weight: bold;
 }
 
@@ -500,10 +544,10 @@ body {
 }
 
 .entry-header .postdate {
-  color: #708f9c;
   font-size: 0.9rem;
 }
 
+.entry-header .postdate,
 .entry-header .postdate a {
   color: #708f9c;
 }
@@ -530,8 +574,6 @@ body {
 .entry-meta .category,
 .entry-meta .tag {
   margin-bottom: 0.425em;
-  overflow: hidden;
-  *zoom: 1;
 }
 
 .entry-meta .category span,
@@ -1468,52 +1510,6 @@ ul.archive > li .entry-header .entry-title {
   display: block;
 }
 
-#wall .slideitem .caption {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  width: 85%;
-  text-align: center;
-  font-size: 5vw;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-#wall .slideitem .caption p {
-  color: #fff;
-  margin: 0;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-  line-height: 1.4;
-  margin-bottom: 0.425em;
-}
-
-#wall .slideitem .caption p strong {
-  display: block;
-  font-size: 1.8em;
-}
-
-#wall .slideitem .caption a {
-  display: inline-block;
-  text-align: center;
-  border: solid 2px #FFF;
-  color: #FFF;
-  font-weight: bold;
-  font-size: 0.9em;
-  padding: 2% 5%;
-  border-radius: 3px;
-  text-decoration: none;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-#wall .slideitem .caption a:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
 #wall.no-image {
   padding-top: 0;
 }
@@ -1657,6 +1653,14 @@ ul.book-meta li:before {
   box-shadow: rgba(0, 0, 0, 0.05) 0 2px 8px;
 }
 
+.light #menu-wrapper #small-menu .icon, .light #menu-wrapper #small-menu .icon:before, .light #menu-wrapper #small-menu .icon:after {
+  background-color: #374049;
+}
+
+.light #menu-wrapper #small-menu.current .icon {
+  background-color: transparent;
+}
+
 .light #footer {
   background-color: #f6f9f9;
 }
@@ -1676,7 +1680,7 @@ ul.book-meta li:before {
   border-color: #222327;
 }
 
-.light #menu-wrapper .menu ul#menu-primary-items li a {
+.light #menu-wrapper ul#menu-primary-items li a {
   color: #222327;
   border-color: #222327;
 }
@@ -1687,13 +1691,6 @@ ul.book-meta li:before {
 @media screen and (min-width: 660px) {
   html {
     font-size: inherit;
-  }
-  #header {
-    position: fixed;
-    top: 0;
-  }
-  #menu-wrapper .menu #small-menu {
-    font-size: 2rem;
   }
   #footer #back-top {
     left: 46%;
@@ -1726,16 +1723,6 @@ ul.book-meta li:before {
   }
   .single .nav-below .nav-next a {
     justify-content: right;
-  }
-  #wall .headerimage .fixedimage {
-    position: fixed;
-  }
-  #wall .slideitem .caption {
-    top: 55%;
-  }
-  body:not(.home) #content,
-  body.home.paged #content {
-    margin-top: 80px;
   }
   .alignleft {
     float: left;
@@ -1812,6 +1799,8 @@ ul.book-meta li:before {
     width: 930px;
   }
   #header {
+    position: fixed;
+    top: 0;
     min-height: 80px;
     transition-property: min-height;
     transition-duration: .3s;
@@ -1834,11 +1823,11 @@ ul.book-meta li:before {
   #header.mini #branding #site-description {
     display: none;
   }
-  #header.mini #menu-wrapper .menu ul#menu-primary-items > li > a {
+  #header.mini #menu-wrapper ul#menu-primary-items > li > a {
     height: 60px;
     padding: 20px 0.85em;
   }
-  #header.mini #menu-wrapper .menu ul#menu-primary-items li ul {
+  #header.mini #menu-wrapper ul#menu-primary-items li ul {
     top: 60px;
   }
   #menu-wrapper {
@@ -1846,36 +1835,36 @@ ul.book-meta li:before {
     *zoom: 1;
   }
   #menu-wrapper:after {
-    clear: both;
     content: "";
-    display: block;
+    display: table;
+    clear: both;
   }
-  #menu-wrapper .menu #small-menu {
+  #menu-wrapper #small-menu {
     display: none;
     /* hide small menu initially */
   }
-  #menu-wrapper .menu ul#menu-primary-items {
+  #menu-wrapper ul#menu-primary-items {
     /* ensure .menu is visible on desktop version */
     display: block !important;
     text-align: right;
   }
-  #menu-wrapper .menu ul#menu-primary-items li {
+  #menu-wrapper ul#menu-primary-items li {
     display: inline-block;
     position: relative;
   }
-  #menu-wrapper .menu ul#menu-primary-items li:hover > ul {
+  #menu-wrapper ul#menu-primary-items li:hover > ul {
     opacity: 1;
     visibility: visible;
   }
-  #menu-wrapper .menu ul#menu-primary-items li a {
+  #menu-wrapper ul#menu-primary-items li a {
     border-top: none;
     padding: 0.8em;
   }
-  #menu-wrapper .menu ul#menu-primary-items li a:hover {
+  #menu-wrapper ul#menu-primary-items li a:hover {
     background: #FFF;
     color: #374049;
   }
-  #menu-wrapper .menu ul#menu-primary-items li.menu-item-has-children > a:after {
+  #menu-wrapper ul#menu-primary-items li.menu-item-has-children > a:after {
     display: inline-block;
     font-family: FontAwesome;
     font-style: normal;
@@ -1886,7 +1875,7 @@ ul.book-meta li:before {
     content: "\f0d7";
     padding-left: 0.2em;
   }
-  #menu-wrapper .menu ul#menu-primary-items li ul {
+  #menu-wrapper ul#menu-primary-items li ul {
     margin: 0;
     padding: 0;
     width: 200px;
@@ -1899,12 +1888,12 @@ ul.book-meta li:before {
     opacity: 0;
     transition: .5s;
   }
-  #menu-wrapper .menu ul#menu-primary-items li ul li {
+  #menu-wrapper ul#menu-primary-items li ul li {
     display: block;
     margin: 0;
     padding: 0;
   }
-  #menu-wrapper .menu ul#menu-primary-items li ul li.menu-item-has-children > a:after {
+  #menu-wrapper ul#menu-primary-items li ul li.menu-item-has-children > a:after {
     display: inline-block;
     font-family: FontAwesome;
     font-style: normal;
@@ -1915,7 +1904,7 @@ ul.book-meta li:before {
     content: "\f0da";
     padding-left: 0.2em;
   }
-  #menu-wrapper .menu ul#menu-primary-items li ul li a {
+  #menu-wrapper ul#menu-primary-items li ul li a {
     padding: 0.8em;
     background-color: #374049;
     border-right: dotted 1px #FFF;
@@ -1924,18 +1913,18 @@ ul.book-meta li:before {
     height: auto;
     white-space: normal;
   }
-  #menu-wrapper .menu ul#menu-primary-items li ul li a:hover {
+  #menu-wrapper ul#menu-primary-items li ul li a:hover {
     text-decoration: none;
     border-color: #374049;
   }
-  #menu-wrapper .menu ul#menu-primary-items li ul li:first-child a {
+  #menu-wrapper ul#menu-primary-items li ul li:first-child a {
     border-top: dotted 1px #FFF;
   }
-  #menu-wrapper .menu ul#menu-primary-items li ul li ul {
+  #menu-wrapper ul#menu-primary-items li ul li ul {
     top: 0;
     left: 100%;
   }
-  #menu-wrapper .menu ul#menu-primary-items > li > a {
+  #menu-wrapper ul#menu-primary-items > li > a {
     padding: 30px 0.8em;
     height: 80px;
   }
@@ -2003,13 +1992,12 @@ ul.book-meta li:before {
     padding-top: 650px;
   }
   #wall .headerimage .fixedimage {
+    position: fixed;
     padding-top: 650px;
   }
-  #wall .slideitem .caption {
-    font-size: 30px;
-    width: 600px;
-  }
-  body.home #wall.no-image {
+  body.home #wall.no-image,
+  body:not(.home) #content,
+  body.home.paged #content {
     margin-top: 80px;
   }
   .light #header.mini {

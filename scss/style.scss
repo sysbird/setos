@@ -1,6 +1,6 @@
 /*
 Theme Name: setos
-Theme URI:
+Theme URI: https://github.com/sysbird/setos
 Description: SETOS built for a photographer. Feature fullscreen and parallax custom image. You can add a slider to the header image.
 Author: Sysbird
 Author URI: https://profiles.wordpress.org/sysbird/
@@ -59,8 +59,8 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: #{$line-height}rem;
 	line-height:1.2;
 	font-weight: normal;
-	color: $header-color;
 
+	&,
 	a {
 		color: $header-color;
 	}
@@ -244,6 +244,10 @@ ins {
 --------------------------------------------- */
 html {
 	font-size: 1.04em;
+
+	* {
+		@include box-sizing( border-box );
+	}
 }
 
 body {
@@ -251,7 +255,6 @@ body {
 	padding:0;
 	border:0;
 	width:100%;
-	background-color: #000;
 }
 
 .container {
@@ -287,16 +290,13 @@ body {
 	color: $text-color;
 	background-color: $background-color;
 	overflow: hidden;
-
-	* {
-		@include box-sizing( border-box );
-	}
 }
 
 /* Header
 -------------------------------------------------------------- */
 #header {
 	background-color: $header-color;
+	position: relative;
 	z-index: 4;
 
 	&,
@@ -334,51 +334,98 @@ body {
 /* Menu
 -------------------------------------------------------------- */
 #menu-wrapper {
-	.menu {
-		#small-menu {
-			position: absolute;
-			top: #{$line-height /3}em;
-			right: 0;
-			cursor: pointer;
+	#small-menu {
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: block;
+		box-sizing: content-box;
+		width: 2rem;
+		padding: 0;
+		padding-top: 18px;
+		padding-right: .75rem;
+		padding-bottom: 30px;
+		padding-left: .75rem;
+		-webkit-transition: all .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+		transition: all .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+		-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+		border: 0;
+		outline: 0;
+		background-color: transparent;
+
+		.icon {
+			position: relative;
 			display: block;
-			text-align: right;
-			font-size: 1.6rem;
+			margin-top: 10px;
+
+			&,
+			&:before,
+			&:after {
+				width: 100%;
+				height: 2px;
+				-webkit-transition: all .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+				transition: all .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+				background-color: #FFF;
+			}
+
+			&:before,
+			&:after {
+				position: absolute;
+				top: -10px;
+				left: 0;
+				content: ' ';
+			}
+			
+			&:after {
+				top: 10px;
+			}
+		}
+		
+		&.current .icon {
+			background-color: transparent;
+
+			&:before,
+			&:after {
+				top: 0;
+			}
 
 			&:before {
-				@include font-awesome();
-				content: "\f0c9";
+			-webkit-transform: rotate(45deg);
+			transform: rotate(45deg);
 			}
-
-			&.current:before {
-				content: "\f00d";
+			
+			&:after {
+			-webkit-transform: rotate(-45deg);
+			transform: rotate(-45deg);
 			}
 		}
+	}
 
-		ul#menu-primary-items {
+	ul#menu-primary-items {
+		margin: 0;
+		padding: 0;
+		display: none;
+
+		li {
+			list-style: none;
 			margin: 0;
 			padding: 0;
-			display: none;
 
-			li {
-				list-style: none;
-				margin: 0;
-				padding: 0;
-
-				a {
-					padding: #{$line-height /2}em;
-					display: block;
-					color: #FFF;
-					text-decoration: none;
-					line-height: 1.2;
-					border-top: dotted 1px #FFF;
-				}
+			a {
+				padding: #{$line-height /2}em;
+				display: block;
+				color: #FFF;
+				text-decoration: none;
+				line-height: 1.2;
+				border-top: dotted 1px #FFF;
 			}
 		}
+	}
 
-		.current-menu-item > a,
-		.current-menu-ancestor > a {
-			font-weight: bold;
-		}
+	.current-menu-item > a,
+	.current-menu-ancestor > a {
+		font-weight: bold;
 	}
 }
 
@@ -426,9 +473,9 @@ body {
 	}
 
 	.postdate {
-		color: $link-color;
 		font-size: 0.9rem;
 
+		&,
 		a {
 			color: $link-color;
 		}
@@ -458,7 +505,6 @@ body {
 	.category,
 	.tag {
 		margin-bottom: #{$line-height /4}em;
-		@include clearfix;
 
 		span {
 			width: 7em;
@@ -1338,52 +1384,6 @@ ul.archive {
 		&.start {
 			display: block;
 		}
-
-		.caption {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			margin-right: -50%;
-			width: 85%;
-			text-align: center;
-			font-size: 5vw;
-			-webkit-transform: translate( -50%, -50% );
-			-moz-transform: translate( -50%, -50% );
-			-ms-transform: translate( -50%, -50% );
-			-o-transform: translate( -50%, -50% );
-			transform: translate( -50%, -50% );
-
-			p {
-				color: #fff;
-				margin: 0;
-				text-shadow: 1px 1px 3px rgba( 0, 0, 0, 0.5 );
-				line-height: 1.4;
-				margin-bottom: #{$line-height /4}em;
-
-				strong {
-					display: block;
-					font-size: 1.8em;
-				}
-			}
-
-			a {
-				display: inline-block;
-				text-align: center;
-				border: solid 2px #FFF;
-				color: #FFF;
-				font-weight: bold;
-				font-size: 0.9em;
-				padding: 2% 5%;
-				border-radius: 3px;
-				text-decoration: none;
-				text-shadow: 1px 1px 3px rgba( 0, 0, 0, 0.5 );
-				box-shadow: 1px 1px 3px rgba( 0, 0, 0, 0.5 );
-
-				&:hover {
-					background-color:rgba( 255,255,255,0.3 );
-				}
-			}
-		}
 	}
 
 	&.no-image {
@@ -1516,6 +1516,22 @@ ul.book-meta {
 		@include box-shadow(rgba(0,0,0,.05) 0 2px 8px);
 	}
 
+	#menu-wrapper {
+		#small-menu {
+			.icon {
+				&,
+				&:before,
+				&:after {
+					background-color: $header-color;
+				}
+			}	
+
+			&.current .icon {
+				background-color: transparent;
+			}
+		}
+	}
+
 	#footer {
 		background-color: $hover-background-color		
 	}
@@ -1538,7 +1554,7 @@ ul.book-meta {
 		}
 	}
 
-	#menu-wrapper .menu ul#menu-primary-items li a {
+	#menu-wrapper ul#menu-primary-items li a {
 		color: $text-color;
 		border-color: $text-color;
 	}
@@ -1552,19 +1568,6 @@ ul.book-meta {
 
 	html {
 		font-size: inherit;
-	}
-
-	#header {
-		position: fixed;
-		top: 0;
-	}
-
-	#menu-wrapper {
-		.menu {
-			#small-menu {
-				font-size: 2rem;
-			}
-		}
 	}
 
 	#footer {
@@ -1610,25 +1613,6 @@ ul.book-meta {
 				}
 			}
 		}
-	}
-
-	#wall {
-		.headerimage {
-			.fixedimage {
-				position: fixed;
-			}
-		}
-
-		.slideitem {
-			.caption {
-				top: 55%;
-			}
-		}
-	}
-
-	body:not(.home) #content,
-	body.home.paged  #content {
-		margin-top: 80px;
 	}
 
 	.alignleft {
@@ -1724,6 +1708,8 @@ ul.book-meta {
 	}
 
 	#header {
+		position: fixed;
+		top: 0;
 		min-height: 80px;
 		transition-property:min-height;
 		transition-duration:.3s;
@@ -1755,18 +1741,16 @@ ul.book-meta {
 			}
 
 			#menu-wrapper {
-				.menu {
-					ul#menu-primary-items {
-						> li {
-							> a {
-								height: 60px;
-								padding: 20px #{$line-height /2}em;
-							}
+				ul#menu-primary-items {
+					> li {
+						> a {
+							height: 60px;
+							padding: 20px #{$line-height /2}em;
 						}
+					}
 
-						li ul {
-							top: 60px;
-						}
+					li ul {
+						top: 60px;
 					}
 				}
 			}
@@ -1775,108 +1759,101 @@ ul.book-meta {
 
 	#menu-wrapper {
 		margin-top: 0;
-		*zoom: 1;
-		&:after {
-			clear: both;
-				content: "";
-				display: block;
+		@include pie-clearfix;
+
+		#small-menu {
+			display: none; /* hide small menu initially */
 		}
 
-		.menu {
-			#small-menu {
-				display: none; /* hide small menu initially */
-			}
+		ul#menu-primary-items {
+			/* ensure .menu is visible on desktop version */
+			display: block !important;
+			text-align: right;
 
-			ul#menu-primary-items {
-				/* ensure .menu is visible on desktop version */
-				display: block !important;
-				text-align: right;
+			li {
+				display: inline-block;
+				position: relative;
 
-				li {
-					display: inline-block;
-					position: relative;
+				&:hover > ul {
+					opacity: 1;
+					visibility: visible;
+				}
 
-					&:hover > ul {
-						opacity: 1;
-						visibility: visible;
-					}
+				a {
+					border-top: none;
+					padding: 0.8em;
 
-					a {
-						border-top: none;
-						padding: 0.8em;
-
-						&:hover {
-							background: #FFF;
-							color: $header-color;
-						}
-					}
-
-					&.menu-item-has-children {
-						>a:after {
-							@include font-awesome();
-							content: "\f0d7";
-							padding-left: 0.2em;
-						}
-					}
-
-					ul {
-						margin: 0;
-						padding: 0;
-						width: 200px;
-						position: absolute;
-						top: 80px;
-						left: 0;
-						text-align: left;
-						z-index: 9999;
-						visibility: hidden;
-						opacity: 0;
-						transition: .5s;
-
-						li {
-							display: block;
-							margin: 0;
-							padding: 0;
-
-							&.menu-item-has-children {
-								>a:after {
-									@include font-awesome();
-									content: "\f0da";
-									padding-left: 0.2em;
-								}
-							}
-
-							a {
-								padding: 0.8em;
-								background-color: $header-color;
-								border-right: dotted 1px #FFF;
-								border-left: dotted 1px #FFF;
-								border-bottom: dotted 1px #FFF;
-								height: auto;
-								white-space: normal;
-
-								&:hover {
-									text-decoration: none;
-									border-color: $header-color;
-								}
-							}
-
-							&:first-child a {
-								border-top: dotted 1px #FFF;
-							}
-
-							ul {
-								top: 0;
-								left: 100%;
-							}
-						}
+					&:hover {
+						background: #FFF;
+						color: $header-color;
 					}
 				}
 
-				>li {
-					>a {
-						padding: 30px 0.8em;
-						height: 80px;
+				&.menu-item-has-children {
+					>a:after {
+						@include font-awesome();
+						content: "\f0d7";
+						padding-left: 0.2em;
 					}
+				}
+
+				ul {
+					margin: 0;
+					padding: 0;
+					width: 200px;
+					position: absolute;
+					top: 80px;
+					left: 0;
+					text-align: left;
+					z-index: 9999;
+					visibility: hidden;
+					opacity: 0;
+					transition: .5s;
+
+					li {
+						display: block;
+						margin: 0;
+						padding: 0;
+
+						&.menu-item-has-children {
+							>a:after {
+								@include font-awesome();
+								content: "\f0da";
+								padding-left: 0.2em;
+							}
+						}
+
+						a {
+							padding: 0.8em;
+							background-color: $header-color;
+							border-right: dotted 1px #FFF;
+							border-left: dotted 1px #FFF;
+							border-bottom: dotted 1px #FFF;
+							height: auto;
+							white-space: normal;
+
+							&:hover {
+								text-decoration: none;
+								border-color: $header-color;
+							}
+						}
+
+						&:first-child a {
+							border-top: dotted 1px #FFF;
+						}
+
+						ul {
+							top: 0;
+							left: 100%;
+						}
+					}
+				}
+			}
+
+			>li {
+				>a {
+					padding: 30px 0.8em;
+					height: 80px;
 				}
 			}
 		}
@@ -1971,19 +1948,15 @@ ul.book-meta {
 
 		.headerimage {
 			.fixedimage {
+				position: fixed;
 				padding-top: 650px;
-			}
-		}
-
-		.slideitem {
-			.caption {
-				font-size: 30px;
-				width:600px;
 			}
 		}
 	}
 
-	body.home #wall.no-image {
+	body.home #wall.no-image,
+	body:not(.home) #content,
+	body.home.paged  #content {
 		margin-top: 80px;
 	}
 
