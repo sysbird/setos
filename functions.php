@@ -304,15 +304,17 @@ function setos_excerpt_more( $more ) {
 add_filter('excerpt_more', 'setos_excerpt_more');
 
 //////////////////////////////////////////////////////
-// photos slide
+// photos slide in book
 function setos_photos_slide () {
 	$post_id = get_the_ID();
-	$thumbnail_id = get_post_meta( $post_id, "_thumbnail_id", true );
-	$book_title = get_the_title();
+
+	// get relate post_id in Japanese post
+	$post_id = setos_get_relate_post_id_in_japanese( $post_id );
 
 	// photos in post
 	$html = '';
 	$html_cover = '';
+	$pages = 0;
 	$args = array( 'post_type'			=> 'attachment',
 					'posts_per_page'	=> -1,
 					'post_parent'		=> $post_id,
@@ -322,24 +324,45 @@ function setos_photos_slide () {
 
 	$images = get_posts( $args );
 	if ( $images ) {
-		$number = 1;
 		foreach( $images as $image ){
-
+			$pages++;
 			$src = wp_get_attachment_url( $image->ID );
 			$thumbnail = wp_get_attachment_image_src( $image->ID, 'large' );
-			$html .= ' <a href="' .$src .'" data-fancybox="setos-photos-slide" data-caption="' .$image->post_title .'">page' .$number .'</a>';
-			$number++;
+			$html .= ' <a href="' .$src .'" data-fancybox="setos-photos-slide" data-caption="' .$image->post_title .'">page' .$pages .'</a>';
 		}
 
 		wp_reset_postdata();
 	}
 
 	// output
-	if( !empty( $html ) ){
-		$html = '<div class="setos-photos-slide">' .$html .'<p><a href="#" class="setos-photos-slide-start">写真を見る</a></p></div>';
+	if( $pages ){
+		$html = '<div class="setos-photos-slide">' .$html .'<p><a href="#" class="setos-photos-slide-start">' .sprintf( __( 'show photos(%d pages)', 'setos' ), $pages ) .'</a></p></div>';
+		echo $html;
+	}
 	}
 
-	echo $html;
+//////////////////////////////////////////////////////
+//  get relate post_id in Japanese post
+function setos_get_relate_post_id_in_japanese( $post_id ) {
+
+	$locales = get_locale(); 
+	$pid_loc = get_post_meta( $post_id, '_locale' );
+	
+	if ( 'ja' === $locales || ! @$pid_loc[0] ){
+		// no locale or Japanese
+		return $post_id;
+	} 
+
+    $translations = bogo_get_post_translations( $post_id );
+	foreach ( $translations as $key => $value ) {
+		if ( 'ja' === $key ){
+			// post in Japanese
+			return $value->ID;
+		  }
+    }
+
+	// no post in Japanese
+	return $post_id;
 }
 
 //////////////////////////////////////////////////////

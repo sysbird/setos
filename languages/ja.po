@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: SETOS 1.0\n"
 "Report-Msgid-Bugs-To: http://www.sysbird.jp\n"
 "POT-Creation-Date: 2018-06-19 00:00-0900\n"
-"PO-Revision-Date: 2018-08-09 16:44+0900\n"
+"PO-Revision-Date: 2018-08-17 15:03+0900\n"
 "Last-Translator: TORIYAMA Yuko <sysbird@gmail.com>\n"
 "Language-Team: TORIYAMA Yuko <sysbirdj@gmail.com>\n"
 "Language: ja\n"
@@ -205,6 +205,10 @@ msgstr "暗め"
 #: unknown.php:0
 msgid "light"
 msgstr "明るめ"
+
+#: unknown.php:0
+msgid "show photos(%d pages)"
+msgstr "写真を見る(%d ページ)"
 
 #. Description of the plugin/theme
 msgid "SETOS built for a photographer. Feature fullscreen and parallax custom image. You can add a slider to the header image."
