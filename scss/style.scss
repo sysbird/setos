@@ -1779,6 +1779,15 @@ ul.book-meta {
 					visibility: visible;
 				}
 
+				&.language {
+					a {
+						&:after {
+							@include font-awesome();
+							content: "\f0ac";
+						}
+					}
+				}
+
 				a {
 					border-top: none;
 					padding: 0.8em;

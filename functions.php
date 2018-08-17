@@ -339,7 +339,7 @@ function setos_photos_slide () {
 		$html = '<div class="setos-photos-slide">' .$html .'<p><a href="#" class="setos-photos-slide-start">' .sprintf( __( 'show photos(%d pages)', 'setos' ), $pages ) .'</a></p></div>';
 		echo $html;
 	}
-	}
+}
 
 //////////////////////////////////////////////////////
 //  get relate post_id in Japanese post
@@ -364,6 +364,20 @@ function setos_get_relate_post_id_in_japanese( $post_id ) {
 	// no post in Japanese
 	return $post_id;
 }
+
+//////////////////////////////////////////////////////
+// Bogo 
+function setos_bogo_language_switcher( $output ){
+	$output = str_replace(' (United States)', '', $output );
+	$output = str_replace('Japanese', '日本語', $output );
+	return $output;
+}
+add_filter( 'bogo_language_switcher','setos_bogo_language_switcher');
+
+function bogo_use_flags_false(){
+	return false;
+}
+add_filter( 'bogo_use_flags','bogo_use_flags_false' );
 
 //////////////////////////////////////////////////////
 // Shortcode gallery

@@ -1856,6 +1856,16 @@ ul.book-meta li:before {
     opacity: 1;
     visibility: visible;
   }
+  #menu-wrapper ul#menu-primary-items li.language a:after {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\f0ac";
+  }
   #menu-wrapper ul#menu-primary-items li a {
     border-top: none;
     padding: 0.8em;
