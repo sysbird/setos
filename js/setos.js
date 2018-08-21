@@ -24,22 +24,9 @@ jQuery(function() {
 				}
 			};
 
-			var birdfield_AdjustHeader = function() {
-				var headerHeight = parseInt( jQuery( '#header' ).height() );
-				if( 80 < headerHeight ){
-					// so many Navigation
-					jQuery( '.wrapper' ).addClass( 'many-navigation' );
-					jQuery( '.wrapper' ).removeClass( 'fixed-header' );
-				}
-			}
-
 			// Add listener HeightChec
 			mq.addListener( birdfieldHeightCheck );
 			birdfieldHeightCheck( mq );
-
-			// Add listener navigation height
-			mq.addListener( birdfield_AdjustHeader );
-			birdfield_AdjustHeader();
 		}
 		else {
 			// Browser doesn't support matchMedia
@@ -54,7 +41,7 @@ jQuery(function() {
 			gallery_class = jQuery( this ).attr( 'class' );
 			gallery_columns = String(gallery_class.match( /gallery-columns-\d/ ));
 			gallery_columns = gallery_columns.replace( 'gallery-columns-', '' );
-				jQuery( this ).find( '.gallery-item').tile( parseInt( gallery_columns ));
+					jQuery( this ).find( '.gallery-item').tile( parseInt( gallery_columns ));
 			});
 
 		// Masonry for footer widget area
@@ -117,6 +104,8 @@ jQuery(function() {
 			return false;
 		});
 
+		// Initialize bogo-language-switcher
+		jQuery( '.bogo-language-switcher' ).insertAfter( '.menu .language a' ).css({ 'display': 'block' });
 	});
 
 	// Navigation for mobile

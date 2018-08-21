@@ -32,5 +32,9 @@
 
 <?php wp_footer(); ?>
 
+<span style="display: none;">
+	<?php echo do_shortcode( '[bogo]' ); ?>
+</span>
+
 </body>
 </html>

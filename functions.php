@@ -367,17 +367,62 @@ function setos_get_relate_post_id_in_japanese( $post_id ) {
 
 //////////////////////////////////////////////////////
 // Bogo 
-function setos_bogo_language_switcher( $output ){
-	$output = str_replace(' (United States)', '', $output );
-	$output = str_replace('Japanese', '日本語', $output );
-	return $output;
-}
-add_filter( 'bogo_language_switcher','setos_bogo_language_switcher');
+remove_shortcode( 'bogo', 'bogo_language_switcher' );
+add_shortcode( 'bogo', 'setos_language_switcher' );
+function setos_language_switcher( $args = '' ) {
 
-function bogo_use_flags_false(){
-	return false;
+	$args = wp_parse_args( $args, array(
+		'echo' => false,
+	) );
+
+	$links = bogo_language_switcher_links( $args );
+	$output = '';
+
+	foreach ( $links as $link ) {
+		$class = array();
+		$class[] = bogo_language_tag( $link['locale'] );
+		$class[] = bogo_lang_slug( $link['locale'] );
+
+		if ( get_locale() == $link['locale'] ) {
+			$class[] = 'current';
+		}
+
+		$class = implode( ' ', array_unique( $class ) );
+
+		$label = $link['native_name'] ? $link['native_name'] : $link['title'];
+
+		if( 'ja' === $link['locale']){
+			$label = '日本語';
+		}
+		elseif( 'en_US' === $link['locale']){
+			$label = 'English';
+		}			
+
+		$title = $link['title'];
+
+		if ( empty( $link['href'] ) ) {
+			$li = '<span>' .esc_html( $label ) .'</span>';
+		} else {
+			$li = sprintf(
+				'<a href="%1$s">%2$s</a>',
+				esc_url( $link['href'] ),
+				esc_html( $label ) );
+		}
+
+		$li = sprintf( '<li class="%1$s">%2$s</li>', $class, $li );
+		$output .= $li . "\n";
+	}
+
+	$output = '<ul class="bogo-language-switcher">' . $output . '</ul>' . "\n";
+
+	$output = apply_filters( 'bogo_language_switcher', $output, $args );
+
+	if ( $args['echo'] ) {
+		echo $output;
+	} else {
+		return $output;
+	}
 }
-add_filter( 'bogo_use_flags','bogo_use_flags_false' );
 
 //////////////////////////////////////////////////////
 // Shortcode gallery

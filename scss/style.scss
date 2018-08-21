@@ -412,7 +412,18 @@ body {
 			margin: 0;
 			padding: 0;
 
-			a {
+			&.language {
+				> a {
+					pointer-events: none;
+				}
+
+				.current {
+					font-weight: bold;
+				}
+			}
+
+			a,
+			span {
 				padding: #{$line-height /2}em;
 				display: block;
 				color: #FFF;
@@ -420,12 +431,20 @@ body {
 				line-height: 1.2;
 				border-top: dotted 1px #FFF;
 			}
+
+			span {
+				color: #CCC;
+			}
 		}
 	}
 
 	.current-menu-item > a,
 	.current-menu-ancestor > a {
 		font-weight: bold;
+	}
+
+	ul.bogo-language-switcher {
+		display: none;
 	}
 }
 
@@ -1530,6 +1549,19 @@ ul.book-meta {
 				background-color: transparent;
 			}
 		}
+
+		ul#menu-primary-items {
+			li {
+				a,
+				span {
+					border-color: $text-color;
+				}
+
+				a {
+					color: $text-color;
+				}
+			}
+		}
 	}
 
 	#footer {
@@ -1553,13 +1585,7 @@ ul.book-meta {
 			border-color: $text-color
 		}
 	}
-
-	#menu-wrapper ul#menu-primary-items li a {
-		color: $text-color;
-		border-color: $text-color;
-	}
 }
-
 
 /* Media queries for responsive design
 --------------------------------------------- */
@@ -1747,6 +1773,13 @@ ul.book-meta {
 							height: 60px;
 							padding: 20px #{$line-height /2}em;
 						}
+
+						&.language {
+							> a {
+								padding-left: 0;
+								padding-right: 0;
+							}
+						}
 					}
 
 					li ul {
@@ -1779,22 +1812,26 @@ ul.book-meta {
 					visibility: visible;
 				}
 
-				&.language {
-					a {
-						&:after {
-							@include font-awesome();
-							content: "\f0ac";
-						}
-					}
-				}
-
-				a {
+				a,
+				span {
 					border-top: none;
 					padding: 0.8em;
 
-					&:hover {
-						background: #FFF;
-						color: $header-color;
+				}
+
+				a:hover {
+					background-color: #FFF;
+					color: $header-color;
+				}
+
+				&.language {
+					> a {
+						background: url("images/language.svg") no-repeat right center/ 200%;
+						padding-left: 0;
+						padding-right: 0;
+						width: 16px;	
+						text-indent: -119988px;
+						text-align: left;
 					}
 				}
 
@@ -1832,7 +1869,8 @@ ul.book-meta {
 							}
 						}
 
-						a {
+						a,
+						span {
 							padding: 0.8em;
 							background-color: $header-color;
 							border-right: dotted 1px #FFF;
@@ -1847,7 +1885,7 @@ ul.book-meta {
 							}
 						}
 
-						&:first-child a {
+						&:first-child {
 							border-top: dotted 1px #FFF;
 						}
 
@@ -1974,14 +2012,24 @@ ul.book-meta {
 			background-color: rgba( #FFF, 0.85 );
 		}
 
-		#menu-wrapper .menu ul#menu-primary-items li ul li a {
-			background-color: #FFF;
+		#menu-wrapper {
+			.menu ul#menu-primary-items {
+				li ul li a,
+				span {
+					background-color: #FFF;
+				}
+	
+				li ul li:first-child {
+					border-color: $header-color;
+				}
+		
+				li.language {
+					> a {
+						background-position: left center;
+					}
+				}
+			}
 		}
-
-		#menu-wrapper .menu ul#menu-primary-items li ul li:first-child a {
-			border-color: $text-color;
-		}
-
 	}
 }
 

@@ -479,7 +479,16 @@ body {
   padding: 0;
 }
 
-#menu-wrapper ul#menu-primary-items li a {
+#menu-wrapper ul#menu-primary-items li.language > a {
+  pointer-events: none;
+}
+
+#menu-wrapper ul#menu-primary-items li.language .current {
+  font-weight: bold;
+}
+
+#menu-wrapper ul#menu-primary-items li a,
+#menu-wrapper ul#menu-primary-items li span {
   padding: 0.85em;
   display: block;
   color: #FFF;
@@ -488,9 +497,17 @@ body {
   border-top: dotted 1px #FFF;
 }
 
+#menu-wrapper ul#menu-primary-items li span {
+  color: #CCC;
+}
+
 #menu-wrapper .current-menu-item > a,
 #menu-wrapper .current-menu-ancestor > a {
   font-weight: bold;
+}
+
+#menu-wrapper ul.bogo-language-switcher {
+  display: none;
 }
 
 /* Posts
@@ -1661,6 +1678,15 @@ ul.book-meta li:before {
   background-color: transparent;
 }
 
+.light #menu-wrapper ul#menu-primary-items li a,
+.light #menu-wrapper ul#menu-primary-items li span {
+  border-color: #222327;
+}
+
+.light #menu-wrapper ul#menu-primary-items li a {
+  color: #222327;
+}
+
 .light #footer {
   background-color: #f6f9f9;
 }
@@ -1677,11 +1703,6 @@ ul.book-meta li:before {
 }
 
 .light #widget-area ul li {
-  border-color: #222327;
-}
-
-.light #menu-wrapper ul#menu-primary-items li a {
-  color: #222327;
   border-color: #222327;
 }
 
@@ -1827,6 +1848,10 @@ ul.book-meta li:before {
     height: 60px;
     padding: 20px 0.85em;
   }
+  #header.mini #menu-wrapper ul#menu-primary-items > li.language > a {
+    padding-left: 0;
+    padding-right: 0;
+  }
   #header.mini #menu-wrapper ul#menu-primary-items li ul {
     top: 60px;
   }
@@ -1856,23 +1881,22 @@ ul.book-meta li:before {
     opacity: 1;
     visibility: visible;
   }
-  #menu-wrapper ul#menu-primary-items li.language a:after {
-    display: inline-block;
-    font-family: FontAwesome;
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    content: "\f0ac";
-  }
-  #menu-wrapper ul#menu-primary-items li a {
+  #menu-wrapper ul#menu-primary-items li a,
+  #menu-wrapper ul#menu-primary-items li span {
     border-top: none;
     padding: 0.8em;
   }
   #menu-wrapper ul#menu-primary-items li a:hover {
-    background: #FFF;
+    background-color: #FFF;
     color: #374049;
+  }
+  #menu-wrapper ul#menu-primary-items li.language > a {
+    background: url("images/language.svg") no-repeat right center/200%;
+    padding-left: 0;
+    padding-right: 0;
+    width: 16px;
+    text-indent: -119988px;
+    text-align: left;
   }
   #menu-wrapper ul#menu-primary-items li.menu-item-has-children > a:after {
     display: inline-block;
@@ -1914,7 +1938,8 @@ ul.book-meta li:before {
     content: "\f0da";
     padding-left: 0.2em;
   }
-  #menu-wrapper ul#menu-primary-items li ul li a {
+  #menu-wrapper ul#menu-primary-items li ul li a,
+  #menu-wrapper ul#menu-primary-items li ul li span {
     padding: 0.8em;
     background-color: #374049;
     border-right: dotted 1px #FFF;
@@ -1923,11 +1948,12 @@ ul.book-meta li:before {
     height: auto;
     white-space: normal;
   }
-  #menu-wrapper ul#menu-primary-items li ul li a:hover {
+  #menu-wrapper ul#menu-primary-items li ul li a:hover,
+  #menu-wrapper ul#menu-primary-items li ul li span:hover {
     text-decoration: none;
     border-color: #374049;
   }
-  #menu-wrapper ul#menu-primary-items li ul li:first-child a {
+  #menu-wrapper ul#menu-primary-items li ul li:first-child {
     border-top: dotted 1px #FFF;
   }
   #menu-wrapper ul#menu-primary-items li ul li ul {
@@ -2013,11 +2039,15 @@ ul.book-meta li:before {
   .light #header.mini {
     background-color: rgba(255, 255, 255, 0.85);
   }
-  .light #menu-wrapper .menu ul#menu-primary-items li ul li a {
+  .light #menu-wrapper .menu ul#menu-primary-items li ul li a,
+  .light #menu-wrapper .menu ul#menu-primary-items span {
     background-color: #FFF;
   }
-  .light #menu-wrapper .menu ul#menu-primary-items li ul li:first-child a {
-    border-color: #222327;
+  .light #menu-wrapper .menu ul#menu-primary-items li ul li:first-child {
+    border-color: #374049;
+  }
+  .light #menu-wrapper .menu ul#menu-primary-items li.language > a {
+    background-position: left center;
   }
 }
 
