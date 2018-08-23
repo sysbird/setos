@@ -52,6 +52,5 @@ http://www.sysbird.jp
 
 
 == Changelog ==
-* Fix the Coding Standards.
 v1.0
 * Hello, world!
