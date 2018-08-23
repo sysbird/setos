@@ -356,6 +356,23 @@ body {
   margin: 0 auto;
 }
 
+/* Adjust footer
+--------------------------------------------- */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+#content {
+  flex-grow: 1;
+}
+
 /* Wrapper
 -------------------------------------------------------------- */
 .wrapper {
@@ -1713,6 +1730,12 @@ ul.book-meta li:before {
   html {
     font-size: inherit;
   }
+  #header {
+    position: fixed;
+    top: 0;
+    transition-property: min-height;
+    transition-duration: .3s;
+  }
   #footer #back-top {
     left: 46%;
   }
@@ -1744,6 +1767,14 @@ ul.book-meta li:before {
   }
   .single .nav-below .nav-next a {
     justify-content: right;
+  }
+  body.home #wall.no-image,
+  body:not(.home) #content,
+  body.home.paged #content {
+    margin-top: 60px;
+  }
+  #wall .headerimage .fixedimage {
+    position: fixed;
   }
   .alignleft {
     float: left;
@@ -1820,11 +1851,7 @@ ul.book-meta li:before {
     width: 930px;
   }
   #header {
-    position: fixed;
-    top: 0;
     min-height: 80px;
-    transition-property: min-height;
-    transition-duration: .3s;
   }
   #header #branding {
     padding-top: 15px;
@@ -2028,7 +2055,6 @@ ul.book-meta li:before {
     padding-top: 650px;
   }
   #wall .headerimage .fixedimage {
-    position: fixed;
     padding-top: 650px;
   }
   body.home #wall.no-image,
