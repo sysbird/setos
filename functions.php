@@ -486,14 +486,14 @@ function setos_entry_meta() {
 	<?php if( is_archive() ): // archive book ?>
 		<ul class="book-meta">
 			<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '</li>' ); ?>
-			<?php setos_the_custom_field( get_the_ID(), 'release', '<li><strong>' .__( '発売日', 'setos') .':</strong> ', '</li>' ); ?>
+			<?php setos_the_custom_field( get_the_ID(), 'release', '<li><strong>' .__( 'Release', 'setos') .':</strong> ', '</li>' ); ?>
 		</ul>
 	<?php elseif( is_singular() || is_home() ): // single book ?>
 		<ul class="book-meta">
 			<li><strong><?php _e( 'Photo Book', 'setos'); ?>:</strong> <?php the_title(); ?></li>
 			<?php setos_the_custom_field( get_the_ID(), 'author', '<li><strong>' .__( 'Author', 'setos') .':</strong> ', '</li>' ); ?>
 			<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '</li>' ); ?>
-			<?php setos_the_custom_field( get_the_ID(), 'release', '<li><strong>' .__( '発売日', 'setos') .':</strong> ', '' ); ?>
+			<?php setos_the_custom_field( get_the_ID(), 'release', '<li><strong>' .__( 'Release', 'setos') .':</strong> ', '' ); ?>
 			<?php setos_the_custom_field( get_the_ID(), 'price', '<li><strong>' .__( 'Price', 'setos') .':</strong> ', ' ' .__( 'yen', 'setos') .'</li>' ); ?>
 			<?php setos_the_custom_field( get_the_ID(), 'size', '<li><strong>' .__( 'Size', 'setos') .':</strong> ', '</li>' ); ?>
 		</ul>
