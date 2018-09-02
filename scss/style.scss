@@ -617,8 +617,8 @@ html, body {
 .more {
 	a {
 		display: block;
-		color: $link-color;
-		border: solid 1px $link-color;
+		color: #FFF;
+		background: $link-color;
 		padding: #{$line-height /2}em;
 		border-radius: 2px;
 		font-size: 0.96em;
