@@ -74,15 +74,15 @@ get_header(); ?>
 				<?php endif; ?>
 
 				<div class="entry-content">
-	
-					<?php the_content(); ?>
-	
+		
 					<?php if( is_single()): ?>
 						<?php if ( is_object_in_term( $post->ID, 'works-genre','book' )): ?>
 							<?php setos_entry_meta(); ?>
 						<?php endif; ?>
 					<?php endif; ?>
-				</div>
+	
+					<?php the_content(); ?>
+			</div>
 
 				<?php if( 'works' === get_post_type()): ?>
 					</div>

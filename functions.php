@@ -483,21 +483,14 @@ function setos_the_custom_field( $ID, $selector, $before, $after ) {
 function setos_entry_meta() {
 ?>
 
-	<?php if( is_archive() ): // archive book ?>
-		<ul class="book-meta">
-			<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '</li>' ); ?>
-			<?php setos_the_custom_field( get_the_ID(), 'release', '<li><strong>' .__( 'Release', 'setos') .':</strong> ', '</li>' ); ?>
-		</ul>
-	<?php elseif( is_singular() || is_home() ): // single book ?>
-		<ul class="book-meta">
-			<li><strong><?php _e( 'Photo Book', 'setos'); ?>:</strong> <?php the_title(); ?></li>
-			<?php setos_the_custom_field( get_the_ID(), 'author', '<li><strong>' .__( 'Author', 'setos') .':</strong> ', '</li>' ); ?>
-			<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '</li>' ); ?>
-			<?php setos_the_custom_field( get_the_ID(), 'release', '<li><strong>' .__( 'Release', 'setos') .':</strong> ', '' ); ?>
-			<?php setos_the_custom_field( get_the_ID(), 'price', '<li><strong>' .__( 'Price', 'setos') .':</strong> ', ' ' .__( 'yen', 'setos') .'</li>' ); ?>
-			<?php setos_the_custom_field( get_the_ID(), 'size', '<li><strong>' .__( 'Size', 'setos') .':</strong> ', '</li>' ); ?>
-		</ul>
-	<?php endif; ?>
+	<ul class="book-meta">
+		<?php setos_the_custom_field( get_the_ID(), 'award', '<li><strong>' .__( 'Award', 'setos') .':</strong> ', '</li>' ); ?>
+		<?php setos_the_custom_field( get_the_ID(), 'author', '<li><strong>' .__( 'Author', 'setos') .':</strong> ', '</li>' ); ?>
+		<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '</li>' ); ?>
+		<?php setos_the_custom_field( get_the_ID(), 'release', '<li><strong>' .__( 'Release', 'setos') .':</strong> ', '' ); ?>
+		<?php setos_the_custom_field( get_the_ID(), 'price', '<li><strong>' .__( 'Price', 'setos') .':</strong> ', ' ' .__( 'yen', 'setos') .'</li>' ); ?>
+		<?php setos_the_custom_field( get_the_ID(), 'size', '<li><strong>' .__( 'Size', 'setos') .':</strong> ', '</li>' ); ?>
+	</ul>
 
 <?php
 }
@@ -628,29 +621,28 @@ function setos_headerslider() {
 	$setos_slides = array();
 	$setos_max = 0;
 
-	$headers = get_uploaded_header_images();
-	if($headers) {
-		// many omage
-		shuffle ( $headers );
-		foreach ( $headers as $header ) {
-			$setos_slides[ $setos_max ] = $header[ 'url' ];
-			$setos_max++;
-			if( 3 == $setos_max ){
-				break;
-			}
-		}
-	}
-	else {
-		// one omage
+	$headers = get_posts( array( 'post_type' => 'attachment', 'meta_key' => '_wp_attachment_is_custom_header', 'orderby' => 'title', 'nopaging' => true , 'order' => 'ASC') );
+
+	if ( empty( $headers ) ){
+		// one image
 		$header_image = get_header_image();
 		if( $header_image ){
 			$setos_slides[ 0 ] = $header_image;
 			$setos_max = 1;
 		}
+	}else{
+		// many image
+		foreach ( (array) $headers as $header ) {
+			$setos_slides[ $setos_max ] = esc_url_raw( wp_get_attachment_url( $header->ID ) );
+			$setos_max++;
+			if( 5 == $setos_max ){
+				break;
+			}
+		}
 	}
-
+			
 	if( !$setos_max ){
-		return false;
+		return;
 	}
 
 	$slider_class = '';
@@ -664,9 +656,7 @@ function setos_headerslider() {
 		<div class="headerimage <?php echo $slider_class ?>" data-interval="7000">
 
 <?php
-	// sort randam
 	$setos_html = '';
-//	$setos_start = mt_rand( 1, $setos_max );
 	for( $setos_count = 1; $setos_count <= $setos_max; $setos_count++ ) {
 			$setos_class = '';
 			if( 1 == $setos_count ){
@@ -682,87 +672,6 @@ function setos_headerslider() {
 ?>
 		</div>
 	</section>
-<?php
-
-	return true;
-}
-
-function _setos_headerslider() {
-
-	if (( !is_front_page())) {
-		return false;
-	}
-
-	$setos_interval = get_theme_mod( 'slide_interval', 7000 );
-	if( 0 == $setos_interval){
-		$setos_interval = 7000;
-	}
-
-	// get headerslide option
-	$setos_slides = array();
-	$setos_max = 0;
-
-	for( $setos_count = 1; $setos_count <= 5; $setos_count++ ) {
-		$setos_default_image = '';
-		$setos_default_title = '';
-		$setos_default_description = '';
-		$setos_default_link = '';
-
-		if( 1 == $setos_count ){
-			$setos_default_image = get_template_directory_uri() . '/images/header.jpg';
-			$setos_default_title =  __( 'Hello world!','setos' );
-			$setos_default_description = __( 'Begin your website.', 'setos' );
-			$setos_default_link = '#';
-		}
-
-		$setos_image = get_theme_mod( 'slider_image_' .strval( $setos_count ), $setos_default_image );
-		if ( ! empty( $setos_image )) {
-			$setos_slides[ $setos_count -1 ][ 'image' ] = $setos_image;
-			$setos_slides[ $setos_count -1 ][ 'title' ] = get_theme_mod( 'slider_title_' . strval( $setos_count ), $setos_default_title );
-			$setos_slides[ $setos_count -1 ][ 'description' ] = get_theme_mod( 'slider_description_' . strval( $setos_count ), $setos_default_description );
-			$setos_slides[$setos_count -1 ][ 'link' ] = get_theme_mod( 'slider_link_' . strval( $setos_count ), $setos_default_link );
-
-			$setos_max++;
-		}
-		else{
-			break;
-		}
-	}
-
-	if( !$setos_max ){
-		return false;
-	}
-
-?>
-	<section id="wall">
-		<div class="headerimage slider" data-interval="<?php echo $setos_interval; ?>">
-
-<?php
-	// sort randam
-	$setos_html = '';
-	$setos_start = mt_rand( 1, $setos_max );
-	for( $setos_count = 1; $setos_count <= $setos_max; $setos_count++ ) {
-			$setos_class = '';
-			if( $setos_start == $setos_count ){
-				$setos_class = ' start active';
-			}
-
-			$setos_html .= '<div class="slideitem' .$setos_class .'" id="slideitem_' .$setos_count .'">';
-			$setos_html .= '<div class="fixedimage" style="background-image: url(' .$setos_slides[ $setos_count -1 ][ 'image' ] .')"></div>';
-			$setos_html .= '<div class="caption">';
-			$setos_html .= '<p><strong>' .$setos_slides[ $setos_count -1 ][ 'title' ] .'</strong><span>' .$setos_slides[ $setos_count -1 ][ 'description' ] .'</span></p>';
-			if( ! empty( $setos_slides[ $setos_count -1 ][ 'link' ] )){
-				$setos_html .= '<a href="' .$setos_slides[ $setos_count -1 ][ 'link' ] .'">' .__( 'More', 'setos' ) .'</a>';
-			}
-			$setos_html .= '</div>';
-			$setos_html .= '</div>';
-	}
-
-	echo $setos_html;
-?>
-		</div>
-	</section>
-
 <?php
 	return true;
 }

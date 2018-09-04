@@ -36,8 +36,10 @@ get_header(); ?>
 							<?php if( !wp_is_mobile()): ?>
 								<?php if ( is_object_in_term( $post->ID, 'works-genre','book' )): ?>
 									<?php setos_entry_meta(); ?>
+									<?php the_content(); ?>
+								<?php else: ?>
+									<?php the_excerpt(); ?>
 								<?php endif; ?>
-								<?php the_excerpt(); ?>
 							<?php endif; ?>
 						</div>
 					</li>
