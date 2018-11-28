@@ -265,22 +265,11 @@ body {
 	@include pie-clearfix;
 }
 
-#header {
-	width: 100%;
-}
-
 #content {
 	width: 100%;
 	.container {
 		padding-bottom: #{$line-height *2}rem;
 	}
-}
-
-#footer {
-	overflow: hidden;
-	clear: both;
-	width: 100%;
-	margin: 0 auto;
 }
 
 /* Adjust footer
@@ -312,6 +301,7 @@ html, body {
 /* Header
 -------------------------------------------------------------- */
 #header {
+	width: 100%;
 	background-color: #FFF;
 	position: relative;
 	z-index: 4;
@@ -906,6 +896,9 @@ div.wpcf7-validation-errors {
 /* Footer
 --------------------------------------------- */
 #footer {
+	clear: both;
+	width: 100%;
+	margin: 0 auto;
 	background-color: $hover-background-color;
 	position: relative;
 	z-index: 1;
@@ -1361,31 +1354,41 @@ ul.archive {
 
 /* bread crumb for wp-manager
 -------------------------------------------------------------- */
-#content .bread_crumb {
-	background-color: $hover-background-color;
+.bread_crumb_wrapper {
+	color: #847d74;
+	font-size: 0.9rem;
+}
 
-	ul {
-		list-style-type: none;
-		color: $meta-color;
-		font-size: 0.9rem;
-		margin: 0 auto;
-		padding: #{$line-height /4}em 0;
+ul.bread_crumb {
+	list-style-type: none;
+	margin: 0 auto;
+	padding: 0.4em 0;
 
-		li {
-			display: inline-block;
+	li {
+		display: inline-block;
+		line-height: 1;
+		vertical-align: top; 
+	}
+
+	a {
+		color: #847d74;
+
+		&:after {
+			content: " \f105";
+			font-family: FontAwesome;
+			font-style: normal;
+			font-weight: normal;
 			line-height: 1;
-		}
-
-		a {
-			&:after {
-				@include font-awesome();
-				content: "\f105";
-				padding-left: #{$line-height /4}em;
-				padding-right: #{$line-height /8}em;
-				text-decoration: none;
-			}
+			padding-right: 0.2em;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
 		}
 	}
+}
+
+.single ul.bread_crumb li:last-child,
+.page ul.bread_crumb li:last-child {
+	display: none;
 }
 
 /* Home Header
@@ -1608,6 +1611,19 @@ ul.book-meta {
 
 	ul.biography {
 		margin-left: 1em;
+	}
+
+	.bread_crumb ul li.singular {
+		display: inline-block;
+	}
+
+	.single ul.bread_crumb li:last-child,
+	.page ul.bread_crumb li:last-child {
+		display: inline-block;
+		width: 12em;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
 	}
 }
 

@@ -337,23 +337,12 @@ body {
   clear: both;
 }
 
-#header {
-  width: 100%;
-}
-
 #content {
   width: 100%;
 }
 
 #content .container {
   padding-bottom: 3.4rem;
-}
-
-#footer {
-  overflow: hidden;
-  clear: both;
-  width: 100%;
-  margin: 0 auto;
 }
 
 /* Adjust footer
@@ -385,6 +374,7 @@ html, body {
 /* Header
 -------------------------------------------------------------- */
 #header {
+  width: 100%;
   background-color: #FFF;
   position: relative;
   z-index: 4;
@@ -995,6 +985,9 @@ div.wpcf7-validation-errors {
 /* Footer
 --------------------------------------------- */
 #footer {
+  clear: both;
+  width: 100%;
+  margin: 0 auto;
   background-color: #f6f9f9;
   position: relative;
   z-index: 1;
@@ -1466,35 +1459,41 @@ ul.archive > li .entry-header .entry-title {
 
 /* bread crumb for wp-manager
 -------------------------------------------------------------- */
-#content .bread_crumb {
-  background-color: #f6f9f9;
-}
-
-#content .bread_crumb ul {
-  list-style-type: none;
-  color: #999;
+.bread_crumb_wrapper {
+  color: #847d74;
   font-size: 0.9rem;
-  margin: 0 auto;
-  padding: 0.425em 0;
 }
 
-#content .bread_crumb ul li {
+ul.bread_crumb {
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0.4em 0;
+}
+
+ul.bread_crumb li {
   display: inline-block;
   line-height: 1;
+  vertical-align: top;
 }
 
-#content .bread_crumb ul a:after {
-  display: inline-block;
+ul.bread_crumb a {
+  color: #847d74;
+}
+
+ul.bread_crumb a:after {
+  content: " \f105";
   font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
   line-height: 1;
+  padding-right: 0.2em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  content: "\f105";
-  padding-left: 0.425em;
-  padding-right: 0.2125em;
-  text-decoration: none;
+}
+
+.single ul.bread_crumb li:last-child,
+.page ul.bread_crumb li:last-child {
+  display: none;
 }
 
 /* Home Header
@@ -1705,6 +1704,17 @@ ul.book-meta li:before {
   }
   ul.biography {
     margin-left: 1em;
+  }
+  .bread_crumb ul li.singular {
+    display: inline-block;
+  }
+  .single ul.bread_crumb li:last-child,
+  .page ul.bread_crumb li:last-child {
+    display: inline-block;
+    width: 12em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 }
 
