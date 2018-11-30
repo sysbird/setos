@@ -410,74 +410,9 @@ html, body {
 
 /* Menu
 -------------------------------------------------------------- */
-#menu-wrapper #small-menu {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: block;
-  box-sizing: content-box;
-  width: 2rem;
-  padding: 0;
-  padding-top: 18px;
-  padding-right: .75rem;
-  padding-bottom: 30px;
-  padding-left: .75rem;
-  -webkit-transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  border: 0;
-  outline: 0;
-  background-color: transparent;
-}
-
-#menu-wrapper #small-menu .icon {
-  position: relative;
-  display: block;
-  margin-top: 10px;
-}
-
-#menu-wrapper #small-menu .icon, #menu-wrapper #small-menu .icon:before, #menu-wrapper #small-menu .icon:after {
-  width: 100%;
-  height: 2px;
-  -webkit-transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-  transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-  background-color: #222327;
-}
-
-#menu-wrapper #small-menu .icon:before, #menu-wrapper #small-menu .icon:after {
-  position: absolute;
-  top: -10px;
-  left: 0;
-  content: ' ';
-}
-
-#menu-wrapper #small-menu .icon:after {
-  top: 10px;
-}
-
-#menu-wrapper #small-menu.current .icon {
-  background-color: transparent;
-}
-
-#menu-wrapper #small-menu.current .icon:before, #menu-wrapper #small-menu.current .icon:after {
-  top: 0;
-}
-
-#menu-wrapper #small-menu.current .icon:before {
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-#menu-wrapper #small-menu.current .icon:after {
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-}
-
 #menu-wrapper ul#menu-primary-items {
   margin: 0;
   padding: 0;
-  display: none;
 }
 
 #menu-wrapper ul#menu-primary-items li {
@@ -1213,6 +1148,10 @@ div.wpcf7-validation-errors {
   background-color: #f6f9f9;
 }
 
+.home ul.list {
+  margin: 0;
+}
+
 /* Archive
 -------------------------------------------------------------------- */
 ul.list {
@@ -1459,28 +1398,25 @@ ul.archive > li .entry-header .entry-title {
 
 /* bread crumb for wp-manager
 -------------------------------------------------------------- */
-.bread_crumb_wrapper {
-  color: #847d74;
-  font-size: 0.9rem;
-}
-
-ul.bread_crumb {
+#content ul.bread_crumb {
   list-style-type: none;
-  margin: 0 auto;
-  padding: 0.4em 0;
+  padding: 0.4em;
+  font-size: 0.9rem;
+  background: #f6f9f9;
 }
 
-ul.bread_crumb li {
+#content ul.bread_crumb,
+#content ul.bread_crumb a {
+  color: #847d74;
+}
+
+#content ul.bread_crumb li {
   display: inline-block;
   line-height: 1;
   vertical-align: top;
 }
 
-ul.bread_crumb a {
-  color: #847d74;
-}
-
-ul.bread_crumb a:after {
+#content ul.bread_crumb a:after {
   content: " \f105";
   font-family: FontAwesome;
   font-style: normal;
@@ -1705,7 +1641,7 @@ ul.book-meta li:before {
   ul.biography {
     margin-left: 1em;
   }
-  .bread_crumb ul li.singular {
+  ul.bread_crumb li.singular {
     display: inline-block;
   }
   .single ul.bread_crumb li:last-child,
@@ -1724,16 +1660,19 @@ ul.book-meta li:before {
     display: -webkit-flex;
     display: flex;
   }
-  .two-columns .left-colum {
+  .two-columns .left-column {
     width: 400px;
     margin-right: 3%;
   }
-  .two-columns .left-colum .entry-eyecatch img,
-  .two-columns .left-colum .setos-photos-slide img {
+  .two-columns .left-column .entry-eyecatch img,
+  .two-columns .left-column .setos-photos-slide img {
     border: solid 1px #CCC;
   }
-  .two-columns .entry-content {
+  .two-columns .right-column {
     width: calc(100% - 400px);
+  }
+  .two-columns .right-column .entry-header {
+    margin-top: 0;
   }
 }
 
@@ -1800,6 +1739,9 @@ ul.book-meta li:before {
   #menu-wrapper #small-menu {
     display: none;
     /* hide small menu initially */
+  }
+  #menu-wrapper .menu:not(.drawer-nav) ul#menu-primary-items {
+    transform: translate(0, 0) translateZ(0px) !important;
   }
   #menu-wrapper ul#menu-primary-items {
     /* ensure .menu is visible on desktop version */
@@ -1944,11 +1886,6 @@ ul.book-meta li:before {
     padding-bottom: 0;
     margin-bottom: 0;
   }
-  #widget-area .widget {
-    width: 290px;
-    margin: 20px 10px;
-    float: left;
-  }
   #wall {
     padding-top: 698px;
     padding-bottom: 40px;
@@ -1964,6 +1901,18 @@ ul.book-meta li:before {
   body:not(.home) #content,
   body.home.paged #content {
     margin-top: 80px;
+  }
+  #widget-area .container {
+    display: -webkit-flex;
+    display: flex;
+  }
+  #widget-area .widget-area-left {
+    width: 32%;
+  }
+  #widget-area .widget-area-center,
+  #widget-area .widget-area-right {
+    margin-left: 20px;
+    width: 32%;
   }
 }
 

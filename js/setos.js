@@ -17,10 +17,30 @@ jQuery(function() {
 				if ( mq.matches ) {
 					// tile for home
 					jQuery( "ul.tile li" ).tile(3);
+
+					// cancel drawer navigation
+					if( jQuery( '.drawer-nav' ).length ) {
+						jQuery('.drawer').drawer('destroy');
+						jQuery( ".menu" ).removeClass( 'drawer-nav' );
+					}
 				}
 				else {
-					// cansel
+					// cansel tile
 					jQuery( 'ul.tile li' ).css( 'height', 'auto' );
+
+					// drawer navigation
+					jQuery( ".menu" ).addClass( 'drawer-nav' );
+					jQuery('.drawer').drawer({
+						class: {
+							nav: 'drawer-nav',
+							toggle: 'drawer-toggle',
+						},
+						scroll: {
+							mouseWheel: true,
+							preventDefault: false
+						},
+						showOverlay: true
+					});
 				}
 			};
 
@@ -43,42 +63,6 @@ jQuery(function() {
 			gallery_columns = gallery_columns.replace( 'gallery-columns-', '' );
 					jQuery( this ).find( '.gallery-item').tile( parseInt( gallery_columns ));
 			});
-
-		// Masonry for footer widget area
-		jQuery( '#widget-area .container' ).masonry({
-				itemSelector: '.widget',
-				isAnimated: true
-			});
-
-		// Swiper for gallery
-/*		var swiper = new Swiper('.swiper-container', {
-			slidesPerView: '4',
-			spaceBetween: 7,
-			preloadImages: false,
-			lazy: true,
-			navigation: {
-				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-prev',
-			},
-			on: {
-				lazyImageReady: function ( slide, image ) {
-					var width = parseInt( jQuery( image ).css( 'width' ));
-					var height = parseInt( jQuery( image ).css( 'height' ));
-					if( width < height ){
-						// vertical image
-						var height_new = parseInt( jQuery( slide ).css( 'height' ));
-						var width_new = parseInt( width * ( height_new / height ));
-						jQuery( slide ).css({ 'width': width_new + 'px' });
-					}
-				},
-			},
-			breakpoints: {
-				660: {
-					slidesPerView: 3,
-					spaceBetween: 5,
-				},
-			}
-		}); */
 
 		// photos slide in book page
 		var slide_num = jQuery("[data-fancybox]").length;
@@ -106,12 +90,6 @@ jQuery(function() {
 
 		// Initialize bogo-language-switcher
 		jQuery( '.bogo-language-switcher' ).insertAfter( '.menu .language a' ).css({ 'display': 'block' });
-	});
-
-	// Navigation for mobile
-	jQuery( "#small-menu" ).click( function(){
-		jQuery( "#menu-primary-items" ).slideToggle();
-		jQuery( this ).toggleClass( "current" );
 	});
 
 	// Windows Scroll

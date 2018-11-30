@@ -10,7 +10,9 @@
 <script type='text/javascript' src='js/jquery.js?ver=1.12.4'></script>
 <link rel='stylesheet' id='bogo-css'  href='../plugins/bogo/includes/css/style.css?ver=3.1.4' type='text/css' media='all' />
 <link rel='stylesheet' id='setos-css'  href='style_no_parallax.css?ver=4.8.2' type='text/css' media='all' />
-<script type='text/javascript' src='js/masonry.min.js?ver=1.12.4'></script>
+<link rel="stylesheet" href="js/drawer/css/drawer.min.css">
+<script src="js/drawer/js/iscroll.js"></script>
+<script src="js/drawer/js/drawer.min.js"></script>
 <script type='text/javascript' src='js/jquery.tile.js?ver=1.1.2'></script>
 <script type='text/javascript' src='js/setos.js?ver=1.10'></script>
 </head>
@@ -19,7 +21,7 @@
 <div class="wrapper">
 
 	<header id="header">
-		<div class="container">
+			<div class="container drawer drawer--top">
 			<div id="branding">
 					<h1 id="site-title">
 					<a href="/sample" title="THE PLACE SETOS" rel="home">The HTMLS</a>
@@ -28,12 +30,13 @@
 			</div>
 
 			<nav id="menu-wrapper">
+				<button type="button" id="small-menu" class="drawer-toggle drawer-hamburger">
+					<span class="sr-only">toggle navigation</span>
+					<span class="drawer-hamburger-icon"></span>
+				</button>
+	
 				<div class="menu">
-					<!-- <div id="small-menu"></div>  -->
-					<button id="small-menu" type="button"><span class="icon"></span></button>
-
-					<ul id="menu-primary-items" class="">
-						<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-304"><a href="/sample">Home</a></li>
+					<ul id="menu-primary-items" class="drawer-menu">
 						<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-306"><a href="#">Information</a></li>
 						<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-306 menu-item-has-children"><a href="#">Works</a>
 							<ul>
@@ -56,23 +59,22 @@
 	</header>
 
 	<div id="content">
-
-		<div class="bread_crumb_wrapper"><ul class="bread_crumb container">
-				<li class="level-1 top"><a href="http://10.101.64.145:9004/">ホーム</a></li>
-				<li class="level-2 sub tail current">記事ページのよいタイトル The Title</li>
-			</ul>
-		</div>
 				
 		<div class="container">
 
+				<ul class="bread_crumb container">
+						<li class="level-1 top"><a href="#">ホーム</a></li>
+						<li class="level-2 sub tail"><a href="#">Works</a></li>
+						<li class="level-2 sub tail"><a href="#">Essay</a></li>
+						<li class="level-3 sub tail current">記事ページのよいタイトル The Title</li>
+					</ul>
 
-			<article class="post-140 essay type-essay status-publish has-post-thumbnail hentry ja">
+					<article class="post-140 essay type-essay status-publish has-post-thumbnail hentry ja">
 
-	<header class="entry-header">
-		<h1 class="entry-title">記事ページのよいタイトル The Title</h1>
+		<header class="entry-header">
+					<h1 class="entry-title">記事ページのよいタイトル The Title</h1>
 		<span class="cateogry"><a href="#">Essay</a></span>
 		<time class="postdate" datetime="2013-01-11">January 11, 2013</time>
-		<span class="author">Author</span>
 	</header>
 
 	<div class="entry-content">
@@ -276,38 +278,43 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit.<p></p>
 </div>
 
 	<footer id="footer">
-		<section id="widget-area" style="background: url(images/footer.jpg) no-repeat center center/ cover">
-			<div class="container">
-				<div class="widget">
-					<div class="textwidget">
-						<a href="#">お問い合わせ</a>
+			<section id="widget-area" style="background: url(_images/footer.jpg) no-repeat center center/ cover">
+				<div class="container">
+					<div class="widget-area-left">
+						<div class="widget">
+							<h3>Profile</h3>
+							<div class="textwidget">テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります。<a href="#">&raquo; 詳しく見る</a>
+							</div>
+						</div>
+					</div>
+	
+					<div class="widget-area-center">
+						<div class="widget">
+							<h3>Information</h3>
+							<div class="textwidget">テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります。<a href="#">&raquo; 詳しく見る</a>
+							</div>
+						</div>
+					</div>
+	
+					<div class="widget-area-right">
+						<div class="widget">
+							<div class="textwidget">
+								<a href="#">お問い合わせ</a>
+							</div>
+						</div>
+	
+						<div class="widget">
+							<form role="search" method="get" id="searchform" action="#">
+								<label class="screen-reader-text" for="s">検索:</label>
+								<input type="text" value="" name="s" id="s" placeholder="検索">
+								<button type="submit" value="Search" id="searchsubmit" class="submit"><span class="screen-reader-text">検索</span></button>
+							</form>
+						</div>
 					</div>
 				</div>
-
-				<div class="widget">
-					<h3>Profile</h3>
-					<div class="textwidget">テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります。<a href="#">&raquo; 詳しく見る</a>
-					</div>
-				</div>
-
-				<div class="widget">
-					<h3>Information</h3>
-					<div class="textwidget">テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります。<a href="#">&raquo; 詳しく見る</a>
-					</div>
-				</div>
-
-				<div class="widget">
-					<form role="search" method="get" id="searchform" action="#">
-						<label class="screen-reader-text" for="s">検索:</label>
-						<input type="text" value="" name="s" id="s" placeholder="検索">
-						<button type="submit" value="Search" id="searchsubmit" class="submit"><span class="screen-reader-text">検索</span></button>
-					</form>
-				</div>
-
-			</div>
-
-		</section>
-
+	
+			</section>
+	
         <div class="site-title">
             <div class="container">
 				<a href="#"><strong>The Place Setos</strong></a> &copy; 2018 Masato Seto	

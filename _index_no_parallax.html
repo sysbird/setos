@@ -7,7 +7,9 @@
 <meta name='robots' content='noindex,follow' />
 <link rel='stylesheet' id='setos-css'  href='style_no_parallax.css?ver=4.8.2' type='text/css' media='all' />
 <script type='text/javascript' src='js/jquery.js?ver=1.12.4'></script>
-<script type='text/javascript' src='js/masonry.min.js?ver=1.12.4'></script>
+<link rel="stylesheet" href="js/drawer/css/drawer.min.css">
+<script src="js/drawer/js/iscroll.js"></script>
+<script src="js/drawer/js/drawer.min.js"></script>
 <script type='text/javascript' src='js/jquery.tile.js?ver=1.1.2'></script>
 <script type='text/javascript' src='js/setos.js?ver=1.0'></script>
 </head>
@@ -16,7 +18,7 @@
 <div class="wrapper fixed-header parallax">
 
 	<header id="header">
-		<div class="container">
+		<div class="container drawer drawer--top">
 			<div id="branding">
 					<h1 id="site-title">
 					<a href="/sample" title="THE PLACE SETOS" rel="home">HTMLS</a>
@@ -25,12 +27,13 @@
 			</div>
 
 			<nav id="menu-wrapper">
-				<div class="menu">
-					<!-- <div id="small-menu"></div>  -->
-					<button id="small-menu" type="button"><span class="icon"></span></button>
+				<button type="button" id="small-menu" class="drawer-toggle drawer-hamburger">
+					<span class="sr-only">toggle navigation</span>
+					<span class="drawer-hamburger-icon"></span>
+				</button>
 
-					<ul id="menu-primary-items" class="">
-						<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-304"><a href="/sample">Home</a></li>
+				<div class="menu">
+					<ul id="menu-primary-items" class="drawer-menu">
 						<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-306"><a href="#">Information</a></li>
 						<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-306 menu-item-has-children"><a href="#">Works</a>
 							<ul>
@@ -188,15 +191,37 @@
 		<section id="profile" class="section">
 			<div class="container">
 				<h2 class="content-title">Profile</h2>
-				<img src="_images/profile.jpg" alt="プロフィール写真" class="alignleft">
+				<img src="_images/profile.jpg" alt="プロフィール写真" class="alignright">
+				<p>テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります。<br>テキスト説明が入ります、テキスト説明が入ります。</p>
+				<p>テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります。<br>テキスト説明が入ります、テキスト説明が入ります。</p>
 				<p>テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります。<br>テキスト説明が入ります、テキスト説明が入ります。<div class="more"><a href="#">Profileを詳しく見る</a></div></p>
 			</div>
 		</section>
 
 		<section id="blog" class="section">
 			<div class="container">
-					<h2>Books</h2>
-					<div class="more"><a href="#">Booksをもっと見る</a></div>
+				<article class="post-140 essay type-essay status-publish has-post-thumbnail hentry ja">
+					<div class="two-columns">
+						<div class="left-column">
+						<div class="entry-eyecatch"><a href="#"><img src="_images/book-page-1.jpg" 	class="attachment-medium size-medium wp-post-image" alt="" /></a></div>
+					</div>
+					<div class="right-column">
+						<div class="entry-header">
+							<h2 class="entry-title"><a href="#">スラスラ読める JavaScript ふりがなプログラミング</a></h2>
+						<span class="cateogry"><a href="#">Books</a></span>
+						</div>
+						<div class="entry-content">
+							<p>テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入りますテキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入りますテキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります。</p>
+							<ul class="book-meta">
+								<li><strong>出版社:</strong> サンプル社</li>
+								<li><strong>発売日:</strong> 2000年11月30日</li>
+								<li><strong>価格:</strong> 9,999円</li>
+							</ul>
+						</div>
+					</div>
+				</article>
+	
+				<div class="more"><a href="#">Booksをもっと見る</a></div>
 			</div>
 		</section>
 </div>
@@ -204,32 +229,37 @@
 	<footer id="footer">
 		<section id="widget-area" style="background: url(_images/footer.jpg) no-repeat center center/ cover">
 			<div class="container">
-				<div class="widget">
-					<div class="textwidget">
-						<a href="#">お問い合わせ</a>
+				<div class="widget-area-left">
+					<div class="widget">
+						<h3>Profile</h3>
+						<div class="textwidget">テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります。<a href="#">&raquo; 詳しく見る</a>
+						</div>
 					</div>
 				</div>
 
-				<div class="widget">
-					<h3>Profile</h3>
-					<div class="textwidget">テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります。<a href="#">&raquo; 詳しく見る</a>
+				<div class="widget-area-center">
+					<div class="widget">
+						<h3>Information</h3>
+						<div class="textwidget">テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります。<a href="#">&raquo; 詳しく見る</a>
+						</div>
 					</div>
 				</div>
 
-				<div class="widget">
-					<h3>Information</h3>
-					<div class="textwidget">テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります、テキスト説明が入ります。<a href="#">&raquo; 詳しく見る</a>
+				<div class="widget-area-right">
+					<div class="widget">
+						<div class="textwidget">
+							<a href="#">お問い合わせ</a>
+						</div>
+					</div>
+
+					<div class="widget">
+						<form role="search" method="get" id="searchform" action="#">
+							<label class="screen-reader-text" for="s">検索:</label>
+							<input type="text" value="" name="s" id="s" placeholder="検索">
+							<button type="submit" value="Search" id="searchsubmit" class="submit"><span class="screen-reader-text">検索</span></button>
+						</form>
 					</div>
 				</div>
-
-				<div class="widget">
-					<form role="search" method="get" id="searchform" action="#">
-						<label class="screen-reader-text" for="s">検索:</label>
-						<input type="text" value="" name="s" id="s" placeholder="検索">
-						<button type="submit" value="Search" id="searchsubmit" class="submit"><span class="screen-reader-text">検索</span></button>
-					</form>
-				</div>
-
 			</div>
 
 		</section>

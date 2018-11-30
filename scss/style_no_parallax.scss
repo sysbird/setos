@@ -341,78 +341,9 @@ html, body {
 /* Menu
 -------------------------------------------------------------- */
 #menu-wrapper {
-	#small-menu {
-		position: absolute;
-		top: 0;
-		right: 0;
-		display: block;
-		box-sizing: content-box;
-		width: 2rem;
-		padding: 0;
-		padding-top: 18px;
-		padding-right: .75rem;
-		padding-bottom: 30px;
-		padding-left: .75rem;
-		-webkit-transition: all .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
-		transition: all .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
-		-webkit-transform: translate3d(0, 0, 0);
-				transform: translate3d(0, 0, 0);
-		border: 0;
-		outline: 0;
-		background-color: transparent;
-
-		.icon {
-			position: relative;
-			display: block;
-			margin-top: 10px;
-
-			&,
-			&:before,
-			&:after {
-				width: 100%;
-				height: 2px;
-				-webkit-transition: all .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
-				transition: all .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
-				background-color: $text-color;
-			}
-
-			&:before,
-			&:after {
-				position: absolute;
-				top: -10px;
-				left: 0;
-				content: ' ';
-			}
-			
-			&:after {
-				top: 10px;
-			}
-		}
-		
-		&.current .icon {
-			background-color: transparent;
-
-			&:before,
-			&:after {
-				top: 0;
-			}
-
-			&:before {
-			-webkit-transform: rotate(45deg);
-			transform: rotate(45deg);
-			}
-			
-			&:after {
-			-webkit-transform: rotate(-45deg);
-			transform: rotate(-45deg);
-			}
-		}
-	}
-
 	ul#menu-primary-items {
 		margin: 0;
 		padding: 0;
-		display: none;
 
 		li {
 			list-style: none;
@@ -1102,6 +1033,10 @@ div.wpcf7-validation-errors {
 			background-color: $hover-background-color;
 		}
 	}
+
+	ul.list {
+		margin: 0;
+	}
 }
 
 /* Archive
@@ -1151,8 +1086,6 @@ ul.tile {
 		padding: 0;
 
 		.entry-eyecatch {
-//			height: 0;
-//			padding-top: 66%;
 			overflow: hidden;
 			position: relative;
 			margin: 0 -2%;
@@ -1160,11 +1093,6 @@ ul.tile {
 			img {
 				width: 100%;
 				vertical-align:text-bottom;
-//				position: absolute;
-//				top: 50%;
-//				left: 50%;
-//				margin-right: -50%;
-//				@include translate( -50%, -50% );
 			}
 
 		}
@@ -1354,15 +1282,16 @@ ul.archive {
 
 /* bread crumb for wp-manager
 -------------------------------------------------------------- */
-.bread_crumb_wrapper {
-	color: #847d74;
-	font-size: 0.9rem;
-}
-
-ul.bread_crumb {
+#content ul.bread_crumb {
 	list-style-type: none;
-	margin: 0 auto;
-	padding: 0.4em 0;
+	padding: 0.4em;
+	font-size: 0.9rem;
+	background: $hover-background-color;
+
+	&,
+	a {
+		color: #847d74;
+	}
 
 	li {
 		display: inline-block;
@@ -1371,8 +1300,6 @@ ul.bread_crumb {
 	}
 
 	a {
-		color: #847d74;
-
 		&:after {
 			content: " \f105";
 			font-family: FontAwesome;
@@ -1613,7 +1540,7 @@ ul.book-meta {
 		margin-left: 1em;
 	}
 
-	.bread_crumb ul li.singular {
+	ul.bread_crumb li.singular {
 		display: inline-block;
 	}
 
@@ -1632,7 +1559,7 @@ ul.book-meta {
 	.two-columns {
 		@include display-flex();
 
-		.left-colum {
+		.left-column {
 			width: 400px;
 			margin-right: 3%;
 
@@ -1642,8 +1569,12 @@ ul.book-meta {
 			}
 		}
 
-		.entry-content {
+		.right-column {
 			width: calc(100% - 400px);
+
+			.entry-header {
+				margin-top: 0;
+			}
 		}
 	}
 }
@@ -1729,6 +1660,10 @@ ul.book-meta {
 
 		#small-menu {
 			display: none; /* hide small menu initially */
+		}
+
+		.menu:not(.drawer-nav) ul#menu-primary-items {
+			transform: translate(0, 0) translateZ(0px) !important;
 		}
 
 		ul#menu-primary-items {
@@ -1907,14 +1842,6 @@ ul.book-meta {
 		}
 	}
 
-	#widget-area {
-		.widget {
-			width: 290px;
-			margin: 20px 10px;
-			float: left;
-		}
-	}
-
 	#wall {
 		padding-top: 698px;
 		padding-bottom: 40px;
@@ -1933,6 +1860,22 @@ ul.book-meta {
 	body:not(.home) #content,
 	body.home.paged  #content {
 		margin-top: 80px;
+	}
+
+	#widget-area {
+		.container {
+			@include display-flex();
+		}
+
+		.widget-area-left {
+			width: 32%;
+		}
+
+		.widget-area-center,
+		.widget-area-right {
+			margin-left: 20px;
+			width: 32%;
+		}
 	}
 }
 
