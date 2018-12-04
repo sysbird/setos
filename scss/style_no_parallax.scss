@@ -434,7 +434,7 @@ html, body {
 
 		&,
 		a {
-			color: $link-color;
+			color: $meta-color;
 		}
 	}
 
@@ -1284,13 +1284,13 @@ ul.archive {
 -------------------------------------------------------------- */
 #content ul.bread_crumb {
 	list-style-type: none;
-	padding: 0.4em;
+	padding: 0;
 	font-size: 0.9rem;
-	background: $hover-background-color;
+	margin: #{$line-height}rem 0 0 0; 
+	color: $meta-color;
 
-	&,
 	a {
-		color: #847d74;
+		color: lighten($link-color, 15%);
 	}
 
 	li {

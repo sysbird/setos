@@ -508,7 +508,7 @@ html, body {
 
 .entry-header .postdate,
 .entry-header .postdate a {
-  color: #708f9c;
+  color: #999;
 }
 
 .entry-header .cateogry a {
@@ -1400,14 +1400,14 @@ ul.archive > li .entry-header .entry-title {
 -------------------------------------------------------------- */
 #content ul.bread_crumb {
   list-style-type: none;
-  padding: 0.4em;
+  padding: 0;
   font-size: 0.9rem;
-  background: #f6f9f9;
+  margin: 1.7rem 0 0 0;
+  color: #999;
 }
 
-#content ul.bread_crumb,
 #content ul.bread_crumb a {
-  color: #847d74;
+  color: #9db2bb;
 }
 
 #content ul.bread_crumb li {
