@@ -484,7 +484,7 @@ html, body {
 }
 
 .entry-header {
-  margin: 2.55rem 0;
+  margin: 1.7em 0;
   line-height: 1.4;
   position: relative;
 }
@@ -493,7 +493,7 @@ html, body {
   color: #374049;
   font-size: 2rem;
   font-weight: normal;
-  margin: 0 0 0.2125em 0;
+  margin: 0;
   line-height: 1.4;
   padding: 0;
 }
@@ -1315,6 +1315,11 @@ ul.archive > li .entry-header .entry-title {
   border-top: 1px solid #d9e2e5;
 }
 
+body:not(.home) .entry-header {
+  padding: 0.85em 0;
+  margin-top: 0.425em;
+}
+
 /* Attachment
 -------------------------------------------------------------------- */
 .attachment .hentry .entry-attachment {
@@ -1402,7 +1407,7 @@ ul.archive > li .entry-header .entry-title {
   list-style-type: none;
   padding: 0;
   font-size: 0.9rem;
-  margin: 1.7rem 0 0 0;
+  margin: 0;
   color: #999;
 }
 
@@ -1427,8 +1432,8 @@ ul.archive > li .entry-header .entry-title {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.single ul.bread_crumb li:last-child,
-.page ul.bread_crumb li:last-child {
+.single #content ul.bread_crumb li:last-child,
+.page #content ul.bread_crumb li:last-child {
   display: none;
 }
 
@@ -1641,11 +1646,11 @@ ul.book-meta li:before {
   ul.biography {
     margin-left: 1em;
   }
-  ul.bread_crumb li.singular {
+  #content ul.bread_crumb li.singular {
     display: inline-block;
   }
-  .single ul.bread_crumb li:last-child,
-  .page ul.bread_crumb li:last-child {
+  .single #content ul.bread_crumb li:last-child,
+  .page #content ul.bread_crumb li:last-child {
     display: inline-block;
     width: 12em;
     white-space: nowrap;
@@ -1913,6 +1918,9 @@ ul.book-meta li:before {
   #widget-area .widget-area-right {
     margin-left: 20px;
     width: 32%;
+  }
+  body:not(.home) .entry-content {
+    padding: 0 65px;
   }
 }
 

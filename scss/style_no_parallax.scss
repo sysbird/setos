@@ -412,7 +412,7 @@ html, body {
 }
 
 .entry-header {
-	margin: #{$line-height *1.5}rem 0;
+	margin: #{$line-height}em 0;
 	line-height: 1.4;
 	position: relative;
 
@@ -420,7 +420,7 @@ html, body {
 		color: $header-color;
 		font-size: 2rem;
 		font-weight: normal;
-		margin: 0 0 #{$line-height /8}em 0;
+		margin: 0;
 		line-height: 1.4;
 		padding: 0;
 
@@ -1206,6 +1206,15 @@ ul.archive {
 	}
 }
 
+body:not(.home) {
+	.entry-header {
+		padding: #{$line-height /2}em 0;
+		//border-top: solid 1px $text-color;
+		//border-bottom: solid 1px $text-color;
+		margin-top: #{$line-height /4}em;
+	}
+}
+
 /* Attachment
 -------------------------------------------------------------------- */
 .attachment {
@@ -1286,7 +1295,7 @@ ul.archive {
 	list-style-type: none;
 	padding: 0;
 	font-size: 0.9rem;
-	margin: #{$line-height}rem 0 0 0; 
+	margin: 0; 
 	color: $meta-color;
 
 	a {
@@ -1313,8 +1322,8 @@ ul.archive {
 	}
 }
 
-.single ul.bread_crumb li:last-child,
-.page ul.bread_crumb li:last-child {
+.single #content ul.bread_crumb li:last-child,
+.page #content ul.bread_crumb li:last-child {
 	display: none;
 }
 
@@ -1540,12 +1549,12 @@ ul.book-meta {
 		margin-left: 1em;
 	}
 
-	ul.bread_crumb li.singular {
+	#content ul.bread_crumb li.singular {
 		display: inline-block;
 	}
 
-	.single ul.bread_crumb li:last-child,
-	.page ul.bread_crumb li:last-child {
+	.single #content ul.bread_crumb li:last-child,
+	.page #content ul.bread_crumb li:last-child {
 		display: inline-block;
 		width: 12em;
 		white-space: nowrap;
@@ -1876,6 +1885,10 @@ ul.book-meta {
 			margin-left: 20px;
 			width: 32%;
 		}
+	}
+
+	body:not(.home) .entry-content {
+		padding: 0 65px;
 	}
 }
 
