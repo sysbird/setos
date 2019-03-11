@@ -11,9 +11,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 This theme, like WordPress, is licensed under the GPL.
 */
 
-@import "compass";
-@import "compass/reset";
-
 // variable
 $background-color: #FFF;
 $text-color: #222327;
@@ -23,6 +20,67 @@ $header-color: #374049;
 $border-color: #CCC;
 $meta-color: #999;
 $line-height: 1.7;
+
+/*------------------------------
+reset
+-----------------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
 /*------------------------------
 Font Awesome
 -----------------------------*/
@@ -42,6 +100,58 @@ Font Awesome
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+@mixin box-sizing() {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}  
+
+@mixin pie-clearfix() {
+	*zoom: 1;
+}
+
+@mixin box-shadow( $c: #000000, $h: 0, $v: 0, $b: 0 ) {
+	-webkit-box-shadow: $c $h $v $b;
+	-moz-box-shadow: $c $h $v $b;
+	box-shadow: $c $h $v $b;
+  }
+
+@mixin opacity( $opacity ) {
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity= $opacity *100 );
+	opacity: $opacity;
+}
+
+@mixin clearfix() {
+	overflow: hidden;
+	*zoom: 1;
+}
+	
+@mixin hide-text(){
+	text-indent: -119988px;
+	overflow: hidden;
+	text-align: left;
+}
+
+@mixin display-flex(){
+	display: -webkit-flex;
+	display: flex;
+}
+
+@mixin flex($v) {
+	-webkit-flex: $v;
+	flex: $v;
+}
+
+@mixin line-height-hcrop($h) {
+  &::before {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0;
+    margin-top: calc((1 - #{$h}) * 0.5em);
+  }
 }
 
 /* element
@@ -129,9 +239,9 @@ table {
 
 pre {
 	border: dotted 1px #CCC;
-	padding: #{$line-height /2}em;
+	padding: #{$line-height /2}rem;
 	background: $hover-background-color;
-	margin-bottom: #{$line-height}em;
+	margin-bottom: #{$line-height}rem;
 	line-height: 1.4;
 }
 
@@ -180,12 +290,12 @@ abbr, acronym {
 }
 ul,
 ol {
-	margin: 0 0 #{$line-height}em 1em;
-	padding: 0 0 0 1em;
+	margin: 0 0 #{$line-height}em 1rem;
+	padding: 0 0 0 1rem;
 	line-height: 1.4;
 
 	li {
-		padding: #{$line-height /8}em 0;
+		padding: #{$line-height /8}rem 0;
 	}
 
 	ul,
@@ -218,7 +328,7 @@ ol {
 }
 
 dl {
-	margin:0 0 1em 0;
+	margin:0 0 1rem 0;
 	line-height: $line-height;
 
 	dt {
@@ -226,7 +336,7 @@ dl {
 	}
 
 	dd {
-		margin: 0 1.5em #{$line-height}em;
+		margin: 0 #{$line-height}rem #{$line-height}rem;
 		padding: 0;
 	}
 }
@@ -246,7 +356,7 @@ html {
 	font-size: 1.04em;
 
 	* {
-		@include box-sizing( border-box );
+		@include box-sizing();
 	}
 }
 
@@ -265,22 +375,11 @@ body {
 	@include pie-clearfix;
 }
 
-#header {
-	width: 100%;
-}
-
 #content {
 	width: 100%;
 	.container {
 		padding-bottom: #{$line-height *2}rem;
 	}
-}
-
-#footer {
-	overflow: hidden;
-	clear: both;
-	width: 100%;
-	margin: 0 auto;
 }
 
 /* Adjust footer
@@ -312,13 +411,14 @@ html, body {
 /* Header
 -------------------------------------------------------------- */
 #header {
-	background-color: $header-color;
+	width: 100%;
+	background-color: #FFF;
 	position: relative;
 	z-index: 4;
 
 	&,
 	a {
-		color: #FFF;
+		color: $text-color;
 	}
 
 	#branding {
@@ -351,78 +451,9 @@ html, body {
 /* Menu
 -------------------------------------------------------------- */
 #menu-wrapper {
-	#small-menu {
-		position: absolute;
-		top: 0;
-		right: 0;
-		display: block;
-		box-sizing: content-box;
-		width: 2rem;
-		padding: 0;
-		padding-top: 18px;
-		padding-right: .75rem;
-		padding-bottom: 30px;
-		padding-left: .75rem;
-		-webkit-transition: all .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
-		transition: all .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
-		-webkit-transform: translate3d(0, 0, 0);
-				transform: translate3d(0, 0, 0);
-		border: 0;
-		outline: 0;
-		background-color: transparent;
-
-		.icon {
-			position: relative;
-			display: block;
-			margin-top: 10px;
-
-			&,
-			&:before,
-			&:after {
-				width: 100%;
-				height: 2px;
-				-webkit-transition: all .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
-				transition: all .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
-				background-color: #FFF;
-			}
-
-			&:before,
-			&:after {
-				position: absolute;
-				top: -10px;
-				left: 0;
-				content: ' ';
-			}
-			
-			&:after {
-				top: 10px;
-			}
-		}
-		
-		&.current .icon {
-			background-color: transparent;
-
-			&:before,
-			&:after {
-				top: 0;
-			}
-
-			&:before {
-			-webkit-transform: rotate(45deg);
-			transform: rotate(45deg);
-			}
-			
-			&:after {
-			-webkit-transform: rotate(-45deg);
-			transform: rotate(-45deg);
-			}
-		}
-	}
-
 	ul#menu-primary-items {
 		margin: 0;
 		padding: 0;
-		display: none;
 
 		li {
 			list-style: none;
@@ -441,16 +472,16 @@ html, body {
 
 			a,
 			span {
-				padding: #{$line-height /2}em;
+				padding: #{$line-height /2}rem;
 				display: block;
-				color: #FFF;
+				color: $text-color;
 				text-decoration: none;
 				line-height: 1.2;
-				border-top: dotted 1px #FFF;
+				border-top: dotted 1px $text-color;
 			}
 
 			span {
-				color: #CCC;
+				color: #AAA;
 			}
 		}
 	}
@@ -491,7 +522,7 @@ html, body {
 }
 
 .entry-header {
-	margin: #{$line-height *1.5}rem 0;
+	margin: #{$line-height}em 0;
 	line-height: 1.4;
 	position: relative;
 
@@ -499,7 +530,7 @@ html, body {
 		color: $header-color;
 		font-size: 2rem;
 		font-weight: normal;
-		margin: 0 0 #{$line-height /8}em 0;
+		margin: 0;
 		line-height: 1.4;
 		padding: 0;
 
@@ -513,7 +544,7 @@ html, body {
 
 		&,
 		a {
-			color: $link-color;
+			color: $meta-color;
 		}
 	}
 
@@ -629,8 +660,7 @@ html, body {
 
 		&:hover {
 			text-decoration: none;
-			color: lighten( $link-color, 10% );
-			border-color: lighten( $link-color, 10% ); 
+			background: lighten( $link-color, 5% ); 
 		}
 
 		&:before {
@@ -907,21 +937,30 @@ div.wpcf7-validation-errors {
 /* Footer
 --------------------------------------------- */
 #footer {
-	background: $header-color;
+	clear: both;
+	width: 100%;
+	margin: 0 auto;
+	background-color: $hover-background-color;
 	position: relative;
 	z-index: 1;
 
 	&,
 	a {
-		color: #FFF;
+		color: $header-color;
 	}
 
 	.site-title {
 		padding: #{$line-height /2}em 0;
 		line-height: 1.4;
+		background: $header_color;
+
+		&,
+		a {
+			color: #FFF;
+		}
 
 		strong {
-			font-size: 1.2em;
+			font-weight: normal;
 		}
 	}
 
@@ -989,7 +1028,7 @@ div.wpcf7-validation-errors {
 			padding: 0 0 #{$line-height /4}em 0;
 			border-bottom: dotted 1px $border-color;
 			font-size: 1.4rem;
-			color: #FFF;
+			color: $text-color;
 		}
 
 		ul {
@@ -1000,7 +1039,7 @@ div.wpcf7-validation-errors {
 
 			li {
 				margin-top: -1px;
-				border-top: dotted 1px #FFF;
+				border-top: dotted 1px $text-color;
 				padding: 0.3em 0 0.3em 0.6em;
 				text-indent: -0.3em;
 
@@ -1099,9 +1138,14 @@ div.wpcf7-validation-errors {
 		padding-top: #{$line-height}rem;
 		@include clearfix;
 
-		&#essay {
+		&#news,
+		&#profile {
 			background-color: $hover-background-color;
 		}
+	}
+
+	ul.list {
+		margin: 0;
 	}
 }
 
@@ -1152,8 +1196,6 @@ ul.tile {
 		padding: 0;
 
 		.entry-eyecatch {
-			height: 0;
-			padding-top: 66%;
 			overflow: hidden;
 			position: relative;
 			margin: 0 -2%;
@@ -1161,11 +1203,6 @@ ul.tile {
 			img {
 				width: 100%;
 				vertical-align:text-bottom;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				margin-right: -50%;
-				@include translate( -50%, -50% );
 			}
 
 		}
@@ -1279,6 +1316,15 @@ ul.archive {
 	}
 }
 
+body:not(.home) {
+	.entry-header {
+		padding: #{$line-height /2}em 0;
+		//border-top: solid 1px $text-color;
+		//border-bottom: solid 1px $text-color;
+		margin-top: #{$line-height /4}em;
+	}
+}
+
 /* Attachment
 -------------------------------------------------------------------- */
 .attachment {
@@ -1355,31 +1401,40 @@ ul.archive {
 
 /* bread crumb for wp-manager
 -------------------------------------------------------------- */
-#content .bread_crumb {
-	background-color: $hover-background-color;
+#content ul.bread_crumb {
+	list-style-type: none;
+	padding: 0;
+	font-size: 0.9rem;
+	margin: 0; 
+	color: $meta-color;
 
-	ul {
-		list-style-type: none;
-		color: $meta-color;
-		font-size: 0.9rem;
-		margin: 0 auto;
-		padding: #{$line-height /4}em 0;
+	a {
+		color: lighten($link-color, 15%);
+	}
 
-		li {
-			display: inline-block;
+	li {
+		display: inline-block;
+		line-height: 1;
+		vertical-align: top; 
+	}
+
+	a {
+		&:after {
+			content: " \f105";
+			font-family: FontAwesome;
+			font-style: normal;
+			font-weight: normal;
 			line-height: 1;
-		}
-
-		a {
-			&:after {
-				@include font-awesome();
-				content: "\f105";
-				padding-left: #{$line-height /4}em;
-				padding-right: #{$line-height /8}em;
-				text-decoration: none;
-			}
+			padding-right: 0.2em;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
 		}
 	}
+}
+
+.single #content ul.bread_crumb li:last-child,
+.page #content ul.bread_crumb li:last-child {
+	display: none;
 }
 
 /* Home Header
@@ -1388,7 +1443,7 @@ ul.archive {
 	height: 0;
 	margin: 0;
 	width: 100%;
-	padding-top: (900 / 1280) *100%;
+	padding-top: (960 / 1280) *100%;
 	position: relative;
 	overflow: hidden;
 
@@ -1400,11 +1455,11 @@ ul.archive {
 		left: 0;
 
 		.fixedimage {
-			padding-top: (900 / 1280) *100%;
+			padding-top: (960 / 1280) *100%;
 			height: 0;
 			width: 100%;
 			background-size: cover;
-			background-position: center center;
+			background-position: top center;
 			background-repeat: no-repeat;
 		}
 	}
@@ -1502,106 +1557,12 @@ ul.book-meta {
 	}
 }
 
-/* setos-gallery shortcode
---------------------------------------------- */
-/*
-.setos-gallery {
-	background: $hover-background-color;
-	padding: 7px 0;
-	margin: 0 -2% #{$line-height}rem -2%;
-
-	.setos-gallery-cover {
-		padding-bottom: 5px;
-	}
-
-	.swiper-slide {
-		position: relative;
-		padding-top: 22%;
-		height: 0;
-		overflow: hidden;
-
-		img {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			@include translate( -50%, -50% );
-		}
-	}
-
-	.fancybox-can-zoomIn
-	.fancybox-content {
-		cursor: pointer;
-	}
-}
-*/
-
 /* Japanese Font
 --------------------------------------------- */
 .single.ja .entry-title,
 .page.ja .entry-title,
 .ja .content-title {
 	font-family: 'Open Sans', 'Sawarabi Mincho', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', YuGothic, 'Yu Gothic', Meiryo, 'MS PGothic';
-}
-
-/* light theme
---------------------------------------------- */
-.light {
-	#header {
-		background-color: #FFF;
-		//border-bottom: solid 1px $border-color;
-		@include box-shadow(rgba(0,0,0,.05) 0 2px 8px);
-	}
-
-	#menu-wrapper {
-		#small-menu {
-			.icon {
-				&,
-				&:before,
-				&:after {
-					background-color: $header-color;
-				}
-			}	
-
-			&.current .icon {
-				background-color: transparent;
-			}
-		}
-
-		ul#menu-primary-items {
-			li {
-				a,
-				span {
-					border-color: $text-color;
-				}
-
-				a {
-					color: $text-color;
-				}
-			}
-		}
-	}
-
-	#footer {
-		background-color: $hover-background-color		
-	}
-
-	#header,
-	#footer {
-		&,
-		a {
-			color: $header-color;
-		}
-	}
-
-	#widget-area {
-		h3 {
-			color: $text-color;
-		}
-
-		ul li {
-			border-color: $text-color
-		}
-	}
 }
 
 /* Media queries for responsive design
@@ -1611,13 +1572,6 @@ ul.book-meta {
 
 	html {
 		font-size: inherit;
-	}
-
-	#header {
-		position: fixed;
-		top: 0;
-		transition-property:min-height;
-		transition-duration:.3s;
 	}
 
 	#footer {
@@ -1665,20 +1619,6 @@ ul.book-meta {
 		}
 	}
 
-	body.home #wall.no-image,
-	body:not(.home) #content,
-	body.home.paged  #content {
-		margin-top: 60px;
-	}
-
-	#wall {
-		.headerimage {
-			.fixedimage {
-				position: fixed;
-			}
-		}
-	}
-
 	.alignleft {
 		float: left;
 		margin-right: #{$line-height /2}rem;
@@ -1718,26 +1658,27 @@ ul.book-meta {
 	ul.biography {
 		margin-left: 1em;
 	}
-}
 
-/*
-.setos-gallery {
-	padding: 7px;
-	margin-left: 0;
-	margin-right: 0;
+	#content ul.bread_crumb li.singular {
+		display: inline-block;
+	}
 
-	.swiper-slide {
-		padding-top: 16.5%;
+	.single #content ul.bread_crumb li:last-child,
+	.page #content ul.bread_crumb li:last-child {
+		display: inline-block;
+		width: 12em;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
 	}
 }
-*/
 
 /* --- PCs --- */
 @media screen and (min-width: 800px) {
 	.two-columns {
 		@include display-flex();
 
-		.left-colum {
+		.left-column {
 			width: 400px;
 			margin-right: 3%;
 
@@ -1747,8 +1688,12 @@ ul.book-meta {
 			}
 		}
 
-		.entry-content {
+		.right-column {
 			width: calc(100% - 400px);
+
+			.entry-header {
+				margin-top: 0;
+			}
 		}
 	}
 }
@@ -1772,6 +1717,10 @@ ul.book-meta {
 	}
 
 	#header {
+		position: fixed;
+		top: 0;
+		transition-property:min-height;
+		transition-duration:.3s;
 		min-height: 80px;
 
 		#branding {
@@ -1792,7 +1741,7 @@ ul.book-meta {
 
 		&.mini {
 			min-height: 60px;
-			background-color: rgba( $header-color, 0.85 );
+			background-color: rgba( #FFF, 0.85 );
 
 			#branding {
 				#site-description {
@@ -1805,7 +1754,7 @@ ul.book-meta {
 					> li {
 						> a {
 							height: 60px;
-							padding: 20px #{$line-height /2}em;
+							padding: 20px #{$line-height /2}rem;
 						}
 
 						&.language {
@@ -1832,6 +1781,10 @@ ul.book-meta {
 			display: none; /* hide small menu initially */
 		}
 
+		.menu:not(.drawer-nav) ul#menu-primary-items {
+			transform: translate(0, 0) translateZ(0px) !important;
+		}
+
 		ul#menu-primary-items {
 			/* ensure .menu is visible on desktop version */
 			display: block !important;
@@ -1849,18 +1802,11 @@ ul.book-meta {
 				a,
 				span {
 					border-top: none;
-					padding: 0.8em;
-
-				}
-
-				a:hover {
-					background-color: #FFF;
-					color: $header-color;
 				}
 
 				&.language {
 					> a {
-						background: url("images/language.svg") no-repeat right center/ 200%;
+						background: url("images/language.svg") no-repeat left center/ 200%;
 						padding-left: 0;
 						padding-right: 0;
 						width: 16px;	
@@ -1906,21 +1852,21 @@ ul.book-meta {
 						a,
 						span {
 							padding: 0.8em;
-							background-color: $header-color;
-							border-right: dotted 1px #FFF;
-							border-left: dotted 1px #FFF;
-							border-bottom: dotted 1px #FFF;
+							background-color: #FFF;
+							border-right: solid 1px $text-color;
+							border-left: solid 1px $text-color;
+							border-bottom: solid 1px $text-color;
 							height: auto;
 							white-space: normal;
 
 							&:hover {
 								text-decoration: none;
-								border-color: $header-color;
+								border-color: $text-color;
 							}
 						}
 
 						&:first-child {
-							border-top: dotted 1px #FFF;
+							border-top: solid 1px $text-color;
 						}
 
 						ul {
@@ -1933,7 +1879,7 @@ ul.book-meta {
 
 			>li {
 				>a {
-					padding: 30px 0.8em;
+					padding: 30px #{$line-height /2}rem;
 					height: 80px;
 				}
 			}
@@ -1956,14 +1902,13 @@ ul.book-meta {
 	}
 
 	ul.tile {
+		margin-left: -15px;
 		@include clearfix;
 
 		li {
 			width: 300px;
 			float: left;
-			margin: 0 5px 10px 5px;
-			background-color: #FFF;
-			@include box-shadow(rgba(0,0,0,.05) 0 2px 8px);
+			margin: 0 0 15px 15px;
 
 			.entry-eyecatch {
 				width: 100%;
@@ -1971,7 +1916,7 @@ ul.book-meta {
 			}
 
 			.entry-header {
-				padding: 20px;
+				padding: 15px 0;
 			}
 		}
 	}
@@ -2016,53 +1961,44 @@ ul.book-meta {
 		}
 	}
 
-	#widget-area {
-		.widget {
-			width: 290px;
-			margin: 20px 10px;
-			float: left;
-		}
-	}
-
 	#wall {
-		padding-top: 650px;
+		padding-top: 698px;
+		padding-bottom: 40px;
 
 		.headerimage {
+			max-width: 930px;
+			margin: 0 auto;
+
 			.fixedimage {
-				padding-top: 650px;
+				padding-top: 698px;
 			}
 		}
 	}
 
-	body.home #wall.no-image,
+	body.home #wall,
 	body:not(.home) #content,
 	body.home.paged  #content {
 		margin-top: 80px;
 	}
 
-	.light {
-		#header.mini {
-			background-color: rgba( #FFF, 0.85 );
+	#widget-area {
+		.container {
+			@include display-flex();
 		}
 
-		#menu-wrapper {
-			.menu ul#menu-primary-items {
-				li ul li a,
-				span {
-					background-color: #FFF;
-				}
-	
-				li ul li:first-child {
-					border-color: $header-color;
-				}
-		
-				li.language {
-					> a {
-						background-position: left center;
-					}
-				}
-			}
+		.widget-area-left {
+			width: 32%;
 		}
+
+		.widget-area-center,
+		.widget-area-right {
+			margin-left: 20px;
+			width: 32%;
+		}
+	}
+
+	body:not(.home) .entry-content {
+		padding: 0 65px;
 	}
 }
 
