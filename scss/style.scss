@@ -17,7 +17,7 @@ $text-color: #222327;
 $link-color: #708f9c;
 $hover-background-color: #f6f9f9;
 $header-color: #374049;
-$border-color: #CCC;
+$border-color: #e7e7e7;
 $meta-color: #999;
 $line-height: 1.7;
 
@@ -353,7 +353,7 @@ ins {
 /* Structure
 --------------------------------------------- */
 html {
-	font-size: 1.04em;
+	font-size: 1.1em;
 
 	* {
 		@include box-sizing();
@@ -426,7 +426,7 @@ html, body {
 		#site-title {
 			margin: 0 1em 0 0;
 			padding: 0;
-			font-size: 2rem;
+			font-size: 2.4rem;
 			font-weight: normal;
 			line-height: 1;
 
@@ -438,12 +438,6 @@ html, body {
 					text-decoration: none;
 				}
 			}
-		}
-
-		#site-description {
-			display: none;
-			margin: 0;
-			line-height: 1;
 		}
 	}
 }
@@ -656,7 +650,7 @@ html, body {
 		text-align: center;
 		margin: 0 auto;
 		width: 90%;
-		@include box-shadow(rgba(0,0,0,.05) 0 2px 8px);
+		@include box-shadow(rgba(0,0,0,.1), 2px, 3px, 0px);
 
 		&:hover {
 			text-decoration: none;
@@ -1440,37 +1434,35 @@ body:not(.home) {
 /* Home Header
 --------------------------------------------- */
 #wall {
-	height: 0;
-	margin: 0;
-	width: 100%;
-	padding-top: (960 / 1280) *100%;
-	position: relative;
 	overflow: hidden;
 
-	.headerimage {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-
-		.fixedimage {
-			padding-top: (960 / 1280) *100%;
-			height: 0;
-			width: 100%;
-			background-size: cover;
-			background-position: top center;
-			background-repeat: no-repeat;
-		}
+	.slider {
+		position: relative;
+		width: 100%;
+		padding-top: ( 2 /3 ) *100%;
 	}
 
 	.slideitem {
 		position: absolute;
 		top: 0;
-		right: 0;
-		bottom: 0;
 		left: 0;
 		display: none;
+		width: 100%;
+		height: 0;
+		padding-top: ( 2 /3 ) *100%; // default
+
+		.inner {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+		}
 
 		&.start {
 			display: block;
@@ -1717,57 +1709,14 @@ ul.book-meta {
 	}
 
 	#header {
-		position: fixed;
-		top: 0;
-		transition-property:min-height;
-		transition-duration:.3s;
-		min-height: 80px;
-
 		#branding {
 			padding-top: 15px;
+			padding-top: #{$line-height /3 *2}rem;
 			float: left;
 
 			#site-title {
 				a {
 					display: inline;
-				}
-			}
-
-			#site-description {
-				display: block;
-				padding: 5px 0;
-			}
-		}
-
-		&.mini {
-			min-height: 60px;
-			background-color: rgba( #FFF, 0.85 );
-
-			#branding {
-				#site-description {
-					display: none;
-				}
-			}
-
-			#menu-wrapper {
-				ul#menu-primary-items {
-					> li {
-						> a {
-							height: 60px;
-							padding: 20px #{$line-height /2}rem;
-						}
-
-						&.language {
-							> a {
-								padding-left: 0;
-								padding-right: 0;
-							}
-						}
-					}
-
-					li ul {
-						top: 60px;
-					}
 				}
 			}
 		}
@@ -1802,6 +1751,10 @@ ul.book-meta {
 				a,
 				span {
 					border-top: none;
+				}
+
+				a:hover {
+					background: $hover-background-color;
 				}
 
 				&.language {
@@ -1853,20 +1806,20 @@ ul.book-meta {
 						span {
 							padding: 0.8em;
 							background-color: #FFF;
-							border-right: solid 1px $text-color;
-							border-left: solid 1px $text-color;
-							border-bottom: solid 1px $text-color;
+							border-right: solid 1px $border-color;
+							border-left: solid 1px $border-color;
+							border-bottom: solid 1px $border-color;
 							height: auto;
 							white-space: normal;
 
 							&:hover {
 								text-decoration: none;
-								border-color: $text-color;
+								border-color: $border-color;
 							}
 						}
 
 						&:first-child {
-							border-top: solid 1px $text-color;
+							border-top: solid 1px $border-color;
 						}
 
 						ul {
@@ -1881,6 +1834,56 @@ ul.book-meta {
 				>a {
 					padding: 30px #{$line-height /2}rem;
 					height: 80px;
+				}
+			}
+		}
+	}
+
+	body.fixed-header {
+		padding-top: 80px;
+
+		#header {
+			position: fixed;
+			top: -60px;
+			width: 100%;
+			background-color: rgba( #FFF, 0.85 );
+			border-bottom: solid 1px $border-color;
+			height: 60px;
+			transition-duration	: .7s;
+			transition-property: top;
+
+			&.show {
+				top: 0;
+			}
+
+			#branding {
+				padding-top: 0;
+
+				#site-title {
+					a {
+						display: block;
+						padding: 10px 0;
+					}
+				}
+
+			}
+
+			#menu-wrapper {
+				ul#menu-primary-items {
+					text-align: right;
+
+					li ul {
+						top: 60px;
+					}
+
+					>li {
+						>a {
+							padding-top: 20px;
+							padding-bottom: 20px;
+							height: 60px;
+						}
+					}
+
 				}
 			}
 		}
@@ -1962,23 +1965,8 @@ ul.book-meta {
 	}
 
 	#wall {
-		padding-top: 698px;
-		padding-bottom: 40px;
-
-		.headerimage {
-			max-width: 930px;
-			margin: 0 auto;
-
-			.fixedimage {
-				padding-top: 698px;
-			}
-		}
-	}
-
-	body.home #wall,
-	body:not(.home) #content,
-	body.home.paged  #content {
-		margin-top: 80px;
+		width: 930px;
+		margin: 0 auto;
 	}
 
 	#widget-area {

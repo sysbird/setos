@@ -173,7 +173,7 @@ table {
 
 table th,
 table td {
-  border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid #e7e7e7;
   line-height: 1.4;
   padding: 0.85em;
   text-align: left;
@@ -181,7 +181,7 @@ table td {
 }
 
 table th {
-  border-bottom: 2px solid #CCC;
+  border-bottom: 2px solid #e7e7e7;
   font-weight: bold;
 }
 
@@ -202,7 +202,7 @@ code, kbd, pre, samp {
 }
 
 hr {
-  background-color: #CCC;
+  background-color: #e7e7e7;
   border: 0 none;
   height: 1px;
   margin-bottom: 1.7rem;
@@ -310,7 +310,7 @@ ins {
 /* Structure
 --------------------------------------------- */
 html {
-  font-size: 1.04em;
+  font-size: 1.1em;
 }
 
 html * {
@@ -385,7 +385,7 @@ html, body {
 #header #branding #site-title {
   margin: 0 1em 0 0;
   padding: 0;
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-weight: normal;
   line-height: 1;
 }
@@ -397,12 +397,6 @@ html, body {
 
 #header #branding #site-title a:hover {
   text-decoration: none;
-}
-
-#header #branding #site-description {
-  display: none;
-  margin: 0;
-  line-height: 1;
 }
 
 /* Menu
@@ -550,7 +544,7 @@ html, body {
 .entry-meta .category a,
 .entry-meta .tag a {
   background: #FFF;
-  border: solid 1px #CCC;
+  border: solid 1px #e7e7e7;
   padding: 2px 5px;
   color: #999;
   border-radius: 4px;
@@ -616,9 +610,9 @@ html, body {
   text-align: center;
   margin: 0 auto;
   width: 90%;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0 2px 8px 0 0 0;
-  -moz-box-shadow: rgba(0, 0, 0, 0.05) 0 2px 8px 0 0 0;
-  box-shadow: rgba(0, 0, 0, 0.05) 0 2px 8px 0 0 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 2px 3px 0px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 2px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 2px 3px 0px;
 }
 
 .more a:hover {
@@ -852,7 +846,7 @@ form input[type="text"],
 form input[type="email"],
 form textarea {
   width: 100%;
-  border: solid 1px #CCC;
+  border: solid 1px #e7e7e7;
   border-radius: 4px;
   padding: 0.4em;
   margin-top: 1%;
@@ -905,7 +899,7 @@ div.wpcf7-validation-errors {
 .post-password-form input:not([type="submit"]) {
   padding: 5px;
   background: #FFF;
-  border: solid 1px #CCC;
+  border: solid 1px #e7e7e7;
 }
 
 /* Footer
@@ -947,7 +941,7 @@ div.wpcf7-validation-errors {
 }
 
 #footer #back-top a {
-  background: #CCC;
+  background: #e7e7e7;
   border-radius: 100px;
   display: block;
   height: 50px;
@@ -1012,7 +1006,7 @@ div.wpcf7-validation-errors {
   font-weight: normal;
   margin: 0 0 0.425em 0;
   padding: 0 0 0.425em 0;
-  border-bottom: dotted 1px #CCC;
+  border-bottom: dotted 1px #e7e7e7;
   font-size: 1.4rem;
   color: #222327;
 }
@@ -1156,7 +1150,7 @@ ul.list li {
   background: none;
   margin: 0;
   padding: 0;
-  border-top: dotted 1px #CCC;
+  border-top: dotted 1px #e7e7e7;
 }
 
 ul.list li a {
@@ -1431,38 +1425,36 @@ body:not(.home) .entry-header {
 /* Home Header
 --------------------------------------------- */
 #wall {
-  height: 0;
-  margin: 0;
-  width: 100%;
-  padding-top: 75%;
-  position: relative;
   overflow: hidden;
 }
 
-#wall .headerimage {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-#wall .headerimage .fixedimage {
-  padding-top: 75%;
-  height: 0;
+#wall .slider {
+  position: relative;
   width: 100%;
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
+  padding-top: 66.66667%;
 }
 
 #wall .slideitem {
   position: absolute;
   top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 0;
+  padding-top: 66.66667%;
+}
+
+#wall .slideitem .inner {
+  position: absolute;
+  top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  display: none;
+}
+
+#wall .slideitem img {
+  width: 100%;
+  height: auto;
 }
 
 #wall .slideitem.start {
@@ -1662,7 +1654,7 @@ ul.book-meta li:before {
   }
   .two-columns .left-column .entry-eyecatch img,
   .two-columns .left-column .setos-photos-slide img {
-    border: solid 1px #CCC;
+    border: solid 1px #e7e7e7;
   }
   .two-columns .right-column {
     width: calc(100% - 400px);
@@ -1687,41 +1679,13 @@ ul.book-meta li:before {
   .container {
     width: 930px;
   }
-  #header {
-    position: fixed;
-    top: 0;
-    transition-property: min-height;
-    transition-duration: .3s;
-    min-height: 80px;
-  }
   #header #branding {
     padding-top: 15px;
+    padding-top: 1.13333rem;
     float: left;
   }
   #header #branding #site-title a {
     display: inline;
-  }
-  #header #branding #site-description {
-    display: block;
-    padding: 5px 0;
-  }
-  #header.mini {
-    min-height: 60px;
-    background-color: rgba(255, 255, 255, 0.85);
-  }
-  #header.mini #branding #site-description {
-    display: none;
-  }
-  #header.mini #menu-wrapper ul#menu-primary-items > li > a {
-    height: 60px;
-    padding: 20px 0.85rem;
-  }
-  #header.mini #menu-wrapper ul#menu-primary-items > li.language > a {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  #header.mini #menu-wrapper ul#menu-primary-items li ul {
-    top: 60px;
   }
   #menu-wrapper {
     margin-top: 0;
@@ -1750,6 +1714,9 @@ ul.book-meta li:before {
   #menu-wrapper ul#menu-primary-items li a,
   #menu-wrapper ul#menu-primary-items li span {
     border-top: none;
+  }
+  #menu-wrapper ul#menu-primary-items li a:hover {
+    background: #f6f9f9;
   }
   #menu-wrapper ul#menu-primary-items li.language > a {
     background: url("images/language.svg") no-repeat left center/200%;
@@ -1803,19 +1770,19 @@ ul.book-meta li:before {
   #menu-wrapper ul#menu-primary-items li ul li span {
     padding: 0.8em;
     background-color: #FFF;
-    border-right: solid 1px #222327;
-    border-left: solid 1px #222327;
-    border-bottom: solid 1px #222327;
+    border-right: solid 1px #e7e7e7;
+    border-left: solid 1px #e7e7e7;
+    border-bottom: solid 1px #e7e7e7;
     height: auto;
     white-space: normal;
   }
   #menu-wrapper ul#menu-primary-items li ul li a:hover,
   #menu-wrapper ul#menu-primary-items li ul li span:hover {
     text-decoration: none;
-    border-color: #222327;
+    border-color: #e7e7e7;
   }
   #menu-wrapper ul#menu-primary-items li ul li:first-child {
-    border-top: solid 1px #222327;
+    border-top: solid 1px #e7e7e7;
   }
   #menu-wrapper ul#menu-primary-items li ul li ul {
     top: 0;
@@ -1824,6 +1791,40 @@ ul.book-meta li:before {
   #menu-wrapper ul#menu-primary-items > li > a {
     padding: 30px 0.85rem;
     height: 80px;
+  }
+  body.fixed-header {
+    padding-top: 80px;
+  }
+  body.fixed-header #header {
+    position: fixed;
+    top: -60px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-bottom: solid 1px #e7e7e7;
+    height: 60px;
+    transition-duration: .7s;
+    transition-property: top;
+  }
+  body.fixed-header #header.show {
+    top: 0;
+  }
+  body.fixed-header #header #branding {
+    padding-top: 0;
+  }
+  body.fixed-header #header #branding #site-title a {
+    display: block;
+    padding: 10px 0;
+  }
+  body.fixed-header #header #menu-wrapper ul#menu-primary-items {
+    text-align: right;
+  }
+  body.fixed-header #header #menu-wrapper ul#menu-primary-items li ul {
+    top: 60px;
+  }
+  body.fixed-header #header #menu-wrapper ul#menu-primary-items > li > a {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 60px;
   }
   ul.list li .entry-header .postdate {
     width: 9em;
@@ -1850,7 +1851,7 @@ ul.book-meta li:before {
     padding: 15px 0;
   }
   ul.archive > li {
-    border-bottom: dotted 1px #CCC;
+    border-bottom: dotted 1px #e7e7e7;
     padding-bottom: 2%;
   }
   ul.archive > li.has-post-thumbnail {
@@ -1864,7 +1865,7 @@ ul.book-meta li:before {
     margin-right: 3%;
   }
   ul.archive > li.has-post-thumbnail .entry-eyecatch img {
-    border: solid 1px #CCC;
+    border: solid 1px #e7e7e7;
   }
   ul.archive > li.has-post-thumbnail .entry-header {
     width: calc(100% - 300px);
@@ -1878,20 +1879,8 @@ ul.book-meta li:before {
     margin-bottom: 0;
   }
   #wall {
-    padding-top: 698px;
-    padding-bottom: 40px;
-  }
-  #wall .headerimage {
-    max-width: 930px;
+    width: 930px;
     margin: 0 auto;
-  }
-  #wall .headerimage .fixedimage {
-    padding-top: 698px;
-  }
-  body.home #wall,
-  body:not(.home) #content,
-  body.home.paged #content {
-    margin-top: 80px;
   }
   #widget-area .container {
     display: -webkit-flex;

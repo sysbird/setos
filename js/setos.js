@@ -54,7 +54,7 @@ jQuery(function() {
 		}
 
 		// Header Slider
-		jQuery( '.slider' ).birdfield_Slider();
+		jQuery('.slider[data-interval]').setos_Slider();
 
 		// gallery columns tile
 		jQuery.each(  jQuery ( ' .gallery' ),  function(){
@@ -103,11 +103,18 @@ jQuery(function() {
 		// mini header with scroll
 		var header_clip = jQuery( '#header' ).css( 'clip' );
 		if( -1 == header_clip.indexOf( 'rect' ) ) {
-			if ( scrollTop > 200 ) {
-				jQuery('.wrapper:not(.many-navigation) #header').addClass('mini');
+			if (scrollTop > 200) {
+				jQuery('body').addClass('fixed-header');
 			}
 			else {
-				jQuery('.wrapper:not(.many-navigation) #header').removeClass('mini');
+				jQuery('body').removeClass('fixed-header');
+			}
+
+			if (scrollTop > 300) {
+				jQuery('.fixed-header #header').addClass('show');
+			}
+			else {
+				jQuery('.fixed-header #header').removeClass('show');
 			}
 		}
 	});
@@ -120,11 +127,24 @@ jQuery(function() {
 
 ////////////////////////////////////////
 // Header Slider
-jQuery.fn.birdfield_Slider = function(){
+jQuery.fn.setos_Slider = function(){
 
 	return this.each(function(i, elem) {
 		// change slide
 		var setos_interval = jQuery( '.slider' ).attr( 'data-interval' );
+
+		//set alider size
+		var rate_max = 0;
+		jQuery('.slideitem img').each(function (index, element) {
+			var w = jQuery(this).attr('width');
+			var h = jQuery(this).attr('height');
+			var rate = h /w *100;
+			jQuery(this).closest(( '.slideitem' )).css({ 'padding-top': parseInt(rate) + '%' });
+			if( rate_max < rate ){
+				rate_max = rate;
+			}
+		});
+
 		setInterval( function(){
 
 			index = jQuery( '.slideitem.active' ).index( '.slideitem' );
@@ -135,6 +155,10 @@ jQuery.fn.birdfield_Slider = function(){
 
 			// fade in
 			jQuery( '.slideitem:eq(' + index + ')' ).fadeIn( 1000, function (){
+				// reset slider size
+				var rate = jQuery('.slideitem:eq(' + index + ')').css('padding-top');
+				jQuery('#wall .slider').css({ 'padding-top': rate });
+
 				// fade out
 				jQuery( '.slideitem.active' ).fadeOut( 1000 );
 				jQuery( '.slideitem.start').removeClass( 'start' );
