@@ -134,14 +134,16 @@ jQuery.fn.setos_Slider = function(){
 		var setos_interval = jQuery( '.slider' ).attr( 'data-interval' );
 
 		//set alider size
-		var rate_max = 0;
-		jQuery('.slideitem img').each(function (index, element) {
-			var w = jQuery(this).attr('width');
-			var h = jQuery(this).attr('height');
-			var rate = h /w *100;
-			jQuery(this).closest(( '.slideitem' )).css({ 'padding-top': parseInt(rate) + '%' });
-			if( rate_max < rate ){
-				rate_max = rate;
+		jQuery('.slideitem').each(function (index, element) {
+			// set slider size
+			var w = jQuery( this ).find( 'img' ).attr( 'width' );
+			var h = jQuery( this ).find('img').attr( 'height' );
+			var rate = parseInt( h /w *100 );
+			jQuery(this).css({ 'padding-top': rate + '%' });
+
+			var index = jQuery( this ).index( '.slideitem' );
+			if (!index){
+				jQuery(this).parent().css({ 'padding-top': rate + '%' });
 			}
 		});
 
@@ -160,10 +162,11 @@ jQuery.fn.setos_Slider = function(){
 				jQuery('#wall .slider').css({ 'padding-top': rate });
 
 				// fade out
-				jQuery( '.slideitem.active' ).fadeOut( 1000 );
-				jQuery( '.slideitem.start').removeClass( 'start' );
-				jQuery( '.slideitem.active').removeClass( 'active' );
-				jQuery( '.slideitem:eq(' + index + ')').addClass( 'active' );
+				jQuery( '.slideitem.active' ).fadeOut( 500, function(){
+					jQuery('.slideitem.start').removeClass('start');
+					jQuery('.slideitem.active').removeClass('active');
+					jQuery('.slideitem:eq(' + index + ')').addClass('active');
+				} );
 			} );
 		}, setos_interval );
 	});

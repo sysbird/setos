@@ -1432,27 +1432,26 @@ body:not(.home) .entry-header {
   position: relative;
   width: 100%;
   padding-top: 66.66667%;
+  transition-duration: .7s;
+  transition-property: padding-top;
 }
 
 #wall .slideitem {
   position: absolute;
   top: 0;
   left: 0;
-  display: none;
   width: 100%;
   height: 0;
   padding-top: 66.66667%;
+  display: none;
 }
 
-#wall .slideitem .inner {
+#wall .slideitem img {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-}
-
-#wall .slideitem img {
   width: 100%;
   height: auto;
 }
@@ -1880,7 +1879,7 @@ ul.book-meta li:before {
   }
   #wall {
     width: 930px;
-    margin: 0 auto;
+    margin: 0 auto 40px;
   }
   #widget-area .container {
     display: -webkit-flex;
