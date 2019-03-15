@@ -17,30 +17,10 @@ jQuery(function() {
 				if ( mq.matches ) {
 					// tile for home
 					jQuery( "ul.tile li" ).tile(3);
-
-					// cancel drawer navigation
-					if( jQuery( '.drawer-nav' ).length ) {
-						jQuery('.drawer').drawer('destroy');
-						jQuery( ".menu" ).removeClass( 'drawer-nav' );
-					}
 				}
 				else {
 					// cansel tile
 					jQuery( 'ul.tile li' ).css( 'height', 'auto' );
-
-					// drawer navigation
-					jQuery( ".menu" ).addClass( 'drawer-nav' );
-					jQuery('.drawer').drawer({
-						class: {
-							nav: 'drawer-nav',
-							toggle: 'drawer-toggle',
-						},
-						scroll: {
-							mouseWheel: true,
-							preventDefault: false
-						},
-						showOverlay: true
-					});
 				}
 			};
 
@@ -92,6 +72,12 @@ jQuery(function() {
 		jQuery( '.bogo-language-switcher' ).insertAfter( '.menu .language a' ).css({ 'display': 'block' });
 	});
 
+	// Navigation for mobile
+	jQuery("#small-menu").click(function () {
+		jQuery( "#menu-primary-items" ).slideToggle()
+		jQuery( "#menu-wrapper" ).toggleClass( "open" );
+	});
+
 	// Windows Scroll
 	var totop = jQuery( '#back-top' );
 	totop.hide();
@@ -129,21 +115,22 @@ jQuery(function() {
 // Header Slider
 jQuery.fn.setos_Slider = function(){
 
-	return this.each(function(i, elem) {
+	return this.each( function( i, elem ) {
 		// change slide
 		var setos_interval = jQuery( '.slider' ).attr( 'data-interval' );
 
-		//set alider size
-		jQuery('.slideitem').each(function (index, element) {
-			// set slider size
+		// init slider size
+		jQuery( '.slideitem' ).each( function ( index, element ) {
+
+			// set image ratio
 			var w = jQuery( this ).find( 'img' ).attr( 'width' );
 			var h = jQuery( this ).find('img').attr( 'height' );
-			var rate = parseInt( h /w *100 );
-			jQuery(this).css({ 'padding-top': rate + '%' });
+			var ratio = parseInt( h /w *100 );
+			jQuery(this).attr( 'ratio', ratio + '%' );
 
-			var index = jQuery( this ).index( '.slideitem' );
-			if (!index){
-				jQuery(this).parent().css({ 'padding-top': rate + '%' });
+			if( jQuery( this ).hasClass( 'start' )){
+				// first slide
+				jQuery( this ).parent().css({ 'padding-top': ratio + '%' });
 			}
 		});
 
@@ -157,15 +144,16 @@ jQuery.fn.setos_Slider = function(){
 
 			// fade in
 			jQuery( '.slideitem:eq(' + index + ')' ).fadeIn( 1000, function (){
+
 				// reset slider size
-				var rate = jQuery('.slideitem:eq(' + index + ')').css('padding-top');
-				jQuery('#wall .slider').css({ 'padding-top': rate });
+				var ratio = jQuery( this ).attr( 'ratio' );
+				jQuery( '#wall .slider' ).css({ 'padding-top': ratio });
 
 				// fade out
 				jQuery( '.slideitem.active' ).fadeOut( 500, function(){
-					jQuery('.slideitem.start').removeClass('start');
-					jQuery('.slideitem.active').removeClass('active');
-					jQuery('.slideitem:eq(' + index + ')').addClass('active');
+					jQuery( '.slideitem.start' ).removeClass( 'start' );
+					jQuery( '.slideitem.active' ).removeClass( 'active ');
+					jQuery( '.slideitem:eq(' + index + ')').addClass('active' );
 				} );
 			} );
 		}, setos_interval );
