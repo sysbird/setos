@@ -120,6 +120,7 @@ jQuery.fn.setos_Slider = function(){
 		var setos_interval = jQuery( '.slider' ).attr( 'data-interval' );
 
 		// init slider size
+		var count = 0;
 		jQuery( '.slideitem' ).each( function ( index, element ) {
 
 			// set image ratio
@@ -127,6 +128,7 @@ jQuery.fn.setos_Slider = function(){
 			var h = jQuery( this ).find('img').attr( 'height' );
 			var ratio = parseInt( h /w *100 );
 			jQuery(this).attr( 'ratio', ratio + '%' );
+			count++;
 
 			if( jQuery( this ).hasClass( 'start' )){
 				// first slide
@@ -134,28 +136,31 @@ jQuery.fn.setos_Slider = function(){
 			}
 		});
 
-		setInterval( function(){
+		if( 1 < count ){
 
-			index = jQuery( '.slideitem.active' ).index( '.slideitem' );
-			index++;
-			if( index >= jQuery( '.slideitem' ).length ){
-				index = 0;
-			}
+			setInterval( function(){
 
-			// fade in
-			jQuery( '.slideitem:eq(' + index + ')' ).fadeIn( 1000, function (){
+				index = jQuery( '.slideitem.active' ).index( '.slideitem' );
+				index++;
+				if( index >= jQuery( '.slideitem' ).length ){
+					index = 0;
+				}
 
-				// reset slider size
-				var ratio = jQuery( this ).attr( 'ratio' );
-				jQuery( '#wall .slider' ).css({ 'padding-top': ratio });
+				// fade in
+				jQuery( '.slideitem:eq(' + index + ')' ).fadeIn( 1000, function (){
 
-				// fade out
-				jQuery( '.slideitem.active' ).fadeOut( 500, function(){
-					jQuery( '.slideitem.start' ).removeClass( 'start' );
-					jQuery( '.slideitem.active' ).removeClass( 'active ');
-					jQuery( '.slideitem:eq(' + index + ')').addClass('active' );
+					// reset slider size
+					var ratio = jQuery( this ).attr( 'ratio' );
+					jQuery( '#wall .slider' ).css({ 'padding-top': ratio });
+
+					// fade out
+					jQuery( '.slideitem.active' ).fadeOut( 500, function(){
+						jQuery( '.slideitem.start' ).removeClass( 'start' );
+						jQuery( '.slideitem.active' ).removeClass( 'active ');
+						jQuery( '.slideitem:eq(' + index + ')').addClass('active' );
+					} );
 				} );
-			} );
-		}, setos_interval );
+			}, setos_interval );
+		}
 	});
 };

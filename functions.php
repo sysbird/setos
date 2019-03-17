@@ -658,7 +658,7 @@ function setos_headerslider() {
 
 	$headers = get_uploaded_header_images();
 	if($headers) {
-		// many omage
+		// many image
 		shuffle ( $headers );
 		foreach ( $headers as $header ) {
 			$setos_slides[ $setos_max ] = $header[ 'url' ];
@@ -681,28 +681,21 @@ function setos_headerslider() {
 		return false;
 	}
 
-	$slider_class = '';
-	if( 1 < $setos_max ){
-		$slider_class = ' slider';
-	}
-
 	?>
 
 	<section id="wall">
-		<div class="headerimage <?php echo $slider_class ?>" data-interval="7000">
+		<div class="headerimage slider" data-interval="7000">
 
 <?php
 	// sort randam
 	$setos_html = '';
-//	$setos_start = mt_rand( 1, $setos_max );
 	for( $setos_count = 1; $setos_count <= $setos_max; $setos_count++ ) {
 			$setos_class = '';
 			if( 1 == $setos_count ){
 				$setos_class = ' start active';
 			}
-
 			$setos_html .= '<div class="slideitem' .$setos_class .'" id="slideitem_' .$setos_count .'">';
-			$setos_html .= '<div class="fixedimage" style="background-image: url(' .$setos_slides[ $setos_count -1 ] .')"></div>';
+			$setos_html .= '<img src="' .$setos_slides[ $setos_count -1 ] .'" alt="slide_' .$setos_count .'" width="930" height="698">';
 			$setos_html .= '</div>';
 	}
 
@@ -712,85 +705,5 @@ function setos_headerslider() {
 	</section>
 <?php
 
-	return true;
-}
-
-function _setos_headerslider() {
-
-	if (( !is_front_page())) {
-		return false;
-	}
-
-	$setos_interval = get_theme_mod( 'slide_interval', 7000 );
-	if( 0 == $setos_interval){
-		$setos_interval = 7000;
-	}
-
-	// get headerslide option
-	$setos_slides = array();
-	$setos_max = 0;
-
-	for( $setos_count = 1; $setos_count <= 5; $setos_count++ ) {
-		$setos_default_image = '';
-		$setos_default_title = '';
-		$setos_default_description = '';
-		$setos_default_link = '';
-
-		if( 1 == $setos_count ){
-			$setos_default_image = get_template_directory_uri() . '/images/header.jpg';
-			$setos_default_title =  __( 'Hello world!','setos' );
-			$setos_default_description = __( 'Begin your website.', 'setos' );
-			$setos_default_link = '#';
-		}
-
-		$setos_image = get_theme_mod( 'slider_image_' .strval( $setos_count ), $setos_default_image );
-		if ( ! empty( $setos_image )) {
-			$setos_slides[ $setos_count -1 ][ 'image' ] = $setos_image;
-			$setos_slides[ $setos_count -1 ][ 'title' ] = get_theme_mod( 'slider_title_' . strval( $setos_count ), $setos_default_title );
-			$setos_slides[ $setos_count -1 ][ 'description' ] = get_theme_mod( 'slider_description_' . strval( $setos_count ), $setos_default_description );
-			$setos_slides[$setos_count -1 ][ 'link' ] = get_theme_mod( 'slider_link_' . strval( $setos_count ), $setos_default_link );
-
-			$setos_max++;
-		}
-		else{
-			break;
-		}
-	}
-
-	if( !$setos_max ){
-		return false;
-	}
-
-?>
-	<section id="wall">
-		<div class="headerimage slider" data-interval="<?php echo $setos_interval; ?>">
-
-<?php
-	// sort randam
-	$setos_html = '';
-	$setos_start = mt_rand( 1, $setos_max );
-	for( $setos_count = 1; $setos_count <= $setos_max; $setos_count++ ) {
-			$setos_class = '';
-			if( $setos_start == $setos_count ){
-				$setos_class = ' start active';
-			}
-
-			$setos_html .= '<div class="slideitem' .$setos_class .'" id="slideitem_' .$setos_count .'">';
-			$setos_html .= '<div class="fixedimage" style="background-image: url(' .$setos_slides[ $setos_count -1 ][ 'image' ] .')"></div>';
-			$setos_html .= '<div class="caption">';
-			$setos_html .= '<p><strong>' .$setos_slides[ $setos_count -1 ][ 'title' ] .'</strong><span>' .$setos_slides[ $setos_count -1 ][ 'description' ] .'</span></p>';
-			if( ! empty( $setos_slides[ $setos_count -1 ][ 'link' ] )){
-				$setos_html .= '<a href="' .$setos_slides[ $setos_count -1 ][ 'link' ] .'">' .__( 'More', 'setos' ) .'</a>';
-			}
-			$setos_html .= '</div>';
-			$setos_html .= '</div>';
-	}
-
-	echo $setos_html;
-?>
-		</div>
-	</section>
-
-<?php
 	return true;
 }
