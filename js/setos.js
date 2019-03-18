@@ -47,8 +47,6 @@ jQuery(function() {
 		// photos slide in book page
 		var slide_num = jQuery("[data-fancybox]").length;
 		if( 1 < slide_num ){
-			jQuery( '.setos-photos-slide-start' ).insertAfter( '.book-meta' );
-
 			// Zoom for thumbnail
 			jQuery("[data-fancybox]").fancybox({
 				loop : false,

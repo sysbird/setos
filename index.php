@@ -29,34 +29,27 @@ get_header(); ?>
 
 					<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 						<?php if( has_post_thumbnail() ): ?>
-							<div class="entry-eyecatch"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'large' ); ?></a></div>
+							<div class="two-columns">
+								<div class="side">
+									<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'large' ); ?></a>
+								</div>
+							<div class="main">
 						<?php endif; ?>
+
 						<div class="entry-header">
 							<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-
-							<?php $setos_type = get_post_type( $post );
-								if( "works" == $setos_type ):
-									$terms = get_the_terms( $post->ID, 'works-genre' );
-									foreach( $terms as $term ) {
-										$setos_archive_url = get_term_link( $term->slug, 'works-genre' );
-										$setos_archive_title = $term->name;
-										break;
-									}
-							?>
-								<span class="cateogry"><a href="<?php echo esc_url( $setos_archive_url ); ?>"><?php echo esc_html( $setos_archive_title ); ?></a></span>
-							<?php endif; ?>
-
 							<?php if( !wp_is_mobile()): ?>
-								<?php if ( is_object_in_term( $post->ID, 'works-genre','book' )): ?>
+								<?php if ( is_post_type_archive( 'books' )): ?>
 									<?php setos_entry_meta(); ?>
-									<?php the_content( __( 'Continue reading', 'setos' ) ) ?>
-								<?php elseif ( is_object_in_term( $post->ID, 'works-genre','exhibition' )): ?>
-									<?php the_content( __( 'Continue reading', 'setos' ) ); ?>
-								<?php else: ?>
-									<?php the_excerpt(); ?>
 								<?php endif; ?>
+								<?php the_excerpt(); ?>
 							<?php endif; ?>
 						</div>
+
+						<?php if( has_post_thumbnail() ): ?>
+								</div>
+							</div>
+						<?php endif; ?>
 					</li>
 
 				<?php endwhile; ?>

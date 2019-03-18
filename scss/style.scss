@@ -108,10 +108,6 @@ Font Awesome
 	box-sizing: border-box;
 }  
 
-@mixin pie-clearfix() {
-	*zoom: 1;
-}
-
 @mixin box-shadow( $c: #000000, $h: 0, $v: 0, $b: 0 ) {
 	-webkit-box-shadow: $c $h $v $b;
 	-moz-box-shadow: $c $h $v $b;
@@ -126,8 +122,22 @@ Font Awesome
 @mixin clearfix() {
 	overflow: hidden;
 	*zoom: 1;
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
 }
 	
+@mixin pie-clearfix() {
+	*zoom: 1;
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
 @mixin hide-text(){
 	text-indent: -119988px;
 	overflow: hidden;
@@ -475,6 +485,7 @@ html, body {
 		border: 0;
 		outline: 0;
 		background-color: transparent;
+		cursor: pointer;
 
 		.icon {
 			position: relative;
@@ -512,19 +523,23 @@ html, body {
 		#small-menu {
 			background-color: transparent;
 
-			&:before,
-			&:after {
-				top: 0;
-			}
+			.icon {
+				background-color: transparent;
 
-			&:before {
-			-webkit-transform: rotate(45deg);
-			transform: rotate(45deg);
-			}
-			
-			&:after {
-			-webkit-transform: rotate(-45deg);
-			transform: rotate(-45deg);
+				&:before,
+				&:after {
+					top: 0;
+				}
+
+				&:before {
+				-webkit-transform: rotate(45deg);
+				transform: rotate(45deg);
+				}
+				
+				&:after {
+				-webkit-transform: rotate(-45deg);
+				transform: rotate(-45deg);
+				}
 			}
 		}
 	}
@@ -735,7 +750,7 @@ html, body {
 		text-align: center;
 		margin: 0 auto;
 		width: 90%;
-		@include box-shadow(rgba(0,0,0,.1), 2px, 3px, 0px);
+		@include box-shadow(rgba(0,0,0,.1), 3px, 3px, 0px);
 
 		&:hover {
 			text-decoration: none;
@@ -915,7 +930,7 @@ video {
 
 /* Forms
 -------------------------------------------------------------- */
-form {
+form:not(#adminbarsearch) {
 	max-width: 650px;
 	width: 100%;
 	background-color: $hover-background-color;
@@ -1152,7 +1167,7 @@ div.wpcf7-validation-errors {
 
 /* Searcform
 --------------------------------------------- */
-#searchform {
+form:not(#adminbarsearch)#searchform {
 	width: 100%;
 	position: relative;
 	border: solid 1px $text-color;
@@ -1217,7 +1232,7 @@ div.wpcf7-validation-errors {
 		padding-top: #{$line-height}rem;
 		@include clearfix;
 
-		&#news,
+		&#information,
 		&#profile {
 			background-color: $hover-background-color;
 		}
@@ -1534,10 +1549,6 @@ body:not(.home) {
 			display: block;
 		}
 	}
-
-	&.no-image {
-		padding-top: 0;
-	}
 }
 
 /* biography in Profile
@@ -1816,10 +1827,6 @@ ul.book-meta {
 			display: none; /* hide small menu initially */
 		}
 
-		.menu:not(.drawer-nav) ul#menu-primary-items {
-			transform: translate(0, 0) translateZ(0px) !important;
-		}
-
 		ul#menu-primary-items {
 			/* ensure .menu is visible on desktop version */
 			display: block !important;
@@ -2046,14 +2053,15 @@ ul.book-meta {
 /* admin-bar
 --------------------------------------------- */
 @media screen and (min-width: 48em) {
-	.admin-bar #header {
+	.admin-bar.fixed-header #header.show {
+
 		top: 32px;
 	}
 }
 
 @media screen and ( max-width: 48.875em ) and ( min-width: 660px ) {
 
-	.admin-bar #header {
+	.admin-bar.fixed-header #header.show {
 		top: 46px;
 	}
 }

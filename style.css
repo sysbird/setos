@@ -334,6 +334,12 @@ body {
   *zoom: 1;
 }
 
+.container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 #content {
   width: 100%;
 }
@@ -433,6 +439,7 @@ html, body {
   border: 0;
   outline: 0;
   background-color: transparent;
+  cursor: pointer;
 }
 
 #menu-wrapper #small-menu .icon {
@@ -468,16 +475,20 @@ html, body {
   background-color: transparent;
 }
 
-#menu-wrapper.open #small-menu:before, #menu-wrapper.open #small-menu:after {
+#menu-wrapper.open #small-menu .icon {
+  background-color: transparent;
+}
+
+#menu-wrapper.open #small-menu .icon:before, #menu-wrapper.open #small-menu .icon:after {
   top: 0;
 }
 
-#menu-wrapper.open #small-menu:before {
+#menu-wrapper.open #small-menu .icon:before {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
-#menu-wrapper.open #small-menu:after {
+#menu-wrapper.open #small-menu .icon:after {
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
@@ -541,6 +552,12 @@ html, body {
   width: 100%;
   word-wrap: break-word;
   *zoom: 1;
+}
+
+.hentry:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .entry-eyecatch {
@@ -693,9 +710,9 @@ html, body {
   text-align: center;
   margin: 0 auto;
   width: 90%;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 2px 3px 0px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.1) 2px 3px 0px;
-  box-shadow: rgba(0, 0, 0, 0.1) 2px 3px 0px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 0px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 3px 3px 0px;
 }
 
 .more a:hover {
@@ -784,6 +801,12 @@ a:hover img {
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
+}
+
+.gallery:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .gallery .gallery-item {
@@ -885,7 +908,7 @@ video {
 
 /* Forms
 -------------------------------------------------------------- */
-form {
+form:not(#adminbarsearch) {
   max-width: 650px;
   width: 100%;
   background-color: #f6f9f9;
@@ -893,17 +916,17 @@ form {
   margin-bottom: 1.7rem;
 }
 
-form label {
+form:not(#adminbarsearch) label {
   display: block;
 }
 
-form p {
+form:not(#adminbarsearch) p {
   line-height: 1.2;
   margin-bottom: 0;
 }
 
-form input[type=submit],
-form input[type=button] {
+form:not(#adminbarsearch) input[type=submit],
+form:not(#adminbarsearch) input[type=button] {
   max-width: 200px;
   padding: 0.4rem 2rem;
   border-radius: 4px;
@@ -918,16 +941,16 @@ form input[type=button] {
   margin: 2px 0;
 }
 
-form .title {
+form:not(#adminbarsearch) .title {
   font-weight: 500;
   display: block;
   margin-bottom: 5px;
   font-size: 1.2em;
 }
 
-form input[type="text"],
-form input[type="email"],
-form textarea {
+form:not(#adminbarsearch) input[type="text"],
+form:not(#adminbarsearch) input[type="email"],
+form:not(#adminbarsearch) textarea {
   width: 100%;
   border: solid 1px #e7e7e7;
   border-radius: 4px;
@@ -939,23 +962,23 @@ form textarea {
   appearance: none;
 }
 
-form input[type="text"],
-form input[type="email"] {
+form:not(#adminbarsearch) input[type="text"],
+form:not(#adminbarsearch) input[type="email"] {
   width: 70%;
 }
 
-form textarea {
+form:not(#adminbarsearch) textarea {
   width: 100%;
   font: inherit;
   font-size: 1.4rem;
 }
 
-form .required {
+form:not(#adminbarsearch) .required {
   color: #cf365a;
   font-size: 0.96rem;
 }
 
-form span[role=alert]:before {
+form:not(#adminbarsearch) span[role=alert]:before {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -1066,6 +1089,12 @@ div.wpcf7-validation-errors {
   *zoom: 1;
 }
 
+#widget-area:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 #widget-area .widget {
   margin: 20px 0;
   width: 100%;
@@ -1140,7 +1169,7 @@ div.wpcf7-validation-errors {
 
 /* Searcform
 --------------------------------------------- */
-#searchform {
+form:not(#adminbarsearch)#searchform {
   width: 100%;
   position: relative;
   border: solid 1px #222327;
@@ -1152,7 +1181,7 @@ div.wpcf7-validation-errors {
   display: flex;
 }
 
-#searchform #s {
+form:not(#adminbarsearch)#searchform #s {
   padding: 5px 10px 5px 5px;
   line-height: 1;
   border: none;
@@ -1161,7 +1190,7 @@ div.wpcf7-validation-errors {
   flex: 1;
 }
 
-#searchform #searchsubmit {
+form:not(#adminbarsearch)#searchform #searchsubmit {
   border: none;
   cursor: pointer;
   width: 20%;
@@ -1173,7 +1202,7 @@ div.wpcf7-validation-errors {
   text-align: right;
 }
 
-#searchform #searchsubmit:before {
+form:not(#adminbarsearch)#searchform #searchsubmit:before {
   font-size: 1.4rem;
   display: inline-block;
   font-family: FontAwesome;
@@ -1212,7 +1241,13 @@ div.wpcf7-validation-errors {
   *zoom: 1;
 }
 
-.home .section#news, .home .section#profile {
+.home .section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.home .section#information, .home .section#profile {
   background-color: #f6f9f9;
 }
 
@@ -1245,6 +1280,12 @@ ul.list li .entry-header {
   margin: 0;
   overflow: hidden;
   *zoom: 1;
+}
+
+ul.list li .entry-header:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 ul.list li .entry-header .entry-title {
@@ -1396,6 +1437,12 @@ body:not(.home) .entry-header {
   *zoom: 1;
 }
 
+.pagination:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .pagination a.page-numbers,
 .pagination .current {
   display: inline-block;
@@ -1525,10 +1572,6 @@ body:not(.home) .entry-header {
   display: block;
 }
 
-#wall.no-image {
-  padding-top: 0;
-}
-
 /* biography in Profile
 --------------------------------------------- */
 ul.biography {
@@ -1536,6 +1579,12 @@ ul.biography {
   margin-left: 0;
   overflow: hidden;
   *zoom: 1;
+}
+
+ul.biography:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 ul.biography li {
@@ -1769,12 +1818,14 @@ ul.book-meta li:before {
     margin: 0;
     *zoom: 1;
   }
+  #menu-wrapper:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
   #menu-wrapper #small-menu {
     display: none;
     /* hide small menu initially */
-  }
-  #menu-wrapper .menu:not(.drawer-nav) ul#menu-primary-items {
-    transform: translate(0, 0) translateZ(0px) !important;
   }
   #menu-wrapper ul#menu-primary-items {
     /* ensure .menu is visible on desktop version */
@@ -1915,6 +1966,11 @@ ul.book-meta li:before {
     margin-left: -2%;
     *zoom: 1;
   }
+  ul.tile:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
   ul.tile li {
     float: left;
     margin: 0 0 2% 2%;
@@ -1956,13 +2012,13 @@ ul.book-meta li:before {
 /* admin-bar
 --------------------------------------------- */
 @media screen and (min-width: 48em) {
-  .admin-bar #header {
+  .admin-bar.fixed-header #header.show {
     top: 32px;
   }
 }
 
 @media screen and (max-width: 48.875em) and (min-width: 660px) {
-  .admin-bar #header {
+  .admin-bar.fixed-header #header.show {
     top: 46px;
   }
 }

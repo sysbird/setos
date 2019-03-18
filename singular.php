@@ -33,58 +33,47 @@ get_header(); ?>
 							}
 						}	
 						else{
-							if( "works" == $setos_type ){
-								$terms = get_the_terms( $post->ID, 'works-genre' );
-								foreach( $terms as $term ) {
-									$setos_archive_url = get_term_link( $term->slug, 'works-genre' );
-									$setos_archive_title = $term->name;
-									break;
-								}
-							}
-							else{
-								$setos_archive_url = get_post_type_archive_link( $setos_type );
-								$setos_archive_title = get_post_type_object( $setos_type )->label;
-							}
+							$setos_archive_url = get_post_type_archive_link( $setos_type );
+							$setos_archive_title = get_post_type_object( $setos_type )->label;
 						}
 						?>
 
 						<span class="cateogry"><a href="<?php echo esc_url( $setos_archive_url ); ?>"><?php echo esc_html( $setos_archive_title ); ?></a></span>
 			
-						<?php if( ("works" != $setos_type ) && setos_is_recently()): ?>
+						<?php if( ("books" != $setos_type ) && ("exhibition" != $setos_type ) && setos_is_recently()): ?>
 							<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time>
 						<?php endif; ?>
 					<?php endif; ?>
 
 				</header>
 
-				<?php if( 'works' === $setos_type ): ?>
+				<?php if( 'books' === $setos_type ): ?>
 					<div class="two-columns">
-						<div class="left-colum">
+						<div class="side">
 							<?php if( has_post_thumbnail() ): ?>
 								<div class="entry-eyecatch setos-photos-cover">
 									<?php the_post_thumbnail( 'middle' ); ?>
 								</div>
 							<?php endif; ?>
 
-							<?php if ( is_object_in_term( $post->ID, 'works-cat','book' )): ?>
-								<?php setos_photos_slide() ?>
-							<?php elseif ( is_object_in_term( $post->ID, 'works-cat','exhibition' )): ?>
-							<?php endif; ?>
+							<?php setos_photos_slide() ?>
 						</div>
+						<div class="main">
 				<?php endif; ?>
 
 				<div class="entry-content">
-		
+	
+					<?php the_content(); ?>
+	
 					<?php if( is_single()): ?>
 						<?php if ( is_object_in_term( $post->ID, 'works-genre','book' )): ?>
 							<?php setos_entry_meta(); ?>
 						<?php endif; ?>
 					<?php endif; ?>
-	
-					<?php the_content(); ?>
-			</div>
+				</div>
 
-				<?php if( 'works' === get_post_type()): ?>
+				<?php if( 'books' === get_post_type()): ?>
+						</div>
 					</div>
 				<?php endif; ?>
 

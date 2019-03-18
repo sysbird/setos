@@ -145,19 +145,10 @@ function setos_setup() {
 
 	// Add support for custom headers.
 	add_theme_support( 'custom-header', array(
-		'default-image'		=> get_parent_theme_file_uri( '/images/header.jpg' ),
-		'height'			=> 900,
-		'width'				=> 1280,
+//		'height'			=> 900,
+//		'width'				=> 1280,
 		'flex-height'		=> true,
 	));
-
-	register_default_headers( array(
-		'default-image' => array(
-			'url'           => '%s/images/header.jpg',
-			'thumbnail_url' => '%s/images/header.jpg',
-			'description'   => __( 'Default Header Image', 'setos' ),
-		),
-	) );
 }
 add_action( 'after_setup_theme', 'setos_setup' );
 
@@ -195,6 +186,40 @@ function setos_init() {
             'show_ui'			=> true,
         )
     );
+
+	// add post type books
+	$labels = array(
+		'name'		=> 'Books',
+		'all_items'	=> 'Booksの一覧',
+		);
+
+	$args = array(
+		'labels'			=> $labels,
+		'supports'			=> array( 'title','editor', 'thumbnail', 'custom-fields' ),
+		'public'			=> true,	// 公開するかどうが
+		'show_ui'			=> true,	// メニューに表示するかどうか
+		'menu_position'		=> 5,		// メニューの表示位置
+		'has_archive'		=> true,	// アーカイブページの作成
+		);
+
+	register_post_type( 'books', $args );
+
+	// add post type works
+	$labels = array(
+		'name'		=> 'Exhibition',
+		'all_items'	=> 'Exhibitionの一覧',
+		);
+
+	$args = array(
+		'labels'			=> $labels,
+		'supports'			=> array( 'title','editor', 'thumbnail', 'custom-fields' ),
+		'public'			=> true,	// 公開するかどうが
+		'show_ui'			=> true,	// メニューに表示するかどうか
+		'menu_position'		=> 5,		// メニューの表示位置
+		'has_archive'		=> true,	// アーカイブページの作成
+		);
+
+	register_post_type( 'exhibition', $args );
 
 	// add post type essay
 	$labels = array(
@@ -276,8 +301,8 @@ function setos_scripts() {
 	wp_enqueue_script( 'jquerytile', get_template_directory_uri() .'/js/jquery.tile.js', 'jquery', '1.1.2' );
 
 	// Google Fonts
-	wp_enqueue_style( 'setos-google-font', '//fonts.googleapis.com/css?family=Open+Sans', false, null, 'all' );
-	wp_enqueue_style( 'setos-google-font-ja', '//fonts.googleapis.com/earlyaccess/sawarabimincho.css', false, null, 'all' );
+//	wp_enqueue_style( 'setos-google-font', '//fonts.googleapis.com/css?family=Open+Sans', false, null, 'all' );
+//	wp_enqueue_style( 'setos-google-font-ja', '//fonts.googleapis.com/earlyaccess/sawarabimincho.css', false, null, 'all' );
 
 	// this
 	wp_enqueue_script( 'setos', get_template_directory_uri() .'/js/setos.js', array( 'jquery' , 'jquery-masonry', 'jquerytile' ), '1.11' );
@@ -607,45 +632,6 @@ function setos_is_recently() {
 }
 
 //////////////////////////////////////////////////////
-// Theme Customizer
-function setos_customize( $wp_customize ) {
-
-	// Theme color Section
-	$wp_customize->add_section( 'setos_theme_color', array(
-		'title'		=> __( 'Theme Color', 'setos' ),
-		'priority'	=> 999,
-	) );
-
-	$wp_customize->add_setting( 'setos_theme_color', array(
-		'default'		=> 'dark',
-		'sanitize_callback'	=> 'setos_sanitize_radiobutton',
-	) );
-
-	$wp_customize->add_control( 'setos_theme_color', array(
-		'label'		=> __( 'Theme color', 'setos' ),
-		'section'	=> 'setos_theme_color',
-		'type'		=> 'radio',
-		'settings'	=> 'setos_theme_color',
-		'choices'	=> array(
-					'dark'	=> __( 'dark', 'setos' ),
-					'light'	=> __( 'light', 'setos' ),
-					)
-	) );
-}
-add_action( 'customize_register', 'setos_customize' );
-
-//////////////////////////////////////////////////////
-// Santize a checkbox
-function setos_sanitize_radiobutton( $input ) {
-
-	if ( $input === 'light' ) {
-		return $input;
-	} else {
-		return 'dark';
-	}
-}
-
-//////////////////////////////////////////////////////
 // Header Slider
 function setos_headerslider() {
 
@@ -653,35 +639,11 @@ function setos_headerslider() {
 		return false;
 	}
 
-	$setos_slides = array();
-	$setos_max = 0;
-
 	$headers = get_uploaded_header_images();
-	if($headers) {
-		// many image
-		shuffle ( $headers );
-		foreach ( $headers as $header ) {
-			$setos_slides[ $setos_max ] = $header[ 'url' ];
-			$setos_max++;
-			if( 3 == $setos_max ){
-				break;
-			}
-		}
-	}
-	else {
-		// one omage
-		$header_image = get_header_image();
-		if( $header_image ){
-			$setos_slides[ 0 ] = $header_image;
-			$setos_max = 1;
-		}
-	}
-
-	if( !$setos_max ){
+	if( !$headers ) {
 		return false;
 	}
-
-	?>
+?>
 
 	<section id="wall">
 		<div class="headerimage slider" data-interval="7000">
@@ -689,14 +651,20 @@ function setos_headerslider() {
 <?php
 	// sort randam
 	$setos_html = '';
-	for( $setos_count = 1; $setos_count <= $setos_max; $setos_count++ ) {
+	$setos_count = 0;
+	foreach ( $headers as $header ) {
 			$setos_class = '';
-			if( 1 == $setos_count ){
+			if( !$setos_count ){
 				$setos_class = ' start active';
 			}
-			$setos_html .= '<div class="slideitem' .$setos_class .'" id="slideitem_' .$setos_count .'">';
-			$setos_html .= '<img src="' .$setos_slides[ $setos_count -1 ] .'" alt="slide_' .$setos_count .'" width="930" height="698">';
+
+			$setos_html .= '<div class="slideitem' .$setos_class .'" id="slideitem_' .( $setos_count +1 ) .'">';
+			$setos_html .= '<img src="' .$header[ 'url' ] .'" alt="slide_' .( $setos_count +1 ) .'" width="' .$header[ 'width' ] .'" height="' .$header[ 'height' ] .'">';
 			$setos_html .= '</div>';
+			$setos_count++;
+			if( 3 == $setos_count ){
+				break;
+			}
 	}
 
 	echo $setos_html;
