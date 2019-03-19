@@ -132,18 +132,18 @@ get_header(); ?>
 					<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 						<?php if( has_post_thumbnail() ): ?>
 							<div class="two-columns">
-								<div class="side">
+								<div class="entry-eyecatch">
 									<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'large' ); ?></a>
 								</div>
-								<div class="main">
 						<?php endif; ?>
 
-						<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-						<?php setos_entry_meta(); ?>
-						<?php the_excerpt(); ?>
+						<div class="entry-content">
+							<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+							<?php setos_entry_meta(); ?>
+							<?php the_excerpt(); ?>
+						</div>
 
 						<?php if( has_post_thumbnail() ): ?>
-								</div>
 							</div>
 						<?php endif; ?>
 

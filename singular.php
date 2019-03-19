@@ -47,33 +47,28 @@ get_header(); ?>
 
 				</header>
 
-				<?php if( 'books' === $setos_type ): ?>
+				<?php if(( 'books' === $setos_type || 'exhibition' === $setos_type ) && has_post_thumbnail()) : ?>
 					<div class="two-columns">
-						<div class="side">
-							<?php if( has_post_thumbnail() ): ?>
-								<div class="entry-eyecatch setos-photos-cover">
-									<?php the_post_thumbnail( 'middle' ); ?>
-								</div>
-							<?php endif; ?>
+						<div class="entry-eyecatch">
+							<div class="setos-photos-cover">
+								<?php the_post_thumbnail( 'middle' ); ?>
+							</div>
 
-							<?php setos_photos_slide() ?>
-						</div>
-						<div class="main">
+						<?php if( 'books' === $setos_type):
+							setos_photos_slide();
+						endif; ?>
+					</div>
 				<?php endif; ?>
 
 				<div class="entry-content">
-	
 					<?php the_content(); ?>
 	
-					<?php if( is_single()): ?>
-						<?php if ( is_object_in_term( $post->ID, 'works-genre','book' )): ?>
-							<?php setos_entry_meta(); ?>
-						<?php endif; ?>
+					<?php  if( 'books' === $setos_type ): ?>
+						<?php setos_entry_meta(); ?>
 					<?php endif; ?>
 				</div>
 
-				<?php if( 'books' === get_post_type()): ?>
-						</div>
+				<?php if(( 'books' === $setos_type || 'exhibition' === $setos_type ) && has_post_thumbnail()) : ?>
 					</div>
 				<?php endif; ?>
 

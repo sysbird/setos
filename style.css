@@ -74,11 +74,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 Font Awesome
 -----------------------------*/
 @font-face {
-  font-family: 'FontAwesome';
-  src: url("font-awesome/fontawesome-webfont.eot?v=4.7.0");
-  src: url("font-awesome/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("font-awesome/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("font-awesome/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("font-awesome/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
-  font-weight: normal;
+  font-family: 'Font Awesome 5 Free';
   font-style: normal;
+  font-weight: 900;
+  font-display: auto;
+  src: url("fontawesome/fa-solid-900.eot");
+  src: url("fontawesome/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("fontawesome/fa-solid-900.woff2") format("woff2"), url("fontawesome/fa-solid-900.woff") format("woff"), url("fontawesome/fa-solid-900.ttf") format("truetype"), url("fontawesome/fa-solid-900.svg#fontawesome") format("svg");
 }
 
 /* element
@@ -615,61 +616,6 @@ html, body {
   clear: both;
 }
 
-.entry-meta .category,
-.entry-meta .tag {
-  margin-bottom: 0.425em;
-}
-
-.entry-meta .category span,
-.entry-meta .tag span {
-  width: 7em;
-  padding: 2px 0;
-  display: block;
-  float: left;
-}
-
-.entry-meta .category span:before,
-.entry-meta .tag span:before {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  content: "\f07b";
-  padding-right: 0.2125em;
-}
-
-.entry-meta .category a,
-.entry-meta .tag a {
-  background: #FFF;
-  border: solid 1px #e7e7e7;
-  padding: 2px 5px;
-  color: #999;
-  border-radius: 4px;
-  margin-bottom: 4px;
-  display: inline-block;
-}
-
-.entry-meta .category a:hover,
-.entry-meta .tag a:hover {
-  background: #f6f9f9;
-  text-decoration: none;
-}
-
-.entry-meta .tag span:before {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  content: "\f02c";
-  padding-right: 0.2125em;
-}
-
 .page-links {
   clear: both;
   margin: 1.7em 0;
@@ -721,14 +667,11 @@ html, body {
 }
 
 .more a:before {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Font Awesome 5 Free';
   -moz-osx-font-smoothing: grayscale;
-  content: "\f054";
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  content: "\f105";
   padding-right: 0.2125rem;
 }
 
@@ -979,13 +922,10 @@ form:not(#adminbarsearch) .required {
 }
 
 form:not(#adminbarsearch) span[role=alert]:before {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Font Awesome 5 Free';
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
   content: "\f054";
 }
 
@@ -1066,13 +1006,10 @@ div.wpcf7-validation-errors {
 }
 
 #footer #back-top a:before {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Font Awesome 5 Free';
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
   content: "\f077";
   font-size: 30px;
   display: block;
@@ -1138,13 +1075,10 @@ div.wpcf7-validation-errors {
 }
 
 #widget-area .widget ul li:before {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Font Awesome 5 Free';
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
   content: "\f0da";
   padding-right: 0.2125em;
 }
@@ -1204,13 +1138,10 @@ form:not(#adminbarsearch)#searchform #searchsubmit {
 
 form:not(#adminbarsearch)#searchform #searchsubmit:before {
   font-size: 1.4rem;
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Font Awesome 5 Free';
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
   content: "\f002";
 }
 
@@ -1382,13 +1313,10 @@ ul.archive > li .entry-header .entry-title {
   top: 0;
   bottom: 0;
   width: 1em;
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Font Awesome 5 Free';
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
   content: "\f054";
   display: -webkit-flex;
   display: flex;
@@ -1465,26 +1393,20 @@ body:not(.home) .entry-header {
 
 .pagination a.page-numbers.prev:before,
 .pagination .current.prev:before {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Font Awesome 5 Free';
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
   content: "\f053";
   padding-right: 0.2125em;
 }
 
 .pagination a.page-numbers.next:after,
 .pagination .current.next:after {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Font Awesome 5 Free';
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
   content: "\f054";
   padding-left: 0.2125em;
 }
@@ -1506,33 +1428,36 @@ body:not(.home) .entry-header {
 
 /* bread crumb for wp-manager
 -------------------------------------------------------------- */
-#content ul.bread_crumb {
-  list-style-type: none;
-  padding: 0;
+#content .bread_crumb_wrapper {
   font-size: 0.9rem;
-  margin: 0;
   color: #999;
 }
 
-#content ul.bread_crumb a {
+#content .bread_crumb_wrapper ul.bread_crumb {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+  padding: 0.4em 0;
+}
+
+#content .bread_crumb_wrapper ul.bread_crumb a {
   color: #9db2bb;
 }
 
-#content ul.bread_crumb li {
+#content .bread_crumb_wrapper ul.bread_crumb li {
   display: inline-block;
   line-height: 1;
   vertical-align: top;
 }
 
-#content ul.bread_crumb a:after {
-  content: " \f105";
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  padding-right: 0.2em;
-  -webkit-font-smoothing: antialiased;
+#content .bread_crumb_wrapper ul.bread_crumb a:after {
+  font-family: 'Font Awesome 5 Free';
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  content: "\f105";
+  padding-left: 0.2em;
+  padding-right: 0.2em;
 }
 
 .single #content ul.bread_crumb li:last-child,
@@ -1598,13 +1523,10 @@ ul.biography li strong {
 }
 
 ul.biography li strong:before {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Font Awesome 5 Free';
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
   content: "\f0da";
   display: inline;
   padding-right: 0.2125em;
@@ -1624,13 +1546,10 @@ ul.book-meta li {
 }
 
 ul.book-meta li:before {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Font Awesome 5 Free';
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
   content: "\f069";
   padding-right: 0.6em;
   font-size: 0.6em;
@@ -1657,21 +1576,12 @@ ul.book-meta li:before {
 }
 
 .setos-photos-slide-start:before {
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Font Awesome 5 Free';
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
   content: "\f054";
   padding-right: 0.2125rem;
-}
-
-/* two-columns flex
---------------------------------------------- */
-.two-columns .main {
-  margin-top: 1.7rem;
 }
 
 /* Japanese Font
@@ -1771,21 +1681,21 @@ ul.book-meta li:before {
     display: -webkit-flex;
     display: flex;
   }
-  .two-columns .side {
+  .two-columns .entry-eyecatch {
     width: 400px;
     margin-right: 3%;
   }
-  .two-columns .side img {
+  .two-columns .entry-eyecatch img {
     border: solid 1px #e7e7e7;
   }
-  .two-columns .main {
+  .two-columns .entry-content {
     margin-top: 0;
     width: calc(100% - 400px);
   }
   .two-columns.reverse {
     flex-direction: row-reverse;
   }
-  .two-columns.reverse .side {
+  .two-columns.reverse .entry-eyecatch {
     margin-left: 3%;
     margin-right: 0;
   }
@@ -1856,13 +1766,10 @@ ul.book-meta li:before {
     text-align: left;
   }
   #menu-wrapper ul#menu-primary-items li.menu-item-has-children > a:after {
-    display: inline-block;
-    font-family: FontAwesome;
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Font Awesome 5 Free';
     -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
     content: "\f0d7";
     padding-left: 0.2em;
   }
@@ -1885,13 +1792,10 @@ ul.book-meta li:before {
     padding: 0;
   }
   #menu-wrapper ul#menu-primary-items li ul li.menu-item-has-children > a:after {
-    display: inline-block;
-    font-family: FontAwesome;
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
+    font-family: 'Font Awesome 5 Free';
     -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
     content: "\f0da";
     padding-left: 0.2em;
   }
@@ -2004,7 +1908,9 @@ ul.book-meta li:before {
     margin-left: 20px;
     width: 32%;
   }
-  body:not(.home) .entry-content {
+  body.single-essay .entry-content,
+  body.single-post .entry-content,
+  body.page .entry-content {
     padding: 0 65px;
   }
 }

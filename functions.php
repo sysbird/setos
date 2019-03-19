@@ -561,15 +561,14 @@ function setos_content_header() {
 
 	// bread crumb
 	$setos_html = '';
-/*
 	if( !is_home()){
 		if ( class_exists( 'WP_SiteManager_bread_crumb' ) ) {
-			$setos_html .= '<div class="bread_crumb">';
-			$setos_html .= WP_SiteManager_bread_crumb::bread_crumb( array( 'echo'=>'false', 'home_label' => __( 'Home', 'setos' ), 'search_label' =>  __( 'Search Results: %s', 'setos' ), 'elm_class' => 'container' ));
+			$setos_html .= '<div class="bread_crumb_wrapper">';
+			$setos_html .= WP_SiteManager_bread_crumb::bread_crumb( array( 'echo'=>'false', 'home_label' => __( 'Home', 'setos' ), 'search_label' =>  __( 'Search Results: %s', 'setos' ), 'elm_class' => 'bread_crumb container'));
 			$setos_html .= '</div>';
 		}
 	}
-*/
+
 	echo $setos_html;
 }
 

@@ -14,7 +14,7 @@ get_header(); ?>
 	<div class="container">
 		<article class="hentry">
 			<header class="content-header">
-                <h1 class="content-title"><?php _e( 'Information', 'setos' ) ?></a>
+                <h1 class="content-title"><?php _e( 'Information', 'setos' ) ?>
 			</header>
 
 			<?php if ( have_posts() ) : ?>

@@ -30,13 +30,12 @@ get_header(); ?>
 					<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 						<?php if( has_post_thumbnail() ): ?>
 							<div class="two-columns">
-								<div class="side">
+								<div class="entry-eyecatch">
 									<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'large' ); ?></a>
 								</div>
-							<div class="main">
 						<?php endif; ?>
 
-						<div class="entry-header">
+						<div class="entry-content">
 							<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 							<?php if( !wp_is_mobile()): ?>
 								<?php if ( is_post_type_archive( 'books' )): ?>
@@ -47,7 +46,6 @@ get_header(); ?>
 						</div>
 
 						<?php if( has_post_thumbnail() ): ?>
-								</div>
 							</div>
 						<?php endif; ?>
 					</li>
