@@ -160,7 +160,7 @@ function setos_init() {
 	register_taxonomy_for_object_type('post_tag', 'page');
 
 	// add post type works
-	$labels = array(
+/*	$labels = array(
 		'name'		=> 'Works',
 		'all_items'	=> 'Worksの一覧',
 		);
@@ -185,7 +185,7 @@ function setos_init() {
             'show_admin_column'	=> true,
             'show_ui'			=> true,
         )
-    );
+    ); */
 
 	// add post type books
 	$labels = array(
@@ -301,8 +301,8 @@ function setos_scripts() {
 	wp_enqueue_script( 'jquerytile', get_template_directory_uri() .'/js/jquery.tile.js', 'jquery', '1.1.2' );
 
 	// Google Fonts
-//	wp_enqueue_style( 'setos-google-font', '//fonts.googleapis.com/css?family=Open+Sans', false, null, 'all' );
-//	wp_enqueue_style( 'setos-google-font-ja', '//fonts.googleapis.com/earlyaccess/sawarabimincho.css', false, null, 'all' );
+	wp_enqueue_style( 'setos-google-font', '//fonts.googleapis.com/css?family=Open+Sans', false, null, 'all' );
+	wp_enqueue_style( 'setos-google-font-ja', '//fonts.googleapis.com/earlyaccess/sawarabimincho.css', false, null, 'all' );
 
 	// this
 	wp_enqueue_script( 'setos', get_template_directory_uri() .'/js/setos.js', array( 'jquery' , 'jquery-masonry', 'jquerytile' ), '1.11' );
