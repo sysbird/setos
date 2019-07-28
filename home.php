@@ -19,15 +19,26 @@ get_header(); ?>
 		<section id="information" class="section">
 			<div class="container">
 				<h2 class="content-title"><?php _e( 'Information', 'setos' ) ?></h2>
-				<ul class="list">
+				<ul class="two-columns-list">
 				<?php while ( have_posts()) : the_post(); ?>
-					<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-						<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'setos' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
-							<header class="entry-header">
+					<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>						
+						<header class="entry-header">
+							<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'setos' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
 								<time class="postdate" datetime="<?php echo get_the_time('Y-m-d') ?>"><?php echo get_post_time( get_option( 'date_format' ) ); ?></time>
+
+								<?php if( has_post_thumbnail() ): ?>
+									<div class="entry-eyecatch">
+										<?php the_post_thumbnail( 'middle' ); ?>
+									</div>
+								<?php endif; ?>
+							</a>
+						</header>
+						<div class="entry-content">
+							<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'setos' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
 								<h3 class="entry-title"><?php the_title(); ?></h3>
-							</header>
-						</a>
+							</a>
+							<?php the_content(); ?>
+						</div>
 					</li>
 
 				<?php endwhile; ?>
@@ -59,9 +70,7 @@ get_header(); ?>
 				$more_url = get_the_permalink();
 			?>
 
-			<?php
-				the_content('');
-			?>
+			<?php the_content(); ?>
 
 			<div class="more"><a href="<?php echo $more_url; ?>" class="more"><?php echo $more_text; ?></a></div>
 		</div>
@@ -83,24 +92,27 @@ get_header(); ?>
 			<section id="essay" class="section">
 				<div class="container">
 					<h2 class="content-title">Essay</h2>
-					<ul class="tile">
+					<ul class="two-columns-list">
 
 					<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 
 						<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-							<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'setos' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
-							<?php if( has_post_thumbnail() ): ?>
-								<div class="entry-eyecatch">
-									<?php the_post_thumbnail( 'large' ); ?>
-								</div>
-							<?php endif; ?>
-
 							<header class="entry-header">
-								<?php if( setos_is_recently()): ?>
-									<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time>
+								<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'setos' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
+								<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time>								<?php if( has_post_thumbnail() ): ?>
+									<div class="entry-eyecatch">
+										<?php the_post_thumbnail( 'middle' ); ?>
+									</div>
 								<?php endif; ?>
-								<h3 class="entry-title"><?php the_title(); ?></h3>
+								</a>
 							</header>
+
+							<div class="entry-content">
+								<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'setos' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
+									<h3 class="entry-title"><?php the_title(); ?></h3>
+								</a>
+								<?php the_content(); ?>
+							</div>
 							</a>
 						</li>
 

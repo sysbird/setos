@@ -200,6 +200,7 @@ function setos_init() {
 		'show_ui'			=> true,	// メニューに表示するかどうか
 		'menu_position'		=> 5,		// メニューの表示位置
 		'has_archive'		=> true,	// アーカイブページの作成
+		'show_in_rest' 		=> true,	// Blockeditor 
 		);
 
 	register_post_type( 'books', $args );
@@ -217,6 +218,7 @@ function setos_init() {
 		'show_ui'			=> true,	// メニューに表示するかどうか
 		'menu_position'		=> 5,		// メニューの表示位置
 		'has_archive'		=> true,	// アーカイブページの作成
+		'show_in_rest' 		=> true,	// Blockeditor 
 		);
 
 	register_post_type( 'exhibition', $args );
@@ -234,6 +236,7 @@ function setos_init() {
 		'show_ui'			=> true,	// メニューに表示するかどうか
 		'menu_position'		=> 5,		// メニューの表示位置
 		'has_archive'		=> true,	// アーカイブページの作成
+		'show_in_rest' 		=> true,	// Blockeditor 
 		);
 
 	register_post_type( 'essay', $args );
