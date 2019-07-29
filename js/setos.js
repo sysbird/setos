@@ -4,34 +4,7 @@ jQuery(function() {
 
 	jQuery( window ).load(function() {
 
-		// home grid
-		jQuery( "ul.tile li" ).tile( 3 );
 
-		// Browser supports matchMedia
-		if ( window.matchMedia ) {
-			// MediaQueryList
-			var mq = window.matchMedia( "( min-width: 930px )" );
-
-			// MediaQueryListListener
-			var birdfieldHeightCheck = function ( mq ) {
-				if ( mq.matches ) {
-					// tile for home
-					jQuery( "ul.tile li" ).tile(3);
-				}
-				else {
-					// cansel tile
-					jQuery( 'ul.tile li' ).css( 'height', 'auto' );
-				}
-			};
-
-			// Add listener HeightChec
-			mq.addListener( birdfieldHeightCheck );
-			birdfieldHeightCheck( mq );
-		}
-		else {
-			// Browser doesn't support matchMedia
-			jQuery( "ul.tile li" ).tile( 3 );
-		}
 
 		// Header Slider
 		jQuery('.slider[data-interval]').setos_Slider();

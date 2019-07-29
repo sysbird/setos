@@ -295,20 +295,12 @@ function setos_scripts() {
 	wp_enqueue_style( 'setos-fancybox', get_stylesheet_directory_uri().'/js/fancybox/jquery.fancybox.min.css' );
 	wp_enqueue_script( 'setos-fancybox', get_template_directory_uri() .'/js/fancybox/jquery.fancybox.min.js', array( 'jquery' ), '4.3.3' );
 
-	// Flexible drawer menu using jQuery, iScroll and CSS.
-	wp_enqueue_style( 'drawer', get_template_directory_uri().'/js/drawer/css/drawer.min.css' );
-	wp_enqueue_script( 'iscroll', get_template_directory_uri() .'/js/drawer/js/iscroll.js', array( 'jquery' ), 'v5.2.0' );
-	wp_enqueue_script( 'drawer', get_template_directory_uri() .'/js/drawer/js/drawer.min.js', array( 'jquery', 'iscroll' ), 'v3.2.2' );
-
-	// tile
-	wp_enqueue_script( 'jquerytile', get_template_directory_uri() .'/js/jquery.tile.js', 'jquery', '1.1.2' );
-
 	// Google Fonts
 	wp_enqueue_style( 'setos-google-font', '//fonts.googleapis.com/css?family=Open+Sans', false, null, 'all' );
 	wp_enqueue_style( 'setos-google-font-ja', '//fonts.googleapis.com/earlyaccess/sawarabimincho.css', false, null, 'all' );
 
 	// this
-	wp_enqueue_script( 'setos', get_template_directory_uri() .'/js/setos.js', array( 'jquery' , 'jquery-masonry', 'jquerytile' ), '1.11' );
+	wp_enqueue_script( 'setos', get_template_directory_uri() .'/js/setos.js', array( 'jquery' , 'jquery-masonry'), '1.11' );
 	wp_enqueue_style( 'setos', get_stylesheet_uri() );
 }
 add_action( 'wp_enqueue_scripts', 'setos_scripts' );

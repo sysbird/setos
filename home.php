@@ -113,7 +113,6 @@ get_header(); ?>
 								</a>
 								<?php the_content(); ?>
 							</div>
-							</a>
 						</li>
 
 					<?php endwhile;
@@ -165,6 +164,7 @@ get_header(); ?>
 
 					<div class="more"><a href="<?php echo get_post_type_archive_link( 'books' ); ?>"><?php _e( 'Book more', 'setos' ) ?></a></div>
 				</div>
+				</div>
 			</section>
 
 		<?php endif; ?>
@@ -173,4 +173,3 @@ get_header(); ?>
 </div>
 
 <?php get_footer(); ?>
-_____

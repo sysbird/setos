@@ -989,24 +989,18 @@ div.wpcf7-validation-errors {
 	clear: both;
 	width: 100%;
 	margin: 0 auto;
-	background-color: $hover-background-color;
+	background-color: $header-color;
 	position: relative;
 	z-index: 1;
 
 	&,
 	a {
-		color: $header-color;
+		color: $hover-background-color;
 	}
 
 	.site-title {
-		padding: #{$line-height /2}em 0;
+		padding-bottom: #{$line-height}em;
 		line-height: 1.4;
-		background: $header_color;
-
-		&,
-		a {
-			color: #FFF;
-		}
 
 		strong {
 			font-weight: normal;
@@ -1075,9 +1069,9 @@ div.wpcf7-validation-errors {
 			font-weight: normal;
 			margin: 0 0 #{$line-height /4}em 0;
 			padding: 0 0 #{$line-height /4}em 0;
-			border-bottom: dotted 1px $border-color;
+			border-bottom: dotted 1px #FFF;
 			font-size: 1.4rem;
-			color: $text-color;
+			color: #FFF;
 		}
 
 		ul {
@@ -1088,7 +1082,7 @@ div.wpcf7-validation-errors {
 
 			li {
 				margin-top: -1px;
-				border-top: dotted 1px $text-color;
+				border-top: dotted 1px #FFF;
 				padding: 0.3em 0 0.3em 0.6em;
 				text-indent: -0.3em;
 
@@ -1170,7 +1164,7 @@ form:not(#adminbarsearch)#searchform {
 
 	.content-title {
 		color: $header-color;
-		font-size: 2rem;
+		font-size: 2.4rem;
 		font-weight: normal;
 		line-height: 1.2;
 		padding: 0;
@@ -1187,12 +1181,8 @@ form:not(#adminbarsearch)#searchform {
 		padding-top: #{$line-height}rem;
 		@include clearfix;
 
-		&#information,
-		&#profile {
-			&,
-			ul.two-columns-list li .entry-header time {
-				background-color: $hover-background-color;
-			}
+		&:nth-child(2n) {
+			background-color: $hover-background-color;
 		}
 	}
 
@@ -1290,24 +1280,17 @@ ul.two-columns-list {
 		margin-bottom: #{$line-height}rem;			
 
 		.entry-header {
-			text-align: right;
-			position: relative;
-			z-index: 0;
-
 			time {
-				background: #FFF;
-				padding-left: 1em;
+				align-items: center;
+				display: flex;
 
-				&:after {
-					content: '';
-					display: block;
-					width: 100%;
+				&:before {
+				    content: "";
+					flex-grow: 1;
 					height: 1px;
-					background: $border-color;
-					position: absolute;
-					top: 0.8em;
-					left: 0;
-					z-index: -1;
+					background: #999;
+					display: block;
+					margin-right: .5em;
 				}
 			}
 		}

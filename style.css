@@ -954,25 +954,19 @@ div.wpcf7-validation-errors {
   clear: both;
   width: 100%;
   margin: 0 auto;
-  background-color: #f6f9f9;
+  background-color: #374049;
   position: relative;
   z-index: 1;
 }
 
 #footer,
 #footer a {
-  color: #374049;
+  color: #f6f9f9;
 }
 
 #footer .site-title {
-  padding: 0.85em 0;
+  padding-bottom: 1.7em;
   line-height: 1.4;
-  background: #374049;
-}
-
-#footer .site-title,
-#footer .site-title a {
-  color: #FFF;
 }
 
 #footer .site-title strong {
@@ -1055,9 +1049,9 @@ div.wpcf7-validation-errors {
   font-weight: normal;
   margin: 0 0 0.425em 0;
   padding: 0 0 0.425em 0;
-  border-bottom: dotted 1px #e7e7e7;
+  border-bottom: dotted 1px #FFF;
   font-size: 1.4rem;
-  color: #222327;
+  color: #FFF;
 }
 
 #widget-area .widget ul {
@@ -1069,7 +1063,7 @@ div.wpcf7-validation-errors {
 
 #widget-area .widget ul li {
   margin-top: -1px;
-  border-top: dotted 1px #222327;
+  border-top: dotted 1px #FFF;
   padding: 0.3em 0 0.3em 0.6em;
   text-indent: -0.3em;
 }
@@ -1153,7 +1147,7 @@ form:not(#adminbarsearch)#searchform #searchsubmit:before {
 
 .home .content-title {
   color: #374049;
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-weight: normal;
   line-height: 1.2;
   padding: 0;
@@ -1178,9 +1172,7 @@ form:not(#adminbarsearch)#searchform #searchsubmit:before {
   clear: both;
 }
 
-.home .section#information,
-.home .section#information ul.two-columns-list li .entry-header time, .home .section#profile,
-.home .section#profile ul.two-columns-list li .entry-header time {
+.home .section:nth-child(2n) {
   background-color: #f6f9f9;
 }
 
@@ -1284,27 +1276,18 @@ ul.two-columns-list li {
   margin-bottom: 1.7rem;
 }
 
-ul.two-columns-list li .entry-header {
-  text-align: right;
-  position: relative;
-  z-index: 0;
-}
-
 ul.two-columns-list li .entry-header time {
-  background: #FFF;
-  padding-left: 1em;
+  align-items: center;
+  display: flex;
 }
 
-ul.two-columns-list li .entry-header time:after {
-  content: '';
-  display: block;
-  width: 100%;
+ul.two-columns-list li .entry-header time:before {
+  content: "";
+  flex-grow: 1;
   height: 1px;
-  background: #e7e7e7;
-  position: absolute;
-  top: 0.8em;
-  left: 0;
-  z-index: -1;
+  background: #999;
+  display: block;
+  margin-right: .5em;
 }
 
 ul.two-columns-list li img {
