@@ -18,10 +18,10 @@ get_header(); ?>
 			</header>
 
 			<?php if ( have_posts() ) : ?>
-				<ul class="two-columns-list">
+				<ul class="archive">
                     <?php while ( have_posts() ) : the_post(); ?>
 
-						<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+						<li id="post-<?php the_ID(); ?>" <?php post_class( 'two-columns' ); ?>>
 							<header class="entry-header">
 								<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'setos' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
 									<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time>
@@ -36,7 +36,7 @@ get_header(); ?>
 								<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'setos' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
 									<h2 class="entry-title"><?php the_title(); ?></h2>
 								</a>
-								<?php the_content(); ?>
+								<?php the_content( '<span>' .__( 'See details', 'setos' ) .'</span>'); ?>
 							</div>
 						</li>
 

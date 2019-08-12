@@ -38,8 +38,9 @@ get_header(); ?>
 						}
 						?>
 
+<!--
 						<span class="cateogry"><a href="<?php echo esc_url( $setos_archive_url ); ?>"><?php echo esc_html( $setos_archive_title ); ?></a></span>
-			
+					-->			
 						<?php if( ("books" != $setos_type ) && ("exhibition" != $setos_type ) && setos_is_recently()): ?>
 							<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time>
 						<?php endif; ?>
@@ -49,14 +50,16 @@ get_header(); ?>
 
 				<?php if(( 'books' === $setos_type || 'exhibition' === $setos_type ) && has_post_thumbnail()) : ?>
 					<div class="two-columns">
+						<div class="entry-header">
 						<div class="entry-eyecatch">
 							<div class="setos-photos-cover">
-								<?php the_post_thumbnail( 'middle' ); ?>
+								<?php the_post_thumbnail( 'middle', array( 'class' => "lazyload")  ); ?>
 							</div>
 
 						<?php if( 'books' === $setos_type):
 							setos_photos_slide();
 						endif; ?>
+					</div>
 					</div>
 				<?php endif; ?>
 

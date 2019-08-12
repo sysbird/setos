@@ -27,12 +27,13 @@ get_header(); ?>
 			<ul class="archive">
 				<?php while ( have_posts() ) : the_post(); ?>
 
-					<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+					<li id="post-<?php the_ID(); ?>" <?php post_class( 'two-columns' ); ?>>
 						<?php if( has_post_thumbnail() ): ?>
-							<div class="two-columns">
-								<div class="entry-eyecatch">
-									<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'large' ); ?></a>
-								</div>
+						<div class="entry-header">
+							<div class="entry-eyecatch">
+								<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'large' ); ?></a>
+							</div>
+						</div>
 						<?php endif; ?>
 
 						<div class="entry-content">
@@ -44,10 +45,6 @@ get_header(); ?>
 								<?php the_excerpt(); ?>
 							<?php endif; ?>
 						</div>
-
-						<?php if( has_post_thumbnail() ): ?>
-							</div>
-						<?php endif; ?>
 					</li>
 
 				<?php endwhile; ?>

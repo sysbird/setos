@@ -4,18 +4,8 @@ jQuery(function() {
 
 	jQuery( window ).load(function() {
 
-
-
 		// Header Slider
 		jQuery('.slider[data-interval]').setos_Slider();
-
-		// gallery columns tile
-		jQuery.each(  jQuery ( ' .gallery' ),  function(){
-			gallery_class = jQuery( this ).attr( 'class' );
-			gallery_columns = String(gallery_class.match( /gallery-columns-\d/ ));
-			gallery_columns = gallery_columns.replace( 'gallery-columns-', '' );
-					jQuery( this ).find( '.gallery-item').tile( parseInt( gallery_columns ));
-			});
 
 		// photos slide in book page
 		var slide_num = jQuery("[data-fancybox]").length;
@@ -33,6 +23,12 @@ jQuery(function() {
 				},
 			});
 		}
+
+		// Masonry for list
+		jQuery('ul.masonry').masonry({
+			itemSelector: 'li',
+			isAnimated: true
+		});
 
 		jQuery( '.setos-photos-cover, .setos-photos-slide-start' ).click(function() {
 			jQuery( ".setos-photos-slide a:first" ).click();

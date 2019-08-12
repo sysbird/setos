@@ -159,34 +159,6 @@ function setos_init() {
 	//	 add tags at page
 	register_taxonomy_for_object_type('post_tag', 'page');
 
-	// add post type works
-/*	$labels = array(
-		'name'		=> 'Works',
-		'all_items'	=> 'Worksの一覧',
-		);
-
-	$args = array(
-		'labels'			=> $labels,
-		'supports'			=> array( 'title','editor', 'thumbnail', 'custom-fields' ),
-		'public'			=> true,	// 公開するかどうが
-		'show_ui'			=> true,	// メニューに表示するかどうか
-		'menu_position'		=> 5,		// メニューの表示位置
-		'has_archive'		=> true,	// アーカイブページの作成
-		);
-
-	register_post_type( 'works', $args );
-
-    register_taxonomy(
-		'works-genre',
-        'works',
-        array(
-            'hierarchical'		=> true,
-            'label'				=> 'Worksのカテゴリー',
-            'show_admin_column'	=> true,
-            'show_ui'			=> true,
-        )
-    ); */
-
 	// add post type books
 	$labels = array(
 		'name'		=> 'Books',
@@ -278,9 +250,6 @@ function setos_home_query( $query ) {
 		// toppage information
 		 $query->set( 'posts_per_page', 3 );
 	}
-	else if ( !is_admin() && $query->is_post_type_archive( 'essay' ) && $query->is_main_query() ) {
-		 $query->set( 'posts_per_page', 9 );
-	}
 }
 add_action( 'pre_get_posts', 'setos_home_query' );
 
@@ -295,12 +264,15 @@ function setos_scripts() {
 	wp_enqueue_style( 'setos-fancybox', get_stylesheet_directory_uri().'/js/fancybox/jquery.fancybox.min.css' );
 	wp_enqueue_script( 'setos-fancybox', get_template_directory_uri() .'/js/fancybox/jquery.fancybox.min.js', array( 'jquery' ), '4.3.3' );
 
+	// lazyestload.js
+	wp_enqueue_script( 'setos-lazysizes', get_template_directory_uri() .'/js/lazysizes.js', array( 'jquery' ));
+
 	// Google Fonts
 	wp_enqueue_style( 'setos-google-font', '//fonts.googleapis.com/css?family=Open+Sans', false, null, 'all' );
 	wp_enqueue_style( 'setos-google-font-ja', '//fonts.googleapis.com/earlyaccess/sawarabimincho.css', false, null, 'all' );
 
 	// this
-	wp_enqueue_script( 'setos', get_template_directory_uri() .'/js/setos.js', array( 'jquery' , 'jquery-masonry'), '1.11' );
+	wp_enqueue_script( 'setos', get_template_directory_uri() .'/js/setos.js', array( 'jquery' , 'jquery-masonry', 'setos-fancybox' ), '1.11' );
 	wp_enqueue_style( 'setos', get_stylesheet_uri() );
 }
 add_action( 'wp_enqueue_scripts', 'setos_scripts' );
@@ -343,13 +315,6 @@ function setos_get_the_archive_title ( $title ) {
 	return $setos_title;
 };
 add_filter( 'get_the_archive_title', 'setos_get_the_archive_title' );
-
-//////////////////////////////////////////////////////
-// Excerpt More
-function setos_excerpt_more( $more ) {
-	return ' ...<span class="more"><a href="'. esc_url( get_permalink() ) . '" >' . __( 'more', 'setos') . '</a></span>';
-}
-add_filter('excerpt_more', 'setos_excerpt_more');
 
 //////////////////////////////////////////////////////
 // photos slide in book
