@@ -264,9 +264,6 @@ function setos_scripts() {
 	wp_enqueue_style( 'setos-fancybox', get_stylesheet_directory_uri().'/js/fancybox/jquery.fancybox.min.css' );
 	wp_enqueue_script( 'setos-fancybox', get_template_directory_uri() .'/js/fancybox/jquery.fancybox.min.js', array( 'jquery' ), '4.3.3' );
 
-	// lazyestload.js
-	wp_enqueue_script( 'setos-lazysizes', get_template_directory_uri() .'/js/lazysizes.js', array( 'jquery' ));
-
 	// Google Fonts
 	wp_enqueue_style( 'setos-google-font', '//fonts.googleapis.com/css?family=Open+Sans', false, null, 'all' );
 	wp_enqueue_style( 'setos-google-font-ja', '//fonts.googleapis.com/earlyaccess/sawarabimincho.css', false, null, 'all' );
@@ -612,18 +609,19 @@ function setos_headerslider() {
 	$setos_html = '';
 	$setos_count = 0;
 	foreach ( $headers as $header ) {
-			$setos_class = '';
-			if( !$setos_count ){
-				$setos_class = ' start active';
-			}
+		$setos_class = '';
+		if( !$setos_count ){
+			$setos_class = ' start active';
+		}
 
-			$setos_html .= '<div class="slideitem' .$setos_class .'" id="slideitem_' .( $setos_count +1 ) .'">';
-			$setos_html .= '<img src="' .$header[ 'url' ] .'" alt="slide_' .( $setos_count +1 ) .'" width="' .$header[ 'width' ] .'" height="' .$header[ 'height' ] .'">';
-			$setos_html .= '</div>';
-			$setos_count++;
-			if( 3 == $setos_count ){
-				break;
-			}
+		$setos_html .= '<div class="slideitem' .$setos_class .'" id="slideitem_' .( $setos_count +1 ) .'">';
+		$src = wp_get_attachment_image( $header[ 'attachment_id' ], 'large' );
+		$setos_html .= $src;
+		$setos_html .= '</div>';
+		$setos_count++;
+		if( 3 == $setos_count ){
+			break;
+		}
 	}
 
 	echo $setos_html;
