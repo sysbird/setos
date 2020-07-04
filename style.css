@@ -95,8 +95,9 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin-bottom: 1.8rem;
-  line-height: 1.2;
+  margin-top: 0.9em;
+  margin-bottom: 0.9em;
+  line-height: 1.4;
   font-weight: normal;
 }
 
@@ -111,27 +112,27 @@ h6 a {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.6rem;
 }
 
 h2 {
-  font-size: 1.8rem;
+  font-size: 2.4rem;
 }
 
 h3 {
-  font-size: 1.6rem;
+  font-size: 2.2rem;
 }
 
 h4 {
-  font-size: 1.4rem;
+  font-size: 2rem;
 }
 
 h5 {
-  font-size: 1.2rem;
+  font-size: 1.8rem;
 }
 
 h6 {
-  font-size: 1.1rem;
+  font-size: 1.6rem;
 }
 
 p {
@@ -311,6 +312,10 @@ ins {
 
 /* Structure
 --------------------------------------------- */
+html {
+  font-size: 62.5%;
+}
+
 html * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -325,7 +330,7 @@ body {
 }
 
 .container {
-  width: 96%;
+  width: 90%;
   margin: 0 auto;
   padding: 0;
   position: relative;
@@ -354,6 +359,7 @@ html, body {
 }
 
 .wrapper {
+  min-width: 320px;
   min-height: 100vh;
   display: flex;
   flex-flow: column nowrap;
@@ -367,9 +373,11 @@ html, body {
 -------------------------------------------------------------- */
 .wrapper {
   font-family: 'Open Sans', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial','Hiragino Sans', YuGothic, 'Yu Gothic', Meiryo, 'MS PGothic';
+  font-family: "Open Sans" "Avenir", "Helvetica Neue", "Helvetica", "Arial", "Hiragino Sans", YuGothic, "Yu Gothic", Meiryo, "MS PGothic";
   color: #222327;
   background-color: #FFF;
-  font-size: inherit;
+  font-size: 1.6rem;
+  line-height: 1.8;
   letter-spacing: 0.05em;
   overflow: hidden;
 }
@@ -391,7 +399,7 @@ html, body {
 #header #branding #site-title {
   margin: 0 1em 0 0;
   padding: 0;
-  font-size: 2rem;
+  font-size: 3.6rem;
   font-weight: normal;
   line-height: 1;
 }
@@ -570,7 +578,7 @@ img.lazyestload {
 }
 
 .hentry .entry-eyecatch {
-  margin: 0 -2%;
+  margin: 0 -10%;
 }
 
 .hentry .entry-eyecatch img {
@@ -578,14 +586,14 @@ img.lazyestload {
 }
 
 .entry-header {
-  margin: 1.8em 0;
+  margin: 1.8rem 0;
   line-height: 1.4;
   position: relative;
 }
 
 .entry-header .entry-title {
   color: #374049;
-  font-size: 2rem;
+  font-size: 2.6rem;
   font-weight: normal;
   margin: 0;
   line-height: 1.4;
@@ -594,10 +602,6 @@ img.lazyestload {
 
 .entry-header .entry-title a {
   color: #222327;
-}
-
-.entry-header .postdate {
-  font-size: 0.9rem;
 }
 
 .entry-header .postdate,
@@ -994,41 +998,42 @@ div.wpcf7-validation-errors {
 
 #footer #back-top {
   position: fixed;
-  bottom: 0;
-  left: 42%;
+  bottom: 15px;
+  right: 30px;
   z-index: 3;
+  line-height: 1;
 }
 
 #footer #back-top a {
-  background: #e7e7e7;
-  border-radius: 100px;
   display: block;
-  height: 50px;
-  width: 50px;
-  text-align: center;
-  text-decoration: none;
+  font-size: 4em;
+  height: 1em;
+  width: 1em;
   filter: progid:DXImageTransform.Microsoft.Alpha Opacity=75;
   opacity: 0.75;
+  overflow: hidden;
+}
+
+#footer #back-top a:hover {
+  text-decoration: none;
 }
 
 #footer #back-top a span {
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
-  display: block;
 }
 
 #footer #back-top a:before {
+  height: 1em;
+  width: 1em;
   font-family: 'Font Awesome 5 Free';
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  content: "\f077";
-  font-size: 30px;
+  content: "\f139";
+  color: #CCC;
   display: block;
-  text-align: center;
-  padding-top: 8px;
-  color: #FFF;
 }
 
 /* Widget
@@ -1160,13 +1165,14 @@ form:not(#adminbarsearch)#searchform #searchsubmit:before {
 
 /* Home
 --------------------------------------------- */
-.home #content .container {
+.home #content f
+.container {
   padding-bottom: 1.8rem;
 }
 
 .home .content-title {
   color: #374049;
-  font-size: 2rem;
+  font-size: 3.2rem;
   font-weight: normal;
   line-height: 1.2;
   padding: 0;
@@ -1198,8 +1204,8 @@ form:not(#adminbarsearch)#searchform #searchsubmit:before {
 
 /* Archive
 -------------------------------------------------------------------- */
-.masonry,
-.archive {
+ul.masonry,
+ul.archive {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -1245,7 +1251,7 @@ ul.masonry .entry-content {
 
 .two-columns .entry-content .entry-title,
 ul.masonry .entry-content .entry-title {
-  font-size: 1.4rem;
+  font-size: 2.2rem;
 }
 
 /* Single
@@ -1399,47 +1405,45 @@ ul.masonry .entry-content .entry-title {
 
 /* bread crumb for wp-manager
 -------------------------------------------------------------- */
-#content .bread_crumb_wrapper {
-  font-size: 0.86rem;
-  color: #222327;
-}
-
-#content .bread_crumb_wrapper ul.bread_crumb {
+#content ul.breadcrumb {
   list-style-type: none;
-  padding: 0;
   margin: 0 auto;
-  padding: 0.9em 0;
+  padding: 0.9rem 0 0 0;
+  width: 96%;
+  margin: 0 auto;
+  font-size: 0.9em;
 }
 
-#content .bread_crumb_wrapper ul.bread_crumb a {
-  color: #222327;
-  text-decoration: underline;
-}
-
-#content .bread_crumb_wrapper ul.bread_crumb a:hover {
-  color: #757986;
-}
-
-#content .bread_crumb_wrapper ul.bread_crumb li {
+#content ul.breadcrumb li {
   display: inline-block;
   line-height: 1;
   vertical-align: top;
+}
+
+#content ul.breadcrumb li {
   color: #999;
 }
 
-#content .bread_crumb_wrapper ul.bread_crumb li a:after {
+#content ul.breadcrumb li a {
+  color: #222327;
+}
+
+#content ul.breadcrumb li a:after {
   font-family: 'Font Awesome 5 Free';
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
-  content: "\f105";
-  padding-left: 1em;
-  padding-right: 0.6em;
+  content: " \f105";
+  padding-left: 5px;
 }
 
-.single #content ul.bread_crumb li:last-child,
-.page #content ul.bread_crumb li:last-child {
-  display: none;
+.single #content ul.breadcrumb li:last-child,
+.page #content ul.breadcrumb li:last-child {
+  display: inline-block;
+  width: 5em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 /* Home Header
@@ -1574,10 +1578,7 @@ ul.book-meta li:before {
 /* --- iPad Landscape --- */
 @media screen and (min-width: 660px) {
   .wrapper {
-    font-size: 0.9rem;
-  }
-  #footer #back-top {
-    left: 46%;
+    font-size: 1.4rem;
   }
   .single .nav-below {
     display: -webkit-flex;
@@ -1635,16 +1636,23 @@ ul.book-meta li:before {
   ul.biography {
     margin-left: 1em;
   }
-  #content ul.bread_crumb li.singular {
+  #content .bread_crumb ul li.singular {
     display: inline-block;
   }
   .single #content ul.bread_crumb li:last-child,
   .page #content ul.bread_crumb li:last-child {
     display: inline-block;
-    width: 12em;
+    max-width: 12em;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+  }
+  ul.masonry {
+    margin-left: -40px;
+  }
+  ul.masonry li {
+    width: calc( 50% - 40px);
+    margin-left: 40px;
   }
 }
 
@@ -1670,27 +1678,10 @@ ul.book-meta li:before {
     margin-top: 0;
     width: calc(100% - 360px);
   }
-  ul.masonry {
-    margin-left: -2%;
-    *zoom: 1;
-  }
-  ul.masonry:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  ul.masonry li {
-    float: left;
-    margin: 0 0 2% 2%;
-    width: calc( 96%  /2);
-  }
-  ul.masonry li .entry-content {
-    padding: 0 3%;
-  }
 }
 
 /* --- PCs --- */
-@media screen and (min-width: 930px) {
+@media screen and (min-width: 1000px) {
   body,
   .wrapper {
     display: -webkit-flex;
@@ -1702,10 +1693,10 @@ ul.book-meta li:before {
     margin-top: auto;
   }
   .container {
-    width: 930px;
+    width: 1000px;
   }
   #header .container {
-    height: 80px;
+    height: 100px;
     display: -webkit-flex;
     display: flex;
     -webkit-box-align: center;
@@ -1724,7 +1715,6 @@ ul.book-meta li:before {
     width: 340px;
   }
   #header #branding #site-title {
-    font-size: 2.2rem;
     margin: 0;
   }
   #header #branding #site-title a {
@@ -1851,7 +1841,7 @@ ul.book-meta li:before {
     left: 100%;
   }
   body.fixed-header {
-    padding-top: 80px;
+    padding-top: 100px;
   }
   body.fixed-header #header {
     position: fixed;
@@ -1869,11 +1859,18 @@ ul.book-meta li:before {
     top: 0;
   }
   ul.masonry li {
-    width: calc( 94%  /3);
+    width: calc( 33.333% - 40px);
   }
   #wall {
-    width: 930px;
+    width: 1000px;
     margin: 0 auto 40px;
+  }
+  #content ul.breadcrumb {
+    width: 1000px;
+  }
+  .single #content ul.breadcrumb li:last-child,
+  .page #content ul.breadcrumb li:last-child {
+    width: 12em;
   }
   #widget-area .container {
     display: -webkit-flex;

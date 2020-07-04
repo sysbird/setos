@@ -10,7 +10,7 @@
 //////////////////////////////////////////
 // Set the content width based on the theme's design and stylesheet.
 function setos_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'setos_content_width', 930 );
+	$GLOBALS['content_width'] = apply_filters( 'setos_content_width', 1000 );
 }
 add_action( 'template_redirect', 'setos_content_width' );
 
@@ -172,7 +172,7 @@ function setos_init() {
 		'show_ui'			=> true,	// メニューに表示するかどうか
 		'menu_position'		=> 5,		// メニューの表示位置
 		'has_archive'		=> true,	// アーカイブページの作成
-		'show_in_rest' 		=> true,	// Blockeditor 
+		'show_in_rest' 		=> true,	// Blockeditor
 		);
 
 	register_post_type( 'books', $args );
@@ -190,7 +190,7 @@ function setos_init() {
 		'show_ui'			=> true,	// メニューに表示するかどうか
 		'menu_position'		=> 5,		// メニューの表示位置
 		'has_archive'		=> true,	// アーカイブページの作成
-		'show_in_rest' 		=> true,	// Blockeditor 
+		'show_in_rest' 		=> true,	// Blockeditor
 		);
 
 	register_post_type( 'exhibition', $args );
@@ -208,7 +208,7 @@ function setos_init() {
 		'show_ui'			=> true,	// メニューに表示するかどうか
 		'menu_position'		=> 5,		// メニューの表示位置
 		'has_archive'		=> true,	// アーカイブページの作成
-		'show_in_rest' 		=> true,	// Blockeditor 
+		'show_in_rest' 		=> true,	// Blockeditor
 		);
 
 	register_post_type( 'essay', $args );
@@ -248,7 +248,10 @@ add_filter( 'bogo_localizable_post_types', 'setos_bogo_localizable_post_types', 
 function setos_home_query( $query ) {
 	if ( $query->is_home() && $query->is_main_query() ) {
 		// toppage information
-		 $query->set( 'posts_per_page', 3 );
+         $query->set( 'posts_per_page', 3 );
+         $query->set( 'date_query', array(
+            array( 'column' => 'post_date_gmt',
+                    'after' => '6 month ago' )));
 	}
 }
 add_action( 'pre_get_posts', 'setos_home_query' );
@@ -516,17 +519,23 @@ function setos_entry_meta() {
 // Add hook content begin
 function setos_content_header() {
 
-	// bread crumb
-	$setos_html = '';
-	if( !is_home()){
-		if ( class_exists( 'WP_SiteManager_bread_crumb' ) ) {
-			$setos_html .= '<div class="bread_crumb_wrapper">';
-			$setos_html .= WP_SiteManager_bread_crumb::bread_crumb( array( 'echo'=>'false', 'home_label' => __( 'Home', 'setos' ), 'search_label' =>  __( 'Search Results: %s', 'setos' ), 'elm_class' => 'bread_crumb container'));
-			$setos_html .= '</div>';
-		}
-	}
+	$html = '';
 
-	echo $setos_html;
+    // bread crumb
+    if( is_post_type_archive( 'post' )){
+        $url = esc_url( home_url( '/' ) );
+
+        $html = '<ul class="breadcrumb"><li class="home"><a href="' .$url .'" class="home">ホーム</a></li><li>' .$blog_name = get_bloginfo( 'name' ) .'ブログ</li></ul>';
+
+    }
+    else if( !is_home()){
+        if(function_exists('bcn_display_list')){
+            $html .= bcn_display_list( true );
+            $html = '<ul class="breadcrumb">' .$html .'</ul>';
+        }
+    }
+
+    echo $html;
 }
 
 //////////////////////////////////////////////////////
