@@ -1,9 +1,9 @@
 == Description ==
-SETOS built for a photographer. Feature fullscreen and parallax custom image. You can add a slider to the header image.
+SETOS built for a photographer. It's has Hero header image. You can add a slider by the widget image. and support custom post type on essay, exhibition and books.
 
 
 === Tags ===
-one-column, custom-header, custom-menu, editor-style, featured-image-header, featured-images, footer-widgets, full-width-template, theme-options, photography
+one-column, custom-menu, editor-style, featured-images, footer-widgets, full-width-template, photography, block-styles
 
 
 === Features ===
@@ -42,8 +42,12 @@ License: SIL Open Font License 1.1 / MIT License
 Source:  http://fontawesome.io/
 
 Swiper
+License: MIT Licensed
+Source:  http://swiperjs.com
 
 fancyBox
+License: GPLv3 license
+Source: http://fancyapps.com/fancybox/3/
 
 
 == Author ==
@@ -52,5 +56,9 @@ http://www.sysbird.jp
 
 
 == Changelog ==
+v1.1
+* the WP block gallery view with swiper and fancyBox.
+* add the favicon and webclip image.
+
 v1.0
 * Hello, world!

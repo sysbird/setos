@@ -49,9 +49,18 @@ add_action( 'customize_register', 'setos_customize_register' );
 // Set Widgets
 function setos_widgets_init() {
 
-	// Widget Area for footer first column
+    // toppage slider
 	register_sidebar( array (
-		'name'			=> __( 'Widget Area for footer first column', 'setos' ),
+		'name'			=> 'SETOS トップページスライダー',
+		'id'			=> 'widget-area-slider',
+        'description'	=> '左にある[利用できるウィジェット ]より[画像]を選んでここに入れてください。画像には[リンク先]を設定することができます。画像は3-5枚が適当です',
+        'before_widget'	=> '<div class="swiper-slide">',
+        'after_widget'	=> '</div>',
+    ) );
+
+    // Widget Area for footer first column
+	register_sidebar( array (
+		'name'			=> __( 'SETOS フッター(左)', 'setos' ),
 		'id'			=> 'widget-area-footer-left',
 		'description'	=> __( 'Widget Area for footer first column', 'setos' ),
 		'before_widget'	=> '<div class="widget">',
@@ -62,7 +71,7 @@ function setos_widgets_init() {
 
 	// Widget Area for footer center column
 	register_sidebar( array (
-		'name'			=> __( 'Widget Area for footer center column', 'setos' ),
+		'name'			=> __( 'SETOS フッター(中央)', 'setos' ),
 		'id'			=> 'widget-area-footer-center',
 		'description'	=> __( 'Widget Area for footer center column', 'setos' ),
 		'before_widget'	=> '<div class="widget">',
@@ -73,7 +82,7 @@ function setos_widgets_init() {
 
 	// Widget Area for footer last column
 	register_sidebar( array (
-		'name'			=> __( 'Widget Area for footer last column', 'setos' ),
+		'name'			=> __( 'SETOS フッター(右)', 'setos' ),
 		'id'			=> 'widget-area-footer-right',
 		'description'	=> __( 'Widget Area for footer last column', 'setos' ),
 		'before_widget'	=> '<div class="widget">',
@@ -117,7 +126,8 @@ function setos_setup() {
 	load_theme_textdomain( 'setos', get_template_directory() . '/languages' );
 
 	// This theme styles the visual editor with editor-style.css to match the theme style.
-	add_editor_style();
+	add_theme_support( 'editor-styles' );
+	add_editor_style( 'editor-style.css' );
 
 	// Set feed
 	add_theme_support( 'automatic-feed-links' );
@@ -143,12 +153,8 @@ function setos_setup() {
 	// Add support for title tag.
 	add_theme_support( 'title-tag' );
 
-	// Add support for custom headers.
-	add_theme_support( 'custom-header', array(
-//		'height'			=> 900,
-//		'width'				=> 1280,
-		'flex-height'		=> true,
-	));
+   // Add support for responsive embeds.
+    add_theme_support( 'responsive-embeds' );
 }
 add_action( 'after_setup_theme', 'setos_setup' );
 
@@ -252,7 +258,10 @@ function setos_home_query( $query ) {
          $query->set( 'date_query', array(
             array( 'column' => 'post_date_gmt',
                     'after' => '6 month ago' )));
-	}
+    }
+	else if ( $query->is_post_type_archive( 'essay' ) && $query->is_main_query() ) {
+        $query->set( 'posts_per_page', 12 );        
+    }
 }
 add_action( 'pre_get_posts', 'setos_home_query' );
 
@@ -260,19 +269,20 @@ add_action( 'pre_get_posts', 'setos_home_query' );
 // Enqueue Scripts
 function setos_scripts() {
 
-	// masonry
-	wp_enqueue_script( 'jquery-masonry' );
-
 	// fancybox
 	wp_enqueue_style( 'setos-fancybox', get_stylesheet_directory_uri().'/js/fancybox/jquery.fancybox.min.css' );
-	wp_enqueue_script( 'setos-fancybox', get_template_directory_uri() .'/js/fancybox/jquery.fancybox.min.js', array( 'jquery' ), '4.3.3' );
+	wp_enqueue_script( 'setos-fancybox', get_template_directory_uri() .'/js/fancybox/jquery.fancybox.min.js', array( 'jquery' ), '3.2.10' );
+
+    // Swiper
+    wp_enqueue_style( 'setos-swiper', get_template_directory_uri() .'/js/swiper/swiper.min.css', '', '5.4.5'  );
+    wp_enqueue_script( 'setos-swiper', get_template_directory_uri() .'/js/swiper/swiper.min.js', array( 'jquery' ), '5.4.5' );
 
 	// Google Fonts
 	wp_enqueue_style( 'setos-google-font', '//fonts.googleapis.com/css?family=Open+Sans', false, null, 'all' );
 	wp_enqueue_style( 'setos-google-font-ja', '//fonts.googleapis.com/earlyaccess/sawarabimincho.css', false, null, 'all' );
 
 	// this
-	wp_enqueue_script( 'setos', get_template_directory_uri() .'/js/setos.js', array( 'jquery' , 'jquery-masonry', 'setos-fancybox' ), '1.11' );
+	wp_enqueue_script( 'setos', get_template_directory_uri() .'/js/setos.js', array( 'jquery', 'setos-fancybox', 'setos-swiper' ), '1.1' );
 	wp_enqueue_style( 'setos', get_stylesheet_uri() );
 }
 add_action( 'wp_enqueue_scripts', 'setos_scripts' );
@@ -315,44 +325,6 @@ function setos_get_the_archive_title ( $title ) {
 	return $setos_title;
 };
 add_filter( 'get_the_archive_title', 'setos_get_the_archive_title' );
-
-//////////////////////////////////////////////////////
-// photos slide in book
-function setos_photos_slide () {
-	$post_id = get_the_ID();
-
-	// get relate post_id in Japanese post
-	$post_id = setos_get_relate_post_id_in_japanese( $post_id );
-
-	// photos in post
-	$html = '';
-	$html_cover = '';
-	$pages = 0;
-	$args = array( 'post_type'			=> 'attachment',
-					'posts_per_page'	=> -1,
-					'post_parent'		=> $post_id,
-					'post_mime_type'	=> 'image',
-					'orderby'			=> 'ID',
-					'order'				=> 'ASC' );
-
-	$images = get_posts( $args );
-	if ( $images ) {
-		foreach( $images as $image ){
-			$pages++;
-			$src = wp_get_attachment_url( $image->ID );
-			$thumbnail = wp_get_attachment_image_src( $image->ID, 'large' );
-			$html .= ' <a href="' .$src .'" data-fancybox="setos-photos-slide" data-caption="' .$image->post_title .'">page' .$pages .'</a>';
-		}
-
-		wp_reset_postdata();
-	}
-
-	// output
-	if( $pages ){
-		$html = '<div class="setos-photos-slide">' .$html .'<p><a href="#" class="setos-photos-slide-start">' .sprintf( __( 'show photos(%d pages)', 'setos' ), $pages ) .'</a></p></div>';
-		echo $html;
-	}
-}
 
 //////////////////////////////////////////////////////
 //  get relate post_id in Japanese post
@@ -492,65 +464,23 @@ function setos_the_custom_field( $ID, $selector, $before, $after ) {
 }
 
 //////////////////////////////////////////////////////
-// Display entry meta
-function setos_entry_meta() {
-?>
-
-	<?php if( is_archive() ): // archive book ?>
-		<ul class="book-meta">
-			<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '</li>' ); ?>
-			<?php setos_the_custom_field( get_the_ID(), 'release', '<li><strong>' .__( '発売日', 'setos') .':</strong> ', '</li>' ); ?>
-		</ul>
-	<?php elseif( is_singular() || is_home() ): // single book ?>
-		<ul class="book-meta">
-			<li><strong><?php _e( 'Photo Book', 'setos'); ?>:</strong> <?php the_title(); ?></li>
-			<?php setos_the_custom_field( get_the_ID(), 'author', '<li><strong>' .__( 'Author', 'setos') .':</strong> ', '</li>' ); ?>
-			<?php setos_the_custom_field( get_the_ID(), 'issuer', '<li><strong>' .__( 'Publisher', 'setos') .':</strong> ', '</li>' ); ?>
-			<?php setos_the_custom_field( get_the_ID(), 'release', '<li><strong>' .__( '発売日', 'setos') .':</strong> ', '' ); ?>
-			<?php setos_the_custom_field( get_the_ID(), 'price', '<li><strong>' .__( 'Price', 'setos') .':</strong> ', ' ' .__( 'yen', 'setos') .'</li>' ); ?>
-			<?php setos_the_custom_field( get_the_ID(), 'size', '<li><strong>' .__( 'Size', 'setos') .':</strong> ', '</li>' ); ?>
-		</ul>
-	<?php endif; ?>
-
-<?php
-}
-
-//////////////////////////////////////////////////////
 // Add hook content begin
 function setos_content_header() {
 
-	$html = '';
-
-    // bread crumb
-    if( is_post_type_archive( 'post' )){
-        $url = esc_url( home_url( '/' ) );
-
-        $html = '<ul class="breadcrumb"><li class="home"><a href="' .$url .'" class="home">ホーム</a></li><li>' .$blog_name = get_bloginfo( 'name' ) .'ブログ</li></ul>';
-
-    }
-    else if( !is_home()){
-        if(function_exists('bcn_display_list')){
-            $html .= bcn_display_list( true );
-            $html = '<ul class="breadcrumb">' .$html .'</ul>';
-        }
-    }
-
-    echo $html;
+	// bread crumb
+	if( !is_home()){
+		if(function_exists('bcn_display_list')){
+			echo '<ul class="breadcrumb">';
+			bcn_display_list();
+			echo '</ul>';
+		}
+	}
 }
 
 //////////////////////////////////////////////////////
 // Add hook content end
 function setos_content_footer() {
 }
-
-//////////////////////////////////////////////////////
-// Google Analytics
-function setos_wp_head() {
-	if ( !is_user_logged_in() ) {
-		get_template_part( 'google-analytics' );
-	}
-}
-add_action( 'wp_head', 'setos_wp_head' );
 
 //////////////////////////////////////////////////////
 // image optimize
@@ -587,6 +517,30 @@ function setos_handle_upload( $file )
 add_action( 'wp_handle_upload', 'setos_handle_upload' );
 
 //////////////////////////////////////////////////////
+// show login logo
+function setos_login_head() {
+
+	$url = get_stylesheet_directory_uri() .'/images/webclip.png';
+	echo '<style type="text/css">.login h1 a { background-image:url(' .$url .'); height: 90px; width: 90px; background-size: 100% 100%;}</style>';
+}
+add_action('login_head', 'setos_login_head');
+
+//////////////////////////////////////////////////////
+// set login logo link url
+function setos_login_logo_url() {
+	return home_url( '/' );
+}
+add_filter( 'login_headerurl', 'setos_login_logo_url' );
+
+//////////////////////////////////////////////////////
+// set favicon
+function setos_favicon() {
+	echo '<link rel="shortcut icon" type="image/x-icon" href="' .get_stylesheet_directory_uri() .'/images/favicon.ico" />'. "\n";
+	echo '<link rel="apple-touch-icon" href="' .get_stylesheet_directory_uri() .'/images/webclip.png" />'. "\n";
+}
+add_action( 'wp_head', 'setos_favicon' );
+
+//////////////////////////////////////////////////////
 // Check postdate Recently
 function setos_is_recently() {
 	if( strtotime( get_the_date('Y-m-d' )) < strtotime( '2006-01-01' )){
@@ -597,47 +551,19 @@ function setos_is_recently() {
 }
 
 //////////////////////////////////////////////////////
-// Header Slider
-function setos_headerslider() {
-
-	if (( !is_front_page())) {
-		return false;
-	}
-
-	$headers = get_uploaded_header_images();
-	if( !$headers ) {
-		return false;
-	}
-?>
-
-	<section id="wall">
-		<div class="headerimage slider" data-interval="7000">
-
-<?php
-	// sort randam
-	$setos_html = '';
-	$setos_count = 0;
-	foreach ( $headers as $header ) {
-		$setos_class = '';
-		if( !$setos_count ){
-			$setos_class = ' start active';
-		}
-
-		$setos_html .= '<div class="slideitem' .$setos_class .'" id="slideitem_' .( $setos_count +1 ) .'">';
-		$src = wp_get_attachment_image( $header[ 'attachment_id' ], 'large' );
-		$setos_html .= $src;
-		$setos_html .= '</div>';
-		$setos_count++;
-		if( 3 == $setos_count ){
-			break;
-		}
-	}
-
-	echo $setos_html;
-?>
-		</div>
-	</section>
-<?php
-
-	return true;
+//   get translations post ID
+function setos_get_translations_id( $id, $locales ) {
+    $pid_loc = get_post_meta( $id, '_locale' ); 
+    if (! @$pid_loc[0] ) return $id;
+    if ($locales === $pid_loc[0]) {
+        return $id; 
+    } else {
+        $transids = bogo_get_post_translations($id);
+        foreach ($transids as $key => $value) {
+            if ($locales === $key) return $value->ID;
+        }
+        
+        $originaiids = get_post_meta( $id, '_original_post' ); 
+        return $originaiids; 
+    }
 }

@@ -19,13 +19,15 @@ get_header(); ?>
 		</header>
 
 		<?php if ( have_posts() ) : ?>
-			<ul class="masonry">
+			<ul class="tile">
 				<?php while ( have_posts() ) : the_post(); ?>
-
-					<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                    <?php $setos_mobile = '';
+                        if( wp_is_mobile()){
+                            $setos_mobile = 'mobile';
+                        }
+                    ?>
+					<li id="post-<?php the_ID(); ?>" <?php post_class( $setos_mobile ); ?>>
 						<header class="entry-header">
-							<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'setos' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
-
 							<?php if( setos_is_recently()): ?>
 								<time class="postdate" datetime="<?php echo get_the_time( 'Y-m-d' ) ?>"><?php echo get_post_time( __( 'F j, Y', 'setos')); ?></time>
 							<?php else: ?>
@@ -33,19 +35,26 @@ get_header(); ?>
 							<?php endif; ?>
 
 							<?php if( has_post_thumbnail() ): ?>
-									<div class="entry-eyecatch">
+								<div class="entry-eyecatch">
+									<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'setos' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
 										<?php the_post_thumbnail( 'middle', array( 'class' => "lazyload")  ); ?>
-									</div>
-								<?php endif; ?>
-							</a>
-						</header>
-						<div class="entry-content">
+									</a>
+								</div>
+							<?php endif; ?>
 							<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'setos' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
 								<h2 class="entry-title"><?php the_title(); ?></h2>
-							</a>
-							<?php the_content( '<span>' .__( 'See more', 'setos' ) .'</span>'); ?>
-						</div>
-					</li>
+                            </a>
+                        </header>
+
+                        <?php if(!( has_post_thumbnail() && $setos_mobile )): ?>
+                            <div class="entry-content">
+                                <?php the_content( '' ); ?>
+                            </div>
+                         <?php endif; ?>
+
+						 <div class="arrow">
+                        	<a href="<?php the_permalink(); ?>"><?php _e( 'See more', 'setos' ) ?></a></div>
+                    </li>
 
 				<?php endwhile; ?>
 			</ul>

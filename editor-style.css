@@ -1,0 +1,435 @@
+/*
+Theme Name: WAnocoto
+*/
+/*
+Used to style the TinyMCE editor.
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline; }
+
+html {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle; }
+
+q, blockquote {
+  quotes: none; }
+  q:before, q:after, blockquote:before, blockquote:after {
+    content: "";
+    content: none; }
+
+a img {
+  border: none; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block; }
+
+body {
+	font-family: 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial','Hiragino Sans', YuGothic, 'Yu Gothic', Meiryo, 'MS PGothic';
+  color: #555;
+  font-size: 1rem;
+}
+
+#tinymce {
+	padding: 1em;
+	}
+
+a {
+	color:#1c4bbe !important;
+	text-decoration: none !important;
+	}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0.9em;
+  margin-bottom: 0.9em;
+  line-height: 1.2;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 2.6rem;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+h3 {
+  font-size: 2.2rem;
+}
+
+h4 {
+  font-size: 2rem;
+}
+
+h5 {
+  font-size: 1.8rem;
+}
+
+h6 {
+  font-size: 1.6rem;
+}
+
+p {
+  line-height: 1.8;
+  margin: 0 0 1.8rem;
+}
+
+blockquote {
+  padding: 1.8rem 1.8rem 0 1.8rem;
+  margin-bottom: 1.8rem;
+  background-color: #fcfbf7;
+  display: inline-block;
+}
+
+blockquote small {
+  display: block;
+  line-height: 20px;
+  color: #a69f9b;
+}
+
+blockquote small:before {
+  content: '\2014 \00A0';
+}
+
+blockquote cite:before {
+  content: "-";
+}
+
+blockquote cite {
+  color: #a69f9b;
+  display: block;
+}
+
+table {
+  max-width: 100%;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 1.8rem;
+}
+
+table thead {
+  border-bottom: solid 2px #e7e3d9;
+}
+
+table th,
+table td {
+  border: none;
+  border-left: dotted 1px #e7e3d9 !important;
+  border-right: dotted 1px #e7e3d9 !important;
+  border-bottom: solid 1px #e7e3d9;
+  line-height: 1.4;
+  padding: .5em;
+  text-align: left;
+  vertical-align: top;
+}
+
+table th.has-text-align-right,
+table td.has-text-align-right {
+  text-align: right;
+}
+
+table th {
+  font-weight: bold;
+  background: #ffebeb;
+  text-align: center;
+}
+
+pre {
+  border: dotted 1px #CCC;
+  padding: 0.9rem;
+  background: #fcfbf7;
+  margin-bottom: 1.8rem;
+  line-height: 1.4;
+}
+
+code {
+  background: #fcfbf7;
+}
+
+code, kbd, pre, samp {
+  font-family: monospace,serif;
+}
+
+hr {
+  background-color: currentColor;
+  border: 0 none;
+  height: 1px;
+  margin-bottom: 1.8rem;
+  clear: both;
+}
+
+sup, sub {
+  font-size: 80%;
+  height: 0;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  top: 0.5ex;
+}
+
+sup {
+  bottom: 1ex;
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: bold;
+}
+
+small {
+  font-size: 0.9em;
+}
+
+abbr, acronym {
+  cursor: help;
+}
+
+ul,
+ol {
+  padding-left: 1.5em;
+  margin-bottom: 1.8rem;
+  
+}
+ul {
+  list-style: disc;
+}
+
+ul li,
+ol li {
+  line-height: 1.6;
+  margin-top: 0.45em;
+  margin-bottom: 0.45em;
+}
+
+ul li ul,
+ul li ol,
+ol li ul,
+ol li ol {
+  margin-bottom: 0.45rem;
+}
+
+ol {
+  list-style: decimal;
+}
+
+ol ol {
+  list-style: upper-alpha;
+}
+
+ol ol ol {
+  list-style: lower-roman;
+}
+
+ol ol ol ol {
+  list-style: lower-alpha;
+}
+
+dl {
+  margin: 0;
+  line-height: 1.4;
+}
+
+dl dt {
+  font-weight: bold;
+  background: #eee;
+  padding: 0.9rem;
+}
+
+dl dd {
+  padding: 0.9rem 0;
+  margin: 0 0 0 20px;
+}
+
+del {
+  color: #C00;
+}
+
+ins {
+  background: #ffc;
+  text-decoration: none;
+}
+
+.aligncenter,
+.alignleft,
+.alignright {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.alignleft {
+  float: left;
+  margin-right: 0.75em;
+}
+.alignright {
+  float: right;
+  margin-left: 0.75em;
+}
+
+img.alignleft,
+img.alignright,
+img.aligncenter {
+  margin-bottom: 0.85rem;
+}
+
+.wp-caption,
+.gallery-caption {
+  display: block;
+  font-size: 0.9em;
+  line-height: 1;
+  color: #999;
+  max-width: 100%;
+  text-align: center;
+}
+
+.wp-caption {
+  padding: 5px;
+  background: #E6E6E6;
+  margin-bottom: 0.85rem;
+  max-width: 100%;
+}
+
+.wp-caption .wp-caption-dd,
+.gallery-caption .wp-caption-dd {
+  margin: 0;
+}
+
+.wp-caption .wp-caption-text {
+  color: #999;
+}
+
+.gallery-caption {
+  margin: 5px 0 0 0;
+}
+
+.gallery {
+  margin: 0 auto;
+  overflow: hidden;
+  *zoom: 1;
+}
+
+.gallery .gallery-item {
+  float: left;
+  padding: 0 5px;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 33%;
+}
+
+.gallery .gallery-item a {
+  display: block;
+}
+
+.gallery .gallery-item img {
+  vertical-align: bottom;
+}
+
+.gallery.gallery-columns-1 .gallery-item {
+  width: 100%;
+}
+
+.gallery.gallery-columns-2 .gallery-item {
+  width: 50%;
+}
+
+.gallery.gallery-columns-3 .gallery-item {
+  width: 33.33%;
+}
+
+.gallery.gallery-columns-4 .gallery-item {
+  width: 25%;
+}
+
+.gallery.gallery-columns-5 .gallery-item {
+  width: 20%;
+}
+
+.gallery.gallery-columns-6 .gallery-item {
+  width: 16.66%;
+}
+
+.gallery.gallery-columns-7 .gallery-item {
+  width: 14.28%;
+}
+
+.gallery.gallery-columns-8 .gallery-item {
+  width: 12.5%;
+}
+
+.gallery.gallery-columns-9 .gallery-item {
+  width: 11.11%;
+}
+
+.editor-post-title__block,
+.editor-post-title__input {
+  font-family: 'Kosugi', sans-serif, 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', YuGothic, 'Yu Gothic', Meiryo, 'MS PGothic';
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.wnct-button .wp-block-button__link {
+  background: transparent;
+  color: #a2988a;
+  font-weight: bold;
+  border: solid 1px #a2988a;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  text-align: center;
+  margin: 5px auto;
+  font-size: inherit;
+  width: 96%;
+  white-space: nowrap;
+  display: block;
+}
+
+.wnct-button.pink .wp-block-button__link {
+  background: #ff9999;
+  color: #FFF;
+  border-color: #ff9999;
+}
+
+.wnct-button.blue .wp-block-button__link {
+  background: #34919e;
+  color: #FFF;
+  border-color: #34919e;
+}
+
+/* Make sure our non-latin font overrides don't overwrite the iconfont used in the classic editor toolbar */â€©
+.wp-block[ data-type="core/freeform" ] .mce-btn i {
+    font-family: dashicons !important;
+}

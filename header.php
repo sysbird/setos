@@ -30,8 +30,12 @@
 				<p id="site-description"><?php _e( $site_description, 'setos' ); ?></p>
 			</div>
 
-			<nav id="menu-wrapper">
-				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container_class' => 'menu', 'menu_class' => '', 'menu_id' => 'menu-primary-items', 'items_wrap' => '<button id="small-menu" type="button"><span class="icon"></span></button><ul id="%1$s" class="%2$s">%3$s</ul>', 'fallback_cb' => '' ) ); ?>
-			</nav>
+			<?php if( has_nav_menu( 'primary' )): ?>	
+		        <button id="small-menu" type="button"><span class="icon"></span></button>
+        		<nav id="menu-wrapper">
+					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container_class' => 'menu', 'menu_class' => '', 'menu_id' => 'menu-primary-items', 'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul><div class="close"><a href="#">Close</a></div>', 'fallback_cb' => '' ) ); ?>		
+				</nav>
+		<?php endif; ?>
 		</div>
-	</header>
+
+    </header>

@@ -3,46 +3,45 @@
 jQuery(function() {
 
 	jQuery( window ).load(function() {
+        // init fixed navigation
+        jQuery('#menu-wrapper').removeClass('fixed');
 
-		// Header Slider
-		jQuery('.slider[data-interval]').setos_Slider();
+        // Hero Slider
+        var swiper = new Swiper('.home .swiper-container', {
+            loop: true,
+            autoHeight:  true,
+            effect: 'fade',
+            speed: 500,
+            autoplay: {
+                delay: 7000,
+			},
+			pagination: {
+				el: '.swiper-pagination',
+				type: 'bullets',
+			}			
+        });
 
-		// photos slide in book page
-		var slide_num = jQuery("[data-fancybox]").length;
-		if( 1 < slide_num ){
-			// Zoom for thumbnail
-			jQuery("[data-fancybox]").fancybox({
-				loop : false,
-				buttons: [
-					"thumbs",
-					"close"
-				],
-				protect : true,
-				clickContent : function( current, event ) {
-					return false;
-				},
-			});
-		}
-
-		// Masonry for list
-		jQuery('ul.masonry').masonry({
-			itemSelector: 'li',
-			isAnimated: true
-		});
-
-		jQuery( '.setos-photos-cover, .setos-photos-slide-start' ).click(function() {
-			jQuery( ".setos-photos-slide a:first" ).click();
-			return false;
-		});
+		// link in page slowly
+		/*
+		jQuery('a[href^="#"]').click(function () {
+			var href = jQuery(this).attr("href");
+			var target = jQuery(href == "#" || href == "" ? 'html' : href);
+			if (1 < href.length) {
+				// has anchor
+				var top = target.offset().top - 80;
+				jQuery('html,body').delay(100).animate({ scrollTop: top }, "slow");
+				return false;
+			}
+		}); */
+		
+        // close small menu
+        jQuery("#menu-wrapper .close").click(function () {
+            jQuery("#small-menu").click();
+            return false;
+        });
 
 		// Initialize bogo-language-switcher
 		jQuery( '.bogo-language-switcher' ).insertAfter( '.menu .language a' ).css({ 'display': 'block' });
-	});
-
-	// Navigation for mobile
-	jQuery("#small-menu").click(function () {
-		jQuery( "#menu-primary-items" ).slideToggle()
-		jQuery( "#menu-wrapper" ).toggleClass( "open" );
 	});
 
 	// Windows Scroll
@@ -73,61 +72,120 @@ jQuery(function() {
 	});
 
 	// back to pagetop
-	totop.click( function () {
-		jQuery( 'body, html' ).animate( { scrollTop: 0 }, 500 ); return false;
+	totop.click(function () {
+		jQuery('body, html').animate({ scrollTop: 0 }, 500);
+		return false;
 	});
+
+	var swiper = setos_set_books_gallery();
 });
 
 ////////////////////////////////////////
-// Header Slider
-jQuery.fn.setos_Slider = function(){
+// Navigation for mobile
+window.addEventListener('DOMContentLoaded', function (e) {
 
-	return this.each( function( i, elem ) {
-		// change slide
-		var setos_interval = jQuery( '.slider' ).attr( 'data-interval' );
+    var $toggle = document.getElementById('small-menu');
+    $toggle.addEventListener('click', function (e) {
+        jQuery("#small-menu").toggleClass("open");
+        jQuery("body").toggleClass("drawer-open");
 
-		// init slider size
-		var count = 0;
-		jQuery( '.slideitem' ).each( function ( index, element ) {
+        if (jQuery("body").hasClass('drawer-open')) {
+            jQuery('#menu-wrapper').scrollTop(0);
+        }
+    });
+});
 
-			// set image ratio
-			var w = jQuery( this ).find( 'img' ).attr( 'width' );
-			var h = jQuery( this ).find('img').attr( 'height' );
-			var ratio = parseInt( h /w *100 );
-			jQuery(this).attr( 'ratio', ratio + '%' );
-			count++;
+////////////////////////////////////////
+// set books swipe gallery
+function setos_set_books_gallery() {
 
-			if( jQuery( this ).hasClass( 'start' )){
-				// first slide
-				jQuery( this ).parent().css({ 'padding-top': ratio + '%' });
+	var has_books_gallery = false;
+
+	if (jQuery('figure.wp-block-gallery').length) {
+		// add swiper class
+		jQuery('.wp-block-gallery').addClass('books-gallery');
+
+		// remove block gallery class
+		jQuery('.books-gallery').removeClass('wp-block-gallery').addClass('swiper-container');
+		jQuery('.books-gallery').find('ul').removeClass('blocks-gallery-grid').addClass('swiper-wrapper');
+		jQuery('.books-gallery').find('li').removeClass('blocks-gallery-item').addClass('swiper-slide');
+
+		// set thumbnail
+		jQuery('.books-gallery').after('<div class="books-thumbnail swiper-container"><ul class="swiper-wrapper"></ul></div>');
+		jQuery('.books-gallery .swiper-wrapper li').each(function (index, element) {
+			var url = jQuery(this).find('img').attr('src');
+			jQuery('.books-thumbnail ul').append('<li class="swiper-slide"><img src="' + url + '" alt=""></li>');
+
+			jQuery(this).find('a').attr('data-fancybox', 'gallery');
+		})
+
+		has_books_gallery = true;
+	}
+	else if (jQuery('.single-books ul.wp-block-gallery, single-post ul.wp-block-gallery').length) {
+		// previous wpvarsion
+		jQuery('.wp-block-gallery').wrapAll('<div class="books-gallery"></div>'); jQuery('.books-gallery').addClass('swiper-container');
+
+		// remove block gallery class
+		jQuery('.books-gallery').find('ul').removeClass('wp-block-gallery').addClass('swiper-wrapper');
+		jQuery('.books-gallery').find('li').removeClass('blocks-gallery-item').addClass('swiper-slide');
+
+		// set thumbnail
+		jQuery('.books-gallery').after('<div class="books-thumbnail"><ul></ul></div>');
+		jQuery('.books-gallery .swiper-wrapper li').each(function (index, element) {
+			var url = jQuery(this).find('a[href]').attr('href');
+			jQuery('.books-thumbnail ul').append('<li><img src="' + url + '" alt=""></li>');
+
+			jQuery(this).find('a').attr('data-fancybox', 'gallery');
+		})
+
+		has_books_gallery = true;
+	}
+
+	if (has_books_gallery) {
+		// navigation
+		jQuery('.swiper-container').append('<div class="swiper-button-prev swiper-button-white"></div><div class= "swiper-button-next swiper-button-white" ></div >');
+
+		jQuery('.books-gallery').append('<div class="swiper-scrollbar"></div>');
+
+		// thumbnail Slider
+		var swiper_thumbs = new Swiper('.books-thumbnail', {
+			slidesPerView: 4,
+			spaceBetween: 5,
+			slideToClickedSlide: true,
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			}, 
+			breakpoints: {
+				660: {
+					slidesPerView: 6,
+				},
 			}
 		});
 
-		if( 1 < count ){
+		// Photo Slider
+		var swiper_books = new Swiper('.books-gallery', {
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+			scrollbar: {
+				el: '.swiper-scrollbar',
+			},
+			thumbs: {
+				swiper: swiper_thumbs
+			}
+		});
 
-			setInterval( function(){
+		// Zoom
+		jQuery('[data-fancybox="gallery"]').fancybox({
+			buttons: [
+				'close'
+			],
+		});
 
-				index = jQuery( '.slideitem.active' ).index( '.slideitem' );
-				index++;
-				if( index >= jQuery( '.slideitem' ).length ){
-					index = 0;
-				}
+		return swiper_books;
+	}
 
-				// fade in
-				jQuery( '.slideitem:eq(' + index + ')' ).fadeIn( 1000, function (){
-
-					// reset slider size
-					var ratio = jQuery( this ).attr( 'ratio' );
-					jQuery( '#wall .slider' ).css({ 'padding-top': ratio });
-
-					// fade out
-					jQuery( '.slideitem.active' ).fadeOut( 500, function(){
-						jQuery( '.slideitem.start' ).removeClass( 'start' );
-						jQuery( '.slideitem.active' ).removeClass( 'active ');
-						jQuery( '.slideitem:eq(' + index + ')').addClass('active' );
-					} );
-				} );
-			}, setos_interval );
-		}
-	});
-};
+	return false;
+}
